@@ -4,29 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Movies — JAYBIRDS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --navy: #1a1f2e;
-  --navy-mid: #222840;
-  --navy-dark: #141828;
+  --bg: #000000;
+  --card: #1c1c1e;
+  --card2: #2c2c2e;
+  --border: #38383a;
+  --border2: rgba(201,168,76,0.2);
   --gold: #c9a84c;
-  --gold-light: #e2c97e;
-  --gold-pale: #f0e4b8;
-  --cream: #f5f0e8;
-  --border: rgba(201,168,76,0.25);
-  --border2: rgba(201,168,76,0.12);
-  --muted: rgba(245,240,232,0.45);
+  --gold2: #e8c96a;
+  --gold3: #f5e0a0;
+  --white: #ffffff;
+  --label: #ebebf5;
+  --label2: rgba(235,235,245,0.6);
+  --muted: rgba(235,235,245,0.45);
+  --green: #30d158;
+  --pink: #ff375f;
+  --tiktok: #69c9d0;
+  --insta: #e1306c;
 }
 
 body {
-  background: var(--navy);
-  color: var(--cream);
-  font-family: 'Noto Serif JP', serif;
+  background: var(--bg);
+  color: var(--label);
+  font-family: 'Noto Sans JP', sans-serif;
   min-height: 100vh;
   padding: 40px 20px 80px;
 }
@@ -35,168 +40,150 @@ body {
 
 .back-link {
   display: inline-block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem; letter-spacing: 0.25em;
-  color: var(--gold-light); text-decoration: none; text-transform: uppercase;
-  margin-bottom: 28px; opacity: 0.7; transition: opacity 0.2s;
+  font-size: 0.78rem; letter-spacing: 0.2em;
+  color: var(--gold2); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
 
 /* ===== HEADER ===== */
-header { text-align: center; margin-bottom: 40px; }
-.site-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem; letter-spacing: 0.35em; color: var(--gold-light);
-  text-transform: uppercase; margin-bottom: 10px; opacity: 0.7;
+.header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
+.header-bg {
+  background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #c9a84c 100%);
+  padding: 36px 32px 28px; position: relative; overflow: hidden;
 }
-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 300;
-  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px;
+.header-bg::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border: 2px solid rgba(201,168,76,0.2); transform: rotate(45deg);
 }
-.subtitle {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 0.9rem; letter-spacing: 0.15em; color: var(--gold-pale); opacity: 0.75;
+.header-bg::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 130px; height: 130px; border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
 }
-.divider { width: 60px; border: none; border-top: 1px solid var(--gold); margin: 20px auto; opacity: 0.4; }
+.header-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold2); border: 1px solid rgba(201,168,76,0.4); padding: 4px 16px; margin-bottom: 14px; position: relative;
+}
+.header h1 {
+  font-size: clamp(32px, 8vw, 48px); font-weight: 900; letter-spacing: 4px;
+  color: var(--white); margin-bottom: 8px; position: relative;
+}
+.header h1 .accent {
+  background: linear-gradient(135deg, var(--gold3), var(--gold), var(--white));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; letter-spacing: 0.5px; }
+.header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(--gold), var(--gold2), var(--gold), #000); }
 
 /* ===== SECTION ===== */
-.section { margin-bottom: 40px; }
-.section-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 16px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+.section { margin-bottom: 36px; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); opacity: 0.8; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
 }
-.section-icon { font-size: 1.1rem; }
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.9rem, 3vw, 1.1rem); letter-spacing: 0.25em;
-  color: var(--gold); text-transform: uppercase;
-}
-.section-count {
-  margin-left: auto;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.5;
-}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
 
-/* ===== ACTION BADGE ===== */
-.action-badges {
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin-top: 8px;
+/* ===== HOWTO BOX ===== */
+.howto {
+  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px; margin-top: 12px;
+  font-size: clamp(10px, 1.8vw, 11.5px); color: var(--label2); line-height: 1.85;
+  border-radius: 0 8px 8px 0;
 }
-.badge {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.62rem; letter-spacing: 0.15em;
-  padding: 3px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-.badge-gold { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); }
-.badge-green { background: rgba(95,186,138,0.12); color: #8fdcb4; border: 1px solid rgba(95,186,138,0.3); }
-.badge-blue { background: rgba(100,180,255,0.12); color: #90c8ff; border: 1px solid rgba(100,180,255,0.3); }
-.badge-pink { background: rgba(255,100,150,0.12); color: #ffb0c8; border: 1px solid rgba(255,100,150,0.3); }
+.howto strong { color: var(--gold2); }
 
 /* ===== YOUTUBE CARDS ===== */
-.yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 480px) { .yt-grid { grid-template-columns: 1fr; } }
+
+.shorts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+@media (max-width: 480px) { .shorts-grid { grid-template-columns: 1fr 1fr; } }
 
 .yt-card {
   display: block; text-decoration: none;
-  background: var(--navy-mid); border: 1px solid var(--border);
+  background: var(--card); border: 1px solid var(--border);
   overflow: hidden; transition: border-color 0.25s, transform 0.2s;
-  position: relative;
+  border-radius: 12px;
 }
-.yt-card:hover { border-color: rgba(201,168,76,0.6); transform: translateY(-2px); }
+.yt-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); }
 
 .yt-thumb {
   width: 100%; aspect-ratio: 16/9;
-  background: var(--navy-dark);
-  position: relative; overflow: hidden;
+  background: var(--card2); position: relative; overflow: hidden;
 }
+.yt-thumb.short { aspect-ratio: 9/16; max-height: 200px; }
 .yt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .yt-thumb .play-btn {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.3);
-  opacity: 0; transition: opacity 0.2s;
+  background: rgba(0,0,0,0.35); opacity: 0; transition: opacity 0.2s;
 }
 .yt-card:hover .play-btn { opacity: 1; }
 .play-btn span {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(201,168,76,0.85);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(201,168,76,0.9);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; padding-left: 3px;
+  font-size: 1rem; padding-left: 3px; color: #000;
 }
 
-.yt-info { padding: 12px 14px; }
-.yt-platform {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold);
-  text-transform: uppercase; opacity: 0.7; margin-bottom: 4px;
+.yt-info { padding: 10px 12px; }
+.yt-platform-badge {
+  display: inline-block;
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+  margin-bottom: 6px;
 }
+.badge-yt { background: rgba(255,0,0,0.15); color: #ff4444; border: 1px solid rgba(255,0,0,0.3); }
+.badge-shorts { background: rgba(255,0,0,0.1); color: #ff6666; border: 1px solid rgba(255,0,0,0.2); }
 
-/* ショートサムネは縦型 */
-.yt-thumb.short { aspect-ratio: 9/16; max-height: 220px; }
+.action-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.abadge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 2px 8px; border-radius: 20px;
+}
+.abadge-gold { background: rgba(201,168,76,0.12); color: var(--gold2); border: 1px solid rgba(201,168,76,0.3); }
+.abadge-green { background: rgba(48,209,88,0.1); color: var(--green); border: 1px solid rgba(48,209,88,0.25); }
+.abadge-blue { background: rgba(100,180,255,0.1); color: #90c8ff; border: 1px solid rgba(100,180,255,0.25); }
 
-/* ===== SHORTS GRID ===== */
-.shorts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-@media (max-width: 480px) { .shorts-grid { grid-template-columns: 1fr 1fr; } }
-
-/* ===== PLATFORM CARDS (TikTok / Instagram) ===== */
-.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* ===== PLATFORM GRID ===== */
+.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
 
 .platform-card {
   display: flex; align-items: center; gap: 14px;
   text-decoration: none;
-  background: var(--navy-mid); border: 1px solid var(--border);
-  padding: 14px 16px;
+  background: var(--card); border: 1px solid var(--border);
+  padding: 14px 16px; border-radius: 12px;
   transition: border-color 0.25s, transform 0.2s;
 }
-.platform-card:hover { border-color: rgba(201,168,76,0.6); transform: translateY(-2px); }
+.platform-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); }
 
 .platform-icon {
   width: 40px; height: 40px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; flex-shrink: 0;
+  font-size: 1.2rem; flex-shrink: 0;
 }
 .icon-tiktok { background: rgba(105,201,208,0.15); }
-.icon-insta { background: rgba(225,100,150,0.15); }
+.icon-insta { background: rgba(225,48,108,0.15); }
 
-.platform-text {}
 .platform-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.68rem; letter-spacing: 0.2em;
-  color: var(--gold-light); opacity: 0.6; margin-bottom: 2px;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 2px;
 }
-.platform-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem; letter-spacing: 0.1em; color: var(--gold);
-}
+.platform-name { font-size: 13px; font-weight: 700; color: var(--label); }
 .platform-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem;
-  transition: opacity 0.2s, transform 0.2s; flex-shrink: 0;
+  margin-left: auto; color: var(--gold); opacity: 0.4;
+  font-size: 0.9rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
 }
 .platform-card:hover .platform-arrow { opacity: 1; transform: translateX(3px); }
 
-/* ===== HOW TO BOX ===== */
-.howto {
-  background: rgba(201,168,76,0.05);
-  border: 1px solid var(--border2);
-  padding: 12px 16px; margin-top: 10px;
-    font-size: clamp(0.58rem, 1.6vw, 0.65rem);
-  color: var(--gold-pale); opacity: 0.8;
-  line-height: 1.8; letter-spacing: 0.05em;
-}
-.howto strong { color: var(--gold-light); opacity: 1; }
-
 /* ===== FOOTER ===== */
-footer {
-  text-align: center; padding: 24px; border-top: 1px solid var(--border2); margin-top: 20px;
-}
-footer p {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.68rem;
-  letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.4;
+.footer-note {
+  text-align: center; font-size: 11px; color: var(--gold);
+  opacity: 0.5; margin-top: 28px; line-height: 1.8;
 }
 </style>
 </head>
@@ -205,20 +192,18 @@ footer p {
 
   <a href="index.html" class="back-link">← Home</a>
 
-  <header>
-    <p class="site-label">JAYBIRDS</p>
-    <h1>Movies</h1>
-    <p class="subtitle">ジェイくんの動画一覧</p>
-    <hr class="divider">
-  </header>
+  <div class="header">
+    <div class="header-bg">
+      <div class="header-tag">JAYBIRDS — MOVIES</div>
+      <h1><span class="accent">Movies</span></h1>
+      <p class="sub">ジェイくんの動画一覧 · 応援方法</p>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
 
   <!-- YouTube 動画 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">▶️</span>
-      <span class="section-title">YouTube</span>
-      <span class="section-count">2 videos</span>
-    </div>
+    <p class="section-label">YouTube</p>
     <div class="yt-grid">
       <a href="https://youtu.be/tDxHMiThRBA" target="_blank" rel="noopener" class="yt-card">
         <div class="yt-thumb">
@@ -226,11 +211,11 @@ footer p {
           <div class="play-btn"><span>▶</span></div>
         </div>
         <div class="yt-info">
-          <p class="yt-platform">YouTube</p>
+          <span class="yt-platform-badge badge-yt">YouTube</span>
           <div class="action-badges">
-            <span class="badge badge-gold">👍 高評価</span>
-            <span class="badge badge-green">💬 コメント</span>
-            <span class="badge badge-blue">🔁 シェア</span>
+            <span class="abadge abadge-gold">👍 高評価</span>
+            <span class="abadge abadge-green">💬 コメント</span>
+            <span class="abadge abadge-blue">🔁 シェア</span>
           </div>
         </div>
       </a>
@@ -240,27 +225,23 @@ footer p {
           <div class="play-btn"><span>▶</span></div>
         </div>
         <div class="yt-info">
-          <p class="yt-platform">YouTube</p>
+          <span class="yt-platform-badge badge-yt">YouTube</span>
           <div class="action-badges">
-            <span class="badge badge-gold">👍 高評価</span>
-            <span class="badge badge-green">💬 コメント</span>
-            <span class="badge badge-blue">🔁 シェア</span>
+            <span class="abadge abadge-gold">👍 高評価</span>
+            <span class="abadge abadge-green">💬 コメント</span>
+            <span class="abadge abadge-blue">🔁 シェア</span>
           </div>
         </div>
       </a>
     </div>
     <div class="howto">
-      <strong>応援方法：</strong>最後まで視聴 → 👍高評価 → 💬コメント（一言でもOK）→ 🔁シェア。<br>再視聴する場合は別の動画を数本挟んでから。
+      <strong>応援方法：</strong>最後まで視聴 → 👍高評価 → 💬コメント（一言でもOK）→ 🔁シェア。再視聴は別の動画を数本挟んでから。
     </div>
   </div>
 
   <!-- YouTube ショート -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">📱</span>
-      <span class="section-title">YouTube Shorts</span>
-      <span class="section-count">3 videos</span>
-    </div>
+    <p class="section-label">YouTube Shorts</p>
     <div class="shorts-grid">
       <a href="https://youtube.com/shorts/kukAKQ2zmuE" target="_blank" rel="noopener" class="yt-card">
         <div class="yt-thumb short">
@@ -268,7 +249,7 @@ footer p {
           <div class="play-btn"><span>▶</span></div>
         </div>
         <div class="yt-info">
-          <p class="yt-platform">Shorts</p>
+          <span class="yt-platform-badge badge-shorts">Shorts</span>
         </div>
       </a>
       <a href="https://youtube.com/shorts/ZT9qsTU1Vtk" target="_blank" rel="noopener" class="yt-card">
@@ -277,7 +258,7 @@ footer p {
           <div class="play-btn"><span>▶</span></div>
         </div>
         <div class="yt-info">
-          <p class="yt-platform">Shorts</p>
+          <span class="yt-platform-badge badge-shorts">Shorts</span>
         </div>
       </a>
       <a href="https://youtube.com/shorts/ea28sfdE3NU" target="_blank" rel="noopener" class="yt-card">
@@ -286,26 +267,22 @@ footer p {
           <div class="play-btn"><span>▶</span></div>
         </div>
         <div class="yt-info">
-          <p class="yt-platform">Shorts</p>
+          <span class="yt-platform-badge badge-shorts">Shorts</span>
         </div>
       </a>
     </div>
     <div class="howto">
-      <strong>応援方法：</strong>最後まで視聴（ループ再生もOK）→ 👍高評価 → 💬コメント → 🔁シェア。ショートはループが多いほど◎
+      <strong>応援方法：</strong>最後まで視聴（ループもOK）→ 👍高評価 → 💬コメント → 🔁シェア。ショートはループが多いほど◎
     </div>
   </div>
 
   <!-- TikTok -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎵</span>
-      <span class="section-title">TikTok</span>
-      <span class="section-count">3 videos</span>
-    </div>
+    <p class="section-label">TikTok</p>
     <div class="platform-grid">
       <a href="https://vt.tiktok.com/ZSugJndLu/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">TikTok</p>
           <p class="platform-name">動画 #1</p>
         </div>
@@ -313,7 +290,7 @@ footer p {
       </a>
       <a href="https://vt.tiktok.com/ZSugJpcF5/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">TikTok</p>
           <p class="platform-name">動画 #2</p>
         </div>
@@ -321,7 +298,7 @@ footer p {
       </a>
       <a href="https://vt.tiktok.com/ZSugJgr2p/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">TikTok</p>
           <p class="platform-name">動画 #3</p>
         </div>
@@ -335,15 +312,11 @@ footer p {
 
   <!-- Instagram -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">📸</span>
-      <span class="section-title">Instagram</span>
-      <span class="section-count">4 posts</span>
-    </div>
+    <p class="section-label">Instagram</p>
     <div class="platform-grid">
       <a href="https://www.instagram.com/p/DUAbO9Jj-Bm/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">Instagram</p>
           <p class="platform-name">投稿 #1</p>
         </div>
@@ -351,7 +324,7 @@ footer p {
       </a>
       <a href="https://www.instagram.com/p/DUKNyXfD3pU/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">Instagram</p>
           <p class="platform-name">投稿 #2</p>
         </div>
@@ -359,7 +332,7 @@ footer p {
       </a>
       <a href="https://www.instagram.com/p/DV2dbXLiRfo/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">Instagram</p>
           <p class="platform-name">投稿 #3</p>
         </div>
@@ -367,7 +340,7 @@ footer p {
       </a>
       <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div class="platform-text">
+        <div>
           <p class="platform-label">Instagram</p>
           <p class="platform-name">投稿 #4</p>
         </div>
@@ -379,11 +352,8 @@ footer p {
     </div>
   </div>
 
+  <p class="footer-note">JAYBIRDS — Chuang Jay Fan Support Account</p>
+
 </div>
-
-<footer>
-  <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
-</footer>
-
 </body>
 </html>
