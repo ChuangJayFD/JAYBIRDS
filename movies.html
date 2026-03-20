@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movies — JAYBIRDS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #1a1f2e;
+  --navy-mid: #222840;
+  --navy-dark: #141828;
+  --gold: #c9a84c;
+  --gold-light: #e2c97e;
+  --gold-pale: #f0e4b8;
+  --cream: #f5f0e8;
+  --border: rgba(201,168,76,0.25);
+  --border2: rgba(201,168,76,0.12);
+  --muted: rgba(245,240,232,0.45);
+}
+
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Noto Serif JP', serif;
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+}
+
+.wrapper { max-width: 720px; margin: 0 auto; }
+
+.back-link {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem; letter-spacing: 0.25em;
+  color: var(--gold-light); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 28px; opacity: 0.7; transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+/* ===== HEADER ===== */
+header { text-align: center; margin-bottom: 40px; }
+.site-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem; letter-spacing: 0.35em; color: var(--gold-light);
+  text-transform: uppercase; margin-bottom: 10px; opacity: 0.7;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 300;
+  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px;
+}
+.subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.9rem; letter-spacing: 0.15em; color: var(--gold-pale); opacity: 0.75;
+}
+.divider { width: 60px; border: none; border-top: 1px solid var(--gold); margin: 20px auto; opacity: 0.4; }
+
+/* ===== SECTION ===== */
+.section { margin-bottom: 40px; }
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon { font-size: 1.1rem; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 3vw, 1.1rem); letter-spacing: 0.25em;
+  color: var(--gold); text-transform: uppercase;
+}
+.section-count {
+  margin-left: auto;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.5;
+}
+
+/* ===== ACTION BADGE ===== */
+.action-badges {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 8px;
+}
+.badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem; letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.badge-gold { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); }
+.badge-green { background: rgba(95,186,138,0.12); color: #8fdcb4; border: 1px solid rgba(95,186,138,0.3); }
+.badge-blue { background: rgba(100,180,255,0.12); color: #90c8ff; border: 1px solid rgba(100,180,255,0.3); }
+.badge-pink { background: rgba(255,100,150,0.12); color: #ffb0c8; border: 1px solid rgba(255,100,150,0.3); }
+
+/* ===== YOUTUBE CARDS ===== */
+.yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 480px) { .yt-grid { grid-template-columns: 1fr; } }
+
+.yt-card {
+  display: block; text-decoration: none;
+  background: var(--navy-mid); border: 1px solid var(--border);
+  overflow: hidden; transition: border-color 0.25s, transform 0.2s;
+  position: relative;
+}
+.yt-card:hover { border-color: rgba(201,168,76,0.6); transform: translateY(-2px); }
+
+.yt-thumb {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--navy-dark);
+  position: relative; overflow: hidden;
+}
+.yt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.yt-thumb .play-btn {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.3);
+  opacity: 0; transition: opacity 0.2s;
+}
+.yt-card:hover .play-btn { opacity: 1; }
+.play-btn span {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(201,168,76,0.85);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; padding-left: 3px;
+}
+
+.yt-info { padding: 12px 14px; }
+.yt-platform {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold);
+  text-transform: uppercase; opacity: 0.7; margin-bottom: 4px;
+}
+
+/* ショートサムネは縦型 */
+.yt-thumb.short { aspect-ratio: 9/16; max-height: 220px; }
+
+/* ===== SHORTS GRID ===== */
+.shorts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+@media (max-width: 480px) { .shorts-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ===== PLATFORM CARDS (TikTok / Instagram) ===== */
+.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
+
+.platform-card {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+  background: var(--navy-mid); border: 1px solid var(--border);
+  padding: 14px 16px;
+  transition: border-color 0.25s, transform 0.2s;
+}
+.platform-card:hover { border-color: rgba(201,168,76,0.6); transform: translateY(-2px); }
+
+.platform-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.icon-tiktok { background: rgba(105,201,208,0.15); }
+.icon-insta { background: rgba(225,100,150,0.15); }
+
+.platform-text {}
+.platform-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem; letter-spacing: 0.2em;
+  color: var(--gold-light); opacity: 0.6; margin-bottom: 2px;
+}
+.platform-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; letter-spacing: 0.1em; color: var(--gold);
+}
+.platform-arrow {
+  margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem;
+  transition: opacity 0.2s, transform 0.2s; flex-shrink: 0;
+}
+.platform-card:hover .platform-arrow { opacity: 1; transform: translateX(3px); }
+
+/* ===== HOW TO BOX ===== */
+.howto {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid var(--border2);
+  padding: 12px 16px; margin-top: 10px;
+  font-size: clamp(0.68rem, 2vw, 0.75rem);
+  color: var(--gold-pale); opacity: 0.8;
+  line-height: 1.8; letter-spacing: 0.05em;
+}
+.howto strong { color: var(--gold-light); opacity: 1; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 24px; border-top: 1px solid var(--border2); margin-top: 20px;
+}
+footer p {
+  font-family: 'Cormorant Garamond', serif; font-size: 0.68rem;
+  letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.4;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="index.html" class="back-link">← Home</a>
+
+  <header>
+    <p class="site-label">JAYBIRDS</p>
+    <h1>Movies</h1>
+    <p class="subtitle">ジェイくんの動画一覧</p>
+    <hr class="divider">
+  </header>
+
+  <!-- YouTube 動画 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">▶️</span>
+      <span class="section-title">YouTube</span>
+      <span class="section-count">2 videos</span>
+    </div>
+    <div class="yt-grid">
+      <a href="https://youtu.be/tDxHMiThRBA" target="_blank" rel="noopener" class="yt-card">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/tDxHMiThRBA/mqdefault.jpg" alt="動画1" loading="lazy">
+          <div class="play-btn"><span>▶</span></div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-platform">YouTube</p>
+          <div class="action-badges">
+            <span class="badge badge-gold">👍 高評価</span>
+            <span class="badge badge-green">💬 コメント</span>
+            <span class="badge badge-blue">🔁 シェア</span>
+          </div>
+        </div>
+      </a>
+      <a href="https://youtu.be/SxCCdaM8CNQ" target="_blank" rel="noopener" class="yt-card">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/SxCCdaM8CNQ/mqdefault.jpg" alt="動画2" loading="lazy">
+          <div class="play-btn"><span>▶</span></div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-platform">YouTube</p>
+          <div class="action-badges">
+            <span class="badge badge-gold">👍 高評価</span>
+            <span class="badge badge-green">💬 コメント</span>
+            <span class="badge badge-blue">🔁 シェア</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="howto">
+      <strong>応援方法：</strong>最後まで視聴 → 👍高評価 → 💬コメント（一言でもOK）→ 🔁シェア。<br>再視聴する場合は別の動画を数本挟んでから。
+    </div>
+  </div>
+
+  <!-- YouTube ショート -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📱</span>
+      <span class="section-title">YouTube Shorts</span>
+      <span class="section-count">3 videos</span>
+    </div>
+    <div class="shorts-grid">
+      <a href="https://youtube.com/shorts/kukAKQ2zmuE" target="_blank" rel="noopener" class="yt-card">
+        <div class="yt-thumb short">
+          <img src="https://img.youtube.com/vi/kukAKQ2zmuE/mqdefault.jpg" alt="ショート1" loading="lazy">
+          <div class="play-btn"><span>▶</span></div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-platform">Shorts</p>
+        </div>
+      </a>
+      <a href="https://youtube.com/shorts/ZT9qsTU1Vtk" target="_blank" rel="noopener" class="yt-card">
+        <div class="yt-thumb short">
+          <img src="https://img.youtube.com/vi/ZT9qsTU1Vtk/mqdefault.jpg" alt="ショート2" loading="lazy">
+          <div class="play-btn"><span>▶</span></div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-platform">Shorts</p>
+        </div>
+      </a>
+      <a href="https://youtube.com/shorts/ea28sfdE3NU" target="_blank" rel="noopener" class="yt-card">
+        <div class="yt-thumb short">
+          <img src="https://img.youtube.com/vi/ea28sfdE3NU/mqdefault.jpg" alt="ショート3" loading="lazy">
+          <div class="play-btn"><span>▶</span></div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-platform">Shorts</p>
+        </div>
+      </a>
+    </div>
+    <div class="howto">
+      <strong>応援方法：</strong>最後まで視聴（ループ再生もOK）→ 👍高評価 → 💬コメント → 🔁シェア。ショートはループが多いほど◎
+    </div>
+  </div>
+
+  <!-- TikTok -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎵</span>
+      <span class="section-title">TikTok</span>
+      <span class="section-count">3 videos</span>
+    </div>
+    <div class="platform-grid">
+      <a href="https://vt.tiktok.com/ZSugJndLu/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-tiktok">🎵</div>
+        <div class="platform-text">
+          <p class="platform-label">TikTok</p>
+          <p class="platform-name">動画 #1</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://vt.tiktok.com/ZSugJpcF5/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-tiktok">🎵</div>
+        <div class="platform-text">
+          <p class="platform-label">TikTok</p>
+          <p class="platform-name">動画 #2</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://vt.tiktok.com/ZSugJgr2p/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-tiktok">🎵</div>
+        <div class="platform-text">
+          <p class="platform-label">TikTok</p>
+          <p class="platform-name">動画 #3</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+    </div>
+    <div class="howto">
+      <strong>応援方法：</strong>最後まで視聴 → ❤️いいね → 💬コメント → 🔖保存 → 🔁再投稿。保存・再投稿が拡散に特に効果的！
+    </div>
+  </div>
+
+  <!-- Instagram -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📸</span>
+      <span class="section-title">Instagram</span>
+      <span class="section-count">4 posts</span>
+    </div>
+    <div class="platform-grid">
+      <a href="https://www.instagram.com/p/DUAbO9Jj-Bm/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-insta">📸</div>
+        <div class="platform-text">
+          <p class="platform-label">Instagram</p>
+          <p class="platform-name">投稿 #1</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/p/DUKNyXfD3pU/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-insta">📸</div>
+        <div class="platform-text">
+          <p class="platform-label">Instagram</p>
+          <p class="platform-name">投稿 #2</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/p/DV2dbXLiRfo/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-insta">📸</div>
+        <div class="platform-text">
+          <p class="platform-label">Instagram</p>
+          <p class="platform-name">投稿 #3</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-insta">📸</div>
+        <div class="platform-text">
+          <p class="platform-label">Instagram</p>
+          <p class="platform-name">投稿 #4</p>
+        </div>
+        <span class="platform-arrow">→</span>
+      </a>
+    </div>
+    <div class="howto">
+      <strong>応援方法：</strong>❤️いいね → 💬コメント → 🔖保存 → ✈️シェア（ストーリーへの転載も◎）。
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
+</footer>
+
+</body>
+</html>
