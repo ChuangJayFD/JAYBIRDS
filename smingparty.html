@@ -72,6 +72,16 @@ body {
 .header .sub { font-size: clamp(11px, 2vw, 12px); color: var(--label2); line-height: 1.9; letter-spacing: 0.3px; }
 .header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); }
 
+/* タイトル縦横切り替え */
+.h1-line1::after {
+  content: '\A';
+  white-space: pre;
+}
+@media (orientation: landscape) {
+  .h1-line1::after { content: ''; }
+  .h1-line2::before { content: '\A0'; }
+}
+
 .back-link {
   display: inline-block;
   font-family: 'Cormorant Garamond', serif;
@@ -261,7 +271,7 @@ body {
         <span>✦</span><span class="lg">✦</span><span>✦</span>
       </div>
       <div class="tag">JAYBIRDS — EVENT GUIDE</div>
-      <h1>スミンパーティー<br><em>ガイド</em></h1>
+      <h1><span class="h1-line1">スミンパーティー</span><span class="h1-line2"><em>ガイド</em></span></h1>
       <p class="sub">ジュアンジェイの動画を注目動画にするための<br>集中再生イベント 完全マニュアル</p>
     </div>
     <div class="header-stripe"></div>
