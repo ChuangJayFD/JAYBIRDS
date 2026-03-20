@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スミンパーティーガイド — JAYBIRDS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:   #0b1220;
+  --navy2:  #0f1d32;
+  --border: rgba(180,150,80,0.25);
+  --border2:rgba(180,150,80,0.12);
+  --gold:   #c9a84c;
+  --gold2:  #e8c96a;
+  --gold3:  #f5e0a0;
+  --label:  #f0e8d0;
+  --label2: rgba(240,232,208,0.70);
+  --muted:  rgba(240,232,208,0.38);
+  --danger: #e0604a;
+  --green:  #5fba8a;
+}
+
+html, body { background: var(--navy); }
+
+body {
+  color: var(--label);
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  padding: 32px 16px 72px;
+  background: var(--navy);
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.wrapper { max-width: 760px; width: 100%; margin: 0 auto; }
+
+.header { text-align: center; margin-bottom: 24px; border-radius: 6px; overflow: hidden; }
+.header-bg {
+  background: linear-gradient(160deg, #060d1a 0%, #0d1e36 45%, #152c4a 80%, #1a3560 100%);
+  padding: 36px 24px 32px;
+  position: relative; overflow: hidden;
+}
+.header-bg::before {
+  content: ''; position: absolute; top: -44px; right: -44px;
+  width: 140px; height: 140px;
+  border: 1.5px solid rgba(201,168,76,0.18); transform: rotate(45deg);
+}
+.header-bg::after {
+  content: ''; position: absolute; bottom: -44px; left: -44px;
+  width: 140px; height: 140px;
+  border: 1.5px solid rgba(201,168,76,0.12); transform: rotate(45deg);
+}
+.star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 12px; }
+.star-row span { color: var(--gold); font-size: 10px; opacity: 0.7; }
+.star-row span.lg { font-size: 15px; opacity: 1; }
+.tag {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold2); border: 1px solid rgba(201,168,76,0.35); padding: 4px 16px; margin-bottom: 14px;
+}
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 5vw, 36px); font-weight: 700; letter-spacing: 4px;
+  line-height: 1.2; margin-bottom: 10px; color: var(--gold3);
+}
+.header h1 em { font-style: italic; color: var(--gold2); }
+.header .sub { font-size: clamp(11px, 2vw, 12px); color: var(--label2); line-height: 1.9; letter-spacing: 0.3px; }
+.header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); }
+
+.back-link {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem; letter-spacing: 0.25em;
+  color: var(--gold2); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 16px; opacity: 0.7; transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+.insight {
+  background: var(--navy2); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); padding: 16px 20px; margin-bottom: 20px;
+  font-size: clamp(12px, 2vw, 13px); line-height: 1.95; color: var(--label2);
+  border-radius: 2px 10px 10px 2px;
+}
+.insight .headline { font-size: clamp(13px, 2.2vw, 14px); font-weight: 700; color: var(--label); margin-bottom: 6px; }
+.insight strong { color: var(--gold2); }
+
+.card { background: var(--navy2); border: 1px solid var(--border); margin-bottom: 12px; overflow: hidden; border-radius: 2px 10px 10px 2px; }
+.card-header {
+  display: flex; align-items: stretch; border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(201,168,76,0.07) 0%, transparent 100%);
+}
+.card-num {
+  width: 50px; min-height: 48px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700;
+  color: var(--gold2); flex-shrink: 0; border-right: 1px solid var(--border);
+}
+.card-title {
+  font-size: clamp(13px, 2.2vw, 15px); font-weight: 700; padding: 0 16px;
+  display: flex; align-items: center; gap: 8px; color: var(--label); letter-spacing: 0.5px;
+}
+.card-title .s { color: var(--gold); font-size: 9px; }
+.card-body { padding: 18px 20px; }
+
+.sec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); opacity: 0.8; margin-bottom: 10px; margin-top: 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+.sec-label:first-child { margin-top: 0; }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+
+.check-area { display: flex; flex-direction: column; }
+@media (min-width: 560px) {
+  .check-area { flex-direction: row; align-items: flex-start; }
+  .check-area .check-col:first-child { flex: 1; padding-right: 20px; border-right: 1px solid var(--border2); }
+  .check-area .check-col:last-child { flex: 1; padding-left: 20px; }
+}
+.check-col-divider { display: block; height: 1px; background: var(--border2); margin: 14px 0; }
+@media (min-width: 560px) { .check-col-divider { display: none; } }
+
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.check-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: clamp(12px, 2vw, 13.5px); line-height: 1.7; color: var(--label2);
+  cursor: pointer; user-select: none; transition: opacity 0.2s;
+}
+.check-list li strong { color: var(--label); }
+.check-list li.checked { opacity: 0.45; }
+.check-list li.checked .chk { background: rgba(201,168,76,0.2); border-color: var(--gold); }
+.check-list li.checked .chk::after {
+  content: '✓'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 11px; color: var(--gold2); line-height: 1;
+}
+.chk {
+  width: 17px; height: 17px; border: 1.5px solid rgba(201,168,76,0.45);
+  border-radius: 3px; flex-shrink: 0; margin-top: 2px; position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.ready-banner {
+  display: none; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 16px; padding: 12px 18px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.08), rgba(201,168,76,0.16), rgba(201,168,76,0.08));
+  border: 1px solid rgba(201,168,76,0.4); border-radius: 8px;
+  font-size: 13px; font-weight: 700; color: var(--gold2); letter-spacing: 1.5px;
+  animation: fadeSlideIn 0.5s ease forwards;
+}
+.ready-banner.show { display: flex; }
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.ready-banner .ready-star { animation: spin 1.5s ease-in-out; display: inline-block; }
+@keyframes spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.4); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.ng-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.ng-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: clamp(12px, 2vw, 13.5px); line-height: 1.7; color: var(--label2);
+}
+.ng-list li strong { color: var(--label); }
+.ng-list li::before { content: '✕'; font-size: 11px; font-weight: 900; color: var(--danger); flex-shrink: 0; margin-top: 2px; }
+
+.flow { display: flex; flex-direction: column; }
+.flow-item { display: flex; }
+.flow-left { display: flex; flex-direction: column; align-items: center; width: 38px; flex-shrink: 0; }
+.flow-dot {
+  width: 28px; height: 28px; border: 1.5px solid var(--gold); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 700;
+  color: var(--gold2); background: var(--navy2); flex-shrink: 0; z-index: 1;
+}
+.flow-line { width: 1px; flex: 1; background: rgba(201,168,76,0.2); min-height: 14px; }
+.flow-item:last-child .flow-line { display: none; }
+.flow-content { padding: 1px 0 20px 12px; flex: 1; }
+.flow-item:last-child .flow-content { padding-bottom: 0; }
+.flow-title { font-size: clamp(13px, 2.2vw, 14px); font-weight: 700; color: var(--label); margin-bottom: 4px; }
+.flow-desc { font-size: clamp(11.5px, 1.9vw, 13px); line-height: 1.8; color: var(--label2); }
+.flow-desc strong { color: var(--gold2); }
+
+.hashtag-box { background: rgba(201,168,76,0.07); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-top: 10px; }
+.hashtag-tags { display: flex; flex-direction: column; gap: 2px; }
+@media (min-width: 500px) { .hashtag-tags { flex-direction: row; flex-wrap: wrap; gap: 4px 10px; align-items: center; } }
+.hashtag-box .ht { font-weight: 700; color: var(--gold2); font-size: clamp(11.5px, 1.9vw, 13px); line-height: 1.9; white-space: nowrap; }
+.ht-note { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+.post-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 12px; padding: 13px 20px;
+  background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
+  border: none; border-radius: 8px; text-align: center;
+  font-size: 13px; font-weight: 900; color: #1a0e00; letter-spacing: 1.5px;
+  text-decoration: none; cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -3px 0 rgba(0,0,0,0.3), 0 4px 0 #7a5a0a, 0 6px 14px rgba(0,0,0,0.45), 0 0 20px rgba(201,168,76,0.25);
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+  position: relative; overflow: hidden;
+}
+.post-btn::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+  pointer-events: none; border-radius: 8px 8px 0 0;
+}
+.post-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.post-btn:active { transform: translateY(3px); filter: brightness(0.95); }
+.post-btn .x-icon { font-size: 14px; font-style: normal; line-height: 1; }
+
+.settings-table { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 8px; }
+.s-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 13px; border-bottom: 1px solid var(--border2);
+  font-size: clamp(11px, 2vw, 13px);
+}
+.s-row:last-child { border-bottom: none; }
+.s-row:nth-child(even) { background: rgba(255,255,255,0.02); }
+.s-key { color: var(--label2); }
+.s-val { font-weight: 700; font-size: 10px; letter-spacing: 1px; padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
+.val-ng  { background: rgba(224,96,74,0.15); color: var(--danger); }
+.val-std { background: rgba(201,168,76,0.12); color: var(--gold2); }
+
+.note {
+  background: rgba(255,255,255,0.025); border-left: 2px solid rgba(201,168,76,0.25);
+  padding: 9px 13px; font-size: clamp(10px, 1.8vw, 11.5px); color: var(--muted);
+  line-height: 1.85; margin-top: 12px; border-radius: 0 6px 6px 0;
+}
+.note strong { color: var(--label2); }
+.note-gold {
+  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
+  border-left: 3px solid var(--gold); padding: 11px 15px;
+  font-size: clamp(11px, 1.9vw, 12.5px); color: var(--label2); line-height: 1.85;
+  margin-top: 14px; border-radius: 0 8px 8px 0;
+}
+.note-gold strong { color: var(--gold2); }
+.divider { height: 1px; background: var(--border2); margin: 14px 0; }
+
+.footer-note {
+  text-align: center; font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(13px, 2.5vw, 15px); font-style: italic; letter-spacing: 2px;
+  color: var(--gold); opacity: 0.7; margin-top: 32px; line-height: 2;
+}
+.footer-note .sub {
+  display: block; font-family: 'Noto Sans JP', sans-serif; font-size: 10px;
+  font-style: normal; letter-spacing: 1px; color: var(--muted); margin-top: 4px;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="guide.html" class="back-link">← Guide</a>
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="star-row">
+        <span>✦</span><span class="lg">✦</span><span>✦</span>
+      </div>
+      <div class="tag">JAYBIRDS — EVENT GUIDE</div>
+      <h1>スミンパーティー<br><em>ガイド</em></h1>
+      <p class="sub">ジュアンジェイの動画を注目動画にするための<br>集中再生イベント 完全マニュアル</p>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="insight">
+    <div class="headline">✦ &nbsp;スミンパーティーとは</div>
+    YouTubeには、<strong>公開直後に再生が集中した動画を広めやすくする</strong>仕組みがあります。<br>
+    JAYBIRDSが同じ時間に集まって一斉に再生することで、<strong>初速の波を作るためのイベント</strong>です。<br>
+    みんなの力で、ジェイくんの動画を<strong>注目動画にしよう！</strong>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-title"><span class="s">✦</span>事前チェックリスト</div>
+    </div>
+    <div class="card-body">
+      <div class="check-area">
+        <div class="check-col">
+          <p class="sec-label">パーティー前の確認事項</p>
+          <ul class="check-list" id="checklist">
+            <li onclick="toggleCheck(this)"><span class="chk"></span>YouTubeに<strong>ログイン済み</strong></li>
+            <li onclick="toggleCheck(this)"><span class="chk"></span>日プ公式チャンネルの<strong>通知ON</strong></li>
+            <li onclick="toggleCheck(this)"><span class="chk"></span><strong>開始時間</strong>を把握済み</li>
+            <li onclick="toggleCheck(this)"><span class="chk"></span><strong>充電・Wi-Fi</strong>の確認済み</li>
+            <li onclick="toggleCheck(this)"><span class="chk"></span><strong>VPN接続をオフ</strong>に設定済み</li>
+          </ul>
+          <div class="ready-banner" id="readyBanner">
+            <span class="ready-star">✦</span>
+            準備完了！
+            <span class="ready-star">✦</span>
+          </div>
+        </div>
+        <div class="check-col-divider"></div>
+        <div class="check-col">
+          <p class="sec-label">YouTube 設定</p>
+          <div class="settings-table">
+            <div class="s-row"><span class="s-key">国 / 地域設定</span><span class="s-val val-std">日本</span></div>
+            <div class="s-row"><span class="s-key">自動再生</span><span class="s-val val-ng">オフ</span></div>
+            <div class="s-row"><span class="s-key">再生画質</span><span class="s-val val-std">720p 以上</span></div>
+            <div class="s-row"><span class="s-key">再生スピード</span><span class="s-val val-std">標準（1.0×）</span></div>
+            <div class="s-row"><span class="s-key">広告ブロッカー</span><span class="s-val val-ng">使わない</span></div>
+          </div>
+          <div class="note">セカイプロデューサーも<strong>地域設定は「日本」</strong>を推奨。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-title"><span class="s">✦</span>パーティーのながれ</div>
+    </div>
+    <div class="card-body">
+      <div class="flow">
+        <div class="flow-item">
+          <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <div class="flow-title">開始時間に動画を開く</div>
+            <div class="flow-desc">通知が届いたらすぐクリック。見逃した場合は<strong>手動検索でアクセス</strong>。URLの直貼りでもOK。</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <div class="flow-title">最初から最後までフル視聴</div>
+            <div class="flow-desc"><strong>冒頭30秒が特に重要。</strong>途中停止・早送りせず最後まで視聴。ミュートはNG。</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-left"><div class="flow-dot">3</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <div class="flow-title">高評価 ＆ コメントを残す</div>
+            <div class="flow-desc">まだ高評価していなければ忘れずに。コメントは絵文字だけでなく、<strong>一言感想を添えるのが効果的◎</strong></div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-left"><div class="flow-dot">4</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <div class="flow-title">Xで感想を投稿して盛り上げ🎉</div>
+            <div class="flow-desc">以下のハッシュタグをつけて感想を投稿。投稿が集まることで注目度がさらにアップ。</div>
+            <div class="hashtag-box">
+              <div class="hashtag-tags">
+                <span class="ht">#ジュアンジェイ_スミンパーティー</span>
+                <span class="ht">#ジュアンジェイ</span>
+                <span class="ht">#PRODUCE101JAPAN新世界</span>
+              </div>
+              <div class="ht-note">✦ 3つまとめて使用。感想・好きなシーン・なんでもOK。</div>
+            </div>
+            <a class="post-btn" href="https://twitter.com/intent/tweet?text=%23%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%A4_%E3%82%B9%E3%83%9F%E3%83%B3%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%BC%20%23%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%A4%20%23PRODUCE101JAPAN%E6%96%B0%E4%B8%96%E7%95%8C%20" target="_blank" rel="noopener">
+              <em class="x-icon">𝕏</em>に投稿する
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="note-gold">
+        <strong>再視聴する場合は、</strong>別の動画を3〜4本挟んで10分ほど間隔をあけること。連続再生は回数がカウントされにくくなるため注意。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-title"><span class="s">✦</span>やってはいけないこと</div>
+    </div>
+    <div class="card-body">
+      <ul class="ng-list">
+        <li><strong>ミュート再生・ながら見</strong>（視聴維持率が低下）</li>
+        <li><strong>途中停止・早送りの繰り返し</strong></li>
+        <li><strong>間隔をあけずに同アカウントで連続再生</strong></li>
+        <li><strong>バックグラウンド再生・分割画面再生</strong></li>
+        <li><strong>VPN接続中の再生</strong></li>
+        <li><strong>広告ブロッカーを使用した再生</strong></li>
+      </ul>
+      <div class="note">再生回数よりも視聴の質が重要。<strong>1回1回を丁寧に視聴することが最大の応援。</strong></div>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    Let's fly together, JAYBIRDS ✦
+    <span class="sub">JAYBIRDS — ジュアンジェイ応援ファンアカウント</span>
+  </p>
+
+</div>
+
+<script>
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  checkAllDone();
+}
+function checkAllDone() {
+  const items = document.querySelectorAll('#checklist li');
+  const banner = document.getElementById('readyBanner');
+  const allChecked = Array.from(items).every(li => li.classList.contains('checked'));
+  if (allChecked) { banner.classList.add('show'); } else { banner.classList.remove('show'); }
+}
+</script>
+</body>
+</html>
