@@ -30,48 +30,61 @@
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      text-align: center;
-      padding: 60px 24px 40px;
-      overflow: hidden;
       min-height: 420px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      overflow: hidden;
     }
 
     .hero-image {
       position: absolute;
+      left: 0;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
       height: 100%;
-      max-height: 420px;
       width: auto;
       object-fit: contain;
-      object-position: bottom center;
-      opacity: 0.22;
+      object-position: left bottom;
+      opacity: 1;
       pointer-events: none;
       z-index: 0;
     }
 
+    /* 足元（下端）のゴールドライン */
+    .hero-gold-line {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), rgba(201,168,76,0.2) 60%, transparent);
+      z-index: 2;
+    }
+
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      margin-left: auto;
+      width: 55%;
+      text-align: center;
+      padding: 60px 24px 40px;
+    }
+    @media (max-width: 600px) {
+      .hero-content { width: 60%; padding: 40px 16px; }
+      .hero-image { height: 80%; }
     }
 
     .site-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.65rem, 2vw, 0.8rem);
-      letter-spacing: 0.35em;
+      font-size: clamp(0.55rem, 1.8vw, 0.75rem);
+      letter-spacing: 0.3em;
       color: var(--gold-light);
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .site-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 12vw, 6rem);
+      font-size: clamp(2.4rem, 9vw, 5rem);
       font-weight: 300;
       letter-spacing: 0.18em;
       color: var(--gold);
@@ -83,7 +96,7 @@
     .site-subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      font-size: clamp(0.78rem, 2vw, 1rem);
       letter-spacing: 0.2em;
       color: var(--gold-pale);
       margin-bottom: 20px;
@@ -92,8 +105,7 @@
     .star-row {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 0;
+      gap: 12px;
     }
 
     /* ===== FAN BANNER ===== */
@@ -105,7 +117,6 @@
       padding: 18px 28px;
       text-align: center;
       position: relative;
-      z-index: 1;
     }
     .fan-banner::before {
       content: '';
@@ -270,6 +281,7 @@
   <header>
     <div class="hero">
       <img class="hero-image" src="Untitled design.png" alt="Chuang Jay">
+      <div class="hero-gold-line"></div>
       <div class="hero-content">
         <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
         <h1 class="site-title">JAYBIRDS</h1>
@@ -282,7 +294,7 @@
       </div>
     </div>
 
-    <div class="fan-banner" style="max-width:600px;margin:0 auto;">
+    <div class="fan-banner">
       <p class="fan-banner-label">✦ About JAYBIRDS ✦</p>
       <p class="fan-banner-message">
         JAYBIRDSは、<em>ジュアンジェイ（Chuang Jay）</em>を応援する<em>非公式ファンサポートアカウント</em>です。<br>
