@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tag Event Guide — JAYBIRDS</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --border: #38383a;
+  --gold: #c9a84c;
+  --gold2: #e8c96a;
+  --gold3: #f5e0a0;
+  --white: #ffffff;
+  --label: #ebebf5;
+  --label2: rgba(235,235,245,0.6);
+  --muted: rgba(235,235,245,0.45);
+  --danger: #ff453a;
+  --green: #30d158;
+}
+
+body {
+  background: var(--bg);
+  color: var(--label);
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+}
+
+.wrapper { max-width: 680px; margin: 0 auto; }
+
+.back-link {
+  display: inline-block;
+  font-size: 0.78rem; letter-spacing: 0.2em;
+  color: var(--gold2); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+/* ===== HEADER ===== */
+.header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
+.header-bg {
+  background: linear-gradient(160deg, #000000 0%, #1a1000 40%, #3a2800 70%, #c9a84c 100%);
+  padding: 36px 32px 28px; position: relative; overflow: hidden;
+}
+.header-bg::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border: 2px solid rgba(201,168,76,0.2); transform: rotate(45deg);
+}
+.header-bg::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 130px; height: 130px; border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
+}
+.header-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold2); border: 1px solid rgba(201,168,76,0.4); padding: 4px 16px; margin-bottom: 14px;
+}
+.header h1 {
+  font-size: clamp(28px, 7vw, 40px); font-weight: 900; letter-spacing: 3px;
+  color: var(--white); margin-bottom: 8px;
+}
+.header h1 .accent {
+  background: linear-gradient(135deg, var(--gold3), var(--gold), var(--white));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
+.header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(--gold), var(--gold2), var(--gold), #000); }
+
+/* ===== INSIGHT ===== */
+.insight {
+  background: var(--card); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); padding: 16px 20px; margin-bottom: 28px;
+  font-size: 13px; line-height: 1.9; color: var(--label2); border-radius: 2px 10px 10px 2px;
+}
+.insight strong { color: var(--gold2); }
+
+/* ===== EVENT LIST ===== */
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); opacity: 0.8; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+
+.event-card {
+  display: block; text-decoration: none;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 22px;
+  margin-bottom: 12px;
+  transition: border-color 0.25s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.event-card::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold2));
+}
+.event-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); }
+
+.event-card-inner { display: flex; align-items: center; gap: 16px; }
+
+.event-date-block {
+  flex-shrink: 0; text-align: center;
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px; padding: 10px 14px; min-width: 72px;
+}
+.event-month { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+.event-day { font-size: 28px; font-weight: 900; color: var(--gold2); line-height: 1; }
+.event-weekday { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.event-info { flex: 1; }
+.event-time {
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  letter-spacing: 1px; margin-bottom: 4px;
+}
+.event-tag {
+  font-size: clamp(14px, 3.5vw, 18px); font-weight: 900;
+  color: var(--label); margin-bottom: 4px;
+  word-break: break-all;
+}
+.event-tag span { color: var(--gold2); }
+.event-sub { font-size: 11px; color: var(--label2); }
+
+.event-arrow {
+  color: var(--gold); opacity: 0.4; font-size: 1.1rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.event-card:hover .event-arrow { opacity: 1; transform: translateX(4px); }
+
+.event-badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 2px 10px; border-radius: 20px; margin-bottom: 6px;
+}
+.badge-live { background: rgba(255,69,58,0.15); color: #ff453a; border: 1px solid rgba(255,69,58,0.4); }
+.badge-past { background: rgba(235,235,245,0.06); color: var(--muted); border: 1px solid var(--border); }
+
+/* ===== FOOTER ===== */
+.footer-note {
+  text-align: center; font-size: 11px; color: var(--gold);
+  opacity: 0.5; margin-top: 28px; line-height: 1.8;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="guide.html" class="back-link">← Guide</a>
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="header-tag">JAYBIRDS — TAG EVENT</div>
+      <h1><span class="accent">Tag Event Guide</span></h1>
+      <p class="sub">タグイベントガイド一覧</p>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="insight">
+    タグイベントは<strong>決められた時間に一斉投稿</strong>してXのトレンドを狙うイベントです。<br>
+    各回のガイドを確認して、全員で同じ時間に動きましょう！
+  </div>
+
+  <p class="section-label">イベント一覧</p>
+
+  <a href="JustVoteJay_326.html" class="event-card">
+    <div class="event-card-inner">
+      <div class="event-date-block">
+        <div class="event-month">MAR</div>
+        <div class="event-day">26</div>
+        <div class="event-weekday">Thu.</div>
+      </div>
+      <div class="event-info">
+        <span class="event-badge badge-live">● Live</span>
+        <div class="event-time">18:00 〜 19:00</div>
+        <div class="event-tag"><span>#</span>JustVoteJay</div>
+        <div class="event-sub">放送前トレンド狙い · 認知拡大</div>
+      </div>
+      <span class="event-arrow">→</span>
+    </div>
+  </a>
+
+  <p class="footer-note">JAYBIRDS — Chuang Jay Fan Support Account</p>
+
+</div>
+</body>
+</html>
