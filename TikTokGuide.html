@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TikTok応援ガイド — JAYBIRDS</title>
+<style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --border: #38383a;
+  --blue: #0a84ff;
+  --blue2: #409cff;
+  --sky: #64d2ff;
+  --white: #ffffff;
+  --label: #ebebf5;
+  --label2: rgba(235,235,245,0.6);
+  --muted: rgba(235,235,245,0.45);
+  --danger: #ff453a;
+  --green: #30d158;
+  --pink: #ff375f;
+  --tiktok: #69c9d0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--label);
+  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px 60px;
+}
+
+.wrapper { max-width: 680px; margin: 0 auto; }
+
+.back-link {
+  display: inline-block;
+  font-size: 0.78rem; letter-spacing: 0.2em;
+  color: var(--tiktok); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 20px; opacity: 0.7; transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+.header { text-align: center; margin-bottom: 24px; overflow: hidden; border-radius: 4px; }
+.header-bg {
+  background: linear-gradient(160deg, #000000 0%, #1a0a2e 40%, #2e0a3a 70%, #ff375f 100%);
+  padding: 28px 32px 24px; position: relative; overflow: hidden;
+}
+.header-bg::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border: 2px solid rgba(105,201,208,0.2); transform: rotate(45deg);
+}
+.header-bg::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 130px; height: 130px; border: 2px solid rgba(255,55,95,0.15); transform: rotate(45deg);
+}
+.tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px;
+  color: var(--tiktok); border: 1px solid rgba(105,201,208,0.4); padding: 4px 16px; margin-bottom: 14px;
+}
+.header h1 { font-size: 28px; font-weight: 900; letter-spacing: 2px; line-height: 1.3; margin-bottom: 10px; color: var(--white); }
+.header h1 .accent {
+  background: linear-gradient(135deg, #69c9d0, #ff375f);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.header-stripe { height: 4px; background: linear-gradient(90deg, #000, #ff375f, #69c9d0, #ff375f, #000); }
+
+.lead {
+  background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--pink);
+  padding: 16px 20px; margin-bottom: 20px; font-size: 13px; line-height: 1.9; color: var(--label2); border-radius: 12px;
+}
+.lead strong { color: var(--label); }
+
+.action-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.action-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.action-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; flex-shrink: 0; }
+.action-title { font-size: 17px; font-weight: 700; color: var(--label); }
+.action-emoji { margin-left: auto; font-size: 22px; }
+.action-body { padding: 14px 20px; font-size: 13px; line-height: 1.8; color: var(--label2); }
+.action-body strong { color: var(--label); }
+
+.action-1 { border-left: 3px solid var(--tiktok); }
+.action-1 .action-num { background: rgba(105,201,208,0.15); color: var(--tiktok); }
+.action-2 { border-left: 3px solid var(--pink); }
+.action-2 .action-num { background: rgba(255,55,95,0.15); color: var(--pink); }
+.action-3 { border-left: 3px solid var(--green); }
+.action-3 .action-num { background: rgba(48,209,88,0.15); color: var(--green); }
+.action-4 { border-left: 3px solid var(--blue2); }
+.action-4 .action-num { background: rgba(64,156,255,0.15); color: var(--blue2); }
+.action-5 { border-left: 3px solid #ffd60a; }
+.action-5 .action-num { background: rgba(255,214,10,0.15); color: #ffd60a; }
+
+.note-important {
+  background: rgba(105,201,208,0.08); border: 1px solid rgba(105,201,208,0.3);
+  border-left: 3px solid var(--tiktok); padding: 12px 16px; font-size: 12px;
+  color: var(--label2); line-height: 1.8; margin-bottom: 20px; border-radius: 0 8px 8px 0;
+}
+.note-important strong { color: var(--tiktok); }
+
+.big-point {
+  text-align: center; padding: 20px; font-size: 16px; font-weight: 900;
+  border: 1px solid rgba(255,55,95,0.35);
+  background: linear-gradient(135deg, rgba(105,201,208,0.12), rgba(255,55,95,0.12));
+  border-radius: 12px; margin-bottom: 20px; line-height: 1.7;
+}
+.big-point .sub { font-size: 13px; font-weight: 700; color: var(--label2); display: block; margin-bottom: 4px; }
+.big-point span {
+  background: linear-gradient(135deg, #69c9d0, #ff375f);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.footer-note { text-align: center; font-size: 11px; color: #888; margin-top: 28px; line-height: 1.8; }
+.footer-note strong { color: var(--tiktok); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="guide.html" class="back-link">← Guide</a>
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="tag">JAYBIRDS — TikTok GUIDE</div>
+      <h1><span class="accent">今すぐできる！</span>ジェイくん応援ガイド</h1>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="lead">
+    応援動画を自分で作るのはハードルが高い…でも！<br>
+    ジェイくんの動画を見かけたら、<strong>見て・押して・広めるだけ</strong>で十分な応援になります。
+  </div>
+
+  <div class="action-card action-1">
+    <div class="action-header">
+      <div class="action-num">1</div>
+      <div class="action-title">最後まで視聴する</div>
+      <div class="action-emoji">▶️</div>
+    </div>
+    <div class="action-body">
+      <strong>最も重要なアクション。</strong>完走率が高いほど多くの人におすすめされます。<strong>複数回見る</strong>とさらに効果的。
+    </div>
+  </div>
+
+  <div class="action-card action-2">
+    <div class="action-header">
+      <div class="action-num">2</div>
+      <div class="action-title">いいねを押す</div>
+      <div class="action-emoji">❤️</div>
+    </div>
+    <div class="action-body">
+      基本のアクション。動画を見たら<strong>必ず押す</strong>習慣をつけましょう。
+    </div>
+  </div>
+
+  <div class="action-card action-3">
+    <div class="action-header">
+      <div class="action-num">3</div>
+      <div class="action-title">コメントする</div>
+      <div class="action-emoji">💬</div>
+    </div>
+    <div class="action-body">
+      いいねより<strong>効果が大きい</strong>とされるアクション。<strong>絵文字だけでもOK！</strong>
+    </div>
+  </div>
+
+  <div class="action-card action-4">
+    <div class="action-header">
+      <div class="action-num">4</div>
+      <div class="action-title">保存する</div>
+      <div class="action-emoji">🔖</div>
+    </div>
+    <div class="action-body">
+      「また見たい」という強いシグナル。<strong>保存数が多い動画</strong>はより多くの人に広まりやすくなります。
+    </div>
+  </div>
+
+  <div class="action-card action-5">
+    <div class="action-header">
+      <div class="action-num">5</div>
+      <div class="action-title">再投稿・シェアする</div>
+      <div class="action-emoji">🔁</div>
+    </div>
+    <div class="action-body">
+      <strong>再投稿</strong>はFFのおすすめ欄に動画を流す強力なアクション。他SNSへのシェアが更なる拡散に！
+    </div>
+  </div>
+
+  <div class="big-point">
+    <span class="sub">動画を作らなくていい。</span>
+    <span>見て・押して・広めるだけでジェイくんを応援できる！</span>
+  </div>
+
+  <p class="footer-note">
+    ジュアンジェイFD
+  </p>
+
+</div>
+</body>
+</html>
