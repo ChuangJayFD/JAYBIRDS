@@ -28,42 +28,9 @@
       overflow-x: hidden;
     }
 
-    /* ── 星デコレーション ── */
-    .star {
-      display: inline-block;
-      color: var(--gold);
-      font-size: 0.75em;
-      line-height: 1;
-    }
-    .star svg {
-      width: 1em;
-      height: 1em;
-      fill: var(--gold);
-      vertical-align: middle;
-    }
-
-    /* ── ヘッダー ── */
     header {
       text-align: center;
-      padding: 60px 24px 40px;
-      position: relative;
-    }
-
-    .border-top {
-      width: 80%;
-      max-width: 480px;
-      margin: 0 auto 32px;
-      border-top: 1px solid var(--gold);
-      border-bottom: 1px solid var(--gold);
-      padding: 6px 0;
-      position: relative;
-    }
-    .border-top::before {
-      content: '';
-      display: block;
-      border-top: 1px solid var(--gold-light);
-      border-bottom: 1px solid var(--gold-light);
-      padding: 4px 0;
+      padding: 60px 24px 32px;
     }
 
     .site-label {
@@ -101,17 +68,52 @@
       margin-bottom: 8px;
     }
 
-    /* ── ナビ ── */
+    .fan-banner {
+      max-width: 600px;
+      margin: 28px auto 0;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: rgba(201,168,76,0.05);
+      padding: 20px 28px;
+      text-align: center;
+      position: relative;
+    }
+    .fan-banner::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(201,168,76,0.08);
+      pointer-events: none;
+    }
+    .fan-banner-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    .fan-banner-message {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.75rem, 2.2vw, 0.88rem);
+      line-height: 2;
+      color: var(--gold-pale);
+      opacity: 0.85;
+    }
+    .fan-banner-message em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
     nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
-      padding: 0 24px 48px;
+      padding: 36px 24px 48px;
       max-width: 600px;
       margin: 0 auto;
     }
-
     nav a {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.7rem, 2vw, 0.82rem);
@@ -126,7 +128,6 @@
     nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
 
-    /* ── メインカード群 ── */
     main {
       max-width: 680px;
       margin: 0 auto;
@@ -153,122 +154,101 @@
       pointer-events: none;
       transition: border-color 0.25s;
     }
-    .card:hover {
-      background: #272d42;
-      border-color: rgba(201,168,76,0.7);
-    }
+    .card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
     .card:hover::before { border-color: rgba(201,168,76,0.25); }
-
-    .card-inner {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .card.disabled {
+      opacity: 0.45;
+      cursor: default;
+      pointer-events: none;
     }
+
+    .card-inner { display: flex; align-items: center; gap: 20px; }
 
     .card-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      width: 44px;
-      text-align: center;
-      opacity: 0.85;
+      font-size: 1.6rem; flex-shrink: 0;
+      width: 44px; text-align: center; opacity: 0.85;
     }
 
-    .card-text {}
     .card-en {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1rem, 3vw, 1.25rem);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 4px;
+      font-weight: 400; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase;
+      display: block; margin-bottom: 4px;
     }
     .card-ja {
       font-size: clamp(0.72rem, 2vw, 0.82rem);
-      color: var(--gold-pale);
-      letter-spacing: 0.12em;
-      opacity: 0.8;
+      color: var(--gold-pale); letter-spacing: 0.12em; opacity: 0.8;
     }
 
     .card-arrow {
-      margin-left: auto;
-      color: var(--gold);
-      opacity: 0.5;
-      font-size: 1rem;
-      flex-shrink: 0;
+      margin-left: auto; color: var(--gold); opacity: 0.5;
+      font-size: 1rem; flex-shrink: 0;
       transition: opacity 0.2s, transform 0.2s;
     }
     .card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
 
-    /* ── SNSリンク ── */
-    .sns-section {
-      margin-top: 8px;
-      text-align: center;
+    .card-badge {
+      margin-left: auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem; letter-spacing: 0.2em;
+      color: var(--gold-light);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 2px 8px; flex-shrink: 0; opacity: 0.6;
     }
 
+    .sns-section { margin-top: 8px; text-align: center; }
     .sns-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 16px;
+      font-size: 0.72rem; letter-spacing: 0.3em;
+      color: var(--gold-light); text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 16px;
     }
-
     .sns-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 12px; flex-wrap: wrap;
     }
-
     .sns-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--gold-pale);
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--gold-pale);
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.78rem, 2vw, 0.9rem);
-      letter-spacing: 0.2em;
-      padding: 8px 16px;
+      letter-spacing: 0.2em; padding: 8px 16px;
       border: 1px solid rgba(201,168,76,0.25);
       transition: border-color 0.2s, color 0.2s;
     }
     .sns-link:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── フッター ── */
     footer {
       text-align: center;
       padding: 32px 24px 48px;
       border-top: 1px solid rgba(201,168,76,0.15);
     }
-    .footer-star { margin-bottom: 16px; }
     footer p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--gold-light);
-      opacity: 0.5;
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      color: var(--gold-light); opacity: 0.5;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <p class="site-label">
-      <span class="star"><svg viewBox="0 0 20 20"><polygon points="10,2 11.8,7.6 17.6,7.6 13,11 14.8,16.6 10,13.2 5.2,16.6 7,11 2.4,7.6 8.2,7.6"/></svg></span>
-      Chuang Jay Fan Support Account
-      <span class="star"><svg viewBox="0 0 20 20"><polygon points="10,2 11.8,7.6 17.6,7.6 13,11 14.8,16.6 10,13.2 5.2,16.6 7,11 2.4,7.6 8.2,7.6"/></svg></span>
-    </p>
+    <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
     <h1 class="site-title">JAYBIRDS</h1>
     <p class="site-subtitle">ジェイバーズ</p>
     <div class="star-row">
-      <span class="star"><svg viewBox="0 0 20 20" width="14" height="14"><polygon points="10,1 10,19 M1,10 19,10 M3,3 17,17 M17,3 3,17" stroke="#c9a84c" stroke-width="1.5" fill="none"/></svg></span>
-      <span class="star"><svg viewBox="0 0 20 20" width="10" height="10"><polygon points="10,2 11.8,7.6 17.6,7.6 13,11 14.8,16.6 10,13.2 5.2,16.6 7,11 2.4,7.6 8.2,7.6" fill="#c9a84c"/></svg></span>
-      <span class="star"><svg viewBox="0 0 20 20" width="14" height="14"><polygon points="10,1 10,19 M1,10 19,10 M3,3 17,17 M17,3 3,17" stroke="#c9a84c" stroke-width="1.5" fill="none"/></svg></span>
+      <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+      <span style="color:var(--gold);font-size:0.6rem;">✦</span>
+      <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+    </div>
+    <div class="fan-banner">
+      <p class="fan-banner-label">✦ About JAYBIRDS ✦</p>
+      <p class="fan-banner-message">
+        JAYBIRDSは、<em>ジュアンジェイ（Chuang Jay）</em>を応援する<em>非公式ファンサポートアカウント</em>です。<br>
+        本人・事務所・番組とは一切関係ありません。<br>
+        みんなでジェイくんを全力で応援していきましょう！✦
+      </p>
     </div>
   </header>
 
@@ -319,31 +299,29 @@
       </div>
     </a>
 
-    <a href="gallery.html" class="card">
+    <div class="card disabled">
       <div class="card-inner">
         <div class="card-icon">🖼️</div>
         <div class="card-text">
           <span class="card-en">Gallery</span>
           <span class="card-ja">布教画像・配布素材</span>
         </div>
-        <span class="card-arrow">→</span>
+        <span class="card-badge">Coming Soon</span>
       </div>
-    </a>
+    </div>
 
     <div class="sns-section">
       <p class="sns-label">Follow us</p>
       <div class="sns-links">
-        <a href="https://twitter.com/YOUR_ACCOUNT" class="sns-link" target="_blank">𝕏 Twitter</a>
-        <a href="https://instagram.com/YOUR_ACCOUNT" class="sns-link" target="_blank">Instagram</a>
+        <a href="https://x.com/chuangjay_fd?s=21&t=nvSxWHlNQYEWpk_qkOVZqg" class="sns-link" target="_blank">𝕏 Twitter</a>
+        <a href="https://www.instagram.com/chuangjay_fd?igsh=bHZ3d3dmN3Ztcmxh" class="sns-link" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@chuangjay_fd?_r=1&_t=ZS-94qPji7n57J" class="sns-link" target="_blank">TikTok</a>
       </div>
     </div>
 
   </main>
 
   <footer>
-    <div class="footer-star">
-      <span class="star"><svg viewBox="0 0 20 20" width="12" height="12"><polygon points="10,2 11.8,7.6 17.6,7.6 13,11 14.8,16.6 10,13.2 5.2,16.6 7,11 2.4,7.6 8.2,7.6" fill="#c9a84c"/></svg></span>
-    </div>
     <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
     <p style="margin-top:6px;">This is an unofficial fan account. Not affiliated with Chuang Jay or any related organizations.</p>
   </footer>
