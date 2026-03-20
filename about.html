@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About JAYBIRDS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0e1828;
+      --navy-mid: #152238;
+      --navy-light: #1c2d48;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --gold-pale: #f0e4b8;
+      --cream: #f5f0e8;
+      --border: rgba(201,168,76,0.3);
+      --border2: rgba(201,168,76,0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Noto Serif JP', serif;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+
+    .wrapper { max-width: 720px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem; letter-spacing: 0.25em;
+      color: var(--gold-light); text-decoration: none; text-transform: uppercase;
+      margin-bottom: 32px; opacity: 0.7; transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    .page-header { text-align: center; margin-bottom: 36px; }
+
+    .header-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem; letter-spacing: 0.45em;
+      color: var(--gold-light); text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .header-label::before,
+    .header-label::after { content: '✦'; font-size: 0.5rem; color: var(--gold); }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      font-weight: 400; letter-spacing: 0.18em;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .page-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--gold-pale); opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .emoji-row {
+      display: flex; justify-content: center; gap: 8px;
+      font-size: 1.4rem; margin-bottom: 16px;
+    }
+
+    .star-divider {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .star-divider::before,
+    .star-divider::after {
+      content: ''; flex: 1; max-width: 80px;
+      height: 1px; background: var(--gold); opacity: 0.3;
+    }
+    .star-divider span { color: var(--gold); font-size: 0.55rem; letter-spacing: 6px; opacity: 0.7; }
+
+    .main-card {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .card-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 560px) {
+      .card-inner { grid-template-columns: 1fr; }
+    }
+
+    .card-image {
+      position: relative;
+      min-height: 280px;
+      background: var(--navy-light);
+      overflow: hidden;
+    }
+    .card-image img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .card-text {
+      background: var(--navy-mid);
+      padding: 28px 24px;
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    @media (max-width: 560px) {
+      .card-text { border-left: none; border-top: 1px solid var(--border); }
+    }
+
+    .text-block-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem; letter-spacing: 0.4em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 12px; opacity: 0.8;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .text-block-label::before { content: '+'; color: var(--gold); }
+
+    .text-block p {
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      line-height: 2; color: var(--gold-pale); opacity: 0.85;
+    }
+
+    .fan-mark-list {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+    }
+    .fan-mark-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      line-height: 1.8; color: var(--gold-pale); opacity: 0.85;
+    }
+    .fan-mark-list li .mark { font-size: 1rem; flex-shrink: 0; }
+
+    .bottom-banner {
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      position: relative;
+      background: var(--navy-mid);
+    }
+    .bottom-banner::before {
+      content: '';
+      position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+      border: 1px solid var(--border2); pointer-events: none;
+    }
+
+    .corner { position: absolute; width: 14px; height: 14px; }
+    .corner-tl { top: 0; left: 0; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner-tr { top: 0; right: 0; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+    .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner-br { bottom: 0; right: 0; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+    .banner-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.85rem, 3vw, 1.05rem);
+      line-height: 2; color: var(--gold-pale);
+      letter-spacing: 0.05em;
+    }
+    .banner-text em { font-style: normal; color: var(--gold-light); }
+
+    .page-footer {
+      text-align: center; margin-top: 32px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .page-footer::before,
+    .page-footer::after {
+      content: ''; flex: 1; max-width: 100px;
+      height: 1px; background: var(--gold); opacity: 0.2;
+    }
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem; letter-spacing: 0.35em; color: var(--gold-light); opacity: 0.5;
+      text-transform: uppercase; display: flex; gap: 20px;
+    }
+    .footer-text span::before { content: '✦ '; font-size: 0.45rem; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="index.html" class="back-link">← Home</a>
+
+  <div class="page-header">
+    <p class="header-label">FD名決定のお知らせ</p>
+    <h1 class="page-title">JAYBIRDS</h1>
+    <p class="page-subtitle">ジェイバーズ</p>
+    <div class="emoji-row"><span>💙</span><span>🪶</span></div>
+    <div class="star-divider"><span>✦ ✦ ✦</span></div>
+  </div>
+
+  <div class="main-card">
+    <div class="card-inner">
+      <div class="card-image">
+        <img src="CB15B937-4D68-4464-B427-277CC57849F4.png" alt="Blue Jay">
+      </div>
+      <div class="card-text">
+        <div class="text-block">
+          <p class="text-block-label">Origin of the Name</p>
+          <p>JAYBIRDは幸運の青い鳥・カケスを意味する実在する英単語。航空系専攻、軽やかなダンス、目を引くビジュアル、台南から飛んできた南の鳥、全てがジェイくんと重なります。</p>
+        </div>
+        <div class="text-block">
+          <p class="text-block-label">Fan Mark</p>
+          <ul class="fan-mark-list">
+            <li><span class="mark">💙</span>カケスの羽と空を象徴する色。</li>
+            <li><span class="mark">🪶</span>世界に羽ばたく翼と軽やかさ、自由を表す羽根。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-banner">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+    <p class="banner-text">
+      南風とともに羽ばたくJAYBIRDSへ💙　<em>全員でジェイくんを世界へ届けよう🪶</em>
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-text">
+      <span>Chuang Jay FD</span>
+      <span>JAYBIRDS</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
