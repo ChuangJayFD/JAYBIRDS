@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>チッケム再生ガイド — JAYBIRDS</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --card2: #2c2c2e;
+  --border: #38383a;
+  --blue: #0a84ff;
+  --blue2: #409cff;
+  --sky: #64d2ff;
+  --crystal: #a8d4ff;
+  --white: #ffffff;
+  --label: #ebebf5;
+  --label2: rgba(235,235,245,0.6);
+  --light: #2c2c2e;
+  --muted: rgba(235,235,245,0.45);
+  --danger: #ff453a;
+  --green: #30d158;
+}
+
+body {
+  background: var(--bg);
+  color: var(--label);
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px 60px;
+}
+
+.wrapper { max-width: 860px; margin: 0 auto; }
+
+.back-link {
+  display: inline-block;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.2em;
+  color: var(--sky); text-decoration: none; text-transform: uppercase;
+  margin-bottom: 20px; opacity: 0.7; transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
+
+.header { text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; border-radius: 4px; }
+.header-bg {
+  background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #0a84ff 100%);
+  padding: 44px 32px 36px; position: relative; overflow: hidden;
+}
+.header-bg::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border: 2px solid rgba(10,132,255,0.2); transform: rotate(45deg);
+}
+.header-bg::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 130px; height: 130px; border: 2px solid rgba(10,132,255,0.15); transform: rotate(45deg);
+}
+.triangle-deco {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 30px solid transparent; border-right: 30px solid transparent;
+  border-bottom: 26px solid rgba(10,132,255,0.15);
+}
+.tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--sky); border: 1px solid rgba(100,210,255,0.4); padding: 4px 16px; margin-bottom: 16px; position: relative;
+}
+.header h1 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 5px; line-height: 1.1;
+  margin-bottom: 10px; color: var(--white); position: relative;
+}
+.header h1 .accent {
+  background: linear-gradient(135deg, #64d2ff, #0a84ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.header .sub { font-size: 12px; color: rgba(100,210,255,0.8); line-height: 1.9; letter-spacing: 0.5px; position: relative; }
+.header-stripe { height: 4px; background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000); }
+
+.insight {
+  background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--blue);
+  padding: 18px 22px; margin-bottom: 24px; font-size: 13px; line-height: 1.9; color: var(--label2); border-radius: 12px;
+}
+.insight strong { color: var(--blue2); font-weight: 700; }
+.insight .headline { display: block; font-size: 14px; font-weight: 900; color: var(--label); margin-bottom: 6px; }
+
+.phase { background: var(--card); border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden; border-radius: 12px; }
+.phase-header { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); }
+.phase-num {
+  width: 56px; min-height: 54px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 28px; flex-shrink: 0; color: var(--white);
+}
+.phase-title { font-size: 15px; font-weight: 700; padding: 0 16px; display: flex; align-items: center; color: var(--label); }
+.phase-timing {
+  margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 0 14px; border-left: 1px solid var(--border); display: flex; align-items: center;
+  color: var(--muted); white-space: nowrap;
+}
+.phase-body { padding: 20px 22px; }
+
+.phase-1 .phase-num { background: rgba(10,132,255,0.2); color: var(--blue2); }
+.phase-1 { border-left: 3px solid var(--blue); }
+.phase-2 .phase-num { background: rgba(10,132,255,0.12); color: var(--sky); }
+.phase-2 { border-left: 3px solid var(--sky); }
+.phase-3 .phase-num { background: rgba(100,210,255,0.1); color: var(--sky); }
+.phase-3 { border-left: 3px solid #3a3a3c; }
+.phase-4 .phase-num { background: rgba(48,209,88,0.1); color: var(--green); }
+.phase-4 { border-left: 3px solid var(--green); }
+
+.do-list, .ng-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+.do-list li, .ng-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.7; color: var(--label2); }
+.do-list li strong, .ng-list li strong { color: var(--label); }
+.do-list li::before { content: '✓'; font-weight: 900; font-size: 12px; color: var(--green); flex-shrink: 0; margin-top: 3px; }
+.ng-list li::before { content: '✕'; font-weight: 900; font-size: 12px; color: var(--danger); flex-shrink: 0; margin-top: 3px; }
+
+.section-label { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; margin-top: 16px; }
+.section-label:first-child { margin-top: 0; }
+
+.note {
+  background: #2c2c2e; border-left: 2px solid #48484a; padding: 10px 14px;
+  font-size: 10.5px; color: var(--muted); line-height: 1.8; margin-top: 12px; border-radius: 0 6px 6px 0;
+}
+.note strong { color: var(--label2); }
+
+.note-important {
+  background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.3); border-left: 3px solid var(--blue);
+  padding: 12px 16px; font-size: 12.5px; color: var(--label2); line-height: 1.8; margin-top: 12px; border-radius: 0 8px 8px 0;
+}
+.note-important strong { color: var(--blue2); }
+
+.yt-settings { border: 1px solid var(--border); margin-bottom: 12px; overflow: hidden; border-radius: 10px; }
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 14px; border-bottom: 1px solid var(--border); font-size: 13px; background: var(--card);
+}
+.setting-row:nth-child(even) { background: #242426; }
+.setting-row:last-child { border-bottom: none; }
+.setting-key { color: var(--label2); }
+.setting-val { font-weight: 700; font-size: 11px; letter-spacing: 1px; padding: 2px 12px; border-radius: 20px; }
+.val-on { background: rgba(48,209,88,0.15); color: var(--green); }
+.val-off { background: rgba(255,69,58,0.15); color: var(--danger); }
+.val-jp { background: rgba(10,132,255,0.15); color: var(--blue2); }
+.val-std { background: rgba(235,235,245,0.08); color: var(--label2); }
+
+.priority-badge {
+  display: block; background: rgba(255,69,58,0.15); color: var(--danger);
+  border: 1px solid rgba(255,69,58,0.45); font-size: 14px; font-weight: 700; letter-spacing: 2px;
+  padding: 10px 18px; margin-bottom: 16px; border-radius: 8px; text-align: center;
+}
+
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+.summary {
+  background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--blue);
+  border-radius: 12px; padding: 28px; margin-top: 8px; position: relative; overflow: hidden;
+}
+.summary::before {
+  content: ''; position: absolute; top: -50px; right: -50px;
+  width: 160px; height: 160px; border: 2px solid rgba(10,132,255,0.08); transform: rotate(45deg);
+}
+.summary h3 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 5px;
+  color: var(--blue2); margin-bottom: 18px; text-align: center; position: relative;
+}
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.summary-row {
+  display: flex; align-items: center; gap: 10px; background: #2c2c2e;
+  border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; white-space: nowrap;
+}
+.s-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; min-width: 80px; }
+.s-val { font-weight: 700; color: var(--label); font-size: 13px; }
+.big-point {
+  text-align: center; padding: 18px; font-size: 24px; font-weight: 700; color: var(--label);
+  border: 1px solid rgba(10,132,255,0.25); background: rgba(10,132,255,0.08);
+  line-height: 1.8; border-radius: 10px; position: relative; white-space: nowrap;
+}
+.big-point span {
+  background: linear-gradient(135deg, #64d2ff, #0a84ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.two-col { display: flex; flex-direction: row; gap: 0; align-items: flex-start; }
+.two-col > div:not(.col-divider) { flex: 1; }
+.two-col > div:not(.col-divider):first-child { flex: 1.4; }
+.col-divider { width: 1px; background: var(--border); align-self: stretch; margin: 0 18px; flex-shrink: 0; }
+.two-col .do-list li, .two-col .ng-list li { white-space: nowrap; }
+
+.footer-note { text-align: center; font-size: 11px; color: #409cff; margin-top: 28px; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="guide.html" class="back-link">← Guide</a>
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="triangle-deco"></div>
+      <div class="tag">JAYBIRDS — FAN CAM GUIDE</div>
+      <h1>チッケム<br><span class="accent">再生ガイド</span></h1>
+      <p class="sub">新規チッケム公開時に、最大限再生数を伸ばすための<br>国プ・セカプ向け完全マニュアル</p>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="insight">
+    <span class="headline">まず知っておくべき大原則</span>
+    <strong>勝負は公開後24〜48時間。</strong>YouTubeは公開直後に「この動画を広めるか」を判断します。<br>
+    同じ人が10回見るより、<strong>10人が1回ずつ見る方が強い。</strong><br>
+    目標は「別の人がクリックしたくなる状態を作ること」。
+  </div>
+
+  <div class="phase phase-1">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title">事前準備</div>
+      <div class="phase-timing">公開前</div>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <p class="section-label">やること</p>
+          <ul class="do-list">
+            <li>YouTubeに<strong>ログイン</strong>する</li>
+            <li>日プ公式チャンネルの<strong>通知をON</strong>にする</li>
+            <li>公開時間を事前にチェック・共有する</li>
+            <li>SNSで周囲のファンに周知する</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">YouTube設定の確認</p>
+          <div class="yt-settings">
+            <div class="setting-row"><span class="setting-key">国 / 地域</span><span class="setting-val val-jp">日本</span></div>
+            <div class="setting-row"><span class="setting-key">自動再生</span><span class="setting-val val-off">オフ</span></div>
+            <div class="setting-row"><span class="setting-key">統計情報を有効にする</span><span class="setting-val val-on">オン</span></div>
+            <div class="setting-row"><span class="setting-key">再生画質</span><span class="setting-val val-std">720p 以上</span></div>
+            <div class="setting-row"><span class="setting-key">再生スピード</span><span class="setting-val val-std">標準（1.0x）</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">設定は公式アプリまたは公式サイトで確認。<strong>セカイプロデューサーも「日本」に設定推奨</strong>（日本のYouTubeで再生数をカウントさせるため）。<strong>VPN接続はNG。</strong></div>
+    </div>
+  </div>
+
+  <div class="phase phase-2">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title">公開直後</div>
+      <div class="phase-timing">0〜2時間 ★最重要</div>
+    </div>
+    <div class="phase-body">
+      <div class="priority-badge">⚡ ここが最重要フェーズ</div>
+      <div class="two-col">
+        <div>
+          <p class="section-label">必ずやること（順番通りに）</p>
+          <ul class="do-list">
+            <li>通知が来たら<strong>すぐクリック</strong>（離脱せずそのまま視聴）</li>
+            <li>最初から最後まで<strong>フルで1回視聴</strong></li>
+            <li>冒頭で離脱しない（<strong>最初の30秒が特に重要</strong>）</li>
+            <li><strong>文章でコメントを書く</strong>（具体的な感想が◎）</li>
+            <li><strong>高評価を押す</strong></li>
+          </ul>
+          <div class="note-important">通知からクリックすると<strong>CTR（クリック率）が直接カウント</strong>され、YouTubeのアルゴリズムに好影響を与えます。通知を見逃した場合は<strong>手動で検索して</strong>動画を再生してください。</div>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">NG — やってはいけないこと</p>
+          <ul class="ng-list">
+            <li>ミュートにしたまま放置</li>
+            <li>途中で停止・離脱</li>
+            <li>同じアカウントで連続再生を繰り返す</li>
+            <li>同一アカウントでの同時再生</li>
+            <li>バックグラウンド再生・分割画面再生</li>
+            <li>早送り・一時停止を繰り返す</li>
+            <li>絵文字だけのコメント連投</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-important">YouTubeは公開直後に「<strong>CTR（クリック率）× 視聴維持率</strong>」を計測して、広めるかを判断します。ここが高いと次の段階へ拡大されます。</div>
+      <div class="divider"></div>
+      <p class="section-label">よくある質問</p>
+      <ul class="do-list">
+        <li><strong>広告はスキップしてOK</strong>（再生回数への影響なし）</li>
+        <li>ただし<strong>広告ブロッカーはNG</strong>（カウントされにくくなる可能性あり）</li>
+        <li>同じ動画を再度見る場合は<strong>間に別の動画を3〜4本挟んで10分以上空けてから</strong>再生する</li>
+        <li>毎回<strong>手動で検索して</strong>アクセスする</li>
+      </ul>
+      <ul class="ng-list">
+        <li><strong>PremiumアカウントならOKは誤情報</strong>（連続再生は重複カウントされにくい）</li>
+        <li><strong>「24時間以内なら何回再生してもOK」は誤情報</strong>（短時間の連続再生はカウントされにくい）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase phase-3">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title">拡散フェーズ</div>
+      <div class="phase-timing">2〜48時間</div>
+    </div>
+    <div class="phase-body">
+      <p class="section-label">やること</p>
+      <ul class="do-list">
+        <li>X・TikTok等で<strong>魅力的な切り抜き・クリップを拡散</strong></li>
+        <li>投稿に<strong>YouTubeのURLを貼る</strong></li>
+        <li>「見てください」より<strong>「この瞬間がすごい」と見せる</strong></li>
+        <li><strong>#PRODUCE101JAPAN新世界</strong>など、JAYのファン以外の目にも届くタグをつける</li>
+        <li>チッケムのサムネやシーンを<strong>スクショ・引用</strong>してリプやQTで反応を誘う</li>
+        <li>インプレッションが高まる<strong>20〜22時</strong>に合わせて投稿する</li>
+      </ul>
+      <div class="note-important">YouTubeは「<strong>外部から人を連れてきた動画</strong>」を高く評価します。SNSからの流入が推薦強化のトリガーになります。キャプションやタイトルも工夫して「クリックしたくなるか」を意識しましょう。</div>
+    </div>
+  </div>
+
+  <div class="phase phase-4">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <div class="phase-title">スミンパーティ</div>
+      <div class="phase-timing">タイミングが重要</div>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <p class="section-label">効果がある条件</p>
+          <ul class="do-list">
+            <li><strong>公開直後</strong>に集中して行う</li>
+            <li>実際にちゃんと視聴する（フル再生）</li>
+            <li>コメント・高評価も同時に行う</li>
+            <li>再バズ・関連イベント直後のタイミング</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">効果が薄い状況</p>
+          <ul class="ng-list">
+            <li>公開から数日後（初速フェーズ外）</li>
+            <li>ループ再生・ながら見</li>
+            <li>既存ファンだけで完結している</li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="section-label">再生リストの活用</p>
+      <ul class="do-list">
+        <li>再生リストは<strong>ながら再生・セッション延長</strong>に有効</li>
+        <li>初速フェーズが落ち着いた後の<strong>継続視聴の導線</strong>として使う</li>
+        <li>再生リストから流入すると<strong>視聴セッションが延びやすい</strong></li>
+      </ul>
+      <div class="note">再生リストは公開直後の初速ブーストには向きませんが、<strong>落ち着いた後のながら再生や繰り返し視聴</strong>の流れを作るのに役立ちます。</div>
+      <div class="divider"></div>
+      <p class="section-label">再生の間隔について</p>
+      <ul class="do-list">
+        <li>MVとMVの間に<strong>別の動画を3〜4本</strong>はさむ</li>
+        <li>連続再生は間に<strong>10分程度の間隔</strong>をあける</li>
+      </ul>
+      <div class="note">スミンパーティは「初速を最大化する装置」。<strong>公開直後に集中させることが重要</strong>で、日数が経ってからの単純な再生周回は効果が薄くなります。</div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h3>SUMMARY</h3>
+    <div class="summary-grid">
+      <div class="summary-row"><span class="s-label">最重要指標</span><span class="s-val">視聴維持率</span></div>
+      <div class="summary-row"><span class="s-label">勝負の時間</span><span class="s-val">公開後 24〜48h</span></div>
+      <div class="summary-row"><span class="s-label">拡散のカギ</span><span class="s-val">外部流入（SNS）</span></div>
+      <div class="summary-row"><span class="s-label">再生リスト</span><span class="s-val">初速以外で有効</span></div>
+    </div>
+    <div class="big-point">
+      同じ人が10回見るより　<span>10人が1回見る方が強い</span>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    このガイドはYouTube公式・Creator Insider等を基に作成しています。<br>
+    PRINCE JAYを全力応援しよう 💙
+  </p>
+
+</div>
+</body>
+</html>
