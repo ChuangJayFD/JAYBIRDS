@@ -15,7 +15,6 @@
       --gold-light: #e2c97e;
       --gold-pale: #f0e4b8;
       --cream: #f5f0e8;
-      --white: #ffffff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,9 +27,37 @@
       overflow-x: hidden;
     }
 
-    header {
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
       text-align: center;
-      padding: 60px 24px 32px;
+      padding: 60px 24px 40px;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      max-height: 420px;
+      width: auto;
+      object-fit: contain;
+      object-position: bottom center;
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
     .site-label {
@@ -44,12 +71,13 @@
 
     .site-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 10vw, 5rem);
+      font-size: clamp(3.2rem, 12vw, 6rem);
       font-weight: 300;
       letter-spacing: 0.18em;
       color: var(--gold);
-      line-height: 1.1;
-      margin-bottom: 8px;
+      line-height: 1;
+      margin-bottom: 10px;
+      text-shadow: 0 0 40px rgba(201,168,76,0.3);
     }
 
     .site-subtitle {
@@ -58,24 +86,26 @@
       font-size: clamp(0.85rem, 2.5vw, 1.05rem);
       letter-spacing: 0.2em;
       color: var(--gold-pale);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .star-row {
       display: flex;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 8px;
+      margin-bottom: 0;
     }
 
+    /* ===== FAN BANNER ===== */
     .fan-banner {
       max-width: 600px;
-      margin: 28px auto 0;
+      margin: 24px auto 0;
       border: 1px solid rgba(201,168,76,0.3);
       background: rgba(201,168,76,0.05);
-      padding: 20px 28px;
+      padding: 18px 28px;
       text-align: center;
       position: relative;
+      z-index: 1;
     }
     .fan-banner::before {
       content: '';
@@ -105,12 +135,13 @@
       color: var(--gold-light);
     }
 
+    /* ===== NAV ===== */
     nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
-      padding: 36px 24px 48px;
+      padding: 32px 24px 40px;
       max-width: 600px;
       margin: 0 auto;
     }
@@ -128,6 +159,7 @@
     nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
 
+    /* ===== MAIN CARDS ===== */
     main {
       max-width: 680px;
       margin: 0 auto;
@@ -197,6 +229,7 @@
       padding: 2px 8px; flex-shrink: 0; opacity: 0.6;
     }
 
+    /* ===== SNS ===== */
     .sns-section { margin-top: 8px; text-align: center; }
     .sns-label {
       font-family: 'Cormorant Garamond', serif;
@@ -219,6 +252,7 @@
     }
     .sns-link:hover { border-color: var(--gold); color: var(--gold); }
 
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
       padding: 32px 24px 48px;
@@ -234,15 +268,21 @@
 <body>
 
   <header>
-    <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
-    <h1 class="site-title">JAYBIRDS</h1>
-    <p class="site-subtitle">ジェイバーズ</p>
-    <div class="star-row">
-      <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
-      <span style="color:var(--gold);font-size:0.6rem;">✦</span>
-      <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+    <div class="hero">
+      <img class="hero-image" src="Untitled design.png" alt="Chuang Jay">
+      <div class="hero-content">
+        <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
+        <h1 class="site-title">JAYBIRDS</h1>
+        <p class="site-subtitle">ジェイバーズ</p>
+        <div class="star-row">
+          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+          <span style="color:var(--gold);font-size:0.6rem;">✦</span>
+          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+        </div>
+      </div>
     </div>
-    <div class="fan-banner">
+
+    <div class="fan-banner" style="max-width:600px;margin:0 auto;">
       <p class="fan-banner-label">✦ About JAYBIRDS ✦</p>
       <p class="fan-banner-message">
         JAYBIRDSは、<em>ジュアンジェイ（Chuang Jay）</em>を応援する<em>非公式ファンサポートアカウント</em>です。<br>
@@ -255,6 +295,8 @@
   <nav>
     <a href="index.html">Home</a>
     <span>✦</span>
+    <a href="about.html">About</a>
+    <span>✦</span>
     <a href="tags.html">Tags</a>
     <span>✦</span>
     <a href="movies.html">Movies</a>
@@ -265,6 +307,17 @@
   </nav>
 
   <main>
+
+    <a href="about.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">🪶</div>
+        <div class="card-text">
+          <span class="card-en">About JAYBIRDS</span>
+          <span class="card-ja">JAYBIRDSとは？</span>
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
 
     <a href="tags.html" class="card">
       <div class="card-inner">
