@@ -26,6 +26,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --pink: #ff375f;
   --tiktok: #69c9d0;
   --insta: #e1306c;
+  --x: #1d9bf0;
 }
 
 body {
@@ -62,17 +63,17 @@ body {
 }
 .header-tag {
   display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--gold2); border: 1px solid rgba(201,168,76,0.4); padding: 4px 16px; margin-bottom: 14px; position: relative;
+  color: var(--gold2); border: 1px solid rgba(201,168,76,0.4); padding: 4px 16px; margin-bottom: 14px;
 }
 .header h1 {
   font-size: clamp(32px, 8vw, 48px); font-weight: 900; letter-spacing: 4px;
-  color: var(--white); margin-bottom: 8px; position: relative;
+  color: var(--white); margin-bottom: 8px;
 }
 .header h1 .accent {
   background: linear-gradient(135deg, var(--gold3), var(--gold), var(--white));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; letter-spacing: 0.5px; }
+.header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(--gold), var(--gold2), var(--gold), #000); }
 
 /* ===== SECTION ===== */
@@ -87,8 +88,7 @@ body {
 /* ===== HOWTO BOX ===== */
 .howto {
   background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
-  border-left: 3px solid var(--gold);
-  padding: 12px 16px; margin-top: 12px;
+  border-left: 3px solid var(--gold); padding: 12px 16px; margin-top: 12px;
   font-size: clamp(10px, 1.8vw, 11.5px); color: var(--label2); line-height: 1.85;
   border-radius: 0 8px 8px 0;
 }
@@ -130,18 +130,15 @@ body {
 
 .yt-info { padding: 10px 12px; }
 .yt-platform-badge {
-  display: inline-block;
-  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
-  margin-bottom: 6px;
+  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px;
 }
 .badge-yt { background: rgba(255,0,0,0.15); color: #ff4444; border: 1px solid rgba(255,0,0,0.3); }
 .badge-shorts { background: rgba(255,0,0,0.1); color: #ff6666; border: 1px solid rgba(255,0,0,0.2); }
 
 .action-badges { display: flex; flex-wrap: wrap; gap: 4px; }
 .abadge {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
-  padding: 2px 8px; border-radius: 20px;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 20px;
 }
 .abadge-gold { background: rgba(201,168,76,0.12); color: var(--gold2); border: 1px solid rgba(201,168,76,0.3); }
 .abadge-green { background: rgba(48,209,88,0.1); color: var(--green); border: 1px solid rgba(48,209,88,0.25); }
@@ -153,8 +150,7 @@ body {
 
 .platform-card {
   display: flex; align-items: center; gap: 14px;
-  text-decoration: none;
-  background: var(--card); border: 1px solid var(--border);
+  text-decoration: none; background: var(--card); border: 1px solid var(--border);
   padding: 14px 16px; border-radius: 12px;
   transition: border-color 0.25s, transform 0.2s;
 }
@@ -167,24 +163,50 @@ body {
 }
 .icon-tiktok { background: rgba(105,201,208,0.15); }
 .icon-insta { background: rgba(225,48,108,0.15); }
+.icon-x { background: rgba(29,155,240,0.15); }
 
-.platform-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 2px;
-}
+.platform-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
 .platform-name { font-size: 13px; font-weight: 700; color: var(--label); }
 .platform-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.4;
-  font-size: 0.9rem; flex-shrink: 0;
+  margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s;
 }
 .platform-card:hover .platform-arrow { opacity: 1; transform: translateX(3px); }
 
-/* ===== FOOTER ===== */
-.footer-note {
-  text-align: center; font-size: 11px; color: var(--gold);
-  opacity: 0.5; margin-top: 28px; line-height: 1.8;
+/* ===== X投稿グリッド ===== */
+.x-post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 480px) { .x-post-grid { grid-template-columns: 1fr; } }
+
+.x-post-card {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; background: var(--card); border: 1px solid var(--border);
+  padding: 14px 16px; border-radius: 12px;
+  transition: border-color 0.25s, transform 0.2s;
+  position: relative; overflow: hidden;
 }
+.x-post-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--x), #60b8f8);
+}
+.x-post-card:hover { border-color: rgba(29,155,240,0.4); transform: translateY(-2px); }
+
+.x-post-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(29,155,240,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; color: var(--x);
+  font-style: normal; font-weight: 900;
+}
+.x-post-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(29,155,240,0.7); margin-bottom: 2px; }
+.x-post-name { font-size: 12px; font-weight: 700; color: var(--label); line-height: 1.4; }
+.x-post-arrow {
+  margin-left: auto; color: var(--x); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.x-post-card:hover .x-post-arrow { opacity: 1; transform: translateX(3px); }
+
+/* ===== FOOTER ===== */
+.footer-note { text-align: center; font-size: 11px; color: var(--gold); opacity: 0.5; margin-top: 28px; line-height: 1.8; }
 </style>
 </head>
 <body>
@@ -248,31 +270,67 @@ body {
           <img src="https://img.youtube.com/vi/kukAKQ2zmuE/mqdefault.jpg" alt="ショート1" loading="lazy">
           <div class="play-btn"><span>▶</span></div>
         </div>
-        <div class="yt-info">
-          <span class="yt-platform-badge badge-shorts">Shorts</span>
-        </div>
+        <div class="yt-info"><span class="yt-platform-badge badge-shorts">Shorts</span></div>
       </a>
       <a href="https://youtube.com/shorts/ZT9qsTU1Vtk" target="_blank" rel="noopener" class="yt-card">
         <div class="yt-thumb short">
           <img src="https://img.youtube.com/vi/ZT9qsTU1Vtk/mqdefault.jpg" alt="ショート2" loading="lazy">
           <div class="play-btn"><span>▶</span></div>
         </div>
-        <div class="yt-info">
-          <span class="yt-platform-badge badge-shorts">Shorts</span>
-        </div>
+        <div class="yt-info"><span class="yt-platform-badge badge-shorts">Shorts</span></div>
       </a>
       <a href="https://youtube.com/shorts/ea28sfdE3NU" target="_blank" rel="noopener" class="yt-card">
         <div class="yt-thumb short">
           <img src="https://img.youtube.com/vi/ea28sfdE3NU/mqdefault.jpg" alt="ショート3" loading="lazy">
           <div class="play-btn"><span>▶</span></div>
         </div>
-        <div class="yt-info">
-          <span class="yt-platform-badge badge-shorts">Shorts</span>
-        </div>
+        <div class="yt-info"><span class="yt-platform-badge badge-shorts">Shorts</span></div>
       </a>
     </div>
     <div class="howto">
-      <strong>応援方法：</strong>最後まで視聴（ループもOK）→ 👍高評価 → 💬コメント → 🔁シェア。ショートはループが多いほど◎
+      <strong>応援方法：</strong>最後まで視聴（ループもOK）→ 👍高評価 → 💬コメント → 🔁シェア。
+    </div>
+  </div>
+
+  <!-- X投稿 -->
+  <div class="section">
+    <p class="section-label">𝕏 Post</p>
+    <div class="x-post-grid">
+      <a href="https://x.com/produce101jp_/status/2017436423842943099" target="_blank" rel="noopener" class="x-post-card">
+        <div class="x-post-icon">𝕏</div>
+        <div>
+          <p class="x-post-label">X / Twitter</p>
+          <p class="x-post-name">@produce101jp_<br>投稿 #1</p>
+        </div>
+        <span class="x-post-arrow">→</span>
+      </a>
+      <a href="https://x.com/produce101jp_/status/2017436565438619739" target="_blank" rel="noopener" class="x-post-card">
+        <div class="x-post-icon">𝕏</div>
+        <div>
+          <p class="x-post-label">X / Twitter</p>
+          <p class="x-post-name">@produce101jp_<br>投稿 #2</p>
+        </div>
+        <span class="x-post-arrow">→</span>
+      </a>
+      <a href="https://x.com/produce101jp_/status/2035556823617413604" target="_blank" rel="noopener" class="x-post-card">
+        <div class="x-post-icon">𝕏</div>
+        <div>
+          <p class="x-post-label">X / Twitter</p>
+          <p class="x-post-name">@produce101jp_<br>投稿 #3</p>
+        </div>
+        <span class="x-post-arrow">→</span>
+      </a>
+      <a href="https://x.com/produce101jp_/status/2015998334893441125" target="_blank" rel="noopener" class="x-post-card">
+        <div class="x-post-icon">𝕏</div>
+        <div>
+          <p class="x-post-label">X / Twitter</p>
+          <p class="x-post-name">@produce101jp_<br>投稿 #4</p>
+        </div>
+        <span class="x-post-arrow">→</span>
+      </a>
+    </div>
+    <div class="howto">
+      <strong>応援方法：</strong>❤️いいね → 🔁リポスト → 💬リプライ。いいねとリポストが拡散に効果的！
     </div>
   </div>
 
@@ -282,26 +340,17 @@ body {
     <div class="platform-grid">
       <a href="https://vt.tiktok.com/ZSugJndLu/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div>
-          <p class="platform-label">TikTok</p>
-          <p class="platform-name">動画 #1</p>
-        </div>
+        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #1</p></div>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://vt.tiktok.com/ZSugJpcF5/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div>
-          <p class="platform-label">TikTok</p>
-          <p class="platform-name">動画 #2</p>
-        </div>
+        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #2</p></div>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://vt.tiktok.com/ZSugJgr2p/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-tiktok">🎵</div>
-        <div>
-          <p class="platform-label">TikTok</p>
-          <p class="platform-name">動画 #3</p>
-        </div>
+        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #3</p></div>
         <span class="platform-arrow">→</span>
       </a>
     </div>
@@ -316,34 +365,22 @@ body {
     <div class="platform-grid">
       <a href="https://www.instagram.com/p/DUAbO9Jj-Bm/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div>
-          <p class="platform-label">Instagram</p>
-          <p class="platform-name">投稿 #1</p>
-        </div>
+        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #1</p></div>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://www.instagram.com/p/DUKNyXfD3pU/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div>
-          <p class="platform-label">Instagram</p>
-          <p class="platform-name">投稿 #2</p>
-        </div>
+        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #2</p></div>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://www.instagram.com/p/DV2dbXLiRfo/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div>
-          <p class="platform-label">Instagram</p>
-          <p class="platform-name">投稿 #3</p>
-        </div>
+        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #3</p></div>
         <span class="platform-arrow">→</span>
       </a>
       <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
-        <div>
-          <p class="platform-label">Instagram</p>
-          <p class="platform-name">投稿 #4</p>
-        </div>
+        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #4</p></div>
         <span class="platform-arrow">→</span>
       </a>
     </div>
