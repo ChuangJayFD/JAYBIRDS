@@ -79,6 +79,7 @@ body {
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); }
 
+/* ===== 2分割カード ===== */
 .two-card-row {
   display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;
 }
@@ -101,10 +102,22 @@ body {
 }
 .persona-card.user .persona-type { color: #64b8f0; }
 .persona-card.creator .persona-type { color: var(--gold2); }
-.persona-title { font-size: 14px; font-weight: 900; color: var(--label); margin-bottom: 10px; line-height: 1.4; }
+
+/* タイトルを画面幅で伸縮・改行なし */
+.persona-title {
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 900; color: var(--label);
+  margin-bottom: 10px; line-height: 1.5;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .persona-title { white-space: normal; font-size: 14px; }
+}
+
 .persona-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
 .persona-desc strong { color: var(--label); }
 
+/* ===== フロー ===== */
 .flow-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 20px 22px; margin-bottom: 16px;
@@ -133,6 +146,7 @@ body {
 .flow-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
 .flow-desc strong { color: var(--gold2); }
 
+/* ===== 注意事項 ===== */
 .note-box {
   background: rgba(201,168,76,0.06);
   border: 1px solid rgba(201,168,76,0.2);
@@ -148,6 +162,7 @@ body {
 }
 .note-box .note-title::before { content: '✦'; color: var(--gold); font-size: 9px; }
 
+/* ===== ドライブボタン ===== */
 .drive-section { text-align: center; margin-bottom: 8px; }
 .drive-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -199,7 +214,7 @@ body {
     <div class="persona-card user">
       <div class="persona-icon">👀</div>
       <div class="persona-type">For Users</div>
-      <div class="persona-title">応援・布教は<br>したいけど<br>画像は苦手…</div>
+      <div class="persona-title">応援・布教はしたいけど画像は苦手…</div>
       <div class="persona-desc">
         大丈夫！<strong>ギャラリーの素材を自由に使って</strong>投稿・拡散してください。作る必要はゼロです✦
       </div>
@@ -207,7 +222,7 @@ body {
     <div class="persona-card creator">
       <div class="persona-icon">🎨</div>
       <div class="persona-type">For Creators</div>
-      <div class="persona-title">応援素材を<br>作ってくださった<br>皆様へ</div>
+      <div class="persona-title">応援素材を作ってくださった皆様へ</div>
       <div class="persona-desc">
         よろしければ<strong>ぜひ素材を共有してください！</strong>みんなで一緒にジェイくんを広めましょう✦
       </div>
@@ -234,7 +249,7 @@ body {
       <div class="flow-item">
         <div class="flow-left"><div class="flow-dot">3</div><div class="flow-line"></div></div>
         <div class="flow-content">
-          <div class="flow-title">管理者が確認</div>
+          <div class="flow-title">JAYBIRDSが確認</div>
           <div class="flow-desc">内容を確認してギャラリーに掲載します✦</div>
         </div>
       </div>
@@ -255,7 +270,7 @@ body {
     ・ファイル名に用途を記載してください<br>
     　例：<strong>布教画像01.jpg</strong><br>
     ・アカウント名は<strong>任意・無記名でもOK</strong>です<br>
-    ・掲載可否は管理者が判断します
+    ・掲載可否はJAYBIRDSが判断します
   </div>
 
   <div class="drive-section">
