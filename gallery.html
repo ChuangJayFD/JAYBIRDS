@@ -11,7 +11,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 :root {
   --bg: #0e1420;
-  --bg2: #131926;
   --card: #1a2035;
   --card2: #222840;
   --border: rgba(201,168,76,0.25);
@@ -65,9 +64,7 @@ body {
   color: var(--gold2); border: 1px solid rgba(201,168,76,0.4);
   padding: 4px 16px; margin-bottom: 16px;
 }
-.header-star-row {
-  display: flex; justify-content: center; gap: 14px; margin-bottom: 14px;
-}
+.header-star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 14px; }
 .header-star-row span { color: var(--gold); font-size: 10px; opacity: 0.7; }
 .header-star-row span.lg { font-size: 16px; opacity: 1; }
 .header h1 {
@@ -81,62 +78,40 @@ body {
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); }
 
-/* ===== 素材投稿ボックス ===== */
-.upload-box {
+/* ===== 素材提供バナー ===== */
+.contribute-banner {
+  display: flex; align-items: center; gap: 16px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 22px;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
   margin-bottom: 32px;
-  position: relative;
-  overflow: hidden;
-}
-.upload-box::before {
-  content: '';
-  position: absolute; inset: 3px;
-  border: 1px solid var(--border2);
-  border-radius: 10px;
-  pointer-events: none;
-}
-.upload-box-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--gold); opacity: 0.8;
-  margin-bottom: 10px;
-  display: flex; align-items: center; gap: 6px;
-}
-.upload-box-label::before { content: '✦'; font-size: 8px; }
-.upload-box-text {
-  font-size: 12px; color: var(--label2); line-height: 1.9;
-  margin-bottom: 16px;
-}
-.upload-box-text strong { color: var(--gold2); }
-.upload-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  text-decoration: none; width: 100%;
-  background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
-  border-radius: 10px; padding: 13px 20px;
-  font-size: 13px; font-weight: 900;
-  color: #1a0e00; letter-spacing: 1.5px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.45),
-    inset 0 -3px 0 rgba(0,0,0,0.3),
-    0 4px 0 #7a5a0a,
-    0 6px 14px rgba(0,0,0,0.45),
-    0 0 20px rgba(201,168,76,0.2);
-  transition: transform 0.1s, filter 0.1s;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
   position: relative; overflow: hidden;
 }
-.upload-btn::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
-  pointer-events: none; border-radius: 10px 10px 0 0;
+.contribute-banner:hover {
+  border-color: rgba(201,168,76,0.6);
+  transform: translateX(3px);
 }
-.upload-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
-.upload-btn:active { transform: translateY(3px); }
-.upload-note {
-  font-size: 10px; color: var(--muted); margin-top: 10px;
-  line-height: 1.8; text-align: center;
+.contribute-banner-icon { font-size: 24px; flex-shrink: 0; }
+.contribute-banner-text { flex: 1; }
+.contribute-banner-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold2); margin-bottom: 4px; opacity: 0.8;
 }
+.contribute-banner-title {
+  font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px;
+}
+.contribute-banner-desc {
+  font-size: 11px; color: var(--label2); line-height: 1.6;
+}
+.contribute-banner-arrow {
+  color: var(--gold); opacity: 0.5; font-size: 1.2rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.contribute-banner:hover .contribute-banner-arrow { opacity: 1; transform: translateX(4px); }
 
 /* ===== SECTION ===== */
 .section { margin-bottom: 36px; }
@@ -191,8 +166,7 @@ body {
   text-decoration: none; margin-top: auto;
   background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
   border-radius: 8px; padding: 9px 14px;
-  font-size: 11px; font-weight: 900;
-  color: #1a0e00; letter-spacing: 1px;
+  font-size: 11px; font-weight: 900; color: #1a0e00; letter-spacing: 1px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 3px 0 #7a5a0a, 0 5px 10px rgba(0,0,0,0.3);
   transition: transform 0.1s, filter 0.1s;
 }
@@ -201,9 +175,7 @@ body {
 
 /* ===== X風グリッド ===== */
 .x-grid-2x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
 }
 .x-item {
   overflow: hidden; background: var(--card);
@@ -224,10 +196,8 @@ body {
   content: '✦ TAP';
   position: absolute; bottom: 7px; right: 9px;
   font-size: 9px; font-weight: 700; letter-spacing: 1px;
-  color: rgba(255,255,255,0.7);
-  background: rgba(0,0,0,0.45);
-  padding: 3px 8px; border-radius: 4px;
-  pointer-events: none;
+  color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.45);
+  padding: 3px 8px; border-radius: 4px; pointer-events: none;
 }
 
 /* ===== ライトボックス ===== */
@@ -296,19 +266,16 @@ body {
     <div class="header-stripe"></div>
   </div>
 
-  <!-- 素材投稿ボックス -->
-  <div class="upload-box">
-    <p class="upload-box-label">素材を投稿する</p>
-    <p class="upload-box-text">
-      JAYBIRDSの応援素材を作ってくれたらぜひ共有してください！<br>
-      確認後、ギャラリーに追加します。<br>
-      <strong>作成者のアカウント名も一緒にフォルダ内に記載してね✦</strong>
-    </p>
-    <a class="upload-btn" href="https://drive.google.com/drive/folders/1wQHc2kOYDDBigWL2I5AYj6WFXs1uWQR0" target="_blank" rel="noopener">
-      🪶 Googleドライブに投稿する
-    </a>
-    <p class="upload-note">投稿いただいた素材はJAYBIRDSが確認後にギャラリーへ掲載します</p>
-  </div>
+  <!-- 素材提供バナー -->
+  <a href="contribute.html" class="contribute-banner">
+    <div class="contribute-banner-icon">🎨</div>
+    <div class="contribute-banner-text">
+      <p class="contribute-banner-label">Contribute</p>
+      <p class="contribute-banner-title">素材を共有してくれる方はこちら</p>
+      <p class="contribute-banner-desc">作った応援素材をみんなに使ってもらおう！</p>
+    </div>
+    <span class="contribute-banner-arrow">→</span>
+  </a>
 
   <!-- アイコンフレーム -->
   <div class="section">
@@ -351,7 +318,7 @@ body {
     </div>
   </div>
 
-  <p class="footer-note">JAYBIRDS — Chuang Jay Fan Support Account</p>
+  <p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p>
 
 </div>
 
