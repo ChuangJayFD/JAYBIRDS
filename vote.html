@@ -23,9 +23,9 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --muted: rgba(235,235,245,0.4);
   --danger: #ff453a;
   --green: #30d158;
-  /* 各プラットフォームカラー */
   --p101: #1a4fa0;
   --p101-light: #3a7fd4;
+  --p101-accent: #5aa0f0;
   --lemino-from: #ff6b9d;
   --lemino-to: #ff9a3c;
   --mnet-pink: #ff1f7d;
@@ -49,6 +49,21 @@ body {
   margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
+
+/* ===== 注意書きバナー ===== */
+.caution-banner {
+  background: rgba(255,69,58,0.08);
+  border: 1px solid rgba(255,69,58,0.3);
+  border-left: 3px solid var(--danger);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px; margin-bottom: 24px;
+  font-size: 11px; color: var(--label2); line-height: 1.9;
+}
+.caution-banner-title {
+  font-size: 11px; font-weight: 700; color: #ff6b6b;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+}
+.caution-banner strong { color: #ff9090; }
 
 /* ===== HEADER ===== */
 .header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
@@ -87,9 +102,8 @@ body {
 /* ===== 毎日投票バナー ===== */
 .daily-banner {
   background: linear-gradient(135deg, #1a1000, #3a2800);
-  border: 2px solid var(--gold);
-  border-radius: 12px; padding: 20px 24px;
-  margin-bottom: 28px; text-align: center;
+  border: 2px solid var(--gold); border-radius: 12px;
+  padding: 20px 24px; margin-bottom: 28px; text-align: center;
   position: relative; overflow: hidden;
 }
 .daily-banner::before {
@@ -97,46 +111,69 @@ body {
   border: 1px solid rgba(201,168,76,0.2); border-radius: 10px; pointer-events: none;
 }
 .daily-banner-icon { font-size: 28px; margin-bottom: 8px; }
-.daily-banner-title {
-  font-size: 16px; font-weight: 900; color: var(--gold2);
-  letter-spacing: 2px; margin-bottom: 6px;
-}
+.daily-banner-title { font-size: 16px; font-weight: 900; color: var(--gold2); letter-spacing: 2px; margin-bottom: 6px; }
 .daily-banner-desc { font-size: 12px; color: var(--label2); line-height: 1.8; }
 .daily-banner-desc strong { color: var(--gold3); }
 
-/* ===== 概要カード ===== */
+/* ===== 概要 ===== */
+/* PC: 3列グリッド / スマホ: 左アイコン+右テキスト */
 .overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px; }
-@media (max-width: 480px) { .overview { grid-template-columns: 1fr; } }
+
+@media (max-width: 560px) {
+  .overview { grid-template-columns: 1fr; gap: 8px; }
+}
 
 .overview-card {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 14px; text-align: center;
-  position: relative; overflow: hidden;
+  border-radius: 12px; overflow: hidden;
+  text-decoration: none; display: block;
+  transition: border-color 0.2s, transform 0.15s;
 }
+.overview-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
 .overview-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  content: ''; display: block; height: 3px;
 }
 .overview-card.p101::before { background: linear-gradient(90deg, var(--p101), var(--p101-light)); }
 .overview-card.lemino::before { background: linear-gradient(90deg, var(--lemino-from), var(--lemino-to)); }
 .overview-card.mnet::before { background: linear-gradient(90deg, var(--mnet-pink), var(--mnet-blue)); }
 
+/* PC: 縦並び */
+.overview-card-inner {
+  padding: 16px 14px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+@media (max-width: 560px) {
+  .overview-card-inner {
+    flex-direction: row; text-align: left; padding: 14px 16px; gap: 14px;
+  }
+}
+
 .overview-icon {
   width: 52px; height: 52px; border-radius: 12px;
-  object-fit: cover; margin: 0 auto 10px; display: block;
+  object-fit: cover; flex-shrink: 0;
 }
-.overview-num {
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 4px;
+@media (max-width: 560px) {
+  .overview-icon { width: 48px; height: 48px; }
 }
+
+.overview-text { flex: 1; }
+.overview-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
 .overview-card.p101 .overview-num { color: var(--p101-light); }
 .overview-card.lemino .overview-num { color: var(--lemino-from); }
 .overview-card.mnet .overview-num { color: var(--mnet-pink); }
-.overview-name { font-size: 12px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
-.overview-sub { font-size: 10px; color: var(--muted); line-height: 1.5; }
+.overview-name { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
+.overview-sub { font-size: 10px; color: var(--muted); line-height: 1.6; }
+.overview-arrow {
+  margin-left: auto; color: var(--gold); opacity: 0.4;
+  font-size: 0.9rem; flex-shrink: 0;
+  display: none;
+}
+@media (max-width: 560px) {
+  .overview-arrow { display: block; }
+}
 
 /* ===== SECTION ===== */
 .section { margin-bottom: 28px; }
-
 .section-label {
   font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
   color: var(--gold); opacity: 0.85; margin-bottom: 16px;
@@ -145,10 +182,8 @@ body {
 .section-label::before { content: '✦'; font-size: 9px; }
 .section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
 
-/* ===== STEP 0 dアカウント ===== */
-.step-card {
-  border-radius: 12px; overflow: hidden; margin-bottom: 16px;
-}
+/* ===== STEP CARD ===== */
+.step-card { border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
 .step-card-header {
   display: flex; align-items: center; gap: 14px;
   padding: 14px 20px; border-bottom: 1px solid var(--border);
@@ -164,19 +199,12 @@ body {
 .step-card.mnet .step-card-body { border-left: 3px solid var(--mnet-pink); }
 .step-card.prep .step-card-body { border-left: 3px solid var(--gold); }
 
-.step-card-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  object-fit: cover; flex-shrink: 0;
-}
-.step-card-title-en {
-  font-size: 9px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; margin-bottom: 3px;
-}
+.step-card-icon { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.step-card-title-en { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 3px; }
 .step-card.p101 .step-card-title-en { color: var(--p101-light); }
 .step-card.lemino .step-card-title-en { color: var(--lemino-from); }
 .step-card.mnet .step-card-title-en { color: var(--mnet-pink); }
 .step-card.prep .step-card-title-en { color: var(--gold2); }
-
 .step-card-title { font-size: 15px; font-weight: 900; color: var(--label); }
 
 /* ===== FLOW ===== */
@@ -211,9 +239,7 @@ body {
   transition: opacity 0.2s; flex-shrink: 0;
 }
 .app-btn:hover { opacity: 0.8; }
-.app-btn img {
-  width: 22px; height: 22px; border-radius: 5px; object-fit: cover;
-}
+.app-btn img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
 .app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(--label); }
 .app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
 
@@ -250,51 +276,48 @@ body {
 }
 .vote-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
 
-/* ===== 投票画面再現 ===== */
+/* ===== 投票画面モックアップ（日プ新世界カラー想定） ===== */
 .vote-preview {
-  background: #f5f5f5; border-radius: 20px; overflow: hidden;
-  margin-top: 16px; border: 1px solid rgba(255,255,255,0.1);
+  background: #f0f4ff; border-radius: 16px; overflow: hidden;
+  margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
 }
 .vote-preview-bar {
   padding: 10px 14px; font-size: 11px; font-weight: 700;
   letter-spacing: 1px; text-align: center;
+  background: linear-gradient(90deg, var(--p101), var(--p101-light));
+  color: #fff;
 }
-.vote-preview-bar.p101 { background: var(--p101); color: #fff; }
-.vote-preview-bar.lemino { background: linear-gradient(90deg, var(--lemino-from), var(--lemino-to)); color: #fff; }
-
-.vote-preview-body { background: #fff; padding: 16px; }
+.vote-preview-body { background: #f8faff; padding: 16px; }
 .vote-preview-title {
-  font-size: 16px; font-weight: 900; color: #333;
+  font-size: 15px; font-weight: 900; color: #1a3a7a;
   text-align: center; margin-bottom: 4px; line-height: 1.4;
 }
-.vote-preview-title span { color: #ff6b9d; }
-.vote-preview-sub { font-size: 10px; color: #999; text-align: center; margin-bottom: 14px; }
+.vote-preview-title span { color: var(--p101-light); }
+.vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
 
 .vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.candidate {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-}
+.candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .candidate-avatar {
   width: 70px; height: 70px; border-radius: 50%;
-  object-fit: cover; border: 2px solid #e0e0e0;
+  object-fit: cover; border: 2px solid #c0ccee;
 }
-.candidate-avatar.selected { border-color: #ff6b9d; border-width: 3px; }
-.candidate-name { font-size: 11px; color: #333; font-weight: 500; }
+.candidate-avatar.selected { border-color: var(--p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
+.candidate-name { font-size: 11px; color: #334; font-weight: 500; }
 .candidate-btn {
   font-size: 10px; font-weight: 700; padding: 5px 14px;
-  border-radius: 20px; border: none; cursor: pointer; width: 100%;
+  border-radius: 20px; border: none; cursor: default; width: 100%;
 }
-.candidate-btn.add { background: #ff6b9d; color: #fff; }
-.candidate-btn.remove { background: #e0e0e0; color: #999; }
+.candidate-btn.add { background: var(--p101); color: #fff; }
+.candidate-btn.remove { background: #dde4f8; color: var(--p101); }
 
 .vote-crown-btn {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 14px; padding: 10px;
-  background: linear-gradient(90deg, #ff6b9d, #ff9a3c);
+  background: linear-gradient(90deg, var(--p101), var(--p101-light));
   border-radius: 8px; font-size: 12px; font-weight: 900; color: #fff;
 }
 
-/* ===== NOTE BOX ===== */
+/* ===== NOTE / TIP ===== */
 .note-box {
   background: rgba(255,69,58,0.08); border: 1px solid rgba(255,69,58,0.25);
   border-left: 3px solid var(--danger); border-radius: 0 8px 8px 0;
@@ -323,18 +346,6 @@ body {
 .rule-title { font-size: 12px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
 .rule-text { font-size: 11px; color: var(--label2); line-height: 1.6; }
 
-/* ===== MNet+ ===== */
-.mnet-card {
-  background: #0a0008; border: 1px solid rgba(255,31,125,0.3);
-  border-radius: 12px; overflow: hidden;
-}
-.mnet-card-header {
-  background: linear-gradient(90deg, #1a0010, #0a0020);
-  padding: 16px 20px; border-bottom: 1px solid rgba(255,31,125,0.2);
-  display: flex; align-items: center; gap: 14px;
-}
-.mnet-card-body { padding: 20px; }
-
 .footer-note {
   text-align: center; font-size: 11px;
   color: var(--gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
@@ -346,14 +357,21 @@ body {
 
   <a href="index.html" class="back-link">← Home</a>
 
+  <!-- 注意書き -->
+  <div class="caution-banner">
+    <div class="caution-banner-title">⚠️ このページについて</div>
+    このガイドは<strong>PRODUCE 101 JAPAN THE GIRLS（日プ女子）</strong>および<strong>BOYS PLANET / BOYS II PLANET（ボイプラ）</strong>の投票システムを参考に作成しています。<br>
+    PRODUCE 101 JAPAN 新世界の正式な投票方法が公開され次第、内容を更新します。<strong>実際の投票時は公式の案内を必ずご確認ください。</strong>
+  </div>
+
   <div class="header">
     <div class="header-bg">
       <div class="header-star-row">
         <span>✦</span><span class="lg">✦</span><span>✦</span>
       </div>
       <div class="header-tag">JAYBIRDS — VOTE GUIDE</div>
-      <h1>投票ガイド<br><span class="accent">ジュアンジェイに1票を</span></h1>
-      <p class="sub">毎日の投票でジェイくんをデビューへ届けよう🪶</p>
+      <h1>投票ガイド<br><span class="accent">JAYに1票を届けよう</span></h1>
+      <p class="sub">毎日の投票でジェイくんをデビューへ🪶</p>
     </div>
     <div class="header-stripe"></div>
   </div>
@@ -368,48 +386,63 @@ body {
     </div>
   </div>
 
-  <!-- 概要 -->
+  <!-- 概要（タップで該当セクションへ） -->
   <div class="section">
     <p class="section-label">投票方法の概要</p>
     <div class="overview">
-      <div class="overview-card p101">
-        <img class="overview-icon" src="icon_p101.JPG" alt="日プ新世界">
-        <div class="overview-num">① 国民投票</div>
-        <div class="overview-name">公式サイト</div>
-        <div class="overview-sub">1票 / 日<br>dアカウント必須</div>
-      </div>
-      <div class="overview-card lemino">
-        <img class="overview-icon" src="icon_lemino.JPG" alt="Lemino">
-        <div class="overview-num">② 追加投票</div>
-        <div class="overview-name">Lemino</div>
-        <div class="overview-sub">+1票 / 日<br>同じdアカウント</div>
-      </div>
-      <div class="overview-card mnet">
-        <img class="overview-icon" src="icon_mnetplus.PNG" alt="MNet+">
-        <div class="overview-num">③ 海外のみ</div>
-        <div class="overview-name">MNet+</div>
-        <div class="overview-sub">SEKAIプロデューサー<br>海外在住者のみ</div>
-      </div>
+      <a class="overview-card p101" href="#section-p101">
+        <div class="overview-card-inner">
+          <img class="overview-icon" src="icon_p101.JPG" alt="日プ新世界">
+          <div class="overview-text">
+            <div class="overview-num">① 国民投票</div>
+            <div class="overview-name">公式サイト</div>
+            <div class="overview-sub">1票 / 日<br>dアカウント必須</div>
+          </div>
+          <span class="overview-arrow">→</span>
+        </div>
+      </a>
+      <a class="overview-card lemino" href="#section-lemino">
+        <div class="overview-card-inner">
+          <img class="overview-icon" src="icon_lemino.JPG" alt="Lemino">
+          <div class="overview-text">
+            <div class="overview-num">② 追加投票</div>
+            <div class="overview-name">Lemino</div>
+            <div class="overview-sub">+1票 / 日<br>同じdアカウント</div>
+          </div>
+          <span class="overview-arrow">→</span>
+        </div>
+      </a>
+      <a class="overview-card mnet" href="#section-mnet">
+        <div class="overview-card-inner">
+          <img class="overview-icon" src="icon_mnetplus.PNG" alt="MNet+">
+          <div class="overview-text">
+            <div class="overview-num">③ Overseas</div>
+            <div class="overview-name">MNet+</div>
+            <div class="overview-sub">SEKAI Producer<br>Outside Japan only</div>
+          </div>
+          <span class="overview-arrow">→</span>
+        </div>
+      </a>
     </div>
-    <div class="tip-box">
-      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> 両方必ず投票しよう。海外在住の方は③MNet+から投票できます。
+    <div class="tip-box" style="margin-top:0;">
+      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> 海外在住の方は③MNet+から投票できます。
     </div>
   </div>
 
   <!-- STEP 0: dアカウント -->
-  <div class="section">
+  <div class="section" id="section-prep">
     <p class="section-label">Step 0 — 事前準備</p>
     <div class="step-card prep">
       <div class="step-card-header">
         <img class="step-card-icon" src="icon_p101.JPG" alt="日プ">
         <div>
-          <div class="step-card-title-en">Preparation</div>
+          <div class="step-card-title-en">Preparation — Required for ① ②</div>
           <div class="step-card-title">dアカウントを作ろう</div>
         </div>
       </div>
       <div class="step-card-body">
         <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          ✅ <strong>ドコモユーザーでなくてもOK！</strong> au・SoftBank・格安SIM・楽天でも無料で作れます。<br>
+          ✅ <strong>ドコモユーザーでなくてもOK！</strong>au・SoftBank・格安SIM・楽天でも無料で作れます。<br>
           ✅ SMS受信できる<strong>携帯電話番号（090/080/070）</strong>が必要です。
         </div>
         <div class="flow">
@@ -450,7 +483,7 @@ body {
   </div>
 
   <!-- STEP 1: 国民投票 -->
-  <div class="section">
+  <div class="section" id="section-p101">
     <p class="section-label">Step 1 — 国民投票（公式サイト）</p>
     <div class="step-card p101">
       <div class="step-card-header">
@@ -479,23 +512,22 @@ body {
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
             <div class="flow-content">
-              <div class="flow-title">ジュアンジェイを選んで投票ボックスに追加！</div>
-              <div class="flow-desc">練習生一覧からジュアンジェイを見つけて<strong>「投票ボックス追加」</strong>をタップ。</div>
-              <!-- 投票画面再現 -->
+              <div class="flow-title">JAYを選んで投票ボックスに追加！</div>
+              <div class="flow-desc">練習生一覧からJAYを見つけて<strong>「投票ボックス追加」</strong>をタップ。</div>
               <div class="vote-preview">
-                <div class="vote-preview-bar p101">📺 投票画面イメージ（PRODUCE 101 JAPAN 新世界）</div>
+                <div class="vote-preview-bar">📺 投票画面イメージ（新世界カラー想定）</div>
                 <div class="vote-preview-body">
                   <div class="vote-preview-title">あなたの<span>推し</span>に<br>投票してください</div>
                   <div class="vote-preview-sub">投票できる回数は1日1回（0:00〜23:59）</div>
                   <div class="vote-candidates">
                     <div class="candidate">
-                      <img class="candidate-avatar selected" src="icon_jay.JPG" alt="ジュアンジェイ">
-                      <div class="candidate-name">ジュアンジェイ</div>
+                      <img class="candidate-avatar selected" src="icon_jay.JPG" alt="JAY">
+                      <div class="candidate-name">JAY（ジュアンジェイ）</div>
                       <button class="candidate-btn remove">取り消し ✓</button>
                     </div>
                     <div class="candidate">
-                      <img class="candidate-avatar" src="icon_jay.JPG" alt="" style="opacity:0.2;">
-                      <div class="candidate-name" style="color:#ccc;">他の練習生</div>
+                      <img class="candidate-avatar" src="icon_jay.JPG" alt="" style="opacity:0.15; filter:grayscale(1);">
+                      <div class="candidate-name" style="color:#8899bb;">他の練習生</div>
                       <button class="candidate-btn add">投票ボックス追加</button>
                     </div>
                   </div>
@@ -510,7 +542,7 @@ body {
             <div class="flow-left"><div class="flow-dot">4</div></div>
             <div class="flow-content">
               <div class="flow-title">毎日0:00リセット → 翌日もまた投票！</div>
-              <div class="flow-desc">投票権は毎日午前0時に更新。前日分は翌日に持ち越せません。</div>
+              <div class="flow-desc">投票権は毎日午前0時に更新。前日分の持ち越しはNG。</div>
             </div>
           </div>
         </div>
@@ -522,7 +554,7 @@ body {
   </div>
 
   <!-- STEP 2: Lemino -->
-  <div class="section">
+  <div class="section" id="section-lemino">
     <p class="section-label">Step 2 — Lemino追加投票</p>
     <div class="step-card lemino">
       <div class="step-card-header">
@@ -572,7 +604,7 @@ body {
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot highlight">4</div></div>
             <div class="flow-content">
-              <div class="flow-title">ジュアンジェイを選んで投票！</div>
+              <div class="flow-title">JAYを選んで投票！</div>
               <div class="flow-desc">これで1日2票分の応援完了です🪶</div>
             </div>
           </div>
@@ -611,27 +643,27 @@ body {
     </div>
   </div>
 
-  <!-- MNet+ -->
-  <div class="section">
-    <p class="section-label">海外在住の方 — MNet+ SEKAI Vote</p>
+  <!-- MNet+ (English) -->
+  <div class="section" id="section-mnet">
+    <p class="section-label">For Overseas Fans — MNet+ SEKAI Vote</p>
     <div class="step-card mnet">
       <div class="step-card-header">
         <img class="step-card-icon" src="icon_mnetplus.PNG" alt="MNet+">
         <div>
           <div class="step-card-title-en">MNet Plus · SEKAI Producer · Outside Japan Only</div>
-          <div class="step-card-title">MNet+からSEKAI投票</div>
+          <div class="step-card-title">Vote on MNet+</div>
         </div>
       </div>
       <div class="step-card-body">
         <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          🌏 <strong>日本国外在住の方のみ</strong>利用できます。日本からはMNet+での投票はできません。
+          🌏 <strong>Available outside Japan only.</strong> MNet Plus voting is not available from within Japan.
         </div>
         <div class="flow">
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
             <div class="flow-content">
-              <div class="flow-title">MNet Plusをインストール（無料）</div>
-              <div class="flow-desc">App Store または Google Play から無料でDL。</div>
+              <div class="flow-title">Download MNet Plus (Free)</div>
+              <div class="flow-desc">Get the free app from App Store or Google Play.<br>Sign up with Google, Apple, Kakao, LINE, or email.</div>
               <div class="app-btns">
                 <a class="app-btn ios" href="https://apps.apple.com/app/mnet-plus/id1538144549" target="_blank" rel="noopener">
                   <img src="icon_appstore.JPG" alt="App Store"> App Store
@@ -645,27 +677,30 @@ body {
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
             <div class="flow-content">
-              <div class="flow-title">ログインして投票バナーをタップ</div>
-              <div class="flow-desc">Google・Apple・Kakao・LINE・メールで登録。トップの<strong>PRODUCE 101 JAPAN SHINSEKAI</strong>バナーをタップ。</div>
+              <div class="flow-title">Log in and find the voting banner</div>
+              <div class="flow-desc">After logging in, tap the <strong>PRODUCE 101 JAPAN SHINSEKAI</strong> banner on the home screen.</div>
             </div>
           </div>
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
             <div class="flow-content">
-              <div class="flow-title">Chuang Jayを選んで投票！</div>
-              <div class="flow-desc">練習生一覧からジュアンジェイを選択して投票。短い広告を見る場合があります。</div>
+              <div class="flow-title">Select JAY and submit your vote!</div>
+              <div class="flow-desc">Find <strong>JAY (Chuang Jay)</strong> from the trainee list and tap <strong>[Submit Vote]</strong>. You may need to watch a short ad to confirm.</div>
             </div>
           </div>
           <div class="flow-item">
             <div class="flow-left"><div class="flow-dot">4</div></div>
             <div class="flow-content">
-              <div class="flow-title">毎日リセット — Don't miss a day!</div>
-              <div class="flow-desc">1アカウント1日1票。毎日忘れずに投票しよう。</div>
+              <div class="flow-title">Vote resets daily — come back every day!</div>
+              <div class="flow-desc">1 vote per account per day. Don't miss a single day. 🪶</div>
             </div>
           </div>
         </div>
+        <div class="note-box">
+          ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong> — not the website. 1 vote per account per day. Any irregular voting activity will be invalidated.
+        </div>
         <a class="vote-btn mnet" href="https://www.mnetplus.world/" target="_blank" rel="noopener">
-          <img src="icon_mnetplus.PNG" alt=""> MNet+で投票する →
+          <img src="icon_mnetplus.PNG" alt=""> Vote on MNet+ →
         </a>
       </div>
     </div>
