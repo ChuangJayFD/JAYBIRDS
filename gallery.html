@@ -11,7 +11,6 @@
 :root {
   --navy: #1a1f2e;
   --navy-mid: #222840;
-  --navy-light: #2a3254;
   --gold: #c9a84c;
   --gold-light: #e2c97e;
   --gold-pale: #f0e4b8;
@@ -41,7 +40,6 @@ body {
 }
 .back-link:hover { opacity: 1; }
 
-/* ===== HEADER ===== */
 header { text-align: center; margin-bottom: 40px; }
 .site-label {
   font-family: 'Cormorant Garamond', serif;
@@ -57,118 +55,99 @@ h1 {
 .subtitle {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
   font-size: 0.9rem; letter-spacing: 0.15em;
-  color: var(--gold-pale); opacity: 0.75; margin-bottom: 8px;
+  color: var(--gold-pale); opacity: 0.75;
 }
 .divider { width: 60px; border: none; border-top: 1px solid var(--gold); margin: 16px auto 0; opacity: 0.4; }
 
-/* ===== SECTION ===== */
 .section { margin-bottom: 40px; }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(0.7rem, 2vw, 0.82rem);
-  letter-spacing: 0.35em; color: var(--gold);
-  text-transform: uppercase;
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 16px;
+  letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
 }
 .section-title::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
 
 .section-note {
-  font-size: 0.7rem; color: var(--gold-pale); opacity: 0.55;
-  letter-spacing: 0.05em; margin-bottom: 14px; line-height: 1.8;
+  font-size: 0.68rem; color: var(--gold-pale); opacity: 0.5;
+  letter-spacing: 0.08em; margin-bottom: 6px; line-height: 1.8;
+}
+.section-note-highlight {
+  font-size: 0.68rem; color: var(--gold-light); opacity: 0.75;
+  letter-spacing: 0.08em; margin-bottom: 12px; line-height: 1.8;
 }
 
-/* ===== X風グリッド（布教画像） ===== */
-.x-grid {
+/* ===== X風グリッド ===== */
+.x-grid-2x2 {
   display: grid;
-  gap: 3px;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-/* 4枚レイアウト：上1枚大 + 下3枚 */
-.x-grid-4 {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-}
-.x-grid-4 .x-item:nth-child(1) {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-.x-grid-4 .x-item:nth-child(2) {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-}
-.x-grid-4 .x-item:nth-child(3) {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
-.x-grid-4 .x-item:nth-child(4) {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  gap: 3px;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .x-item {
   overflow: hidden;
   background: var(--navy-mid);
-  aspect-ratio: 9/16;
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
   position: relative;
 }
 .x-item img {
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
   transition: transform 0.2s;
   -webkit-touch-callout: default;
 }
-.x-item:hover img { transform: scale(1.02); }
+.x-item:hover img { transform: scale(1.03); }
 
-/* ===== 通常グリッド（アイコンフレーム等） ===== */
+/* タップヒント */
+.x-item::after {
+  content: '▶ TAP';
+  position: absolute;
+  bottom: 6px; right: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.55rem; letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px; border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ===== 通常グリッド ===== */
 .normal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
 }
-
 .normal-item {
-  background: var(--navy-mid);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
+  background: var(--navy-mid); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden;
 }
-.normal-item img {
-  width: 100%; display: block;
-  -webkit-touch-callout: default;
-}
+.normal-item img { width: 100%; display: block; -webkit-touch-callout: default; }
 .normal-item-label {
-  padding: 8px 10px;
-  font-size: 0.65rem; letter-spacing: 0.1em;
+  padding: 8px 10px; font-size: 0.65rem; letter-spacing: 0.1em;
   color: var(--gold-pale); opacity: 0.7;
   font-family: 'Cormorant Garamond', serif;
 }
 
 /* ===== ライトボックス ===== */
 .lightbox {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 1000;
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.93); z-index: 1000;
   align-items: center; justify-content: center;
-  flex-direction: column;
 }
 .lightbox.active { display: flex; }
 
-.lightbox-inner {
-  position: relative;
+.lightbox-img-wrap {
   max-width: 92vw; max-height: 88vh;
   display: flex; align-items: center; justify-content: center;
 }
-
-.lightbox img {
+.lightbox-img-wrap img {
   max-width: 92vw; max-height: 82vh;
-  object-fit: contain; display: block;
-  border-radius: 4px;
+  object-fit: contain; display: block; border-radius: 4px;
   -webkit-touch-callout: default;
 }
 
@@ -181,13 +160,11 @@ h1 {
 .lightbox-close:hover { opacity: 1; }
 
 .lightbox-nav {
-  position: fixed;
-  top: 50%; transform: translateY(-50%);
-  font-size: 1.8rem; color: var(--gold-light);
+  position: fixed; top: 50%; transform: translateY(-50%);
+  font-size: 2rem; color: var(--gold-light);
   cursor: pointer; opacity: 0.6; z-index: 1001;
   background: rgba(0,0,0,0.4); border: none;
-  padding: 12px 10px; line-height: 1;
-  border-radius: 4px;
+  padding: 12px 10px; line-height: 1; border-radius: 4px;
   transition: opacity 0.2s;
 }
 .lightbox-nav:hover { opacity: 1; }
@@ -195,20 +172,16 @@ h1 {
 .lightbox-next { right: 8px; }
 
 .lightbox-counter {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem; letter-spacing: 0.2em;
-  color: var(--gold-light); opacity: 0.6;
+  font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.6;
 }
-
 .lightbox-hint {
-  position: fixed; bottom: 44px; left: 50%; transform: translateX(-50%);
-  font-size: 0.62rem; letter-spacing: 0.15em;
-  color: var(--gold-pale); opacity: 0.4;
-  white-space: nowrap;
+  position: fixed; bottom: 38px; left: 50%; transform: translateX(-50%);
+  font-size: 0.6rem; letter-spacing: 0.15em;
+  color: var(--gold-pale); opacity: 0.4; white-space: nowrap;
 }
 
-/* ===== FOOTER ===== */
 footer {
   text-align: center; padding: 24px;
   border-top: 1px solid var(--border2); margin-top: 20px;
@@ -231,11 +204,12 @@ footer p {
     <hr class="divider">
   </header>
 
-  <!-- 布教画像 -->
+  <!-- X布教画像 -->
   <div class="section">
-    <p class="section-title">✦ 布教画像</p>
-    <p class="section-note">タップで拡大 · 長押しで保存</p>
-    <div class="x-grid x-grid-4" id="fukyo01">
+    <p class="section-title">✦ X布教画像</p>
+    <p class="section-note">Xへの投稿・拡散用の布教素材です。</p>
+    <p class="section-note-highlight">✦ 画像は一部だけ表示されています。タップすると全ての情報が確認できます。長押しで保存。</p>
+    <div class="x-grid-2x2">
       <div class="x-item" onclick="openLightbox('fukyo01', 0)">
         <img src="fukyo01_01.JPG" alt="布教画像1" loading="lazy">
       </div>
@@ -251,8 +225,7 @@ footer p {
     </div>
   </div>
 
-  <!-- 素材エリア（今後追加用） -->
-  <!-- 例：アイコンフレームを追加するときは以下のブロックをコピーして使う
+  <!-- 素材追加テンプレート
   <div class="section">
     <p class="section-title">✦ アイコンフレーム</p>
     <p class="section-note">長押しで保存</p>
@@ -271,11 +244,10 @@ footer p {
   <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
 </footer>
 
-<!-- ライトボックス -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</button>
-  <div class="lightbox-inner">
+  <div class="lightbox-img-wrap">
     <img id="lightbox-img" src="" alt="">
   </div>
   <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">›</button>
@@ -326,7 +298,6 @@ function closeLightboxOutside(e) {
   if (e.target === document.getElementById('lightbox')) closeLightbox();
 }
 
-// スワイプ対応
 let touchStartX = 0;
 document.getElementById('lightbox').addEventListener('touchstart', e => {
   touchStartX = e.touches[0].clientX;
@@ -336,7 +307,6 @@ document.getElementById('lightbox').addEventListener('touchend', e => {
   if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
 });
 
-// キーボード対応
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('active')) return;
   if (e.key === 'ArrowRight') navigateLightbox(1);
