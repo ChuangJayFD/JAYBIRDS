@@ -81,8 +81,7 @@ h1 {
 .x-grid-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3px;
-  border-radius: 14px;
+  gap: 10px;
   overflow: hidden;
 }
 
@@ -92,6 +91,7 @@ h1 {
   cursor: pointer;
   aspect-ratio: 16 / 9;
   position: relative;
+  border-radius: 8px;
 }
 .x-item img {
   width: 100%; height: 100%;
@@ -103,7 +103,6 @@ h1 {
 }
 .x-item:hover img { transform: scale(1.03); }
 
-/* タップヒント */
 .x-item::after {
   content: '▶ TAP';
   position: absolute;
@@ -204,7 +203,6 @@ footer p {
     <hr class="divider">
   </header>
 
-  <!-- X布教画像 -->
   <div class="section">
     <p class="section-title">✦ X布教画像</p>
     <p class="section-note">Xへの投稿・拡散用の布教素材です。</p>
