@@ -28,11 +28,8 @@
     }
 
     .hero {
-      position: relative;
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative; min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
     .hero-image {
@@ -160,10 +157,9 @@
 
     .vote-grid {
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+      margin-bottom: 12px;
     }
-    @media (max-width: 480px) {
-      .vote-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 480px) { .vote-grid { grid-template-columns: 1fr; } }
 
     .vote-card {
       background: var(--navy-mid);
@@ -191,6 +187,36 @@
       font-size: 0.6rem; letter-spacing: 0.2em;
       color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
       padding: 2px 10px; display: inline-block; opacity: 0.6;
+    }
+
+    /* ===== 投票方法ボタン ===== */
+    .vote-guide-btn {
+      display: flex; align-items: center; gap: 16px;
+      text-decoration: none;
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      opacity: 0.5; cursor: default;
+      pointer-events: none;
+    }
+    .vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .vote-guide-btn-text {}
+    .vote-guide-btn-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem); letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 3px;
+    }
+    .vote-guide-btn-ja {
+      font-size: clamp(0.68rem, 2vw, 0.78rem);
+      color: var(--gold-pale); opacity: 0.8; letter-spacing: 0.08em;
+    }
+    .vote-guide-badge {
+      margin-left: auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
+      padding: 2px 8px; flex-shrink: 0; opacity: 0.6;
     }
 
     /* ===== SNS ===== */
@@ -324,28 +350,34 @@
     <div class="vote-section">
       <p class="vote-label">✦ 投票はこちら ✦</p>
       <div class="vote-grid">
-
         <div class="vote-card">
           <div class="vote-card-icon">🗳️</div>
           <span class="vote-card-name">本サイト</span>
           <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
           <span class="vote-badge">Coming Soon</span>
         </div>
-
         <div class="vote-card">
           <div class="vote-card-icon">📱</div>
           <span class="vote-card-name">Lemino</span>
           <p class="vote-card-desc">レミノアプリ・<br>サイトから投票</p>
           <span class="vote-badge">Coming Soon</span>
         </div>
-
         <div class="vote-card">
           <div class="vote-card-icon">📺</div>
           <span class="vote-card-name">MNet Plus</span>
           <p class="vote-card-desc">エムネットプラスから<br>投票</p>
           <span class="vote-badge">Coming Soon</span>
         </div>
+      </div>
 
+      <!-- 投票方法ボタン -->
+      <div class="vote-guide-btn">
+        <div class="vote-guide-btn-icon">📋</div>
+        <div class="vote-guide-btn-text">
+          <span class="vote-guide-btn-en">How to Vote</span>
+          <span class="vote-guide-btn-ja">投票方法について</span>
+        </div>
+        <span class="vote-guide-badge">Coming Soon</span>
       </div>
     </div>
 
