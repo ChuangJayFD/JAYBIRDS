@@ -33,8 +33,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --c-vote-bg: rgba(251,113,133,0.15);
   --c-rank: #94a3b8;
   --c-rank-bg: rgba(148,163,184,0.15);
-  --c-cam: #38bdf8;
-  --c-cam-bg: rgba(56,189,248,0.12);
 }
 
 body {
@@ -46,7 +44,6 @@ body {
   min-height: 100vh;
 }
 
-/* ===== BACK LINK ===== */
 .back-wrap { padding: 28px 20px 0; max-width: 720px; margin: 0 auto; }
 .back-link {
   display: inline-block; font-size: 0.78rem; letter-spacing: 0.2em;
@@ -92,7 +89,6 @@ body {
 }
 .header-stripe { height: 4px; background: linear-gradient(90deg, #000, #1a4fa0, #3a7fd4, var(--gold), #000); }
 
-/* ===== OUTER WRAP ===== */
 .outer { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
 /* ===== LEGEND ===== */
@@ -106,7 +102,6 @@ body {
 .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--label2); }
 .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-/* ===== DISCLAIMER ===== */
 .disc {
   background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
   border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
@@ -115,74 +110,16 @@ body {
 }
 .disc strong { color: var(--gold2); }
 
-/* ===== 2カラムレイアウト ===== */
+/* ===== 2カラム：左=タイムライン / 右=投票ライン ===== */
 .tl-wrap {
   display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 0 0;
+  grid-template-columns: 1fr 48px;
+  gap: 0 8px;
   margin-top: 24px;
 }
 
-/* ===== 左カラム：投票ライン ===== */
-.vote-lane {
-  position: relative;
-  padding-top: 0;
-}
-.vote-lane-inner {
-  position: sticky;
-  top: 0;
-}
-
-/* 投票ブロック */
-.vl-block {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.vl-pill {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  padding: 10px 4px;
-  border-radius: 20px;
-  color: #fff;
-  background: var(--c-vote);
-  border: 1px solid rgba(251,113,133,0.4);
-  white-space: nowrap;
-  text-align: center;
-  width: 22px;
-  margin: 0 auto;
-  z-index: 2;
-  position: relative;
-  line-height: 1.2;
-}
-.vl-pill.p11 { background: linear-gradient(180deg, #be123c, #fb7185); }
-.vl-pill.p2 { background: linear-gradient(180deg, #9f1239, #e11d48); }
-.vl-pill.p1 { background: linear-gradient(180deg, #7f1d1d, #dc2626); }
-
-.vl-line {
-  width: 2px;
-  background: rgba(251,113,133,0.2);
-  flex: 1;
-  min-height: 8px;
-}
-.vl-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--c-vote); opacity: 0.5;
-  flex-shrink: 0; margin: 2px 0;
-}
-.vl-reset {
-  font-size: 8px; font-weight: 700; color: var(--c-vote);
-  text-align: center; writing-mode: vertical-rl;
-  letter-spacing: 1px; opacity: 0.7;
-  padding: 4px 0;
-}
-
-/* ===== 右カラム：タイムライン ===== */
-.tl-main { padding-left: 12px; }
+/* ===== 左：タイムライン ===== */
+.tl-main {}
 
 .phase { margin-bottom: 28px; }
 .ph-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
@@ -193,7 +130,6 @@ body {
 .ph-name { font-size: 12px; font-weight: 700; color: var(--gold2); letter-spacing: 1px; }
 .ph-line { flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
 
-/* EP ROW */
 .ep { display: grid; grid-template-columns: 54px 1fr; position: relative; }
 .ep::before {
   content: ''; position: absolute; left: 26px; top: 0; bottom: 0;
@@ -216,10 +152,8 @@ body {
 }
 .ep-date { font-size: 9px; color: var(--muted); text-align: center; line-height: 1.3; white-space: nowrap; }
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(--label); }
-
 .ep-body { padding: 10px 0 16px 12px; }
 
-/* CARDS */
 .card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 10px; padding: 12px 14px;
@@ -230,7 +164,6 @@ body {
 .card-txt { font-size: 11px; color: var(--label2); line-height: 1.75; }
 .card-txt strong { color: var(--label); }
 
-/* TAGS */
 .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
 .tag { display: inline-flex; align-items: center; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
 .tg { background: var(--c-group-bg); color: var(--c-group); }
@@ -241,7 +174,6 @@ body {
 .tr { background: var(--c-rank-bg); color: var(--c-rank); }
 .tf { background: rgba(251,191,36,0.15); color: var(--gold2); }
 
-/* VOTE BADGE */
 .vbadge {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--c-vote-bg); border: 1px solid rgba(251,113,133,0.25);
@@ -249,7 +181,6 @@ body {
   padding: 5px 12px; border-radius: 6px; margin-top: 7px;
 }
 
-/* INFO BOX */
 .info-box {
   background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
   border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
@@ -259,16 +190,7 @@ body {
 .info-box strong { color: var(--gold2); }
 .info-box-title { font-size: 11px; font-weight: 700; color: var(--gold2); margin-bottom: 4px; }
 
-/* NOTE BOX */
-.note-box {
-  background: rgba(255,69,58,0.08); border: 1px solid rgba(255,69,58,0.2);
-  border-left: 3px solid #ff453a; border-radius: 0 8px 8px 0;
-  padding: 10px 14px; margin-top: 8px;
-  font-size: 11px; color: var(--label2); line-height: 1.8;
-}
-.note-box strong { color: #ff6b6b; }
-
-/* ===== 参考動画（フェーズ内） ===== */
+/* ===== 参考動画 ===== */
 .ref-video { margin-top: 10px; }
 .ref-video-label {
   font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -281,18 +203,89 @@ body {
 .ref-thumb { position: relative; padding-top: 56.25%; background: #111; }
 .ref-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 .ref-info { padding: 10px 12px; }
-.ref-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
-.ref-ttl { font-size: 11.5px; font-weight: 700; color: var(--label); line-height: 1.4; margin-bottom: 3px; }
-.ref-sub { font-size: 10.5px; color: var(--label2); line-height: 1.5; }
+.ref-song { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
+.ref-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+.ref-note { font-size: 10px; color: var(--muted); margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); line-height: 1.5; }
 
-/* 2動画グリッド（デビュー評価用） */
 .ref-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
 @media (max-width: 480px) { .ref-video-grid { grid-template-columns: 1fr; } }
+
+/* ===== 右：投票ライン ===== */
+.vote-lane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+}
+
+.vl-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vl-pill {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 8.5px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  padding: 12px 5px;
+  border-radius: 20px;
+  color: #fff;
+  width: 24px;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+.vl-pill.p11 { background: linear-gradient(180deg, #be123c, #fb7185); }
+.vl-pill.p2  { background: linear-gradient(180deg, #9f1239, #e11d48); }
+.vl-pill.p1  { background: linear-gradient(180deg, #7f1d1d, #dc2626); }
+
+.vl-line {
+  width: 2px;
+  background: rgba(251,113,133,0.2);
+  flex: 1;
+  min-height: 12px;
+}
+
+.vl-period {
+  font-size: 8px;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 1px;
+  padding: 6px 0;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.vl-change {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0;
+}
+.vl-change-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--c-vote); opacity: 0.7;
+}
+.vl-change-label {
+  font-size: 7.5px; font-weight: 700; color: var(--c-vote);
+  writing-mode: vertical-rl; letter-spacing: 0.5px;
+  opacity: 0.8; padding: 2px 0;
+}
 
 /* ===== 投票まとめ ===== */
 .vsum {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px; margin-top: 8px;
+  border-radius: 12px; padding: 16px 18px; margin-top: 16px;
 }
 .vsum-ttl { font-size: 11px; font-weight: 700; color: var(--gold2); margin-bottom: 12px; letter-spacing: 1px; }
 .vs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; text-align: center; }
@@ -306,7 +299,6 @@ body {
 .vs-u { font-size: 9px; color: var(--muted); }
 .vs-r { font-size: 9px; color: var(--muted); margin-top: 2px; }
 
-/* ===== FOOTER ===== */
 .footer {
   text-align: center; padding: 24px 20px; margin-top: 40px;
   border-top: 1px solid var(--border);
@@ -331,7 +323,7 @@ body {
     </div>
     <div class="header-tag">JAYBIRDS — SCHEDULE GUIDE</div>
     <h1>日プ新世界、<br><em>はじめてのロードマップ。</em></h1>
-    <p class="sub">「日プって何から始まるの？」という方へ。各評価の流れ・投票タイミングをひと目でわかるようにまとめました。<br>※日プ女子（2023年・全10話）をベースにした推定スケジュールです。</p>
+    <p class="sub">「日プって何から始まるの？」という方へ。各評価の流れ・投票タイミングをひと目でわかるようにまとめました。<br>※日プ女子（2023年・全10話）をベースにした新世界の推定スケジュールです。</p>
     <div class="h-chips">
       <span class="h-chip">📅 3月26日（木）スタート</span>
       <span class="h-chip">🏁 6月6日（土）ファイナル</span>
@@ -354,50 +346,12 @@ body {
   </div>
 
   <div class="disc">
-    📌 <strong>日プ女子（2023年・全10話）の構成を参考にした推定スケジュールです。</strong>実際の話数・評価順・脱落人数は放送内容により変わります。
+    📌 <strong>日プ女子（2023年・全10話）の構成をもとに新世界のスケジュールを予測したものです。</strong>実際の話数・評価順・脱落人数は放送内容により変わります。
   </div>
 
-  <!-- 2カラム：左=投票ライン / 右=タイムライン -->
   <div class="tl-wrap">
 
-    <!-- 左：投票ライン -->
-    <div class="vote-lane">
-
-      <!-- フェーズ1〜2：11pick -->
-      <div class="vl-block" style="height: 820px;">
-        <div class="vl-pill p11">11 pick / 日</div>
-        <div class="vl-line"></div>
-      </div>
-
-      <!-- リセット -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;">
-        <div class="vl-dot"></div>
-        <div class="vl-reset">→ 2pick</div>
-        <div class="vl-dot"></div>
-      </div>
-
-      <!-- フェーズ3：2pick -->
-      <div class="vl-block" style="height: 340px;">
-        <div class="vl-pill p2">2 pick / 日</div>
-        <div class="vl-line"></div>
-      </div>
-
-      <!-- リセット -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;">
-        <div class="vl-dot"></div>
-        <div class="vl-reset">→ 1pick</div>
-        <div class="vl-dot"></div>
-      </div>
-
-      <!-- フェーズ4：1pick -->
-      <div class="vl-block" style="height: 300px;">
-        <div class="vl-pill p1">1 pick / 日</div>
-        <div class="vl-line"></div>
-      </div>
-
-    </div>
-
-    <!-- 右：タイムライン本体 -->
+    <!-- 左：タイムライン本体 -->
     <div class="tl-main">
 
       <!-- PHASE 1 -->
@@ -418,13 +372,13 @@ body {
             <div class="card">
               <div class="card-ep">第1話 · 配信スタート</div>
               <div class="card-ttl">🎬 番組スタート ＆ レベル分けテスト（前半）</div>
-              <div class="card-txt">101名が初顔合わせ。ユニットごとに指定曲でパフォーマンスしトレーナーが<strong>A〜Fクラス</strong>に振り分け。クラス別レッスン後にテーマ曲「LEAP HIGH」で再評価も行われます。</div>
+              <div class="card-txt">101名が初顔合わせ。ユニットごとに指定曲でパフォーマンスし、トレーナーが<strong>A〜Fクラス</strong>に振り分け。クラス別レッスン後にシグナルソングで再評価も行われます。</div>
               <div class="tags"><span class="tag tg">レベル分けテスト</span></div>
             </div>
             <div class="vbadge">🗳️ 投票スタート（11人 pick）｜3/26 21:00〜</div>
             <div class="info-box">
               <div class="info-box-title">📹 動画公開の目安</div>
-              レベル分けは<strong>グループ単位の動画のみ</strong>公開。チッケムは公開されません。テーマ曲「LEAP HIGH」の個人推しカメラは放送前後に公開されることが多いです。
+              レベル分けは<strong>グループ単位の動画のみ</strong>が公開されます（個人チッケムは公開されません）。シグナルソングは全員参加のMV・個人推しカメラが放送前後に公開される見込みです。
             </div>
           </div>
         </div>
@@ -438,8 +392,8 @@ body {
           <div class="ep-body">
             <div class="card">
               <div class="card-ep">第2話</div>
-              <div class="card-ttl">🎬 レベル分けテスト（後半）＆ テーマ曲再評価</div>
-              <div class="card-txt">残りのユニットのレベル分けテスト。その後、テーマ曲「LEAP HIGH」のソロ・センター選抜が行われます。グループバトルのチーム編成・課題曲争奪も発表。</div>
+              <div class="card-ttl">🎬 レベル分けテスト（後半）＆ シグナルソング再評価</div>
+              <div class="card-txt">残りのユニットのレベル分けテスト。その後、シグナルソングのセンター・ソロ選抜が行われます。グループバトルのチーム編成・課題曲争奪の準備も始まります。</div>
               <div class="tags"><span class="tag tg">レベル分け後半</span><span class="tag tg">グループバトル準備</span></div>
             </div>
           </div>
@@ -455,12 +409,12 @@ body {
             <div class="card">
               <div class="card-ep">第3話</div>
               <div class="card-ttl">🎤 グループバトル 前半</div>
-              <div class="card-txt">16グループに分かれて課題曲でパフォーマンス対決。1位グループのメンバー全員に<strong>ベネフィット3,000票</strong>が加算。投票は個人単位で行われますが勝敗はグループ全員の合計で決まります。</div>
+              <div class="card-txt">16グループに分かれて課題曲でパフォーマンス対決。1位グループのメンバー全員に<strong>ベネフィット（ボーナス票）</strong>が加算。投票は個人単位、勝敗はグループ全員の合計票で決定。</div>
               <div class="tags"><span class="tag tg">グループバトル</span><span class="tag tv">投票期間中（11人 pick）</span></div>
             </div>
             <div class="info-box">
               <div class="info-box-title">📹 動画公開の目安</div>
-              グループバトルの<strong>推しカメラは放送翌日ごろ</strong>に公開。前半・後半どちらに出演するかで公開タイミングが1週ずれます。
+              グループバトルの<strong>推しカメラは放送翌日ごろ</strong>に公開される見込み。前半・後半どちらに出演するかで公開タイミングが1週ずれます。
             </div>
           </div>
         </div>
@@ -478,8 +432,6 @@ body {
               <div class="card-txt">残りグループのパフォーマンス対決。全グループの結果が出揃い、グループバトルの勝敗が確定します。</div>
               <div class="tags"><span class="tag tg">グループバトル</span><span class="tag tv">投票期間中（11人 pick）</span></div>
             </div>
-
-            <!-- 参考動画：グループバトル -->
             <div class="ref-video">
               <div class="ref-video-label">📺 参考動画 — グループバトルとは？</div>
               <div class="ref-vc">
@@ -487,9 +439,9 @@ body {
                   <iframe src="https://www.youtube.com/embed/5dr-gLYYYLE" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="ref-info">
-                  <div class="ref-tag" style="color:var(--c-group)">🎤 グループバトル · 最多得票グループ（日プ女子 2023）</div>
-                  <div class="ref-ttl">グループバトル優勝パフォーマンス</div>
-                  <div class="ref-sub">課題曲でチームごとに対決。1位チームにベネフィットが付与されます。</div>
+                  <div class="ref-tag" style="color:var(--c-group)">🎤 グループバトル参考（日プ女子 2023）</div>
+                  <div class="ref-song">EYE Catcher</div>
+                  <div class="ref-note">※ 日プ女子グループバトルにおける<strong>最多得票グループ</strong>の楽曲として選定</div>
                 </div>
               </div>
             </div>
@@ -506,8 +458,8 @@ body {
             <div class="card">
               <div class="card-ep">第5話</div>
               <div class="card-ttl">📊 第1回 順位発表式</div>
-              <div class="card-txt">グループバトルベネフィット＋投票数で順位確定。96名から<strong>上位50名</strong>がポジションバトルへ進出。ポジションバトルの課題曲・チーム発表も行われます。</div>
-              <div class="tags"><span class="tag tr">第1回順位発表</span><span class="tag tr">96名→50名</span><span class="tag tp">ポジションバトル発表</span></div>
+              <div class="card-txt">グループバトルのベネフィット＋投票数で順位確定。101名から<strong>上位50名</strong>がポジションバトルへ進出。ポジションバトルの課題曲・チームも発表されます。</div>
+              <div class="tags"><span class="tag tr">第1回順位発表</span><span class="tag tr">101名→50名</span><span class="tag tp">ポジションバトル発表</span></div>
             </div>
             <div class="vbadge">🗳️ 投票リセット ─ 引き続き 11人 pick</div>
           </div>
@@ -537,7 +489,7 @@ body {
             </div>
             <div class="info-box">
               <div class="info-box-title">📹 動画公開の目安</div>
-              ポジションバトルの推しカメラは<strong>前半・後半まとめて公開されることも</strong>。放送後数日以内を目安に。
+              ポジションバトルの推しカメラは<strong>前半・後半まとめて公開</strong>されることが多い見込み。放送後数日以内を目安に。
             </div>
           </div>
         </div>
@@ -555,8 +507,6 @@ body {
               <div class="card-txt">残りポジションのパフォーマンス。ポジションバトルの結果が確定します。</div>
               <div class="tags"><span class="tag tp">ポジションバトル</span><span class="tag tv">投票期間中（11人 pick）</span></div>
             </div>
-
-            <!-- 参考動画：ポジションバトル -->
             <div class="ref-video">
               <div class="ref-video-label">📺 参考動画 — ポジションバトルとは？</div>
               <div class="ref-vc">
@@ -564,9 +514,9 @@ body {
                   <iframe src="https://www.youtube.com/embed/X13pE6T0ilA" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="ref-info">
-                  <div class="ref-tag" style="color:var(--c-position)">🎵 ポジションバトル · 平均点1位グループ（日プ女子 2023）</div>
-                  <div class="ref-ttl">ポジションバトル最高得点パフォーマンス</div>
-                  <div class="ref-sub">ボーカル・ダンス・ラップで自分の強みを競う個人戦。</div>
+                  <div class="ref-tag" style="color:var(--c-position)">🎵 ポジションバトル参考（日プ女子 2023）</div>
+                  <div class="ref-song">Rocketeer</div>
+                  <div class="ref-note">※ 日プ女子ポジションバトルにおける<strong>平均得点が最も高いグループ</strong>の楽曲として選定</div>
                 </div>
               </div>
             </div>
@@ -583,13 +533,13 @@ body {
             <div class="card">
               <div class="card-ep">第8話</div>
               <div class="card-ttl">📊 第2回 順位発表式 ＆ コンセプト評価課題曲発表</div>
-              <div class="card-txt">ポジションバトルのベネフィット＋投票数で順位確定。50名から<strong>上位35名</strong>がコンセプト評価へ進出。同時にコンセプト評価のオリジナル楽曲が発表されます。</div>
+              <div class="card-txt">ポジションバトルのベネフィット＋投票数で順位確定。50名から<strong>上位35名</strong>がコンセプト評価へ進出。同時にコンセプト評価のオリジナル楽曲5曲が発表され、コンセプトチョイス投票が開始されます。</div>
               <div class="tags"><span class="tag tr">第2回順位発表</span><span class="tag tr">50名→35名</span><span class="tag tc">コンセプト評価課題曲発表</span></div>
             </div>
             <div class="vbadge">🗳️ 投票リセット → <strong>2人 pick</strong> に変更</div>
             <div class="info-box">
               <div class="info-box-title">⭐ コンセプトチョイス投票とは？</div>
-              コンセプト評価で使うオリジナル楽曲が公開され、「この練習生にこの曲を」を国民プロデューサーが投票。この結果でチーム編成が決まります。順位発表式後にコンセプトチョイス投票が開始されます。
+              コンセプト評価で使うオリジナル楽曲5曲が公開され、<strong>「この練習生にこの曲を」</strong>を国民プロデューサーが投票。この結果でチーム編成が決まります。
             </div>
           </div>
         </div>
@@ -613,11 +563,9 @@ body {
             <div class="card">
               <div class="card-ep">第9話</div>
               <div class="card-ttl">🌟 コンセプト評価 ＆ 結果発表</div>
-              <div class="card-txt">書き下ろしオリジナル楽曲を各チームがパフォーマンス。コンセプトチョイス投票で決まったチームで対決。1位グループに<strong>ベネフィット25万票</strong>が付与されます。</div>
+              <div class="card-txt">コンセプトチョイス投票で決まったチームで書き下ろしオリジナル楽曲をパフォーマンス対決。1位グループに<strong>ベネフィット25万票</strong>が付与されます。</div>
               <div class="tags"><span class="tag tc">コンセプト評価</span><span class="tag tv">投票期間中（2人 pick）</span></div>
             </div>
-
-            <!-- 参考動画：コンセプト評価 -->
             <div class="ref-video">
               <div class="ref-video-label">📺 参考動画 — コンセプト評価とは？</div>
               <div class="ref-vc">
@@ -625,9 +573,9 @@ body {
                   <iframe src="https://www.youtube.com/embed/MwYr4Y4b3o0" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="ref-info">
-                  <div class="ref-tag" style="color:var(--c-concept)">🌟 コンセプト評価 · 最多得票グループ（日プ女子 2023）</div>
-                  <div class="ref-ttl">コンセプト評価優勝パフォーマンス</div>
-                  <div class="ref-sub">書き下ろしオリジナル曲でチーム対決。チーム編成は国プ投票で決まります。</div>
+                  <div class="ref-tag" style="color:var(--c-concept)">🌟 コンセプト評価参考（日プ女子 2023）</div>
+                  <div class="ref-song">YOASOBI「アイドル」— rebloom</div>
+                  <div class="ref-note">※ 日プ女子コンセプト評価における<strong>最多得票グループ</strong>の楽曲として選定</div>
                 </div>
               </div>
             </div>
@@ -673,8 +621,6 @@ body {
               <div class="card-txt">20名が2曲のうち1曲を選びデビューをかけた最後のステージへ。<strong>勝敗はなく、残った練習生全員が同じ舞台に立つ</strong>のがデビュー評価の特徴。10名1グループで生パフォーマンス。</div>
               <div class="tags"><span class="tag td">デビュー評価</span><span class="tag tv">最終投票（1人 pick）</span></div>
             </div>
-
-            <!-- 参考動画：デビュー評価 2本 -->
             <div class="ref-video-label" style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:10px;margin-bottom:6px;">📺 参考動画 — デビュー評価とは？</div>
             <div class="ref-video-grid">
               <div class="ref-vc">
@@ -682,9 +628,9 @@ body {
                   <iframe src="https://www.youtube.com/embed/JCvRiU7xKtM" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="ref-info">
-                  <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価 楽曲① （日プ女子 2023）</div>
-                  <div class="ref-ttl">デビュー評価パフォーマンス①</div>
-                  <div class="ref-sub">勝敗なし。全員が同じ舞台へ。</div>
+                  <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価（日プ女子 2023）</div>
+                  <div class="ref-song">BLACKPINK「How You Like That」</div>
+                  <div class="ref-note">※ デビュー評価課題曲①</div>
                 </div>
               </div>
               <div class="ref-vc">
@@ -692,9 +638,9 @@ body {
                   <iframe src="https://www.youtube.com/embed/os03IjwQ7yA" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="ref-info">
-                  <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価 楽曲②（日プ女子 2023）</div>
-                  <div class="ref-ttl">デビュー評価パフォーマンス②</div>
-                  <div class="ref-sub">2曲から1曲を選んで披露。</div>
+                  <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価（日プ女子 2023）</div>
+                  <div class="ref-song">IVE「LOVE DIVE」</div>
+                  <div class="ref-note">※ デビュー評価課題曲②</div>
                 </div>
               </div>
             </div>
@@ -753,6 +699,47 @@ body {
       </div>
 
     </div><!-- /tl-main -->
+
+    <!-- 右：投票ライン -->
+    <div class="vote-lane">
+
+      <!-- 11pick期間 -->
+      <div class="vl-segment" style="flex:1; min-height:820px;">
+        <div class="vl-pill p11">11 pick / 日</div>
+        <div class="vl-period">3/26 〜 5/14頃</div>
+        <div class="vl-line"></div>
+      </div>
+
+      <!-- 切り替え -->
+      <div class="vl-change">
+        <div class="vl-change-dot"></div>
+        <div class="vl-change-label">→ 2pick</div>
+        <div class="vl-change-dot"></div>
+      </div>
+
+      <!-- 2pick期間 -->
+      <div class="vl-segment" style="flex:1; min-height:320px;">
+        <div class="vl-pill p2">2 pick / 日</div>
+        <div class="vl-period">5/14 〜 5/28頃</div>
+        <div class="vl-line"></div>
+      </div>
+
+      <!-- 切り替え -->
+      <div class="vl-change">
+        <div class="vl-change-dot"></div>
+        <div class="vl-change-label">→ 1pick</div>
+        <div class="vl-change-dot"></div>
+      </div>
+
+      <!-- 1pick期間 -->
+      <div class="vl-segment" style="flex:1; min-height:260px;">
+        <div class="vl-pill p1">1 pick / 日</div>
+        <div class="vl-period">5/28 〜 6/6</div>
+        <div class="vl-line"></div>
+      </div>
+
+    </div><!-- /vote-lane -->
+
   </div><!-- /tl-wrap -->
 
 </div><!-- /outer -->
