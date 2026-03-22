@@ -50,7 +50,7 @@ body {
 }
 .back-link:hover { opacity: 1; }
 
-/* ===== 注意書きバナー ===== */
+/* ===== 注意書き ===== */
 .caution-banner {
   background: rgba(255,69,58,0.08);
   border: 1px solid rgba(255,69,58,0.3);
@@ -103,7 +103,7 @@ body {
 .daily-banner {
   background: linear-gradient(135deg, #1a1000, #3a2800);
   border: 2px solid var(--gold); border-radius: 12px;
-  padding: 20px 24px; margin-bottom: 28px; text-align: center;
+  padding: 20px 24px; margin-bottom: 20px; text-align: center;
   position: relative; overflow: hidden;
 }
 .daily-banner::before {
@@ -115,13 +115,26 @@ body {
 .daily-banner-desc { font-size: 12px; color: var(--label2); line-height: 1.8; }
 .daily-banner-desc strong { color: var(--gold3); }
 
-/* ===== 概要 ===== */
-/* PC: 3列グリッド / スマホ: 左アイコン+右テキスト */
-.overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px; }
-
-@media (max-width: 560px) {
-  .overview { grid-template-columns: 1fr; gap: 8px; }
+/* ===== 11pick バナー ===== */
+.pick-banner {
+  background: linear-gradient(135deg, #0a1a3a, #1a3a6e);
+  border: 1px solid var(--p101-light);
+  border-radius: 12px; padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
 }
+.pick-banner-icon { font-size: 28px; flex-shrink: 0; }
+.pick-banner-text {}
+.pick-banner-title {
+  font-size: 14px; font-weight: 900; color: var(--p101-accent);
+  margin-bottom: 4px; letter-spacing: 1px;
+}
+.pick-banner-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
+.pick-banner-desc strong { color: var(--label); }
+
+/* ===== 概要 ===== */
+.overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+@media (max-width: 560px) { .overview { grid-template-columns: 1fr; gap: 8px; } }
 
 .overview-card {
   background: var(--card); border: 1px solid var(--border);
@@ -130,31 +143,21 @@ body {
   transition: border-color 0.2s, transform 0.15s;
 }
 .overview-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
-.overview-card::before {
-  content: ''; display: block; height: 3px;
-}
+.overview-card::before { content: ''; display: block; height: 3px; }
 .overview-card.p101::before { background: linear-gradient(90deg, var(--p101), var(--p101-light)); }
 .overview-card.lemino::before { background: linear-gradient(90deg, var(--lemino-from), var(--lemino-to)); }
 .overview-card.mnet::before { background: linear-gradient(90deg, var(--mnet-pink), var(--mnet-blue)); }
 
-/* PC: 縦並び */
 .overview-card-inner {
   padding: 16px 14px; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 8px;
 }
 @media (max-width: 560px) {
-  .overview-card-inner {
-    flex-direction: row; text-align: left; padding: 14px 16px; gap: 14px;
-  }
+  .overview-card-inner { flex-direction: row; text-align: left; padding: 14px 16px; gap: 14px; }
 }
 
-.overview-icon {
-  width: 52px; height: 52px; border-radius: 12px;
-  object-fit: cover; flex-shrink: 0;
-}
-@media (max-width: 560px) {
-  .overview-icon { width: 48px; height: 48px; }
-}
+.overview-icon { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+@media (max-width: 560px) { .overview-icon { width: 48px; height: 48px; } }
 
 .overview-text { flex: 1; }
 .overview-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
@@ -163,14 +166,8 @@ body {
 .overview-card.mnet .overview-num { color: var(--mnet-pink); }
 .overview-name { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
 .overview-sub { font-size: 10px; color: var(--muted); line-height: 1.6; }
-.overview-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.4;
-  font-size: 0.9rem; flex-shrink: 0;
-  display: none;
-}
-@media (max-width: 560px) {
-  .overview-arrow { display: block; }
-}
+.overview-arrow { margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0; display: none; }
+@media (max-width: 560px) { .overview-arrow { display: block; } }
 
 /* ===== SECTION ===== */
 .section { margin-bottom: 28px; }
@@ -231,7 +228,7 @@ body {
 .flow-desc strong { color: var(--label); }
 
 /* ===== アプリボタン ===== */
-.app-btns { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.app-btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .app-btn {
   display: flex; align-items: center; gap: 8px;
   text-decoration: none; border-radius: 8px;
@@ -242,6 +239,14 @@ body {
 .app-btn img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
 .app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(--label); }
 .app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
+.app-btn.open-lemino {
+  background: linear-gradient(135deg, var(--lemino-from), var(--lemino-to));
+  color: #fff; border: none; font-size: 12px;
+}
+.app-btn.open-mnet {
+  background: linear-gradient(135deg, var(--mnet-pink), var(--mnet-blue));
+  color: #fff; border: none; font-size: 12px;
+}
 
 /* ===== 投票ボタン ===== */
 .vote-btn {
@@ -276,7 +281,7 @@ body {
 }
 .vote-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
 
-/* ===== 投票画面モックアップ（日プ新世界カラー想定） ===== */
+/* ===== 投票画面モックアップ ===== */
 .vote-preview {
   background: #f0f4ff; border-radius: 16px; overflow: hidden;
   margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
@@ -294,7 +299,6 @@ body {
 }
 .vote-preview-title span { color: var(--p101-light); }
 .vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
-
 .vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .candidate-avatar {
@@ -309,7 +313,6 @@ body {
 }
 .candidate-btn.add { background: var(--p101); color: #fff; }
 .candidate-btn.remove { background: #dde4f8; color: var(--p101); }
-
 .vote-crown-btn {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 14px; padding: 10px;
@@ -334,14 +337,10 @@ body {
 }
 .tip-box strong { color: var(--gold2); }
 
-/* ===== ルールカード ===== */
+/* ===== ルール ===== */
 .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .rules-grid { grid-template-columns: 1fr; } }
-
-.rule-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px;
-}
+.rule-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
 .rule-icon { font-size: 22px; margin-bottom: 8px; }
 .rule-title { font-size: 12px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
 .rule-text { font-size: 11px; color: var(--label2); line-height: 1.6; }
@@ -386,7 +385,19 @@ body {
     </div>
   </div>
 
-  <!-- 概要（タップで該当セクションへ） -->
+  <!-- 11pick バナー -->
+  <div class="pick-banner">
+    <div class="pick-banner-icon">👑</div>
+    <div class="pick-banner-text">
+      <div class="pick-banner-title">最初は11pick！</div>
+      <div class="pick-banner-desc">
+        番組開始当初は<strong>11人まで選んで投票</strong>できます。JAYを必ず1枠に入れよう！<br>
+        投票できる人数は番組の進行に伴い変わる場合があります。
+      </div>
+    </div>
+  </div>
+
+  <!-- 概要 -->
   <div class="section">
     <p class="section-label">投票方法の概要</p>
     <div class="overview">
@@ -407,7 +418,7 @@ body {
           <div class="overview-text">
             <div class="overview-num">② 追加投票</div>
             <div class="overview-name">Lemino</div>
-            <div class="overview-sub">+1票 / 日<br>同じdアカウント</div>
+            <div class="overview-sub">+1票 / 日<br>アプリのみ</div>
           </div>
           <span class="overview-arrow">→</span>
         </div>
@@ -418,14 +429,14 @@ body {
           <div class="overview-text">
             <div class="overview-num">③ Overseas</div>
             <div class="overview-name">MNet+</div>
-            <div class="overview-sub">SEKAI Producer<br>Outside Japan only</div>
+            <div class="overview-sub">App only<br>Outside Japan</div>
           </div>
           <span class="overview-arrow">→</span>
         </div>
       </a>
     </div>
     <div class="tip-box" style="margin-top:0;">
-      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> 海外在住の方は③MNet+から投票できます。
+      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> 海外在住の方は③MNet+のアプリから投票できます。
     </div>
   </div>
 
@@ -513,7 +524,7 @@ body {
             <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
             <div class="flow-content">
               <div class="flow-title">JAYを選んで投票ボックスに追加！</div>
-              <div class="flow-desc">練習生一覧からJAYを見つけて<strong>「投票ボックス追加」</strong>をタップ。</div>
+              <div class="flow-desc">練習生一覧からJAYを見つけて<strong>「投票ボックス追加」</strong>をタップ。最初は11人まで選べます。</div>
               <div class="vote-preview">
                 <div class="vote-preview-bar">📺 投票画面イメージ（新世界カラー想定）</div>
                 <div class="vote-preview-body">
@@ -560,13 +571,13 @@ body {
       <div class="step-card-header">
         <img class="step-card-icon" src="icon_lemino.JPG" alt="Lemino">
         <div>
-          <div class="step-card-title-en">Lemino App · +1 vote / day</div>
+          <div class="step-card-title-en">Lemino App Only · +1 vote / day</div>
           <div class="step-card-title">Leminoアプリから追加投票</div>
         </div>
       </div>
       <div class="step-card-body">
         <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          📱 <strong>今すぐDLしておこう！</strong>放送日はアクセス集中が予想されます。事前にインストール＆ログインまで済ませておくとスムーズです。
+          📱 <strong>アプリからのみ投票できます。</strong>事前にインストール＆ログインまで済ませておこう！
         </div>
         <div class="flow">
           <div class="flow-item">
@@ -609,8 +620,8 @@ body {
             </div>
           </div>
         </div>
-        <a class="vote-btn lemino" href="https://lemino.docomo.ne.jp/" target="_blank" rel="noopener">
-          <img src="icon_lemino.JPG" alt=""> Leminoで投票する →
+        <a class="vote-btn lemino" href="lemino://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/jp/app/lemino/id1072357524'; }, 1500);" target="_blank" rel="noopener">
+          <img src="icon_lemino.JPG" alt=""> Leminoアプリを開く →
         </a>
       </div>
     </div>
@@ -632,8 +643,8 @@ body {
       </div>
       <div class="rule-card">
         <div class="rule-icon">📱</div>
-        <div class="rule-title">同一dアカウントを使う</div>
-        <div class="rule-text">公式サイトとLeminoは必ず同じdアカウントでログイン。</div>
+        <div class="rule-title">Lemino・MNet+はアプリのみ</div>
+        <div class="rule-text">ブラウザからは投票できません。必ずアプリをDLしておこう。</div>
       </div>
       <div class="rule-card">
         <div class="rule-icon">🗓️</div>
@@ -650,13 +661,13 @@ body {
       <div class="step-card-header">
         <img class="step-card-icon" src="icon_mnetplus.PNG" alt="MNet+">
         <div>
-          <div class="step-card-title-en">MNet Plus · SEKAI Producer · Outside Japan Only</div>
+          <div class="step-card-title-en">MNet Plus App Only · Outside Japan</div>
           <div class="step-card-title">Vote on MNet+</div>
         </div>
       </div>
       <div class="step-card-body">
         <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          🌏 <strong>Available outside Japan only.</strong> MNet Plus voting is not available from within Japan.
+          🌏 <strong>Available outside Japan only. App only — browser voting is not supported.</strong>
         </div>
         <div class="flow">
           <div class="flow-item">
@@ -697,10 +708,10 @@ body {
           </div>
         </div>
         <div class="note-box">
-          ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong> — not the website. 1 vote per account per day. Any irregular voting activity will be invalidated.
+          ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong>. 1 vote per account per day. Any irregular voting activity will be invalidated.
         </div>
-        <a class="vote-btn mnet" href="https://www.mnetplus.world/" target="_blank" rel="noopener">
-          <img src="icon_mnetplus.PNG" alt=""> Vote on MNet+ →
+        <a class="vote-btn mnet" href="mnetplus://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/app/mnet-plus/id1538144549'; }, 1500);" target="_blank" rel="noopener">
+          <img src="icon_mnetplus.PNG" alt=""> Open MNet+ App →
         </a>
       </div>
     </div>
