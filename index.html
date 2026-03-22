@@ -1,304 +1,322 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — JAYBIRDS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy: #1a1f2e;
-  --navy-mid: #222840;
-  --gold: #c9a84c;
-  --gold-light: #e2c97e;
-  --gold-pale: #f0e4b8;
-  --cream: #f5f0e8;
-  --border: rgba(201,168,76,0.3);
-  --border2: rgba(201,168,76,0.12);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAYBIRDS — Chuang Jay Fan Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a1f2e;
+      --navy-mid: #222840;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --gold-pale: #f0e4b8;
+      --cream: #f5f0e8;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  background: var(--navy);
-  color: var(--cream);
-  font-family: 'Noto Serif JP', serif;
-  min-height: 100vh;
-  padding: 40px 20px 80px;
-}
+    body {
+      background-color: var(--navy);
+      color: var(--cream);
+      font-family: 'Noto Serif JP', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-.wrapper { max-width: 720px; margin: 0 auto; }
+    .hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-.back-link {
-  display: inline-block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem; letter-spacing: 0.25em;
-  color: var(--gold-light); text-decoration: none; text-transform: uppercase;
-  margin-bottom: 28px; opacity: 0.7; transition: opacity 0.2s;
-}
-.back-link:hover { opacity: 1; }
+    .hero-image {
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 100%; width: auto;
+      object-fit: contain;
+      object-position: left bottom;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-header { text-align: center; margin-bottom: 40px; }
-.site-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem; letter-spacing: 0.35em;
-  color: var(--gold-light); text-transform: uppercase;
-  margin-bottom: 10px; opacity: 0.7;
-}
-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 300;
-  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px;
-}
-.subtitle {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 0.9rem; letter-spacing: 0.15em;
-  color: var(--gold-pale); opacity: 0.75;
-}
-.divider { width: 60px; border: none; border-top: 1px solid var(--gold); margin: 16px auto 0; opacity: 0.4; }
+    .hero-gold-line {
+      position: absolute;
+      left: 0; bottom: 0; width: 100%; height: 1px;
+      background: linear-gradient(to right, var(--gold) 0%, rgba(201,168,76,0.3) 50%, transparent 100%);
+      z-index: 2;
+    }
 
-.section { margin-bottom: 40px; }
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.7rem, 2vw, 0.82rem);
-  letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase;
-  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
-}
-.section-title::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 680px;
+      text-align: center;
+      padding: 60px 24px 48px;
+      display: flex; flex-direction: column; align-items: center;
+    }
 
-.section-note {
-  font-size: 0.68rem; color: var(--gold-pale); opacity: 0.5;
-  letter-spacing: 0.08em; margin-bottom: 12px;
-}
+    .site-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.55rem, 1.8vw, 0.75rem);
+      letter-spacing: 0.3em; color: var(--gold-light);
+      text-transform: uppercase; margin-bottom: 14px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+    }
 
-/* ===== X風グリッド：縦中央トリミング ===== */
-.x-grid-2x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px;
-  border-radius: 14px;
-  overflow: hidden;
-}
+    .site-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 10vw, 5.5rem);
+      font-weight: 300; letter-spacing: 0.18em;
+      color: var(--gold); line-height: 1; margin-bottom: 10px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(201,168,76,0.3);
+    }
 
-.x-item {
-  overflow: hidden;
-  background: var(--navy-mid);
-  cursor: pointer;
-  /* 横長・縦は画像全体の1/3分 */
-  aspect-ratio: 3 / 2;
-  position: relative;
-}
+    .site-subtitle {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(0.78rem, 2vw, 1rem);
+      letter-spacing: 0.2em; color: var(--gold-pale);
+      margin-bottom: 20px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+    }
 
-.x-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 縦方向の真ん中だけを表示 */
-  object-position: center center;
-  display: block;
-  transition: transform 0.2s;
-  -webkit-touch-callout: default;
-}
-.x-item:hover img { transform: scale(1.03); }
+    .star-row { display: flex; justify-content: center; gap: 12px; }
 
-/* ===== 通常グリッド ===== */
-.normal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-}
-.normal-item {
-  background: var(--navy-mid); border: 1px solid var(--border);
-  border-radius: 8px; overflow: hidden;
-}
-.normal-item img { width: 100%; display: block; -webkit-touch-callout: default; }
-.normal-item-label {
-  padding: 8px 10px; font-size: 0.65rem; letter-spacing: 0.1em;
-  color: var(--gold-pale); opacity: 0.7;
-  font-family: 'Cormorant Garamond', serif;
-}
+    .fan-banner {
+      max-width: 600px; margin: 0 auto;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: rgba(201,168,76,0.05);
+      padding: 18px 28px; text-align: center; position: relative;
+    }
+    .fan-banner::before {
+      content: ''; position: absolute; inset: 3px;
+      border: 1px solid rgba(201,168,76,0.08); pointer-events: none;
+    }
+    .fan-banner-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem; letter-spacing: 0.3em;
+      color: var(--gold-light); text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 10px;
+    }
+    .fan-banner-message {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(0.75rem, 2.2vw, 0.88rem);
+      line-height: 2; color: var(--gold-pale); opacity: 0.85;
+    }
+    .fan-banner-message em { font-style: normal; color: var(--gold-light); }
 
-/* ===== ライトボックス ===== */
-.lightbox {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.93); z-index: 1000;
-  align-items: center; justify-content: center;
-}
-.lightbox.active { display: flex; }
+    nav {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 8px; padding: 32px 24px 40px;
+      max-width: 600px; margin: 0 auto;
+    }
+    nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.7rem, 2vw, 0.82rem);
+      letter-spacing: 0.25em; color: var(--gold-light);
+      text-decoration: none; text-transform: uppercase;
+      padding: 2px 8px; border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
 
-.lightbox-img-wrap {
-  max-width: 92vw; max-height: 88vh;
-  display: flex; align-items: center; justify-content: center;
-}
-.lightbox-img-wrap img {
-  max-width: 92vw; max-height: 82vh;
-  object-fit: contain; display: block; border-radius: 4px;
-  -webkit-touch-callout: default;
-}
+    main {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 20px 80px; display: grid; gap: 16px;
+    }
 
-.lightbox-close {
-  position: fixed; top: 16px; right: 20px;
-  font-size: 1.8rem; color: var(--gold-light);
-  cursor: pointer; opacity: 0.7; z-index: 1001;
-  background: none; border: none; line-height: 1;
-}
-.lightbox-close:hover { opacity: 1; }
+    .card {
+      display: block; text-decoration: none;
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 28px 32px; position: relative;
+      transition: border-color 0.25s, background 0.25s;
+      overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 3px;
+      border: 1px solid rgba(201,168,76,0.1);
+      pointer-events: none; transition: border-color 0.25s;
+    }
+    .card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
+    .card:hover::before { border-color: rgba(201,168,76,0.25); }
 
-.lightbox-nav {
-  position: fixed; top: 50%; transform: translateY(-50%);
-  font-size: 2rem; color: var(--gold-light);
-  cursor: pointer; opacity: 0.6; z-index: 1001;
-  background: rgba(0,0,0,0.4); border: none;
-  padding: 12px 10px; line-height: 1; border-radius: 4px;
-  transition: opacity 0.2s;
-}
-.lightbox-nav:hover { opacity: 1; }
-.lightbox-prev { left: 8px; }
-.lightbox-next { right: 8px; }
+    .card-inner { display: flex; align-items: center; gap: 20px; }
 
-.lightbox-counter {
-  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.6;
-}
-.lightbox-hint {
-  position: fixed; bottom: 38px; left: 50%; transform: translateX(-50%);
-  font-size: 0.6rem; letter-spacing: 0.15em;
-  color: var(--gold-pale); opacity: 0.4; white-space: nowrap;
-}
+    .card-icon {
+      font-size: 1.6rem; flex-shrink: 0;
+      width: 44px; text-align: center; opacity: 0.85;
+    }
 
-footer {
-  text-align: center; padding: 24px;
-  border-top: 1px solid var(--border2); margin-top: 20px;
-}
-footer p {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.68rem;
-  letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.4;
-}
-</style>
+    .card-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      font-weight: 400; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase;
+      display: block; margin-bottom: 4px;
+    }
+    .card-ja {
+      font-size: clamp(0.72rem, 2vw, 0.82rem);
+      color: var(--gold-pale); letter-spacing: 0.12em; opacity: 0.8;
+    }
+
+    .card-arrow {
+      margin-left: auto; color: var(--gold); opacity: 0.5;
+      font-size: 1rem; flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
+
+    .sns-section { margin-top: 8px; text-align: center; }
+    .sns-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem; letter-spacing: 0.3em;
+      color: var(--gold-light); text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 16px;
+    }
+    .sns-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .sns-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--gold-pale);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.78rem, 2vw, 0.9rem);
+      letter-spacing: 0.2em; padding: 8px 16px;
+      border: 1px solid rgba(201,168,76,0.25);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .sns-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    footer {
+      text-align: center; padding: 32px 24px 48px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      color: var(--gold-light); opacity: 0.5;
+    }
+  </style>
 </head>
 <body>
-<div class="wrapper">
-
-  <a href="index.html" class="back-link">← Home</a>
 
   <header>
-    <p class="site-label">JAYBIRDS</p>
-    <h1>Gallery</h1>
-    <p class="subtitle">布教画像・配布素材</p>
-    <hr class="divider">
+    <div class="hero">
+      <img class="hero-image" src="Untitled design.png" alt="Chuang Jay">
+      <div class="hero-gold-line"></div>
+      <div class="hero-content">
+        <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
+        <h1 class="site-title">JAYBIRDS</h1>
+        <p class="site-subtitle">ジェイバーズ</p>
+        <div class="star-row">
+          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+          <span style="color:var(--gold);font-size:0.6rem;">✦</span>
+          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fan-banner">
+      <p class="fan-banner-label">✦ About JAYBIRDS ✦</p>
+      <p class="fan-banner-message">
+        JAYBIRDSは、<em>ジュアンジェイ（Chuang Jay）</em>を応援する<em>非公式ファンサポートアカウント</em>です。<br>
+        本人・事務所・番組とは一切関係ありません。<br>
+        みんなでジェイくんを全力で応援していきましょう！✦
+      </p>
+    </div>
   </header>
 
-  <div class="section">
-    <p class="section-title">✦ 布教画像</p>
-    <p class="section-note">タップで拡大 · 長押しで保存</p>
-    <div class="x-grid-2x2">
-      <div class="x-item" onclick="openLightbox('fukyo01', 0)">
-        <img src="fukyo01_01.JPG" alt="布教画像1" loading="lazy">
+  <nav>
+    <a href="index.html">Home</a>
+    <span>✦</span>
+    <a href="about.html">About</a>
+    <span>✦</span>
+    <a href="tags.html">Tags</a>
+    <span>✦</span>
+    <a href="movies.html">Movies</a>
+    <span>✦</span>
+    <a href="guide.html">Guide</a>
+    <span>✦</span>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+
+  <main>
+
+    <a href="about.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">🪶</div>
+        <div class="card-text">
+          <span class="card-en">About JAYBIRDS</span>
+          <span class="card-ja">JAYBIRDSとは？</span>
+        </div>
+        <span class="card-arrow">→</span>
       </div>
-      <div class="x-item" onclick="openLightbox('fukyo01', 1)">
-        <img src="fukyo01_02.JPG" alt="布教画像2" loading="lazy">
+    </a>
+
+    <a href="tags.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">🏷️</div>
+        <div class="card-text">
+          <span class="card-en">Tags &amp; Support</span>
+          <span class="card-ja">応援タグ・ツイート情報</span>
+        </div>
+        <span class="card-arrow">→</span>
       </div>
-      <div class="x-item" onclick="openLightbox('fukyo01', 2)">
-        <img src="fukyo01_03.JPG" alt="布教画像3" loading="lazy">
+    </a>
+
+    <a href="movies.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">🎬</div>
+        <div class="card-text">
+          <span class="card-en">Movies</span>
+          <span class="card-ja">番組提供動画一覧</span>
+        </div>
+        <span class="card-arrow">→</span>
       </div>
-      <div class="x-item" onclick="openLightbox('fukyo01', 3)">
-        <img src="fukyo01_04.JPG" alt="布教画像4" loading="lazy">
+    </a>
+
+    <a href="guide.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">📖</div>
+        <div class="card-text">
+          <span class="card-en">Guide</span>
+          <span class="card-ja">スミンガイド・タグイベガイドまとめ</span>
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="gallery.html" class="card">
+      <div class="card-inner">
+        <div class="card-icon">🖼️</div>
+        <div class="card-text">
+          <span class="card-en">Gallery</span>
+          <span class="card-ja">布教画像・配布素材</span>
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <div class="sns-section">
+      <p class="sns-label">Follow us</p>
+      <div class="sns-links">
+        <a href="https://x.com/chuangjay_fd?s=21&t=nvSxWHlNQYEWpk_qkOVZqg" class="sns-link" target="_blank">𝕏 Twitter</a>
+        <a href="https://www.instagram.com/chuangjay_fd?igsh=bHZ3d3dmN3Ztcmxh" class="sns-link" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@chuangjay_fd?_r=1&_t=ZS-94qPji7n57J" class="sns-link" target="_blank">TikTok</a>
       </div>
     </div>
-  </div>
 
-  <!-- 素材追加テンプレート
-  <div class="section">
-    <p class="section-title">✦ アイコンフレーム</p>
-    <p class="section-note">長押しで保存</p>
-    <div class="normal-grid">
-      <div class="normal-item">
-        <img src="frame01.png" alt="フレーム1" loading="lazy">
-        <div class="normal-item-label">フレーム · @作成者名</div>
-      </div>
-    </div>
-  </div>
-  -->
+  </main>
 
-</div>
-
-<footer>
-  <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
-</footer>
-
-<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</button>
-  <div class="lightbox-img-wrap">
-    <img id="lightbox-img" src="" alt="">
-  </div>
-  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">›</button>
-  <div class="lightbox-hint">長押しで保存できます</div>
-  <div class="lightbox-counter" id="lightbox-counter"></div>
-</div>
-
-<script>
-const galleries = {
-  fukyo01: [
-    'fukyo01_01.JPG',
-    'fukyo01_02.JPG',
-    'fukyo01_03.JPG',
-    'fukyo01_04.JPG'
-  ]
-};
-
-let currentGallery = null;
-let currentIndex = 0;
-
-function openLightbox(galleryId, index) {
-  currentGallery = galleryId;
-  currentIndex = index;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function updateLightbox() {
-  const imgs = galleries[currentGallery];
-  document.getElementById('lightbox-img').src = imgs[currentIndex];
-  document.getElementById('lightbox-counter').textContent =
-    (currentIndex + 1) + ' / ' + imgs.length;
-}
-
-function navigateLightbox(dir) {
-  const imgs = galleries[currentGallery];
-  currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
-  updateLightbox();
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function closeLightboxOutside(e) {
-  if (e.target === document.getElementById('lightbox')) closeLightbox();
-}
-
-let touchStartX = 0;
-document.getElementById('lightbox').addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-});
-document.getElementById('lightbox').addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
-});
-
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
-  if (e.key === 'ArrowRight') navigateLightbox(1);
-  if (e.key === 'ArrowLeft') navigateLightbox(-1);
-  if (e.key === 'Escape') closeLightbox();
-});
-</script>
+  <footer>
+    <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
+    <p style="margin-top:6px;">This is an unofficial fan account. Not affiliated with Chuang Jay or any related organizations.</p>
+  </footer>
 
 </body>
 </html>
