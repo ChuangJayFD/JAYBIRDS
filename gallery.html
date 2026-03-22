@@ -23,8 +23,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --label: #ebebf5;
   --label2: rgba(235,235,245,0.65);
   --muted: rgba(235,235,245,0.4);
-  --green: #30d158;
-  --danger: #ff453a;
 }
 
 body {
@@ -65,7 +63,7 @@ body {
   display: inline-block; font-size: 10px; font-weight: 700;
   letter-spacing: 4px; text-transform: uppercase;
   color: var(--gold2); border: 1px solid rgba(201,168,76,0.4);
-  padding: 4px 16px; margin-bottom: 16px; position: relative;
+  padding: 4px 16px; margin-bottom: 16px;
 }
 .header-star-row {
   display: flex; justify-content: center; gap: 14px; margin-bottom: 14px;
@@ -83,9 +81,65 @@ body {
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold2), var(--gold), transparent); }
 
+/* ===== 素材投稿ボックス ===== */
+.upload-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.upload-box::before {
+  content: '';
+  position: absolute; inset: 3px;
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  pointer-events: none;
+}
+.upload-box-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold); opacity: 0.8;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.upload-box-label::before { content: '✦'; font-size: 8px; }
+.upload-box-text {
+  font-size: 12px; color: var(--label2); line-height: 1.9;
+  margin-bottom: 16px;
+}
+.upload-box-text strong { color: var(--gold2); }
+.upload-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; width: 100%;
+  background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
+  border-radius: 10px; padding: 13px 20px;
+  font-size: 13px; font-weight: 900;
+  color: #1a0e00; letter-spacing: 1.5px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    inset 0 -3px 0 rgba(0,0,0,0.3),
+    0 4px 0 #7a5a0a,
+    0 6px 14px rgba(0,0,0,0.45),
+    0 0 20px rgba(201,168,76,0.2);
+  transition: transform 0.1s, filter 0.1s;
+  position: relative; overflow: hidden;
+}
+.upload-btn::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+  pointer-events: none; border-radius: 10px 10px 0 0;
+}
+.upload-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.upload-btn:active { transform: translateY(3px); }
+.upload-note {
+  font-size: 10px; color: var(--muted); margin-top: 10px;
+  line-height: 1.8; text-align: center;
+}
+
 /* ===== SECTION ===== */
 .section { margin-bottom: 36px; }
-
 .section-label {
   font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
   color: var(--gold); opacity: 0.85; margin-bottom: 12px;
@@ -95,8 +149,7 @@ body {
 .section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
 
 .section-note {
-  font-size: 12px; color: var(--label2); line-height: 1.8;
-  margin-bottom: 6px;
+  font-size: 12px; color: var(--label2); line-height: 1.8; margin-bottom: 6px;
 }
 .section-note-highlight {
   background: rgba(201,168,76,0.07);
@@ -114,38 +167,25 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 16px;
 }
-
 .frame-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
   display: flex; flex-direction: column;
 }
-
 .frame-img-wrap {
   width: 100%; aspect-ratio: 1 / 1;
   background: rgba(255,255,255,0.03);
   display: flex; align-items: center; justify-content: center;
-  padding: 12px;
-  border-bottom: 1px solid var(--border2);
+  padding: 12px; border-bottom: 1px solid var(--border2);
 }
 .frame-img-wrap img {
   width: 100%; height: 100%;
   object-fit: contain; display: block;
   -webkit-touch-callout: default;
 }
-
 .frame-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-
-.frame-name {
-  font-size: 12px; font-weight: 700; color: var(--label);
-  line-height: 1.4;
-}
-.frame-credit {
-  font-size: 10px; color: var(--muted); letter-spacing: 0.5px;
-}
-
+.frame-name { font-size: 12px; font-weight: 700; color: var(--label); line-height: 1.4; }
+.frame-credit { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; }
 .frame-link {
   display: flex; align-items: center; justify-content: center; gap: 6px;
   text-decoration: none; margin-top: auto;
@@ -165,14 +205,10 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-
 .x-item {
-  overflow: hidden;
-  background: var(--card);
-  cursor: pointer;
-  aspect-ratio: 16 / 9;
-  position: relative;
-  border-radius: 10px;
+  overflow: hidden; background: var(--card);
+  cursor: pointer; aspect-ratio: 16 / 9;
+  position: relative; border-radius: 10px;
   border: 1px solid var(--border2);
   transition: border-color 0.2s, transform 0.2s;
 }
@@ -234,11 +270,9 @@ body {
 }
 .lightbox-hint {
   position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
-  font-size: 10px; letter-spacing: 1px;
-  color: var(--muted); white-space: nowrap;
+  font-size: 10px; letter-spacing: 1px; color: var(--muted); white-space: nowrap;
 }
 
-/* ===== FOOTER ===== */
 .footer-note {
   text-align: center; font-size: 11px;
   color: var(--gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
@@ -260,6 +294,20 @@ body {
       <p class="sub">布教画像・配布素材</p>
     </div>
     <div class="header-stripe"></div>
+  </div>
+
+  <!-- 素材投稿ボックス -->
+  <div class="upload-box">
+    <p class="upload-box-label">素材を投稿する</p>
+    <p class="upload-box-text">
+      JAYBIRDSの応援素材を作ってくれたらぜひ共有してください！<br>
+      確認後、ギャラリーに追加します。<br>
+      <strong>作成者のアカウント名も一緒にフォルダ内に記載してね✦</strong>
+    </p>
+    <a class="upload-btn" href="https://drive.google.com/drive/folders/1wQHc2kOYDDBigWL2I5AYj6WFXs1uWQR0" target="_blank" rel="noopener">
+      🪶 Googleドライブに投稿する
+    </a>
+    <p class="upload-note">投稿いただいた素材はJAYBIRDSが確認後にギャラリーへ掲載します</p>
   </div>
 
   <!-- アイコンフレーム -->
