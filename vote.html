@@ -124,11 +124,7 @@ body {
   display: flex; align-items: center; gap: 14px;
 }
 .pick-banner-icon { font-size: 28px; flex-shrink: 0; }
-.pick-banner-text {}
-.pick-banner-title {
-  font-size: 14px; font-weight: 900; color: var(--p101-accent);
-  margin-bottom: 4px; letter-spacing: 1px;
-}
+.pick-banner-title { font-size: 14px; font-weight: 900; color: var(--p101-accent); margin-bottom: 4px; letter-spacing: 1px; }
 .pick-banner-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
 .pick-banner-desc strong { color: var(--label); }
 
@@ -239,14 +235,6 @@ body {
 .app-btn img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
 .app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(--label); }
 .app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
-.app-btn.open-lemino {
-  background: linear-gradient(135deg, var(--lemino-from), var(--lemino-to));
-  color: #fff; border: none; font-size: 12px;
-}
-.app-btn.open-mnet {
-  background: linear-gradient(135deg, var(--mnet-pink), var(--mnet-blue));
-  color: #fff; border: none; font-size: 12px;
-}
 
 /* ===== 投票ボタン ===== */
 .vote-btn {
@@ -255,7 +243,7 @@ body {
   border-radius: 10px; padding: 14px 20px;
   font-size: 13px; font-weight: 900; letter-spacing: 1.5px;
   transition: transform 0.1s, filter 0.1s;
-  position: relative; overflow: hidden;
+  position: relative; overflow: hidden; cursor: pointer;
 }
 .vote-btn::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
@@ -286,12 +274,6 @@ body {
   background: #f0f4ff; border-radius: 16px; overflow: hidden;
   margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
 }
-.vote-preview-bar {
-  padding: 10px 14px; font-size: 11px; font-weight: 700;
-  letter-spacing: 1px; text-align: center;
-  background: linear-gradient(90deg, var(--p101), var(--p101-light));
-  color: #fff;
-}
 .vote-preview-body { background: #f8faff; padding: 16px; }
 .vote-preview-title {
   font-size: 15px; font-weight: 900; color: #1a3a7a;
@@ -306,7 +288,10 @@ body {
   object-fit: cover; border: 2px solid #c0ccee;
 }
 .candidate-avatar.selected { border-color: var(--p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
-.candidate-name { font-size: 11px; color: #334; font-weight: 500; }
+.candidate-name {
+  font-size: 10px; color: #334; font-weight: 500;
+  white-space: nowrap; text-align: center;
+}
 .candidate-btn {
   font-size: 10px; font-weight: 700; padding: 5px 14px;
   border-radius: 20px; border: none; cursor: default; width: 100%;
@@ -436,7 +421,7 @@ body {
       </a>
     </div>
     <div class="tip-box" style="margin-top:0;">
-      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> 海外在住の方は③MNet+のアプリから投票できます。
+      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> For overseas fans: vote via the MNet+ app ③
     </div>
   </div>
 
@@ -526,7 +511,6 @@ body {
               <div class="flow-title">JAYを選んで投票ボックスに追加！</div>
               <div class="flow-desc">練習生一覧からJAYを見つけて<strong>「投票ボックス追加」</strong>をタップ。最初は11人まで選べます。</div>
               <div class="vote-preview">
-                <div class="vote-preview-bar">📺 投票画面イメージ（新世界カラー想定）</div>
                 <div class="vote-preview-body">
                   <div class="vote-preview-title">あなたの<span>推し</span>に<br>投票してください</div>
                   <div class="vote-preview-sub">投票できる回数は1日1回（0:00〜23:59）</div>
@@ -620,7 +604,7 @@ body {
             </div>
           </div>
         </div>
-        <a class="vote-btn lemino" href="lemino://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/jp/app/lemino/id1072357524'; }, 1500);" target="_blank" rel="noopener">
+        <a class="vote-btn lemino" href="lemino://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/jp/app/lemino/id1072357524'; }, 1500);">
           <img src="icon_lemino.JPG" alt=""> Leminoアプリを開く →
         </a>
       </div>
@@ -710,7 +694,7 @@ body {
         <div class="note-box">
           ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong>. 1 vote per account per day. Any irregular voting activity will be invalidated.
         </div>
-        <a class="vote-btn mnet" href="mnetplus://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/app/mnet-plus/id1538144549'; }, 1500);" target="_blank" rel="noopener">
+        <a class="vote-btn mnet" href="mnetplus://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/app/mnet-plus/id1538144549'; }, 1500);">
           <img src="icon_mnetplus.PNG" alt=""> Open MNet+ App →
         </a>
       </div>
