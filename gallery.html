@@ -77,6 +77,55 @@ h1 {
   letter-spacing: 0.08em; margin-bottom: 12px; line-height: 1.8;
 }
 
+/* ===== アイコンフレーム ===== */
+.frame-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.frame-item {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px;
+}
+
+.frame-img-wrap {
+  width: 100%; aspect-ratio: 1 / 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 8px;
+}
+.frame-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: contain; display: block;
+  -webkit-touch-callout: default;
+}
+
+.frame-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  text-decoration: none;
+  background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
+  border-radius: 6px; padding: 7px 14px;
+  font-size: 0.68rem; font-weight: 700;
+  color: #1a0e00; letter-spacing: 0.1em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 3px 0 #7a5a0a, 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.1s, filter 0.1s;
+  width: 100%; justify-content: center;
+}
+.frame-link:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.frame-link:active { transform: translateY(2px); }
+
+.frame-credit {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.6rem; letter-spacing: 0.15em;
+  color: var(--gold-pale); opacity: 0.5;
+  text-align: center;
+}
+
 /* ===== X風グリッド ===== */
 .x-grid-2x2 {
   display: grid;
@@ -102,34 +151,15 @@ h1 {
   -webkit-touch-callout: default;
 }
 .x-item:hover img { transform: scale(1.03); }
-
 .x-item::after {
   content: '▶ TAP';
-  position: absolute;
-  bottom: 6px; right: 8px;
+  position: absolute; bottom: 6px; right: 8px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.55rem; letter-spacing: 0.15em;
   color: rgba(255,255,255,0.6);
   background: rgba(0,0,0,0.35);
   padding: 2px 6px; border-radius: 3px;
   pointer-events: none;
-}
-
-/* ===== 通常グリッド ===== */
-.normal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-}
-.normal-item {
-  background: var(--navy-mid); border: 1px solid var(--border);
-  border-radius: 8px; overflow: hidden;
-}
-.normal-item img { width: 100%; display: block; -webkit-touch-callout: default; }
-.normal-item-label {
-  padding: 8px 10px; font-size: 0.65rem; letter-spacing: 0.1em;
-  color: var(--gold-pale); opacity: 0.7;
-  font-family: 'Cormorant Garamond', serif;
 }
 
 /* ===== ライトボックス ===== */
@@ -139,7 +169,6 @@ h1 {
   align-items: center; justify-content: center;
 }
 .lightbox.active { display: flex; }
-
 .lightbox-img-wrap {
   max-width: 92vw; max-height: 88vh;
   display: flex; align-items: center; justify-content: center;
@@ -149,7 +178,6 @@ h1 {
   object-fit: contain; display: block; border-radius: 4px;
   -webkit-touch-callout: default;
 }
-
 .lightbox-close {
   position: fixed; top: 16px; right: 20px;
   font-size: 1.8rem; color: var(--gold-light);
@@ -157,7 +185,6 @@ h1 {
   background: none; border: none; line-height: 1;
 }
 .lightbox-close:hover { opacity: 1; }
-
 .lightbox-nav {
   position: fixed; top: 50%; transform: translateY(-50%);
   font-size: 2rem; color: var(--gold-light);
@@ -169,7 +196,6 @@ h1 {
 .lightbox-nav:hover { opacity: 1; }
 .lightbox-prev { left: 8px; }
 .lightbox-next { right: 8px; }
-
 .lightbox-counter {
   position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
   font-family: 'Cormorant Garamond', serif;
@@ -203,6 +229,24 @@ footer p {
     <hr class="divider">
   </header>
 
+  <!-- アイコンフレーム -->
+  <div class="section">
+    <p class="section-title">✦ アイコンフレーム</p>
+    <p class="section-note">アイコンデコッターでアイコンに使えるフレームです。ボタンから使ってね！</p>
+    <div class="frame-grid">
+      <div class="frame-item">
+        <div class="frame-img-wrap">
+          <img src="frame01.png" alt="ジュアンジェイ応援フレーム" loading="lazy">
+        </div>
+        <a class="frame-link" href="https://icondecotter.jp/detail.php?id=107098" target="_blank" rel="noopener">
+          🪶 フレームを使う
+        </a>
+        <p class="frame-credit">by JAYBIRDS</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- X布教画像 -->
   <div class="section">
     <p class="section-title">✦ X布教画像</p>
     <p class="section-note">Xへの投稿・拡散用の布教素材です。</p>
@@ -222,19 +266,6 @@ footer p {
       </div>
     </div>
   </div>
-
-  <!-- 素材追加テンプレート
-  <div class="section">
-    <p class="section-title">✦ アイコンフレーム</p>
-    <p class="section-note">長押しで保存</p>
-    <div class="normal-grid">
-      <div class="normal-item">
-        <img src="frame01.png" alt="フレーム1" loading="lazy">
-        <div class="normal-item-label">フレーム · @作成者名</div>
-      </div>
-    </div>
-  </div>
-  -->
 
 </div>
 
