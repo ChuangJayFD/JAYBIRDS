@@ -15,6 +15,7 @@
       --gold-light: #e2c97e;
       --gold-pale: #f0e4b8;
       --cream: #f5f0e8;
+      --white: #ffffff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,8 +30,7 @@
 
     .hero {
       position: relative; min-height: 420px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
     .hero-image {
       position: absolute; left: 0; bottom: 0;
@@ -111,6 +111,7 @@
       padding: 0 20px 80px; display: grid; gap: 16px;
     }
 
+    /* 通常カード */
     .card {
       display: block; text-decoration: none;
       background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3);
@@ -124,6 +125,19 @@
     }
     .card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
     .card:hover::before { border-color: rgba(201,168,76,0.25); }
+
+    /* Coming Soon カード（クリック不可・半透明） */
+    .card-soon {
+      display: block;
+      background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
+      padding: 28px 32px; position: relative;
+      opacity: 0.5; cursor: default; overflow: hidden;
+    }
+    .card-soon::before {
+      content: ''; position: absolute; inset: 3px;
+      border: 1px solid rgba(201,168,76,0.06);
+      pointer-events: none;
+    }
 
     .card-inner { display: flex; align-items: center; gap: 20px; }
     .card-icon { font-size: 1.6rem; flex-shrink: 0; width: 44px; text-align: center; opacity: 0.85; }
@@ -143,7 +157,15 @@
     }
     .card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
 
-    /* ===== 投票セクション ===== */
+    .soon-badge {
+      margin-left: auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
+      padding: 2px 10px; flex-shrink: 0; opacity: 0.7;
+    }
+
+    /* 投票セクション */
     .vote-section { margin-top: 8px; }
     .vote-label {
       font-family: 'Cormorant Garamond', serif;
@@ -189,7 +211,6 @@
       padding: 2px 10px; display: inline-block; opacity: 0.6;
     }
 
-    /* ===== 投票方法ボタン ===== */
     .vote-guide-btn {
       display: flex; align-items: center; gap: 16px;
       text-decoration: none;
@@ -201,7 +222,6 @@
       pointer-events: none;
     }
     .vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .vote-guide-btn-text {}
     .vote-guide-btn-en {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.9rem, 2.5vw, 1.05rem); letter-spacing: 0.2em;
@@ -219,7 +239,7 @@
       padding: 2px 8px; flex-shrink: 0; opacity: 0.6;
     }
 
-    /* ===== SNS ===== */
+    /* SNS */
     .sns-section { margin-top: 8px; text-align: center; }
     .sns-label {
       font-family: 'Cormorant Garamond', serif;
@@ -290,6 +310,18 @@
   </nav>
 
   <main>
+
+    <!-- 日プ新世界とは？（Coming Soon） -->
+    <div class="card-soon">
+      <div class="card-inner">
+        <div class="card-icon">📺</div>
+        <div class="card-text">
+          <span class="card-en">About 日プ新世界</span>
+          <span class="card-ja">番組スケジュール・ロードマップ</span>
+        </div>
+        <span class="soon-badge">Coming Soon</span>
+      </div>
+    </div>
 
     <a href="about.html" class="card">
       <div class="card-inner">
@@ -369,8 +401,6 @@
           <span class="vote-badge">Coming Soon</span>
         </div>
       </div>
-
-      <!-- 投票方法ボタン -->
       <div class="vote-guide-btn">
         <div class="vote-guide-btn-icon">📋</div>
         <div class="vote-guide-btn-text">
