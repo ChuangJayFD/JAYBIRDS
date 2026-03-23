@@ -115,7 +115,7 @@ body {
 .tl-wrap {
   position: relative;
   margin-top: 24px;
-  padding-right: 36px; /* バー1本分 */
+  padding-right: 36px;
 }
 
 /* ===== 投票バー（JS描画） ===== */
@@ -128,6 +128,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 }
 
 .vb-cap-top {
@@ -155,6 +156,7 @@ body {
   background: linear-gradient(180deg, #d97706 0%, #fbbf24 100%);
 }
 
+/* 通常ラベル：バーの左横に縦書き */
 .vb-label {
   position: absolute;
   left: -34px;
@@ -167,6 +169,21 @@ body {
   white-space: nowrap;
   letter-spacing: 1px;
   pointer-events: none;
+}
+
+/* 2倍ラベル：バーの上部中央に重ねて表示 */
+.vb-label-top {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 900;
+  color: #7c2d12;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 11;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* ===== PHASE ===== */
@@ -255,7 +272,6 @@ body {
 .ref-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
 @media (max-width: 480px) { .ref-video-grid { grid-template-columns: 1fr; } }
 
-/* ===== 投票まとめ ===== */
 .vsum {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; padding: 16px 18px; margin-top: 16px;
@@ -335,10 +351,7 @@ body {
       </div>
 
       <div class="ep" id="ep-326">
-        <div class="ep-dc">
-          <div class="ep-dot a"></div>
-          <div class="ep-date"><strong>3/26</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>3/26</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-326">
             <div class="card-ep">第1話 · 配信スタート</div>
@@ -355,10 +368,7 @@ body {
       </div>
 
       <div class="ep" id="ep-402">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>4/2</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/2</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第2話</div>
@@ -370,10 +380,7 @@ body {
       </div>
 
       <div class="ep" id="ep-409">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>4/9</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/9</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第3話</div>
@@ -389,10 +396,7 @@ body {
       </div>
 
       <div class="ep" id="ep-416">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>4/16</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/16</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第4話</div>
@@ -403,9 +407,7 @@ body {
           <div class="ref-video">
             <div class="ref-video-label">📺 参考動画 — グループバトルとは？</div>
             <div class="ref-vc">
-              <div class="ref-thumb">
-                <iframe src="https://www.youtube.com/embed/5dr-gLYYYLE" allowfullscreen loading="lazy"></iframe>
-              </div>
+              <div class="ref-thumb"><iframe src="https://www.youtube.com/embed/5dr-gLYYYLE" allowfullscreen loading="lazy"></iframe></div>
               <div class="ref-info">
                 <div class="ref-tag" style="color:var(--c-group)">🎤 グループバトル（日プ女子 2023）</div>
                 <div class="ref-song">SPEED「Body & Soul」</div>
@@ -417,10 +419,7 @@ body {
       </div>
 
       <div class="ep" id="ep-417">
-        <div class="ep-dc">
-          <div class="ep-dot v"></div>
-          <div class="ep-date"><strong>4/17</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>4/17</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-417" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
             <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票①締切</div>
@@ -431,10 +430,7 @@ body {
       </div>
 
       <div class="ep" id="ep-423">
-        <div class="ep-dc">
-          <div class="ep-dot a"></div>
-          <div class="ep-date"><strong>4/23</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>4/23</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-423">
             <div class="card-ep">第5話</div>
@@ -456,10 +452,7 @@ body {
       </div>
 
       <div class="ep" id="ep-430">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>4/30</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/30</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第6話</div>
@@ -475,10 +468,7 @@ body {
       </div>
 
       <div class="ep" id="ep-507">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>5/7</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>5/7</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第7話</div>
@@ -489,9 +479,7 @@ body {
           <div class="ref-video">
             <div class="ref-video-label">📺 参考動画 — ポジションバトルとは？</div>
             <div class="ref-vc">
-              <div class="ref-thumb">
-                <iframe src="https://www.youtube.com/embed/X13pE6T0ilA" allowfullscreen loading="lazy"></iframe>
-              </div>
+              <div class="ref-thumb"><iframe src="https://www.youtube.com/embed/X13pE6T0ilA" allowfullscreen loading="lazy"></iframe></div>
               <div class="ref-info">
                 <div class="ref-tag" style="color:var(--c-position)">🎵 ポジションバトル（日プ女子 2023）</div>
                 <div class="ref-song">ちゃんみな「美人」</div>
@@ -503,10 +491,7 @@ body {
       </div>
 
       <div class="ep" id="ep-508">
-        <div class="ep-dc">
-          <div class="ep-dot v"></div>
-          <div class="ep-date"><strong>5/8</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>5/8</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-508" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
             <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票②締切</div>
@@ -517,10 +502,7 @@ body {
       </div>
 
       <div class="ep" id="ep-514">
-        <div class="ep-dc">
-          <div class="ep-dot a"></div>
-          <div class="ep-date"><strong>5/14</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>5/14</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-514">
             <div class="card-ep">第8話</div>
@@ -546,10 +528,7 @@ body {
       </div>
 
       <div class="ep" id="ep-521">
-        <div class="ep-dc">
-          <div class="ep-dot"></div>
-          <div class="ep-date"><strong>5/21</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>5/21</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第9話</div>
@@ -560,9 +539,7 @@ body {
           <div class="ref-video">
             <div class="ref-video-label">📺 参考動画 — コンセプト評価とは？</div>
             <div class="ref-vc">
-              <div class="ref-thumb">
-                <iframe src="https://www.youtube.com/embed/MwYr4Y4b3o0" allowfullscreen loading="lazy"></iframe>
-              </div>
+              <div class="ref-thumb"><iframe src="https://www.youtube.com/embed/MwYr4Y4b3o0" allowfullscreen loading="lazy"></iframe></div>
               <div class="ref-info">
                 <div class="ref-tag" style="color:var(--c-concept)">🌟 コンセプト評価（日プ女子 2023）</div>
                 <div class="ref-song">&ME（オリジナル楽曲）</div>
@@ -574,10 +551,7 @@ body {
       </div>
 
       <div class="ep" id="ep-522">
-        <div class="ep-dc">
-          <div class="ep-dot v"></div>
-          <div class="ep-date"><strong>5/22</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>5/22</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-522" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
             <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票③締切</div>
@@ -588,10 +562,7 @@ body {
       </div>
 
       <div class="ep" id="ep-528">
-        <div class="ep-dc">
-          <div class="ep-dot a"></div>
-          <div class="ep-date"><strong>5/28</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>5/28</strong>木</div></div>
         <div class="ep-body">
           <div class="card" id="card-528">
             <div class="card-ep">第10話</div>
@@ -613,10 +584,7 @@ body {
       </div>
 
       <div class="ep" id="ep-604">
-        <div class="ep-dc">
-          <div class="ep-dot a"></div>
-          <div class="ep-date"><strong>6/4</strong>木</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>6/4</strong>木</div></div>
         <div class="ep-body">
           <div class="card">
             <div class="card-ep">第11話</div>
@@ -627,9 +595,7 @@ body {
           <div class="ref-video-label" style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:10px;margin-bottom:6px;">📺 参考動画 — デビュー評価とは？</div>
           <div class="ref-video-grid">
             <div class="ref-vc">
-              <div class="ref-thumb">
-                <iframe src="https://www.youtube.com/embed/JCvRiU7xKtM" allowfullscreen loading="lazy"></iframe>
-              </div>
+              <div class="ref-thumb"><iframe src="https://www.youtube.com/embed/JCvRiU7xKtM" allowfullscreen loading="lazy"></iframe></div>
               <div class="ref-info">
                 <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価（日プ女子 2023）</div>
                 <div class="ref-song">CHOPPY CHOPPY</div>
@@ -637,9 +603,7 @@ body {
               </div>
             </div>
             <div class="ref-vc">
-              <div class="ref-thumb">
-                <iframe src="https://www.youtube.com/embed/os03IjwQ7yA" allowfullscreen loading="lazy"></iframe>
-              </div>
+              <div class="ref-thumb"><iframe src="https://www.youtube.com/embed/os03IjwQ7yA" allowfullscreen loading="lazy"></iframe></div>
               <div class="ref-info">
                 <div class="ref-tag" style="color:var(--c-debut)">💫 デビュー評価（日プ女子 2023）</div>
                 <div class="ref-song">想像以上</div>
@@ -651,19 +615,13 @@ body {
       </div>
 
       <div class="ep" id="ep-606">
-        <div class="ep-dc">
-          <div class="ep-dot f"></div>
-          <div class="ep-date"><strong>6/6</strong>土</div>
-        </div>
+        <div class="ep-dc"><div class="ep-dot f"></div><div class="ep-date"><strong>6/6</strong>土</div></div>
         <div class="ep-body">
           <div class="card" id="card-606" style="background:#0a1a3a; border-color:rgba(201,168,76,0.4);">
             <div class="card-ep" style="color:rgba(201,168,76,0.5);">FINAL · 生放送</div>
             <div class="card-ttl" style="color:var(--gold2); font-size:15px;">🏆 ファイナル：デビューメンバー発表</div>
             <div class="card-txt" style="color:rgba(235,235,245,0.75);"><strong style="color:var(--white)">日本テレビ系列で生放送。</strong>最終投票の結果をもとに<strong style="color:var(--gold2)">上位11名</strong>がデビューグループのメンバーに選ばれます。</div>
-            <div class="tags" style="margin-top:8px;">
-              <span class="tag tf">✨ 生放送ファイナル</span>
-              <span class="tag td">デビューメンバー11名決定</span>
-            </div>
+            <div class="tags" style="margin-top:8px;"><span class="tag tf">✨ 生放送ファイナル</span><span class="tag td">デビューメンバー11名決定</span></div>
           </div>
           <div class="info-box" id="card-double" style="background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.3); border-left-color:#fbbf24; margin-top:8px;">
             <div class="info-box-title" style="color:#fbbf24;">⚡ 生放送中：2倍投票タイム</div>
@@ -677,35 +635,14 @@ body {
     <div class="vsum">
       <div class="vsum-ttl">🗳️ 投票人数まとめ</div>
       <div class="vs-grid">
-        <div class="vs-c">
-          <div class="vs-ph">①グループバトル</div>
-          <div class="vs-n">11</div>
-          <div class="vs-u">人 pick / 日</div>
-          <div class="vs-r">3/26〜4/17 10:00</div>
-        </div>
-        <div class="vs-c">
-          <div class="vs-ph">②ポジションバトル</div>
-          <div class="vs-n">11</div>
-          <div class="vs-u">人 pick / 日</div>
-          <div class="vs-r">4/23〜5/8 10:00</div>
-        </div>
-        <div class="vs-c">
-          <div class="vs-ph">③コンセプト評価</div>
-          <div class="vs-n">2</div>
-          <div class="vs-u">人 pick / 日</div>
-          <div class="vs-r">5/14〜5/22 10:00</div>
-        </div>
-        <div class="vs-c">
-          <div class="vs-ph">④デビュー評価〜最終</div>
-          <div class="vs-n">1</div>
-          <div class="vs-u">人 pick / 日</div>
-          <div class="vs-r">5/28〜6/6 10:00</div>
-        </div>
+        <div class="vs-c"><div class="vs-ph">①グループバトル</div><div class="vs-n">11</div><div class="vs-u">人 pick / 日</div><div class="vs-r">3/26〜4/17 10:00</div></div>
+        <div class="vs-c"><div class="vs-ph">②ポジションバトル</div><div class="vs-n">11</div><div class="vs-u">人 pick / 日</div><div class="vs-r">4/23〜5/8 10:00</div></div>
+        <div class="vs-c"><div class="vs-ph">③コンセプト評価</div><div class="vs-n">2</div><div class="vs-u">人 pick / 日</div><div class="vs-r">5/14〜5/22 10:00</div></div>
+        <div class="vs-c"><div class="vs-ph">④デビュー評価〜最終</div><div class="vs-n">1</div><div class="vs-u">人 pick / 日</div><div class="vs-r">5/28〜6/6 10:00</div></div>
       </div>
     </div>
 
   </div><!-- /tl-wrap -->
-
 </div><!-- /outer -->
 
 <footer class="footer">
@@ -715,43 +652,16 @@ body {
 </footer>
 
 <script>
-// ポイント：
-// ④1pickバー → card-528の底辺 〜 card-606の上端（番組開始前まで）
-// ⚡2倍バー  → card-606の上端 〜 card-doubleの底辺（同じright位置で縦一直線）
-
 const voteBars = [
-  {
-    startCardId: 'card-326',
-    endMode:     'bottom', endId: 'card-417',
-    cls: 'c11', label: '① 11pick'
-  },
-  {
-    startCardId: 'card-423',
-    endMode:     'bottom', endId: 'card-508',
-    cls: 'c11', label: '② 11pick'
-  },
-  {
-    startCardId: 'card-514',
-    endMode:     'bottom', endId: 'card-522',
-    cls: 'c2', label: '③ 2pick'
-  },
-  {
-    // 1pick: card-528の底辺 〜 card-606の上端
-    startCardId: 'card-528',
-    endMode:     'top', endId: 'card-606',
-    cls: 'c1', label: '④ 1pick'
-  },
-  {
-    // 2倍: card-606の上端 〜 card-doubleの底辺（同じright:0で縦一直線）
-    startMode:   'top', startId: 'card-606',
-    endMode:     'bottom', endId: 'card-double',
-    cls: 'cdbl', label: '⚡ 2倍'
-  }
+  { startCardId:'card-326', endMode:'bottom', endId:'card-417', cls:'c11', label:'① 11pick', labelType:'side' },
+  { startCardId:'card-423', endMode:'bottom', endId:'card-508', cls:'c11', label:'② 11pick', labelType:'side' },
+  { startCardId:'card-514', endMode:'bottom', endId:'card-522', cls:'c2',  label:'③ 2pick',  labelType:'side' },
+  { startCardId:'card-528', endMode:'top',    endId:'card-606', cls:'c1',  label:'④ 1pick',  labelType:'side' },
+  { startMode:'top', startId:'card-606', endMode:'bottom', endId:'card-double', cls:'cdbl', label:'⚡', labelType:'top' }
 ];
 
 function getOffsetTopInWrap(el, wrap) {
-  let top = 0;
-  let cur = el;
+  let top = 0, cur = el;
   while (cur && cur !== wrap) {
     top += cur.offsetTop;
     cur = cur.offsetParent;
@@ -766,7 +676,6 @@ function drawBars() {
   const wrap = document.getElementById('tlWrap');
 
   voteBars.forEach(vb => {
-    // スタート位置
     let startTop;
     if (vb.startMode === 'top') {
       const el = document.getElementById(vb.startId);
@@ -778,15 +687,11 @@ function drawBars() {
       startTop = getOffsetTopInWrap(el, wrap) + el.offsetHeight;
     }
 
-    // 終了位置
-    let endBottom;
     const endEl = document.getElementById(vb.endId);
     if (!endEl) return;
-    if (vb.endMode === 'top') {
-      endBottom = getOffsetTopInWrap(endEl, wrap);
-    } else {
-      endBottom = getOffsetTopInWrap(endEl, wrap) + endEl.offsetHeight;
-    }
+    const endBottom = vb.endMode === 'top'
+      ? getOffsetTopInWrap(endEl, wrap)
+      : getOffsetTopInWrap(endEl, wrap) + endEl.offsetHeight;
 
     const height = Math.max(endBottom - startTop, 14);
 
@@ -808,7 +713,13 @@ function drawBars() {
     bar.appendChild(capBot);
 
     const lbl = document.createElement('div');
-    lbl.className = 'vb-label';
+    if (vb.labelType === 'top') {
+      // 2倍ラベル：バーの上部中央に表示
+      lbl.className = 'vb-label-top';
+    } else {
+      // 通常ラベル：バーの左横に縦書き
+      lbl.className = 'vb-label';
+    }
     lbl.textContent = vb.label;
     bar.appendChild(lbl);
 
