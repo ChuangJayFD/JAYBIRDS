@@ -126,7 +126,7 @@
     .card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
     .card:hover::before { border-color: rgba(201,168,76,0.25); }
 
-    /* Coming Soon カード（クリック不可・半透明） */
+    /* Coming Soon カード */
     .card-soon {
       display: block;
       background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
@@ -135,8 +135,7 @@
     }
     .card-soon::before {
       content: ''; position: absolute; inset: 3px;
-      border: 1px solid rgba(201,168,76,0.06);
-      pointer-events: none;
+      border: 1px solid rgba(201,168,76,0.06); pointer-events: none;
     }
 
     .card-inner { display: flex; align-items: center; gap: 20px; }
@@ -211,15 +210,19 @@
       padding: 2px 10px; display: inline-block; opacity: 0.6;
     }
 
+    /* 投票方法ボタン（有効） */
     .vote-guide-btn {
       display: flex; align-items: center; gap: 16px;
       text-decoration: none;
       background: var(--navy-mid);
-      border: 1px solid rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.3);
       border-left: 3px solid var(--gold);
       padding: 16px 20px;
-      opacity: 0.5; cursor: default;
-      pointer-events: none;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .vote-guide-btn:hover {
+      border-color: rgba(201,168,76,0.6);
+      transform: translateX(3px);
     }
     .vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
     .vote-guide-btn-en {
@@ -231,13 +234,12 @@
       font-size: clamp(0.68rem, 2vw, 0.78rem);
       color: var(--gold-pale); opacity: 0.8; letter-spacing: 0.08em;
     }
-    .vote-guide-badge {
-      margin-left: auto;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.6rem; letter-spacing: 0.2em;
-      color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
-      padding: 2px 8px; flex-shrink: 0; opacity: 0.6;
+    .vote-guide-arrow {
+      margin-left: auto; color: var(--gold); opacity: 0.4;
+      font-size: 1rem; flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.2s;
     }
+    .vote-guide-btn:hover .vote-guide-arrow { opacity: 1; transform: translateX(4px); }
 
     /* SNS */
     .sns-section { margin-top: 8px; text-align: center; }
@@ -311,17 +313,17 @@
 
   <main>
 
-    <!-- 日プ新世界とは？（Coming Soon） -->
-    <div class="card-soon">
+    <!-- 日プ新世界とは？（有効） -->
+    <a href="schedule.html" class="card">
       <div class="card-inner">
         <div class="card-icon">📺</div>
         <div class="card-text">
           <span class="card-en">About 日プ新世界</span>
           <span class="card-ja">番組スケジュール・ロードマップ</span>
         </div>
-        <span class="soon-badge">Coming Soon</span>
+        <span class="card-arrow">→</span>
       </div>
-    </div>
+    </a>
 
     <a href="about.html" class="card">
       <div class="card-inner">
@@ -401,14 +403,16 @@
           <span class="vote-badge">Coming Soon</span>
         </div>
       </div>
-      <div class="vote-guide-btn">
+
+      <!-- 投票方法ボタン（有効） -->
+      <a href="vote.html" class="vote-guide-btn">
         <div class="vote-guide-btn-icon">📋</div>
         <div class="vote-guide-btn-text">
           <span class="vote-guide-btn-en">How to Vote</span>
           <span class="vote-guide-btn-ja">投票方法について</span>
         </div>
-        <span class="vote-guide-badge">Coming Soon</span>
-      </div>
+        <span class="vote-guide-arrow">→</span>
+      </a>
     </div>
 
     <!-- SNS -->
