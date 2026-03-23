@@ -111,82 +111,33 @@ body {
 }
 .disc strong { color: var(--gold2); }
 
-/* ===== タイムラインラッパー ===== */
-.tl-wrap {
-  position: relative;
-  margin-top: 24px;
-  padding-right: 36px;
-}
+.tl-wrap { position: relative; margin-top: 24px; padding-right: 36px; }
 
-/* ===== 投票バー（JS描画） ===== */
 .vote-bar {
-  position: absolute;
-  right: 0;
-  width: 14px;
-  pointer-events: none;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: visible;
+  position: absolute; right: 0; width: 14px;
+  pointer-events: none; z-index: 10;
+  display: flex; flex-direction: column; align-items: center; overflow: visible;
 }
-
-.vb-cap-top {
-  width: 14px; height: 7px;
-  border-radius: 7px 7px 0 0;
-  flex-shrink: 0;
-}
+.vb-cap-top { width: 14px; height: 7px; border-radius: 7px 7px 0 0; flex-shrink: 0; }
 .vb-mid { width: 14px; flex: 1; }
-.vb-cap-bottom {
-  width: 14px; height: 7px;
-  border-radius: 0 0 7px 7px;
-  flex-shrink: 0;
-}
+.vb-cap-bottom { width: 14px; height: 7px; border-radius: 0 0 7px 7px; flex-shrink: 0; }
 
-.c11 .vb-cap-top, .c11 .vb-mid, .c11 .vb-cap-bottom {
-  background: linear-gradient(180deg, #be123c 0%, #fb7185 100%);
-}
-.c2 .vb-cap-top, .c2 .vb-mid, .c2 .vb-cap-bottom {
-  background: linear-gradient(180deg, #9f1239 0%, #e11d48 100%);
-}
-.c1 .vb-cap-top, .c1 .vb-mid, .c1 .vb-cap-bottom {
-  background: linear-gradient(180deg, #7f1d1d 0%, #dc2626 100%);
-}
-.cdbl .vb-cap-top, .cdbl .vb-mid, .cdbl .vb-cap-bottom {
-  background: linear-gradient(180deg, #d97706 0%, #fbbf24 100%);
-}
+.c11 .vb-cap-top, .c11 .vb-mid, .c11 .vb-cap-bottom { background: linear-gradient(180deg, #be123c 0%, #fb7185 100%); }
+.c2  .vb-cap-top, .c2  .vb-mid, .c2  .vb-cap-bottom { background: linear-gradient(180deg, #9f1239 0%, #e11d48 100%); }
+.c1  .vb-cap-top, .c1  .vb-mid, .c1  .vb-cap-bottom { background: linear-gradient(180deg, #7f1d1d 0%, #dc2626 100%); }
+.cdbl .vb-cap-top, .cdbl .vb-mid, .cdbl .vb-cap-bottom { background: linear-gradient(180deg, #d97706 0%, #fbbf24 100%); }
 
-/* 通常ラベル：バーの左横に縦書き */
 .vb-label {
-  position: absolute;
-  left: -34px;
-  top: 50%;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  font-size: 7.5px;
-  font-weight: 700;
-  color: var(--muted);
-  white-space: nowrap;
-  letter-spacing: 1px;
-  pointer-events: none;
+  position: absolute; left: -34px; top: 50%; transform: translateY(-50%);
+  writing-mode: vertical-rl; font-size: 7.5px; font-weight: 700;
+  color: var(--muted); white-space: nowrap; letter-spacing: 1px; pointer-events: none;
 }
-
-/* 2倍ラベル：バーの上部中央に重ねて表示 */
 .vb-label-top {
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  font-weight: 900;
-  color: #7c2d12;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 11;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; font-weight: 900; color: #7c2d12;
+  white-space: nowrap; pointer-events: none; z-index: 11;
 }
 
-/* ===== PHASE ===== */
 .phase { margin-bottom: 28px; }
 .ph-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .ph-num {
@@ -202,10 +153,7 @@ body {
   width: 1px; background: rgba(201,168,76,0.15); z-index: 0;
 }
 .ep:last-child::before { display: none; }
-.ep-dc {
-  display: flex; flex-direction: column; align-items: center;
-  padding-top: 14px; position: relative; z-index: 1;
-}
+.ep-dc { display: flex; flex-direction: column; align-items: center; padding-top: 14px; position: relative; z-index: 1; }
 .ep-dot {
   width: 11px; height: 11px; border-radius: 50%;
   background: var(--bg); border: 2px solid rgba(201,168,76,0.3);
@@ -213,18 +161,12 @@ body {
 }
 .ep-dot.a { border-color: var(--gold); background: var(--gold); width: 13px; height: 13px; }
 .ep-dot.v { border-color: var(--c-vote); background: var(--c-vote); width: 13px; height: 13px; }
-.ep-dot.f {
-  width: 18px; height: 18px; background: var(--gold); border-color: var(--gold);
-  box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
-}
+.ep-dot.f { width: 18px; height: 18px; background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
 .ep-date { font-size: 9px; color: var(--muted); text-align: center; line-height: 1.3; white-space: nowrap; }
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(--label); }
 .ep-body { padding: 10px 0 16px 12px; }
 
-.card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px; padding: 12px 14px;
-}
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
 .card + .card { margin-top: 8px; }
 .card-ep { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
 .card-ttl { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
@@ -258,10 +200,7 @@ body {
 .info-box-title { font-size: 11px; font-weight: 700; color: var(--gold2); margin-bottom: 4px; }
 
 .ref-video { margin-top: 10px; }
-.ref-video-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 6px;
-}
+.ref-video-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .ref-vc { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 .ref-thumb { position: relative; padding-top: 56.25%; background: #111; }
 .ref-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
@@ -272,32 +211,18 @@ body {
 .ref-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
 @media (max-width: 480px) { .ref-video-grid { grid-template-columns: 1fr; } }
 
-.vsum {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px 18px; margin-top: 16px;
-}
+.vsum { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-top: 16px; }
 .vsum-ttl { font-size: 11px; font-weight: 700; color: var(--gold2); margin-bottom: 12px; letter-spacing: 1px; }
 .vs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; text-align: center; }
 @media (max-width: 480px) { .vs-grid { grid-template-columns: 1fr 1fr; } }
 .vs-c { background: var(--card2); border-radius: 8px; padding: 10px 6px; border: 1px solid var(--border); }
 .vs-ph { font-size: 9px; color: var(--muted); margin-bottom: 3px; line-height: 1.4; }
-.vs-n {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 32px; font-weight: 900;
-  color: var(--c-vote); line-height: 1; letter-spacing: -1px;
-}
+.vs-n { font-family: 'Noto Sans JP', sans-serif; font-size: 32px; font-weight: 900; color: var(--c-vote); line-height: 1; letter-spacing: -1px; }
 .vs-u { font-size: 9px; color: var(--muted); }
 .vs-r { font-size: 9px; color: var(--muted); margin-top: 2px; }
 
-.footer {
-  text-align: center; padding: 24px 20px; margin-top: 40px;
-  border-top: 1px solid var(--border);
-  font-size: 10.5px; color: rgba(235,235,245,0.25); letter-spacing: 0.1em; line-height: 1.8;
-}
-.footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px; color: var(--gold); letter-spacing: 0.25em; margin-bottom: 5px;
-}
+.footer { text-align: center; padding: 24px 20px; margin-top: 40px; border-top: 1px solid var(--border); font-size: 10.5px; color: rgba(235,235,245,0.25); letter-spacing: 0.1em; line-height: 1.8; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--gold); letter-spacing: 0.25em; margin-bottom: 5px; }
 </style>
 </head>
 <body>
@@ -308,9 +233,7 @@ body {
 
 <div class="header">
   <div class="header-bg">
-    <div class="header-star-row">
-      <span>✦</span><span class="lg">✦</span><span>✦</span>
-    </div>
+    <div class="header-star-row"><span>✦</span><span class="lg">✦</span><span>✦</span></div>
     <div class="header-tag">JAYBIRDS — SCHEDULE GUIDE</div>
     <h1>番組スケジュール<br><em>ロードマップ</em></h1>
     <p class="sub">各評価の流れ・投票タイミングをひと目でわかるようにまとめました。<br>※日プ女子（2023年）をベースにした新世界の推定スケジュールです。</p>
@@ -324,7 +247,6 @@ body {
 </div>
 
 <div class="outer">
-
   <div class="legend">
     <span class="leg-lbl">凡例</span>
     <span class="leg"><span class="dot" style="background:var(--c-group)"></span>グループバトル</span>
@@ -344,11 +266,7 @@ body {
 
     <!-- PHASE 1 -->
     <div class="phase">
-      <div class="ph-hd">
-        <div class="ph-num">01</div>
-        <div class="ph-name">レベル分け＆グループバトルフェーズ</div>
-        <div class="ph-line"></div>
-      </div>
+      <div class="ph-hd"><div class="ph-num">01</div><div class="ph-name">レベル分け＆グループバトルフェーズ</div><div class="ph-line"></div></div>
 
       <div class="ep" id="ep-326">
         <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>3/26</strong>木</div></div>
@@ -445,11 +363,7 @@ body {
 
     <!-- PHASE 2 -->
     <div class="phase">
-      <div class="ph-hd">
-        <div class="ph-num">02</div>
-        <div class="ph-name">ポジションバトルフェーズ</div>
-        <div class="ph-line"></div>
-      </div>
+      <div class="ph-hd"><div class="ph-num">02</div><div class="ph-name">ポジションバトルフェーズ</div><div class="ph-line"></div></div>
 
       <div class="ep" id="ep-430">
         <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/30</strong>木</div></div>
@@ -521,11 +435,7 @@ body {
 
     <!-- PHASE 3 -->
     <div class="phase">
-      <div class="ph-hd">
-        <div class="ph-num">03</div>
-        <div class="ph-name">コンセプト評価フェーズ</div>
-        <div class="ph-line"></div>
-      </div>
+      <div class="ph-hd"><div class="ph-num">03</div><div class="ph-name">コンセプト評価フェーズ</div><div class="ph-line"></div></div>
 
       <div class="ep" id="ep-521">
         <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>5/21</strong>木</div></div>
@@ -577,21 +487,22 @@ body {
 
     <!-- PHASE 4 -->
     <div class="phase">
-      <div class="ph-hd">
-        <div class="ph-num">04</div>
-        <div class="ph-name">デビュー評価＆ファイナルフェーズ</div>
-        <div class="ph-line"></div>
-      </div>
+      <div class="ph-hd"><div class="ph-num">04</div><div class="ph-name">デビュー評価＆ファイナルフェーズ</div><div class="ph-line"></div></div>
 
-      <div class="ep" id="ep-604">
-        <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>6/4</strong>木</div></div>
+      <!-- 6/6 に合算 -->
+      <div class="ep" id="ep-606">
+        <div class="ep-dc"><div class="ep-dot f"></div><div class="ep-date"><strong>6/6</strong>土</div></div>
         <div class="ep-body">
-          <div class="card">
-            <div class="card-ep">第11話</div>
+
+          <!-- デビュー評価カード -->
+          <div class="card" id="card-606-debut">
+            <div class="card-ep">第11話 · 生放送</div>
             <div class="card-ttl">💫 デビュー評価</div>
             <div class="card-txt">20名が2曲のうち1曲を選びデビューをかけた最後のステージへ。<strong>勝敗はなく、残った練習生全員が同じ舞台に立つ</strong>のがデビュー評価の特徴。10名1グループで生パフォーマンス。</div>
             <div class="tags"><span class="tag td">デビュー評価</span><span class="tag tv">投票④期間中（1人 pick）</span></div>
           </div>
+
+          <!-- 参考動画 -->
           <div class="ref-video-label" style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:10px;margin-bottom:6px;">📺 参考動画 — デビュー評価とは？</div>
           <div class="ref-video-grid">
             <div class="ref-vc">
@@ -611,22 +522,21 @@ body {
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="ep" id="ep-606">
-        <div class="ep-dc"><div class="ep-dot f"></div><div class="ep-date"><strong>6/6</strong>土</div></div>
-        <div class="ep-body">
-          <div class="card" id="card-606" style="background:#0a1a3a; border-color:rgba(201,168,76,0.4);">
+          <!-- ファイナルカード -->
+          <div class="card" id="card-606" style="background:#0a1a3a; border-color:rgba(201,168,76,0.4); margin-top:8px;">
             <div class="card-ep" style="color:rgba(201,168,76,0.5);">FINAL · 生放送</div>
             <div class="card-ttl" style="color:var(--gold2); font-size:15px;">🏆 ファイナル：デビューメンバー発表</div>
             <div class="card-txt" style="color:rgba(235,235,245,0.75);"><strong style="color:var(--white)">日本テレビ系列で生放送。</strong>最終投票の結果をもとに<strong style="color:var(--gold2)">上位11名</strong>がデビューグループのメンバーに選ばれます。</div>
             <div class="tags" style="margin-top:8px;"><span class="tag tf">✨ 生放送ファイナル</span><span class="tag td">デビューメンバー11名決定</span></div>
           </div>
+
+          <!-- 2倍投票ボックス -->
           <div class="info-box" id="card-double" style="background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.3); border-left-color:#fbbf24; margin-top:8px;">
             <div class="info-box-title" style="color:#fbbf24;">⚡ 生放送中：2倍投票タイム</div>
             ファイナル生放送中の一定時間（放送スタートから1〜2時間程度・時間未定）、<strong style="color:#fde68a;">投票数が2倍</strong>になる特別投票タイムがあります。この時間に集中して投票しよう！
           </div>
+
         </div>
       </div>
     </div>
@@ -653,10 +563,10 @@ body {
 
 <script>
 const voteBars = [
-  { startCardId:'card-326', endMode:'bottom', endId:'card-417', cls:'c11', label:'① 11pick', labelType:'side' },
-  { startCardId:'card-423', endMode:'bottom', endId:'card-508', cls:'c11', label:'② 11pick', labelType:'side' },
-  { startCardId:'card-514', endMode:'bottom', endId:'card-522', cls:'c2',  label:'③ 2pick',  labelType:'side' },
-  { startCardId:'card-528', endMode:'top',    endId:'card-606', cls:'c1',  label:'④ 1pick',  labelType:'side' },
+  { startCardId:'card-326',       endMode:'bottom', endId:'card-417',    cls:'c11',  label:'① 11pick', labelType:'side' },
+  { startCardId:'card-423',       endMode:'bottom', endId:'card-508',    cls:'c11',  label:'② 11pick', labelType:'side' },
+  { startCardId:'card-514',       endMode:'bottom', endId:'card-522',    cls:'c2',   label:'③ 2pick',  labelType:'side' },
+  { startCardId:'card-528',       endMode:'top',    endId:'card-606',    cls:'c1',   label:'④ 1pick',  labelType:'side' },
   { startMode:'top', startId:'card-606', endMode:'bottom', endId:'card-double', cls:'cdbl', label:'⚡', labelType:'top' }
 ];
 
@@ -713,13 +623,7 @@ function drawBars() {
     bar.appendChild(capBot);
 
     const lbl = document.createElement('div');
-    if (vb.labelType === 'top') {
-      // 2倍ラベル：バーの上部中央に表示
-      lbl.className = 'vb-label-top';
-    } else {
-      // 通常ラベル：バーの左横に縦書き
-      lbl.className = 'vb-label';
-    }
+    lbl.className = vb.labelType === 'top' ? 'vb-label-top' : 'vb-label';
     lbl.textContent = vb.label;
     bar.appendChild(lbl);
 
