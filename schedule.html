@@ -52,7 +52,6 @@ body {
 }
 .back-link:hover { opacity: 1; }
 
-/* ===== HEADER ===== */
 .header { text-align: center; margin: 24px auto 0; border-radius: 4px; overflow: hidden; max-width: 720px; }
 .header-bg {
   background: linear-gradient(160deg, #000000 0%, #0a1a3a 45%, #1a4fa0 80%, #3a7fd4 100%);
@@ -109,57 +108,86 @@ body {
 }
 .disc strong { color: var(--gold2); }
 
-/* ===== タイムラインラッパー（右端にバーエリア確保） ===== */
+/* ===== タイムラインラッパー ===== */
 .tl-wrap {
   position: relative;
   margin-top: 24px;
-  padding-right: 60px; /* 右端バーエリア */
+  padding-right: 44px;
 }
 
-/* ===== 投票バー（JS で top/height を設定） ===== */
+/* ===== 投票バー（JS描画） ===== */
 .vote-bar {
   position: absolute;
   right: 0;
-  width: 52px;
-  border-radius: 12px;
+  width: 14px;
+  pointer-events: none;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 0 6px;
-  pointer-events: none;
-  z-index: 10;
-  overflow: hidden;
+  overflow: visible;
 }
-.vote-bar.b11 { background: linear-gradient(180deg, #be123c 0%, #fb7185 100%); }
-.vote-bar.b2  { background: linear-gradient(180deg, #9f1239 0%, #e11d48 100%); }
-.vote-bar.b1  { background: linear-gradient(180deg, #7f1d1d 0%, #dc2626 100%); }
 
-.vb-pick {
-  writing-mode: vertical-rl;
-  font-size: 9px; font-weight: 900;
-  color: rgba(255,255,255,0.95);
-  letter-spacing: 2px; white-space: nowrap;
+/* バー本体：上下半円 */
+.vb-body {
+  width: 14px;
+  flex: 1;
+  min-height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.vb-period {
-  writing-mode: vertical-rl;
-  font-size: 7px;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 0.5px; white-space: nowrap;
-  margin-top: 4px;
+/* 上半円キャップ */
+.vb-cap-top {
+  width: 14px;
+  height: 7px;
+  border-radius: 7px 7px 0 0;
+  flex-shrink: 0;
 }
-.vb-double {
-  width: 100%;
-  background: linear-gradient(180deg, #fbbf24, #f59e0b);
-  display: flex; flex-direction: column;
-  align-items: center; padding: 6px 0 4px;
-  gap: 2px;
+/* 中間直線部分 */
+.vb-mid {
+  width: 14px;
+  flex: 1;
 }
-.vb-double-icon { font-size: 10px; }
-.vb-double-text {
+/* 下半円キャップ */
+.vb-cap-bottom {
+  width: 14px;
+  height: 7px;
+  border-radius: 0 0 7px 7px;
+  flex-shrink: 0;
+}
+
+/* 色クラス */
+.c11 .vb-cap-top,
+.c11 .vb-mid,
+.c11 .vb-cap-bottom { background: linear-gradient(180deg, #be123c 0%, #fb7185 100%); }
+
+.c2 .vb-cap-top,
+.c2 .vb-mid,
+.c2 .vb-cap-bottom { background: linear-gradient(180deg, #9f1239 0%, #e11d48 100%); }
+
+.c1 .vb-cap-top,
+.c1 .vb-mid,
+.c1 .vb-cap-bottom { background: linear-gradient(180deg, #7f1d1d 0%, #dc2626 100%); }
+
+.cdbl .vb-cap-top,
+.cdbl .vb-mid,
+.cdbl .vb-cap-bottom { background: linear-gradient(180deg, #d97706 0%, #fbbf24 100%); }
+
+/* ラベル（バーの横に縦書き） */
+.vb-label {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   writing-mode: vertical-rl;
-  font-size: 7px; font-weight: 900;
-  color: #7c2d12; white-space: nowrap;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 1px;
+  pointer-events: none;
 }
 
 /* ===== PHASE ===== */
@@ -172,12 +200,7 @@ body {
 .ph-name { font-size: 12px; font-weight: 700; color: var(--gold2); letter-spacing: 1px; }
 .ph-line { flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
 
-/* ===== EP ROW ===== */
-.ep {
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  position: relative;
-}
+.ep { display: grid; grid-template-columns: 54px 1fr; position: relative; }
 .ep::before {
   content: ''; position: absolute; left: 26px; top: 0; bottom: 0;
   width: 1px; background: rgba(201,168,76,0.15); z-index: 0;
@@ -202,7 +225,6 @@ body {
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(--label); }
 .ep-body { padding: 10px 0 16px 12px; }
 
-/* ===== CARDS ===== */
 .card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 10px; padding: 12px 14px;
@@ -254,7 +276,6 @@ body {
 .ref-song { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
 .ref-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
 .ref-note { font-size: 10px; color: var(--muted); margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); line-height: 1.5; }
-
 .ref-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
 @media (max-width: 480px) { .ref-video-grid { grid-template-columns: 1fr; } }
 
@@ -325,7 +346,6 @@ body {
     📌 <strong>日プ女子（2023年）の構成をもとに新世界のスケジュールを予測したものです。</strong>実際の話数・評価順・脱落人数は放送内容により変わります。
   </div>
 
-  <!-- タイムライン（右端に投票バーが絶対配置される） -->
   <div class="tl-wrap" id="tlWrap">
 
     <!-- PHASE 1 -->
@@ -342,7 +362,7 @@ body {
           <div class="ep-date"><strong>3/26</strong>木</div>
         </div>
         <div class="ep-body">
-          <div class="card">
+          <div class="card" id="card-326">
             <div class="card-ep">第1話 · 配信スタート</div>
             <div class="card-ttl">🎬 番組スタート ＆ レベル分けテスト（前半）</div>
             <div class="card-txt">101名が初顔合わせ。ユニットごとに指定曲でパフォーマンスし、トレーナーが<strong>A〜Fクラス</strong>に振り分け。クラス別レッスン後にシグナルソングで再評価も行われます。</div>
@@ -438,7 +458,7 @@ body {
           <div class="ep-date"><strong>4/23</strong>木</div>
         </div>
         <div class="ep-body">
-          <div class="card">
+          <div class="card" id="card-423">
             <div class="card-ep">第5話</div>
             <div class="card-ttl">📊 第1回 順位発表式</div>
             <div class="card-txt">グループバトルのベネフィット＋投票数で順位確定。101名から<strong>上位50名</strong>がポジションバトルへ進出。ポジションバトルの課題曲・チームも発表されます。</div>
@@ -524,7 +544,7 @@ body {
           <div class="ep-date"><strong>5/14</strong>木</div>
         </div>
         <div class="ep-body">
-          <div class="card">
+          <div class="card" id="card-514">
             <div class="card-ep">第8話</div>
             <div class="card-ttl">📊 第2回 順位発表式 ＆ コンセプト評価課題曲発表</div>
             <div class="card-txt">ポジションバトルのベネフィット＋投票数で順位確定。50名から<strong>上位35名</strong>がコンセプト評価へ進出。コンセプト評価のオリジナル楽曲5曲が発表され、コンセプトチョイス投票が開始されます。</div>
@@ -595,7 +615,7 @@ body {
           <div class="ep-date"><strong>5/28</strong>木</div>
         </div>
         <div class="ep-body">
-          <div class="card">
+          <div class="card" id="card-528">
             <div class="card-ep">第10話</div>
             <div class="card-ttl">📊 第3回 順位発表式</div>
             <div class="card-txt">コンセプト評価ベネフィット＋投票数で順位確定。35名から<strong>上位20名</strong>がデビュー評価へ進出。デビュー評価の課題曲2曲も発表されます。</div>
@@ -658,7 +678,7 @@ body {
           <div class="ep-date"><strong>6/6</strong>土</div>
         </div>
         <div class="ep-body">
-          <div class="card" style="background:#0a1a3a; border-color:rgba(201,168,76,0.4);">
+          <div class="card" id="card-606" style="background:#0a1a3a; border-color:rgba(201,168,76,0.4);">
             <div class="card-ep" style="color:rgba(201,168,76,0.5);">FINAL · 生放送</div>
             <div class="card-ttl" style="color:var(--gold2); font-size:15px;">🏆 ファイナル：デビューメンバー発表</div>
             <div class="card-txt" style="color:rgba(235,235,245,0.75);"><strong style="color:var(--white)">日本テレビ系列で生放送。</strong>最終投票の結果をもとに<strong style="color:var(--gold2)">上位11名</strong>がデビューグループのメンバーに選ばれます。</div>
@@ -667,7 +687,7 @@ body {
               <span class="tag td">デビューメンバー11名決定</span>
             </div>
           </div>
-          <div class="info-box" style="background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.3); border-left-color:#fbbf24; margin-top:8px;">
+          <div class="info-box" id="card-606-double" style="background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.3); border-left-color:#fbbf24; margin-top:8px;">
             <div class="info-box-title" style="color:#fbbf24;">⚡ 生放送中：2倍投票タイム</div>
             ファイナル生放送中の一定時間（放送スタートから1〜2時間程度・時間未定）、<strong style="color:#fde68a;">投票数が2倍</strong>になる特別投票タイムがあります。この時間に集中して投票しよう！
           </div>
@@ -717,110 +737,120 @@ body {
 </footer>
 
 <script>
-// 各投票期間の設定
-// startId: 開始行のep id / endId: 終了行のep id
-const votePeriods = [
+// 投票バーの設定
+// startCardId: バー開始位置（このカードの底辺）
+// endEpId:     バー終了位置（このepの底辺）
+// 2倍投票は別バーとして card-606-double の底辺まで
+const voteBars = [
   {
-    startId: 'ep-326',
-    endId:   'ep-417',
-    cls:     'b11',
-    pick:    '11 pick / 日',
-    period:  '3/26〜4/17 10時',
-    double:  false
+    startCardId: 'card-326',   // 3/26 メインカードの底辺からスタート
+    endEpId:     'ep-417',     // 4/17 epの底辺まで
+    cls:  'c11',
+    label: '① 11pick'
   },
   {
-    startId: 'ep-423',
-    endId:   'ep-508',
-    cls:     'b11',
-    pick:    '11 pick / 日',
-    period:  '4/23〜5/8 10時',
-    double:  false
+    startCardId: 'card-423',   // 4/23 メインカードの底辺からスタート
+    endEpId:     'ep-508',     // 5/8 epの底辺まで
+    cls:  'c11',
+    label: '② 11pick'
   },
   {
-    startId: 'ep-514',
-    endId:   'ep-522',
-    cls:     'b2',
-    pick:    '2 pick / 日',
-    period:  '5/14〜5/22 10時',
-    double:  false
+    startCardId: 'card-514',   // 5/14 メインカードの底辺からスタート
+    endEpId:     'ep-522',     // 5/22 epの底辺まで
+    cls:  'c2',
+    label: '③ 2pick'
   },
   {
-    startId: 'ep-528',
-    endId:   'ep-606',
-    cls:     'b1',
-    pick:    '1 pick / 日',
-    period:  '5/28〜6/6 10時',
-    double:  true
+    startCardId: 'card-528',   // 5/28 メインカードの底辺からスタート
+    endEpId:     'ep-606',     // 6/6 epの底辺まで
+    cls:  'c1',
+    label: '④ 1pick'
+  },
+  {
+    // 2倍投票：card-606（ファイナルカード）の底辺から card-606-double の底辺まで
+    startCardId: 'card-606',
+    endEpId:     'card-606-double',
+    cls:  'cdbl',
+    label: '⚡ 2倍'
   }
 ];
 
-function drawBars() {
-  // 既存バーを削除
-  document.querySelectorAll('.vote-bar').forEach(el => el.remove());
-
-  const wrap = document.getElementById('tlWrap');
-  const wrapRect = wrap.getBoundingClientRect();
-
-  votePeriods.forEach(vp => {
-    const startEl = document.getElementById(vp.startId);
-    const endEl   = document.getElementById(vp.endId);
-    if (!startEl || !endEl) return;
-
-    const startRect = startEl.getBoundingClientRect();
-    const endRect   = endEl.getBoundingClientRect();
-
-    // wrapからの相対top
-    const top    = startRect.top - wrapRect.top + window.scrollY - wrap.getBoundingClientRect().top + startEl.getBoundingClientRect().top - wrapRect.top;
-    const bottom = endRect.bottom - wrapRect.top;
-
-    // getBoundingClientRect は scroll を考慮しないので offsetTop を使う
-    const topAbs    = getOffsetTop(startEl, wrap);
-    const bottomAbs = getOffsetTop(endEl, wrap) + endEl.offsetHeight;
-    const height    = bottomAbs - topAbs;
-
-    const bar = document.createElement('div');
-    bar.className = 'vote-bar ' + vp.cls;
-    bar.style.top    = topAbs + 'px';
-    bar.style.height = height + 'px';
-
-    // ピルテキスト（上部）
-    const pick = document.createElement('div');
-    pick.className = 'vb-pick';
-    pick.textContent = vp.pick;
-    bar.appendChild(pick);
-
-    // 期間テキスト（下部）
-    const period = document.createElement('div');
-    period.className = 'vb-period';
-    period.textContent = vp.period;
-    bar.appendChild(period);
-
-    // 2倍投票マーカー
-    if (vp.double) {
-      const dbl = document.createElement('div');
-      dbl.className = 'vb-double';
-      dbl.innerHTML = '<div class="vb-double-icon">⚡</div><div class="vb-double-text">2倍投票</div>';
-      bar.appendChild(dbl);
-    }
-
-    wrap.appendChild(bar);
-  });
-}
-
-function getOffsetTop(el, parent) {
+function getOffsetTopInParent(el, parent) {
   let top = 0;
   let cur = el;
   while (cur && cur !== parent) {
     top += cur.offsetTop;
     cur = cur.offsetParent;
+    if (!cur || !parent.contains(cur)) break;
   }
   return top;
 }
 
-// 描画タイミング（画像・iframe 読み込み後にズレることがあるため少し遅延）
+function drawBars() {
+  document.querySelectorAll('.vote-bar').forEach(el => el.remove());
+
+  const wrap = document.getElementById('tlWrap');
+
+  voteBars.forEach((vb, i) => {
+    const startEl = document.getElementById(vb.startCardId);
+    const endEl   = document.getElementById(vb.endEpId);
+    if (!startEl || !endEl) return;
+
+    // startEl の底辺 = offsetTop + offsetHeight
+    const startTop = getOffsetTopInWrap(startEl, wrap) + startEl.offsetHeight;
+    // endEl の底辺
+    const endBottom = getOffsetTopInWrap(endEl, wrap) + endEl.offsetHeight;
+
+    const height = Math.max(endBottom - startTop, 14);
+
+    const bar = document.createElement('div');
+    bar.className = 'vote-bar ' + vb.cls;
+    bar.style.top    = startTop + 'px';
+    bar.style.height = height + 'px';
+
+    // 上キャップ
+    const capTop = document.createElement('div');
+    capTop.className = 'vb-cap-top';
+    bar.appendChild(capTop);
+
+    // 中間
+    const mid = document.createElement('div');
+    mid.className = 'vb-mid';
+    bar.appendChild(mid);
+
+    // 下キャップ
+    const capBot = document.createElement('div');
+    capBot.className = 'vb-cap-bottom';
+    bar.appendChild(capBot);
+
+    // ラベル（バーの左横）
+    const lbl = document.createElement('div');
+    lbl.className = 'vb-label';
+    lbl.textContent = vb.label;
+    bar.appendChild(lbl);
+
+    wrap.appendChild(bar);
+  });
+}
+
+function getOffsetTopInWrap(el, wrap) {
+  let top = 0;
+  let cur = el;
+  while (cur && cur !== wrap) {
+    top += cur.offsetTop;
+    cur = cur.offsetParent;
+    if (cur && !wrap.contains(cur) && cur !== wrap) {
+      // fallback: getBoundingClientRect
+      break;
+    }
+  }
+  return top;
+}
+
 window.addEventListener('load', () => {
   drawBars();
-  setTimeout(drawBars, 800);
+  setTimeout(drawBars, 500);
+  setTimeout(drawBars, 1500);
 });
 window.addEventListener('resize', drawBars);
 </script>
