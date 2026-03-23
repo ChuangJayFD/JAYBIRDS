@@ -14,7 +14,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --card: #1c1c1e;
   --card2: #2c2c2e;
   --border: #38383a;
-  --border2: rgba(201,168,76,0.2);
   --gold: #c9a84c;
   --gold2: #e8c96a;
   --gold3: #f5e0a0;
@@ -23,7 +22,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   --label2: rgba(235,235,245,0.6);
   --muted: rgba(235,235,245,0.45);
   --green: #30d158;
-  --pink: #ff375f;
   --tiktok: #69c9d0;
   --insta: #e1306c;
   --x: #1d9bf0;
@@ -47,6 +45,7 @@ body {
 }
 .back-link:hover { opacity: 1; }
 
+/* ===== HEADER ===== */
 .header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
 .header-bg {
   background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #c9a84c 100%);
@@ -75,6 +74,7 @@ body {
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(--gold), var(--gold2), var(--gold), #000); }
 
+/* ===== SECTION ===== */
 .section { margin-bottom: 36px; }
 .section-label {
   font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
@@ -91,6 +91,7 @@ body {
 }
 .howto strong { color: var(--gold2); }
 
+/* ===== YOUTUBE ===== */
 .yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 480px) { .yt-grid { grid-template-columns: 1fr; } }
 
@@ -137,6 +138,7 @@ body {
 .abadge-green { background: rgba(48,209,88,0.1); color: var(--green); border: 1px solid rgba(48,209,88,0.25); }
 .abadge-blue { background: rgba(100,180,255,0.1); color: #90c8ff; border: 1px solid rgba(100,180,255,0.25); }
 
+/* ===== PLATFORM CARD ===== */
 .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
 
@@ -154,17 +156,18 @@ body {
   font-size: 1.2rem; flex-shrink: 0;
 }
 .icon-tiktok { background: rgba(105,201,208,0.15); }
-.icon-insta { background: rgba(225,48,108,0.15); }
-.icon-x { background: rgba(29,155,240,0.15); }
+.icon-insta  { background: rgba(225,48,108,0.15); }
+.icon-x      { background: rgba(29,155,240,0.15); }
 
 .platform-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-.platform-name { font-size: 13px; font-weight: 700; color: var(--label); }
+.platform-name  { font-size: 13px; font-weight: 700; color: var(--label); }
 .platform-arrow {
   margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s;
 }
 .platform-card:hover .platform-arrow { opacity: 1; transform: translateX(3px); }
 
+/* ===== X投稿 ===== */
 .x-post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .x-post-grid { grid-template-columns: 1fr; } }
 
@@ -185,10 +188,10 @@ body {
   background: rgba(29,155,240,0.15);
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem; flex-shrink: 0; color: var(--x);
-  font-style: normal; font-weight: 900;
+  font-weight: 900;
 }
 .x-post-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(29,155,240,0.7); margin-bottom: 2px; }
-.x-post-name { font-size: 12px; font-weight: 700; color: var(--label); line-height: 1.4; }
+.x-post-name  { font-size: 12px; font-weight: 700; color: var(--label); line-height: 1.4; }
 .x-post-arrow {
   margin-left: auto; color: var(--x); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s;
@@ -288,11 +291,11 @@ body {
     </div>
   </div>
 
-  <!-- X投稿 -->
+  <!-- X投稿（時系列順：ID昇順） -->
   <div class="section">
     <p class="section-label">𝕏 Post</p>
     <div class="x-post-grid">
-      <a href="https://x.com/produce101jp_/status/2017436423842943099" target="_blank" rel="noopener" class="x-post-card">
+      <a href="https://x.com/produce101jp_/status/2015998334893441125" target="_blank" rel="noopener" class="x-post-card">
         <div class="x-post-icon">𝕏</div>
         <div>
           <p class="x-post-label">X / Twitter</p>
@@ -300,7 +303,7 @@ body {
         </div>
         <span class="x-post-arrow">→</span>
       </a>
-      <a href="https://x.com/produce101jp_/status/2017436565438619739" target="_blank" rel="noopener" class="x-post-card">
+      <a href="https://x.com/produce101jp_/status/2017436423842943099" target="_blank" rel="noopener" class="x-post-card">
         <div class="x-post-icon">𝕏</div>
         <div>
           <p class="x-post-label">X / Twitter</p>
@@ -308,7 +311,7 @@ body {
         </div>
         <span class="x-post-arrow">→</span>
       </a>
-      <a href="https://x.com/produce101jp_/status/2035556823617413604" target="_blank" rel="noopener" class="x-post-card">
+      <a href="https://x.com/produce101jp_/status/2017436565438619739" target="_blank" rel="noopener" class="x-post-card">
         <div class="x-post-icon">𝕏</div>
         <div>
           <p class="x-post-label">X / Twitter</p>
@@ -316,7 +319,7 @@ body {
         </div>
         <span class="x-post-arrow">→</span>
       </a>
-      <a href="https://x.com/produce101jp_/status/2015998334893441125" target="_blank" rel="noopener" class="x-post-card">
+      <a href="https://x.com/produce101jp_/status/2035556823617413604" target="_blank" rel="noopener" class="x-post-card">
         <div class="x-post-icon">𝕏</div>
         <div>
           <p class="x-post-label">X / Twitter</p>
@@ -377,6 +380,11 @@ body {
       <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="platform-card">
         <div class="platform-icon icon-insta">📸</div>
         <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #4</p></div>
+        <span class="platform-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/p/DWK9-jxCVA8/" target="_blank" rel="noopener" class="platform-card">
+        <div class="platform-icon icon-insta">📸</div>
+        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #5</p></div>
         <span class="platform-arrow">→</span>
       </a>
     </div>
