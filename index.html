@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -18,261 +19,294 @@
       --white: #ffffff;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+```
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background-color: var(--navy);
-      color: var(--cream);
-      font-family: 'Noto Serif JP', serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+body {
+  background-color: var(--navy);
+  color: var(--cream);
+  font-family: 'Noto Serif JP', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-    .hero {
-      position: relative; min-height: 420px;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
-    .hero-image {
-      position: absolute; left: 0; bottom: 0;
-      height: 100%; width: auto;
-      object-fit: contain; object-position: left bottom;
-      pointer-events: none; z-index: 0;
-    }
-    .hero-gold-line {
-      position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
-      background: linear-gradient(to right, var(--gold) 0%, rgba(201,168,76,0.3) 50%, transparent 100%);
-      z-index: 2;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      width: 100%; max-width: 680px; text-align: center;
-      padding: 60px 24px 48px;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .site-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.55rem, 1.8vw, 0.75rem); letter-spacing: 0.3em;
-      color: var(--gold-light); text-transform: uppercase; margin-bottom: 14px;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-    }
-    .site-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 10vw, 5.5rem); font-weight: 300;
-      letter-spacing: 0.18em; color: var(--gold); line-height: 1; margin-bottom: 10px;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(201,168,76,0.3);
-    }
-    .site-subtitle {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: clamp(0.78rem, 2vw, 1rem); letter-spacing: 0.2em;
-      color: var(--gold-pale); margin-bottom: 20px;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-    }
-    .star-row { display: flex; justify-content: center; gap: 12px; }
+.hero {
+  position: relative; min-height: 420px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.hero-image {
+  position: absolute; left: 0; bottom: 0;
+  height: 100%; width: auto;
+  object-fit: contain; object-position: left bottom;
+  pointer-events: none; z-index: 0;
+}
+.hero-gold-line {
+  position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
+  background: linear-gradient(to right, var(--gold) 0%, rgba(201,168,76,0.3) 50%, transparent 100%);
+  z-index: 2;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 680px; text-align: center;
+  padding: 60px 24px 48px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.site-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.55rem, 1.8vw, 0.75rem); letter-spacing: 0.3em;
+  color: var(--gold-light); text-transform: uppercase; margin-bottom: 14px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+.site-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 10vw, 5.5rem); font-weight: 300;
+  letter-spacing: 0.18em; color: var(--gold); line-height: 1; margin-bottom: 10px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(201,168,76,0.3);
+}
+.site-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(0.78rem, 2vw, 1rem); letter-spacing: 0.2em;
+  color: var(--gold-pale); margin-bottom: 20px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+.star-row { display: flex; justify-content: center; gap: 12px; }
 
-    .fan-banner {
-      max-width: 600px; margin: 0 auto;
-      border: 1px solid rgba(201,168,76,0.3);
-      background: rgba(201,168,76,0.05);
-      padding: 18px 28px; text-align: center; position: relative;
-    }
-    .fan-banner::before {
-      content: ''; position: absolute; inset: 3px;
-      border: 1px solid rgba(201,168,76,0.08); pointer-events: none;
-    }
-    .fan-banner-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.62rem; letter-spacing: 0.3em;
-      color: var(--gold-light); text-transform: uppercase; opacity: 0.7; margin-bottom: 10px;
-    }
-    .fan-banner-message {
-      font-family: 'Noto Serif JP', serif;
-      font-size: clamp(0.75rem, 2.2vw, 0.88rem);
-      line-height: 2; color: var(--gold-pale); opacity: 0.85;
-    }
-    .fan-banner-message em { font-style: normal; color: var(--gold-light); }
+.fan-banner {
+  max-width: 600px; margin: 0 auto;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(201,168,76,0.05);
+  padding: 10px 20px; text-align: center; position: relative;
+}
+.fan-banner::before {
+  content: ''; position: absolute; inset: 3px;
+  border: 1px solid rgba(201,168,76,0.08); pointer-events: none;
+}
+.fan-banner-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.58rem; letter-spacing: 0.3em;
+  color: var(--gold-light); text-transform: uppercase; opacity: 0.7; margin-bottom: 6px;
+}
+.fan-banner-message {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+  line-height: 1.8; color: var(--gold-pale); opacity: 0.85;
+}
+.fan-banner-message em { font-style: normal; color: var(--gold-light); }
 
-    nav {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 8px; padding: 32px 24px 40px;
-      max-width: 600px; margin: 0 auto;
-    }
-    nav a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.7rem, 2vw, 0.82rem); letter-spacing: 0.25em;
-      color: var(--gold-light); text-decoration: none; text-transform: uppercase;
-      padding: 2px 8px; border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-    nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
+nav {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px; padding: 14px 24px 14px;
+  max-width: 100%; margin: 0;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  background: rgba(26,31,46,0.97);
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.7rem, 2vw, 0.82rem); letter-spacing: 0.25em;
+  color: var(--gold-light); text-decoration: none; text-transform: uppercase;
+  padding: 2px 8px; border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
 
-    main {
-      max-width: 680px; margin: 0 auto;
-      padding: 0 20px 80px; display: grid; gap: 16px;
-    }
+main {
+  max-width: 680px; margin: 0 auto;
+  padding: 0 20px 80px; display: grid; gap: 16px;
+}
 
-    /* 通常カード */
-    .card {
-      display: block; text-decoration: none;
-      background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3);
-      padding: 28px 32px; position: relative;
-      transition: border-color 0.25s, background 0.25s; overflow: hidden;
-    }
-    .card::before {
-      content: ''; position: absolute; inset: 3px;
-      border: 1px solid rgba(201,168,76,0.1);
-      pointer-events: none; transition: border-color 0.25s;
-    }
-    .card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
-    .card:hover::before { border-color: rgba(201,168,76,0.25); }
+/* 通常カード */
+.card {
+  display: block; text-decoration: none;
+  background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3);
+  padding: 28px 32px; position: relative;
+  transition: border-color 0.25s, background 0.25s; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; inset: 3px;
+  border: 1px solid rgba(201,168,76,0.1);
+  pointer-events: none; transition: border-color 0.25s;
+}
+.card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
+.card:hover::before { border-color: rgba(201,168,76,0.25); }
 
-    /* Coming Soon カード */
-    .card-soon {
-      display: block;
-      background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
-      padding: 28px 32px; position: relative;
-      opacity: 0.5; cursor: default; overflow: hidden;
-    }
-    .card-soon::before {
-      content: ''; position: absolute; inset: 3px;
-      border: 1px solid rgba(201,168,76,0.06); pointer-events: none;
-    }
+/* Coming Soon カード */
+.card-soon {
+  display: block;
+  background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
+  padding: 28px 32px; position: relative;
+  opacity: 0.5; cursor: default; overflow: hidden;
+}
+.card-soon::before {
+  content: ''; position: absolute; inset: 3px;
+  border: 1px solid rgba(201,168,76,0.06); pointer-events: none;
+}
 
-    .card-inner { display: flex; align-items: center; gap: 20px; }
-    .card-icon { font-size: 1.6rem; flex-shrink: 0; width: 44px; text-align: center; opacity: 0.85; }
-    .card-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 3vw, 1.25rem); font-weight: 400; letter-spacing: 0.2em;
-      color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 4px;
-    }
-    .card-ja {
-      font-size: clamp(0.72rem, 2vw, 0.82rem);
-      color: var(--gold-pale); letter-spacing: 0.12em; opacity: 0.8;
-    }
-    .card-arrow {
-      margin-left: auto; color: var(--gold); opacity: 0.5;
-      font-size: 1rem; flex-shrink: 0;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
+.card-inner { display: flex; align-items: center; gap: 20px; }
+.card-icon { font-size: 1.6rem; flex-shrink: 0; width: 44px; text-align: center; opacity: 0.85; }
+.card-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 3vw, 1.25rem); font-weight: 400; letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 4px;
+}
+.card-ja {
+  font-size: clamp(0.72rem, 2vw, 0.82rem);
+  color: var(--gold-pale); letter-spacing: 0.12em; opacity: 0.8;
+}
+.card-arrow {
+  margin-left: auto; color: var(--gold); opacity: 0.5;
+  font-size: 1rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
 
-    .soon-badge {
-      margin-left: auto;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
-      padding: 2px 10px; flex-shrink: 0; opacity: 0.7;
-    }
+.soon-badge {
+  margin-left: auto;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
+  padding: 2px 10px; flex-shrink: 0; opacity: 0.7;
+}
 
-    /* 投票セクション */
-    .vote-section { margin-top: 8px; }
-    .vote-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem; letter-spacing: 0.3em;
-      color: var(--gold-light); text-transform: uppercase;
-      opacity: 0.7; margin-bottom: 16px; text-align: center;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .vote-label::before,
-    .vote-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+/* 投票セクション */
+.vote-section { margin-top: 8px; }
+.vote-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem; letter-spacing: 0.3em;
+  color: var(--gold-light); text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 16px; text-align: center;
+  display: flex; align-items: center; gap: 12px;
+}
+.vote-label::before,
+.vote-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
 
-    .vote-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
-      margin-bottom: 12px;
-    }
-    @media (max-width: 480px) { .vote-grid { grid-template-columns: 1fr; } }
+.vote-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  margin-bottom: 12px;
+}
 
-    .vote-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(201,168,76,0.2);
-      padding: 18px 14px; text-align: center;
-      position: relative; overflow: hidden;
-      opacity: 0.5; cursor: default;
-    }
-    .vote-card::before {
-      content: ''; position: absolute; inset: 3px;
-      border: 1px solid rgba(201,168,76,0.08); pointer-events: none;
-    }
-    .vote-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
-    .vote-card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.78rem, 2.5vw, 0.95rem); letter-spacing: 0.15em;
-      color: var(--gold); display: block; margin-bottom: 4px;
-    }
-    .vote-card-desc {
-      font-size: 0.65rem; color: var(--gold-pale); opacity: 0.7;
-      letter-spacing: 0.05em; margin-bottom: 10px; line-height: 1.6;
-    }
-    .vote-badge {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.6rem; letter-spacing: 0.2em;
-      color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
-      padding: 2px 10px; display: inline-block; opacity: 0.6;
-    }
+/* 有効な投票カード */
+.vote-card {
+  background: #2e3655;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 18px 14px; text-align: center;
+  position: relative; overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.25s, background 0.25s;
+}
+.vote-card::before {
+  content: ''; position: absolute; inset: 3px;
+  border: 1px solid rgba(201,168,76,0.12); pointer-events: none;
+}
+.vote-card:hover {
+  background: #353d68;
+  border-color: rgba(201,168,76,0.7);
+}
+.vote-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
+.vote-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.78rem, 2.5vw, 0.95rem); letter-spacing: 0.15em;
+  color: var(--gold); display: block; margin-bottom: 4px;
+}
+.vote-card-desc {
+  font-size: 0.65rem; color: var(--gold-pale); opacity: 0.7;
+  letter-spacing: 0.05em; margin-bottom: 10px; line-height: 1.6;
+}
+.vote-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.6rem; letter-spacing: 0.2em;
+  color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
+  padding: 2px 10px; display: inline-block; opacity: 0.6;
+}
+.vote-badge-open {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.6rem; letter-spacing: 0.2em;
+  color: #30d158; border: 1px solid rgba(48,209,88,0.4);
+  padding: 2px 10px; display: inline-block;
+}
 
-    /* 投票方法ボタン（有効） */
-    .vote-guide-btn {
-      display: flex; align-items: center; gap: 16px;
-      text-decoration: none;
-      background: var(--navy-mid);
-      border: 1px solid rgba(201,168,76,0.3);
-      border-left: 3px solid var(--gold);
-      padding: 16px 20px;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .vote-guide-btn:hover {
-      border-color: rgba(201,168,76,0.6);
-      transform: translateX(3px);
-    }
-    .vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .vote-guide-btn-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.9rem, 2.5vw, 1.05rem); letter-spacing: 0.2em;
-      color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 3px;
-    }
-    .vote-guide-btn-ja {
-      font-size: clamp(0.68rem, 2vw, 0.78rem);
-      color: var(--gold-pale); opacity: 0.8; letter-spacing: 0.08em;
-    }
-    .vote-guide-arrow {
-      margin-left: auto; color: var(--gold); opacity: 0.4;
-      font-size: 1rem; flex-shrink: 0;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .vote-guide-btn:hover .vote-guide-arrow { opacity: 1; transform: translateX(4px); }
+/* 投票方法ボタン（有効） */
+.vote-guide-btn {
+  display: flex; align-items: center; gap: 16px;
+  text-decoration: none;
+  background: #2e3655;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-left: 3px solid var(--gold);
+  padding: 16px 20px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.vote-guide-btn:hover {
+  border-color: rgba(201,168,76,0.7);
+  transform: translateX(3px);
+}
+.vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
+.vote-guide-btn-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem); letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 3px;
+}
+.vote-guide-btn-ja {
+  font-size: clamp(0.68rem, 2vw, 0.78rem);
+  color: var(--gold-pale); opacity: 0.8; letter-spacing: 0.08em;
+}
+.vote-guide-arrow {
+  margin-left: auto; color: var(--gold); opacity: 0.4;
+  font-size: 1rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.vote-guide-btn:hover .vote-guide-arrow { opacity: 1; transform: translateX(4px); }
 
-    /* SNS */
-    .sns-section { margin-top: 8px; text-align: center; }
-    .sns-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem; letter-spacing: 0.3em;
-      color: var(--gold-light); text-transform: uppercase;
-      opacity: 0.7; margin-bottom: 16px;
-    }
-    .sns-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .sns-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--gold-pale);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.78rem, 2vw, 0.9rem); letter-spacing: 0.2em;
-      padding: 8px 16px; border: 1px solid rgba(201,168,76,0.25);
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .sns-link:hover { border-color: var(--gold); color: var(--gold); }
+/* SNS */
+.sns-section { margin-top: 8px; text-align: center; }
+.sns-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem; letter-spacing: 0.3em;
+  color: var(--gold-light); text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 16px;
+}
+.sns-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.sns-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; color: var(--gold-pale);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.78rem, 2vw, 0.9rem); letter-spacing: 0.2em;
+  padding: 8px 16px; border: 1px solid rgba(201,168,76,0.25);
+  transition: border-color 0.2s, color 0.2s;
+}
+.sns-link:hover { border-color: var(--gold); color: var(--gold); }
 
-    footer {
-      text-align: center; padding: 32px 24px 48px;
-      border-top: 1px solid rgba(201,168,76,0.15);
-    }
-    footer p {
-      font-family: 'Cormorant Garamond', serif; font-size: 0.72rem;
-      letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.5;
-    }
+footer {
+  text-align: center; padding: 32px 24px 48px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+footer p {
+  font-family: 'Cormorant Garamond', serif; font-size: 0.72rem;
+  letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.5;
+}
+```
+
   </style>
 </head>
 <body>
 
   <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <span>✦</span>
+      <a href="about.html">About</a>
+      <span>✦</span>
+      <a href="tags.html">Tags</a>
+      <span>✦</span>
+      <a href="movies.html">Movies</a>
+      <span>✦</span>
+      <a href="guide.html">Guide</a>
+      <span>✦</span>
+      <a href="gallery.html">Gallery</a>
+    </nav>
     <div class="hero">
       <img class="hero-image" src="Untitled design.png" alt="Chuang Jay">
       <div class="hero-gold-line"></div>
@@ -297,133 +331,130 @@
     </div>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <span>✦</span>
-    <a href="about.html">About</a>
-    <span>✦</span>
-    <a href="tags.html">Tags</a>
-    <span>✦</span>
-    <a href="movies.html">Movies</a>
-    <span>✦</span>
-    <a href="guide.html">Guide</a>
-    <span>✦</span>
-    <a href="gallery.html">Gallery</a>
-  </nav>
-
   <main>
 
-    <!-- 日プ新世界とは？（有効） -->
-    <a href="schedule.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">📺</div>
-        <div class="card-text">
-          <span class="card-en">About 日プ新世界</span>
-          <span class="card-ja">番組スケジュール・ロードマップ</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
+```
+<!-- 投票セクション（最上部） -->
+<div class="vote-section">
+  <p class="vote-label">✦ 投票はこちら ✦</p>
+  <div class="vote-grid">
+    <a href="https://vote.produce101.jp/?utm_source=x&utm_medium=social&utm_campaign=20260325_p101_x_promo" class="vote-card" target="_blank" rel="noopener">
+      <div class="vote-card-icon"><img src="icon_p101.JPG" alt="日プ" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
+      <span class="vote-card-name">本サイト</span>
+      <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
+      <span class="vote-badge-open">▶ Vote Now</span>
     </a>
-
-    <a href="about.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">🪶</div>
-        <div class="card-text">
-          <span class="card-en">About JAYBIRDS</span>
-          <span class="card-ja">JAYBIRDSとは？</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
+    <a href="lemino://" class="vote-card">
+      <div class="vote-card-icon"><img src="icon_lemino.JPG" alt="Lemino" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
+      <span class="vote-card-name">Lemino</span>
+      <p class="vote-card-desc">レミノアプリから<br>追加投票</p>
+      <span class="vote-badge-open">▶ Vote Now</span>
     </a>
-
-    <a href="tags.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">🏷️</div>
-        <div class="card-text">
-          <span class="card-en">Tags &amp; Support</span>
-          <span class="card-ja">応援タグ・ツイート情報</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
+    <a href="https://mnetplus.onelink.me/TRa8/wrwoxakm?custom_link_value=produce101jp-shinsekai" class="vote-card" target="_blank" rel="noopener">
+      <div class="vote-card-icon"><img src="icon_mnetplus.PNG" alt="MNet+" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
+      <span class="vote-card-name">MNet Plus</span>
+      <p class="vote-card-desc">エムネットプラスから<br>投票</p>
+      <span class="vote-badge-open">▶ Vote Now</span>
     </a>
+  </div>
 
-    <a href="movies.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">🎬</div>
-        <div class="card-text">
-          <span class="card-en">Movies</span>
-          <span class="card-ja">番組提供動画一覧</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="guide.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">📖</div>
-        <div class="card-text">
-          <span class="card-en">Guide</span>
-          <span class="card-ja">スミンガイド・タグイベガイドまとめ</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="gallery.html" class="card">
-      <div class="card-inner">
-        <div class="card-icon">🖼️</div>
-        <div class="card-text">
-          <span class="card-en">Gallery</span>
-          <span class="card-ja">布教画像・配布素材</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <!-- 投票セクション -->
-    <div class="vote-section">
-      <p class="vote-label">✦ 投票はこちら ✦</p>
-      <div class="vote-grid">
-        <div class="vote-card">
-          <div class="vote-card-icon">🗳️</div>
-          <span class="vote-card-name">本サイト</span>
-          <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
-          <span class="vote-badge">Coming Soon</span>
-        </div>
-        <div class="vote-card">
-          <div class="vote-card-icon">📱</div>
-          <span class="vote-card-name">Lemino</span>
-          <p class="vote-card-desc">レミノアプリ・<br>サイトから投票</p>
-          <span class="vote-badge">Coming Soon</span>
-        </div>
-        <div class="vote-card">
-          <div class="vote-card-icon">📺</div>
-          <span class="vote-card-name">MNet Plus</span>
-          <p class="vote-card-desc">エムネットプラスから<br>投票</p>
-          <span class="vote-badge">Coming Soon</span>
-        </div>
-      </div>
-
-      <!-- 投票方法ボタン（有効） -->
-      <a href="vote.html" class="vote-guide-btn">
-        <div class="vote-guide-btn-icon">📋</div>
-        <div class="vote-guide-btn-text">
-          <span class="vote-guide-btn-en">How to Vote</span>
-          <span class="vote-guide-btn-ja">投票方法について</span>
-        </div>
-        <span class="vote-guide-arrow">→</span>
-      </a>
+  <!-- 投票方法ボタン（有効） -->
+  <a href="vote.html" class="vote-guide-btn">
+    <div class="vote-guide-btn-icon">📋</div>
+    <div class="vote-guide-btn-text">
+      <span class="vote-guide-btn-en">How to Vote</span>
+      <span class="vote-guide-btn-ja">投票方法について</span>
     </div>
+    <span class="vote-guide-arrow">→</span>
+  </a>
+</div>
 
-    <!-- SNS -->
-    <div class="sns-section">
-      <p class="sns-label">Follow us</p>
-      <div class="sns-links">
-        <a href="https://x.com/chuangjay_fd?s=21&t=nvSxWHlNQYEWpk_qkOVZqg" class="sns-link" target="_blank">𝕏 Twitter</a>
-        <a href="https://www.instagram.com/chuangjay_fd?igsh=bHZ3d3dmN3Ztcmxh" class="sns-link" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@chuangjay_fd?_r=1&_t=ZS-94qPji7n57J" class="sns-link" target="_blank">TikTok</a>
-      </div>
+<!-- セクション区切り -->
+<div style="display:flex; align-items:center; gap:14px; padding: 12px 0;">
+  <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(201,168,76,0.3));"></div>
+  <span style="color:var(--gold); opacity:0.5; font-size:0.7rem;">✦</span>
+  <span style="color:var(--gold); opacity:0.9; font-size:1.15rem;">✦</span>
+  <span style="color:var(--gold); opacity:0.5; font-size:0.7rem;">✦</span>
+  <div style="flex:1; height:1px; background:linear-gradient(to left, transparent, rgba(201,168,76,0.3));"></div>
+</div>
+
+<!-- 日プ新世界とは？（有効） -->
+<a href="schedule.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">📺</div>
+    <div class="card-text">
+      <span class="card-en">About 日プ新世界</span>
+      <span class="card-ja">番組スケジュール・ロードマップ</span>
     </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<a href="about.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">🪶</div>
+    <div class="card-text">
+      <span class="card-en">About JAYBIRDS</span>
+      <span class="card-ja">JAYBIRDSとは？</span>
+    </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<a href="tags.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">🏷️</div>
+    <div class="card-text">
+      <span class="card-en">Tags &amp; Support</span>
+      <span class="card-ja">応援タグ・ツイート情報</span>
+    </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<a href="movies.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">🎬</div>
+    <div class="card-text">
+      <span class="card-en">Movies</span>
+      <span class="card-ja">番組提供動画一覧</span>
+    </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<a href="guide.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">📖</div>
+    <div class="card-text">
+      <span class="card-en">Guide</span>
+      <span class="card-ja">スミンガイド・タグイベガイドまとめ</span>
+    </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<a href="gallery.html" class="card">
+  <div class="card-inner">
+    <div class="card-icon">🖼️</div>
+    <div class="card-text">
+      <span class="card-en">Gallery</span>
+      <span class="card-ja">布教画像・配布素材</span>
+    </div>
+    <span class="card-arrow">→</span>
+  </div>
+</a>
+
+<!-- SNS -->
+<div class="sns-section">
+  <p class="sns-label">Follow us</p>
+  <div class="sns-links">
+    <a href="https://x.com/chuangjay_fd?s=21&t=nvSxWHlNQYEWpk_qkOVZqg" class="sns-link" target="_blank">𝕏 Twitter</a>
+    <a href="https://www.instagram.com/chuangjay_fd?igsh=bHZ3d3dmN3Ztcmxh" class="sns-link" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@chuangjay_fd?_r=1&_t=ZS-94qPji7n57J" class="sns-link" target="_blank">TikTok</a>
+  </div>
+</div>
+```
 
   </main>
 
