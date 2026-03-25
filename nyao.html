@@ -2,464 +2,585 @@
 
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAYBIRDS — Chuang Jay Fan Support</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #1a1f2e;
-      --navy-mid: #222840;
-      --gold: #c9a84c;
-      --gold-light: #e2c97e;
-      --gold-pale: #f0e4b8;
-      --cream: #f5f0e8;
-      --white: #ffffff;
-    }
+<meta charset="UTF-8">
+<title>JAYBIRDS アクセス分析</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2e;
+    --navy-mid: #162840;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #faf8f3;
+    --muted: #8da0b5;
+    --teal: #3a8fa3;
+    --rose: #b85c6e;
+    --green: #3a8f63;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.7;
+    width: 720px;
+    margin: 0 auto;
+  }
 
-```
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* HEADER */
+.header {
+background: linear-gradient(160deg, var(–navy-mid) 0%, var(–navy) 60%);
+border-bottom: 1px solid var(–gold);
+padding: 40px 56px 32px;
+position: relative;
+overflow: hidden;
+}
+.header::before {
+content: ‘’;
+position: absolute;
+top: -60px; right: -60px;
+width: 260px; height: 260px;
+background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+}
+.header-top {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+gap: 20px;
+}
+.header-left {}
+.header-eyebrow {
+font-size: 10px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 8px;
+}
+.header-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 28px;
+font-weight: 300;
+color: var(–white);
+line-height: 1.25;
+}
+.header-title em { font-style: italic; color: var(–gold-light); }
+.header-badge {
+flex-shrink: 0;
+background: rgba(201,168,76,0.1);
+border: 1px solid rgba(201,168,76,0.35);
+border-radius: 6px;
+padding: 10px 16px;
+text-align: center;
+margin-top: 4px;
+}
+.badge-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(–gold); display: block; margin-bottom: 3px; }
+.badge-value { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; color: var(–white); white-space: nowrap; }
 
-body {
-  background-color: var(--navy);
-  color: var(--cream);
-  font-family: 'Noto Serif JP', serif;
-  min-height: 100vh;
-  overflow-x: hidden;
+.header-meta {
+display: flex;
+gap: 28px;
+margin-top: 20px;
+padding-top: 16px;
+border-top: 1px solid rgba(201,168,76,0.15);
 }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); }
+.meta-value { font-family: ‘Cormorant Garamond’, serif; font-size: 20px; color: var(–white); line-height: 1; }
+.meta-note { font-size: 10px; color: var(–muted); }
 
-.hero {
-  position: relative; min-height: 420px;
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
+/* SECTION */
+.section { padding: 32px 56px; border-bottom: 1px solid rgba(201,168,76,0.1); }
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 19px;
+color: var(–gold-light);
+margin-bottom: 5px;
+display: flex;
+align-items: center;
+gap: 10px;
 }
-.hero-image {
-  position: absolute; left: 0; bottom: 0;
-  height: 100%; width: auto;
-  object-fit: contain; object-position: left bottom;
-  pointer-events: none; z-index: 0;
+.section-title::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
 }
-.hero-gold-line {
-  position: absolute; left: 0; bottom: 0; width: 100%; height: 1px;
-  background: linear-gradient(to right, var(--gold) 0%, rgba(201,168,76,0.3) 50%, transparent 100%);
-  z-index: 2;
-}
-.hero-content {
-  position: relative; z-index: 2;
-  width: 100%; max-width: 680px; text-align: center;
-  padding: 60px 24px 48px;
-  display: flex; flex-direction: column; align-items: center;
-}
-.site-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.55rem, 1.8vw, 0.75rem); letter-spacing: 0.3em;
-  color: var(--gold-light); text-transform: uppercase; margin-bottom: 14px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-}
-.site-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 10vw, 5.5rem); font-weight: 300;
-  letter-spacing: 0.18em; color: var(--gold); line-height: 1; margin-bottom: 10px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(201,168,76,0.3);
-}
-.site-subtitle {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(0.78rem, 2vw, 1rem); letter-spacing: 0.2em;
-  color: var(--gold-pale); margin-bottom: 20px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-}
-.star-row { display: flex; justify-content: center; gap: 12px; }
+.section-desc { font-size: 11px; color: var(–muted); margin-bottom: 20px; }
 
-.fan-banner {
-  max-width: 600px; margin: 0 auto;
-  border: 1px solid rgba(201,168,76,0.3);
-  background: rgba(201,168,76,0.05);
-  padding: 10px 20px; text-align: center; position: relative;
+/* TABLE */
+.tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+.tbl th {
+text-align: left;
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–gold);
+padding: 7px 12px;
+border-bottom: 1px solid rgba(201,168,76,0.2);
+font-weight: 400;
 }
-.fan-banner::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(201,168,76,0.08); pointer-events: none;
+.tbl td {
+padding: 10px 12px;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+vertical-align: middle;
 }
-.fan-banner-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.58rem; letter-spacing: 0.3em;
-  color: var(--gold-light); text-transform: uppercase; opacity: 0.7; margin-bottom: 6px;
-}
-.fan-banner-message {
-  font-family: 'Noto Serif JP', serif;
-  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
-  line-height: 1.8; color: var(--gold-pale); opacity: 0.85;
-}
-.fan-banner-message em { font-style: normal; color: var(--gold-light); }
+.tbl tr:hover td { background: rgba(201,168,76,0.03); }
+.tbl tr.focus td { background: rgba(201,168,76,0.05); }
 
-nav {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 8px; padding: 14px 24px 14px;
-  max-width: 100%; margin: 0;
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  background: rgba(26,31,46,0.97);
-  position: sticky; top: 0; z-index: 100;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.tag {
+display: inline-block;
+font-size: 9px;
+letter-spacing: 1px;
+padding: 2px 8px;
+border-radius: 2px;
+text-transform: uppercase;
+white-space: nowrap;
 }
-nav a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.7rem, 2vw, 0.82rem); letter-spacing: 0.25em;
-  color: var(--gold-light); text-decoration: none; text-transform: uppercase;
-  padding: 2px 8px; border-bottom: 1px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
-}
-nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-nav span { color: var(--gold); opacity: 0.4; align-self: center; font-size: 0.6rem; }
+.tag-gold   { background: rgba(201,168,76,0.12); color: var(–gold-light); border: 1px solid rgba(201,168,76,0.3); }
+.tag-teal   { background: rgba(58,143,163,0.15); color: #7ec8d8; border: 1px solid rgba(58,143,163,0.3); }
+.tag-green  { background: rgba(58,143,99,0.15); color: #6ecfa0; border: 1px solid rgba(58,143,99,0.3); }
+.tag-muted  { background: rgba(141,160,181,0.08); color: var(–muted); border: 1px solid rgba(141,160,181,0.18); }
 
-main {
-  max-width: 680px; margin: 0 auto;
-  padding: 0 20px 80px; display: grid; gap: 16px;
-}
-
-/* 通常カード */
-.card {
-  display: block; text-decoration: none;
-  background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.3);
-  padding: 28px 32px; position: relative;
-  transition: border-color 0.25s, background 0.25s; overflow: hidden;
-}
-.card::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(201,168,76,0.1);
-  pointer-events: none; transition: border-color 0.25s;
-}
-.card:hover { background: #272d42; border-color: rgba(201,168,76,0.7); }
-.card:hover::before { border-color: rgba(201,168,76,0.25); }
-
-/* Coming Soon カード */
-.card-soon {
-  display: block;
-  background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.15);
-  padding: 28px 32px; position: relative;
-  opacity: 0.5; cursor: default; overflow: hidden;
-}
-.card-soon::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(201,168,76,0.06); pointer-events: none;
-}
-
-.card-inner { display: flex; align-items: center; gap: 20px; }
-.card-icon { font-size: 1.6rem; flex-shrink: 0; width: 44px; text-align: center; opacity: 0.85; }
-.card-en {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 3vw, 1.25rem); font-weight: 400; letter-spacing: 0.2em;
-  color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 4px;
-}
-.card-ja {
-  font-size: clamp(0.72rem, 2vw, 0.82rem);
-  color: var(--gold-pale); letter-spacing: 0.12em; opacity: 0.8;
-}
-.card-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.5;
-  font-size: 1rem; flex-shrink: 0;
-  transition: opacity 0.2s, transform 0.2s;
-}
-.card:hover .card-arrow { opacity: 1; transform: translateX(4px); }
-
-.soon-badge {
-  margin-left: auto;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
-  padding: 2px 10px; flex-shrink: 0; opacity: 0.7;
+.num-big { font-family: ‘Cormorant Garamond’, serif; font-size: 22px; color: var(–white); line-height: 1; }
+.num-sub { font-size: 10px; color: var(–muted); }
+.url-code {
+font-family: monospace; font-size: 11px;
+color: var(–gold-light);
+background: rgba(201,168,76,0.07);
+padding: 2px 6px; border-radius: 3px;
 }
 
-/* 投票セクション */
-.vote-section { margin-top: 8px; }
-.vote-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem; letter-spacing: 0.3em;
-  color: var(--gold-light); text-transform: uppercase;
-  opacity: 0.7; margin-bottom: 16px; text-align: center;
-  display: flex; align-items: center; gap: 12px;
-}
-.vote-label::before,
-.vote-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+/* BAR */
+.bar-group { display: flex; flex-direction: column; gap: 10px; }
+.bar-row { display: flex; align-items: center; gap: 10px; }
+.bar-label { width: 110px; font-size: 11px; color: var(–muted); text-align: right; flex-shrink: 0; }
+.bar-label.wide { width: 130px; }
+.bar-track { flex: 1; height: 7px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-pct { width: 36px; font-family: ‘Cormorant Garamond’, serif; font-size: 14px; color: var(–gold-light); text-align: right; flex-shrink: 0; }
+.bar-note { width: 100px; font-size: 10px; color: var(–muted); flex-shrink: 0; }
 
-.vote-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
-  margin-bottom: 12px;
-}
+.fill-gold   { background: linear-gradient(to right, var(–gold), var(–gold-light)); }
+.fill-teal   { background: linear-gradient(to right, #2a7a8a, #3a9fb5); }
+.fill-slate  { background: linear-gradient(to right, #3a4a6a, #5a6a9a); }
+.fill-rose   { background: linear-gradient(to right, #8a3a4a, #b85c6e); }
+.fill-green  { background: linear-gradient(to right, #2a7a50, #4aaf80); }
+.fill-purple { background: linear-gradient(to right, #4a3a8a, #7a6ab8); }
 
-/* 有効な投票カード */
-.vote-card {
-  background: #2e3655;
-  border: 1px solid rgba(201,168,76,0.35);
-  padding: 18px 14px; text-align: center;
-  position: relative; overflow: hidden;
-  text-decoration: none;
-  display: block;
-  transition: border-color 0.25s, background 0.25s;
-}
-.vote-card::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(201,168,76,0.12); pointer-events: none;
-}
-.vote-card:hover {
-  background: #353d68;
-  border-color: rgba(201,168,76,0.7);
-}
-.vote-card-icon { font-size: 1.4rem; margin-bottom: 8px; }
-.vote-card-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.78rem, 2.5vw, 0.95rem); letter-spacing: 0.15em;
-  color: var(--gold); display: block; margin-bottom: 4px;
-}
-.vote-card-desc {
-  font-size: 0.65rem; color: var(--gold-pale); opacity: 0.7;
-  letter-spacing: 0.05em; margin-bottom: 10px; line-height: 1.6;
-}
-.vote-badge {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.6rem; letter-spacing: 0.2em;
-  color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3);
-  padding: 2px 10px; display: inline-block; opacity: 0.6;
-}
-.vote-badge-open {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.6rem; letter-spacing: 0.2em;
-  color: #30d158; border: 1px solid rgba(48,209,88,0.4);
-  padding: 2px 10px; display: inline-block;
+/* SUB HEADING */
+.sub-h {
+font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+color: var(–gold); margin: 22px 0 11px;
+padding-bottom: 4px;
+border-bottom: 1px solid rgba(201,168,76,0.1);
 }
 
-/* 投票方法ボタン（有効） */
-.vote-guide-btn {
-  display: flex; align-items: center; gap: 16px;
-  text-decoration: none;
-  background: #2e3655;
-  border: 1px solid rgba(201,168,76,0.35);
-  border-left: 3px solid var(--gold);
-  padding: 16px 20px;
-  transition: border-color 0.2s, transform 0.15s;
+/* HIGHLIGHT BOX */
+.hbox {
+background: rgba(201,168,76,0.06);
+border: 1px solid rgba(201,168,76,0.22);
+border-radius: 6px;
+padding: 16px 20px;
+margin-bottom: 14px;
+font-size: 12px;
+line-height: 1.9;
+color: var(–white);
 }
-.vote-guide-btn:hover {
-  border-color: rgba(201,168,76,0.7);
-  transform: translateX(3px);
-}
-.vote-guide-btn-icon { font-size: 1.4rem; flex-shrink: 0; }
-.vote-guide-btn-en {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.9rem, 2.5vw, 1.05rem); letter-spacing: 0.2em;
-  color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 3px;
-}
-.vote-guide-btn-ja {
-  font-size: clamp(0.68rem, 2vw, 0.78rem);
-  color: var(--gold-pale); opacity: 0.8; letter-spacing: 0.08em;
-}
-.vote-guide-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.4;
-  font-size: 1rem; flex-shrink: 0;
-  transition: opacity 0.2s, transform 0.2s;
-}
-.vote-guide-btn:hover .vote-guide-arrow { opacity: 1; transform: translateX(4px); }
+.hbox strong { color: var(–gold-light); font-weight: 500; }
+.hbox.teal { background: rgba(58,143,163,0.06); border-color: rgba(58,143,163,0.22); }
+.hbox.teal strong { color: #7ec8d8; }
+.hbox.warn { background: rgba(184,92,110,0.06); border-color: rgba(184,92,110,0.22); }
+.hbox.warn strong { color: #d9859a; }
+.hbox-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(–gold); margin-bottom: 7px; }
+.hbox-label.blue { color: #7ec8d8; }
+.hbox-label.rose { color: #d9859a; }
 
-/* SNS */
-.sns-section { margin-top: 8px; text-align: center; }
-.sns-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.72rem; letter-spacing: 0.3em;
-  color: var(--gold-light); text-transform: uppercase;
-  opacity: 0.7; margin-bottom: 16px;
-}
-.sns-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.sns-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  text-decoration: none; color: var(--gold-pale);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.78rem, 2vw, 0.9rem); letter-spacing: 0.2em;
-  padding: 8px 16px; border: 1px solid rgba(201,168,76,0.25);
-  transition: border-color 0.2s, color 0.2s;
-}
-.sns-link:hover { border-color: var(--gold); color: var(--gold); }
+/* TWO COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-footer {
-  text-align: center; padding: 32px 24px 48px;
-  border-top: 1px solid rgba(201,168,76,0.15);
+/* STRATEGY */
+.s-card {
+background: var(–navy-mid);
+border-left: 3px solid var(–gold);
+padding: 16px 20px;
+margin-bottom: 12px;
+border-radius: 0 6px 6px 0;
 }
-footer p {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.72rem;
-  letter-spacing: 0.2em; color: var(--gold-light); opacity: 0.5;
-}
-```
+.s-card.blue { border-left-color: var(–teal); }
+.s-num { font-family: ‘Cormorant Garamond’, serif; font-size: 28px; color: rgba(201,168,76,0.18); float: left; margin-right: 12px; line-height: 1; }
+.s-title { font-family: ‘Cormorant Garamond’, serif; font-size: 15px; color: var(–gold-light); margin-bottom: 5px; }
+.s-card.blue .s-title { color: #7ec8d8; }
+.s-body { font-size: 12px; color: var(–muted); line-height: 1.85; }
+.s-body strong { color: var(–white); }
 
-  </style>
+/* FOOTER */
+.footer { padding: 20px 56px; font-size: 10px; color: rgba(141,160,181,0.35); text-align: center; line-height: 1.8; }
+.divider { width: 36px; height: 1px; background: var(–gold); opacity: 0.25; margin: 0 auto 8px; }
+</style>
+
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <span>✦</span>
-      <a href="about.html">About</a>
-      <span>✦</span>
-      <a href="tags.html">Tags</a>
-      <span>✦</span>
-      <a href="movies.html">Movies</a>
-      <span>✦</span>
-      <a href="guide.html">Guide</a>
-      <span>✦</span>
-      <a href="gallery.html">Gallery</a>
-    </nav>
-    <div class="hero">
-      <img class="hero-image" src="Untitled design.png" alt="Chuang Jay">
-      <div class="hero-gold-line"></div>
-      <div class="hero-content">
-        <p class="site-label">✦ Chuang Jay Fan Support Account ✦</p>
-        <h1 class="site-title">JAYBIRDS</h1>
-        <p class="site-subtitle">ジェイバーズ</p>
-        <div class="star-row">
-          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
-          <span style="color:var(--gold);font-size:0.6rem;">✦</span>
-          <span style="color:var(--gold);opacity:0.6;font-size:0.8rem;">✦</span>
-        </div>
+<!-- HEADER -->
+
+<div class="header">
+  <div class="header-top">
+    <div class="header-left">
+      <div class="header-eyebrow">JAYBIRDS × x.gd Analytics</div>
+      <div class="header-title">
+        ジュアンジェイ <em>アクセス分析</em><br>
+        <span style="font-size:14px;color:var(--muted);font-family:'Noto Sans JP',sans-serif;font-weight:300;letter-spacing:1px;">日プ新世界 放送前データ</span>
       </div>
     </div>
-    <div class="fan-banner">
-      <p class="fan-banner-label">✦ About JAYBIRDS ✦</p>
-      <p class="fan-banner-message">
-        JAYBIRDSは、<em>ジュアンジェイ（Chuang Jay）</em>を応援する<em>非公式ファンサポートアカウント</em>です。<br>
-        本人・事務所・番組とは一切関係ありません。<br>
-        みんなでジェイくんを全力で応援していきましょう！✦
-      </p>
+    <div class="header-badge">
+      <span class="badge-label">集計期間</span>
+      <span class="badge-value">2026.3.19 — 3.26</span>
+      <div style="margin-top:6px;font-size:9px;color:rgba(201,168,76,0.6);letter-spacing:1px;">PRE-BROADCAST</div>
     </div>
-  </header>
-
-  <main>
-
-<!-- 投票セクション（最上部） -->
-<div class="vote-section">
-  <p class="vote-label">✦ 投票はこちら ✦</p>
-  <div class="vote-grid">
-    <a href="https://vote.produce101.jp/?utm_source=x&utm_medium=social&utm_campaign=20260325_p101_x_promo" class="vote-card" target="_blank" rel="noopener">
-      <div class="vote-card-icon"><img src="icon_p101.JPG" alt="日プ" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
-      <span class="vote-card-name">本サイト</span>
-      <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
-      <span class="vote-badge-open">▶ Vote Now</span>
-    </a>
-    <a href="lemino://" class="vote-card">
-      <div class="vote-card-icon"><img src="icon_lemino.JPG" alt="Lemino" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
-      <span class="vote-card-name">Lemino</span>
-      <p class="vote-card-desc">レミノアプリから<br>追加投票</p>
-      <span class="vote-badge-open">▶ Vote Now</span>
-    </a>
-    <a href="https://mnetplus.onelink.me/TRa8/wrwoxakm?custom_link_value=produce101jp-shinsekai" class="vote-card" target="_blank" rel="noopener">
-      <div class="vote-card-icon"><img src="icon_mnetplus.PNG" alt="MNet+" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
-      <span class="vote-card-name">MNet Plus</span>
-      <p class="vote-card-desc">エムネットプラスから<br>投票</p>
-      <span class="vote-badge-open">▶ Vote Now</span>
-    </a>
   </div>
-
-  <!-- 投票方法ボタン（有効） -->
-  <a href="vote.html" class="vote-guide-btn">
-    <div class="vote-guide-btn-icon">📋</div>
-    <div class="vote-guide-btn-text">
-      <span class="vote-guide-btn-en">How to Vote</span>
-      <span class="vote-guide-btn-ja">投票方法について</span>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="meta-label">総アクセス</div>
+      <div class="meta-value">101</div>
     </div>
-    <span class="vote-guide-arrow">→</span>
-  </a>
-</div>
-
-<!-- セクション区切り -->
-<div style="display:flex; align-items:center; gap:14px; padding: 12px 0;">
-  <div style="flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(201,168,76,0.3));"></div>
-  <span style="color:var(--gold); opacity:0.5; font-size:0.7rem;">✦</span>
-  <span style="color:var(--gold); opacity:0.9; font-size:1.15rem;">✦</span>
-  <span style="color:var(--gold); opacity:0.5; font-size:0.7rem;">✦</span>
-  <div style="flex:1; height:1px; background:linear-gradient(to left, transparent, rgba(201,168,76,0.3));"></div>
-</div>
-
-<!-- 日プ新世界とは？（有効） -->
-<a href="schedule.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">📺</div>
-    <div class="card-text">
-      <span class="card-en">About 日プ新世界</span>
-      <span class="card-ja">番組スケジュール・ロードマップ</span>
+    <div class="meta-item">
+      <div class="meta-label">追跡URL数</div>
+      <div class="meta-value">6</div>
     </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<a href="about.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">🪶</div>
-    <div class="card-text">
-      <span class="card-en">About JAYBIRDS</span>
-      <span class="card-ja">JAYBIRDSとは？</span>
+    <div class="meta-item">
+      <div class="meta-label">分析対象URL</div>
+      <div class="meta-value">3</div>
+      <div class="meta-note">ガイド系2 + イベント1</div>
     </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<a href="tags.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">🏷️</div>
-    <div class="card-text">
-      <span class="card-en">Tags &amp; Support</span>
-      <span class="card-ja">応援タグ・ツイート情報</span>
+    <div class="meta-item">
+      <div class="meta-label">除外URL</div>
+      <div class="meta-value">3</div>
+      <div class="meta-note">ワンタッチポスト（投稿ツール）</div>
     </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<a href="movies.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">🎬</div>
-    <div class="card-text">
-      <span class="card-en">Movies</span>
-      <span class="card-ja">番組提供動画一覧</span>
-    </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<a href="guide.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">📖</div>
-    <div class="card-text">
-      <span class="card-en">Guide</span>
-      <span class="card-ja">スミンガイド・タグイベガイドまとめ</span>
-    </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<a href="gallery.html" class="card">
-  <div class="card-inner">
-    <div class="card-icon">🖼️</div>
-    <div class="card-text">
-      <span class="card-en">Gallery</span>
-      <span class="card-ja">布教画像・配布素材</span>
-    </div>
-    <span class="card-arrow">→</span>
-  </div>
-</a>
-
-<!-- SNS -->
-<div class="sns-section">
-  <p class="sns-label">Follow us</p>
-  <div class="sns-links">
-    <a href="https://x.com/chuangjay_fd?s=21&t=nvSxWHlNQYEWpk_qkOVZqg" class="sns-link" target="_blank">𝕏 Twitter</a>
-    <a href="https://www.instagram.com/chuangjay_fd?igsh=bHZ3d3dmN3Ztcmxh" class="sns-link" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/@chuangjay_fd?_r=1&_t=ZS-94qPji7n57J" class="sns-link" target="_blank">TikTok</a>
   </div>
 </div>
 
-  </main>
+<!-- LINK CLASSIFICATION -->
 
-  <footer>
-    <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
-    <p style="margin-top:6px;">This is an unofficial fan account. Not affiliated with Chuang Jay or any related organizations.</p>
-  </footer>
+<div class="section">
+  <div class="section-title">リンク一覧と用途分類</div>
+  <div class="section-desc">ワンタッチポストはアクセス数＝投稿操作回数のため国別・デバイス分析の対象外</div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>アクセス</th>
+        <th>ユニーク</th>
+        <th>作成日</th>
+        <th>用途</th>
+        <th>分析</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="focus">
+        <td><span class="url-code">x.gd/O9hjUi</span></td>
+        <td><span class="num-big">34</span></td>
+        <td><span style="color:var(--white)">5</span></td>
+        <td>3/20</td>
+        <td><span class="tag tag-gold">イベントページ</span><br><span style="font-size:10px;color:var(--muted)">スミンパーティー</span></td>
+        <td style="font-size:11px;color:#6ecfa0;">✅ 対象</td>
+      </tr>
+      <tr class="focus">
+        <td><span class="url-code">x.gd/63FPj</span></td>
+        <td><span class="num-big">12</span></td>
+        <td><span style="color:var(--white)">12</span></td>
+        <td>3/26</td>
+        <td><span class="tag tag-teal">投票ガイド</span></td>
+        <td style="font-size:11px;color:#6ecfa0;">✅ 対象</td>
+      </tr>
+      <tr class="focus">
+        <td><span class="url-code">x.gd/dtt99</span></td>
+        <td><span class="num-big">7</span></td>
+        <td><span style="color:var(--white)">7</span></td>
+        <td>3/25</td>
+        <td><span class="tag tag-green">タグイベガイド</span></td>
+        <td style="font-size:11px;color:#6ecfa0;">✅ 対象</td>
+      </tr>
+      <tr>
+        <td><span class="url-code">x.gd/XqCId</span></td>
+        <td><span class="num-big" style="color:var(--muted)">31</span></td>
+        <td style="color:var(--muted)">3</td>
+        <td style="color:var(--muted)">3/20</td>
+        <td><span class="tag tag-muted">ワンタッチポスト</span></td>
+        <td style="font-size:11px;color:var(--muted)">— 除外</td>
+      </tr>
+      <tr>
+        <td><span class="url-code">x.gd/n2pLz</span></td>
+        <td><span class="num-big" style="color:var(--muted)">8</span></td>
+        <td style="color:var(--muted)">8</td>
+        <td style="color:var(--muted)">3/25</td>
+        <td><span class="tag tag-muted">ワンタッチポスト</span></td>
+        <td style="font-size:11px;color:var(--muted)">— 除外</td>
+      </tr>
+      <tr>
+        <td><span class="url-code">x.gd/l18yo</span></td>
+        <td><span class="num-big" style="color:var(--muted)">9</span></td>
+        <td style="color:var(--muted)">1</td>
+        <td style="color:var(--muted)">3/19</td>
+        <td><span class="tag tag-muted">ワンタッチポスト</span></td>
+        <td style="font-size:11px;color:var(--muted)">— 除外</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CONTENT ANALYSIS -->
+
+<div class="section">
+  <div class="section-title">コンテンツ別アクセス比較</div>
+  <div class="section-desc">分析対象3リンク合計：53アクセス / ユニーク24人</div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="hbox">
+      <div class="hbox-label">スミンパーティー（イベント）</div>
+      アクセス <strong>34</strong> / ユニーク <strong>5人</strong><br>
+      1人あたり平均 <strong>約7回</strong> 参照<br>
+      <span style="font-size:11px;color:var(--muted)">繰り返し読まれる＝参加を検討・確認し続けた層。ブックマーク保存も確認。実際の参加者は少数だった。</span>
+    </div>
+    <div>
+      <div class="hbox teal" style="margin-bottom:12px;">
+        <div class="hbox-label blue">投票ガイド</div>
+        アクセス <strong style="color:#7ec8d8;">12</strong> / ユニーク <strong style="color:#7ec8d8;">12人</strong><br>
+        <span style="font-size:11px;color:var(--muted)">全員が初見で1回。純粋な新規リーチ。</span>
+      </div>
+      <div class="hbox teal">
+        <div class="hbox-label blue">タグイベガイド</div>
+        アクセス <strong style="color:#7ec8d8;">7</strong> / ユニーク <strong style="color:#7ec8d8;">7人</strong><br>
+        <span style="font-size:11px;color:var(--muted)">同様に全員初見。参加意欲のある能動層。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hbox" style="font-size:11px;color:var(--muted);border-color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.02);">
+    💡 ガイド系2本（計19人・ユニーク19）はいずれも「1人1回」型。<strong style="color:var(--white)">情報を取りに来た能動的な新規ファン</strong>のデータとして信頼性が高い。イベントページとは別の層がガイドを読んでいる可能性が高く、合計ユニーク24人が現時点のアクティブファン層の上限目安。
+  </div>
+</div>
+
+<!-- COUNTRY / DEVICE -->
+
+<div class="section">
+  <div class="section-title">地域・デバイス・流入経路</div>
+  <div class="section-desc">分析対象3リンクの実数積み上げ（53アクセスベース）</div>
+
+  <div class="two-col">
+    <div>
+      <div class="sub-h" style="margin-top:0;">国別（実アクセス数）</div>
+      <div class="bar-group">
+        <div class="bar-row">
+          <div class="bar-label">🇯🇵 日本</div>
+          <div class="bar-track"><div class="bar-fill fill-gold" style="width:83%"></div></div>
+          <div class="bar-pct">83%</div>
+          <div class="bar-note">≈44件</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">🇨🇳 台湾/中国</div>
+          <div class="bar-track"><div class="bar-fill fill-teal" style="width:9%"></div></div>
+          <div class="bar-pct">9%</div>
+          <div class="bar-note">≈5件</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">🇺🇸 アメリカ</div>
+          <div class="bar-track"><div class="bar-fill fill-slate" style="width:4%"></div></div>
+          <div class="bar-pct">4%</div>
+          <div class="bar-note">≈2件</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">🇦🇺 オーストラリア</div>
+          <div class="bar-track"><div class="bar-fill fill-green" style="width:2%"></div></div>
+          <div class="bar-pct">2%</div>
+          <div class="bar-note">≈1件</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">🇫🇮 フィンランド</div>
+          <div class="bar-track"><div class="bar-fill fill-purple" style="width:2%"></div></div>
+          <div class="bar-pct">2%</div>
+          <div class="bar-note">≈1件</div>
+        </div>
+      </div>
+
+```
+  <div class="sub-h">言語</div>
+  <div class="bar-group">
+    <div class="bar-row">
+      <div class="bar-label">日本語</div>
+      <div class="bar-track"><div class="bar-fill fill-gold" style="width:83%"></div></div>
+      <div class="bar-pct">83%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">中国語</div>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:11%"></div></div>
+      <div class="bar-pct">11%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">その他</div>
+      <div class="bar-track"><div class="bar-fill fill-slate" style="width:6%"></div></div>
+      <div class="bar-pct">6%</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="sub-h" style="margin-top:0;">デバイス</div>
+  <div class="bar-group">
+    <div class="bar-row">
+      <div class="bar-label">モバイル</div>
+      <div class="bar-track"><div class="bar-fill fill-gold" style="width:83%"></div></div>
+      <div class="bar-pct">83%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">PC</div>
+      <div class="bar-track"><div class="bar-fill fill-slate" style="width:17%"></div></div>
+      <div class="bar-pct">17%</div>
+    </div>
+  </div>
+
+  <div class="sub-h">プラットフォーム</div>
+  <div class="bar-group">
+    <div class="bar-row">
+      <div class="bar-label">iPhone</div>
+      <div class="bar-track"><div class="bar-fill fill-gold" style="width:78%"></div></div>
+      <div class="bar-pct">78%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Windows</div>
+      <div class="bar-track"><div class="bar-fill fill-slate" style="width:10%"></div></div>
+      <div class="bar-pct">10%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Mac</div>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:7%"></div></div>
+      <div class="bar-pct">7%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Android</div>
+      <div class="bar-track"><div class="bar-fill fill-rose" style="width:5%"></div></div>
+      <div class="bar-pct">5%</div>
+    </div>
+  </div>
+
+  <div class="sub-h">ブラウザ</div>
+  <div class="bar-group">
+    <div class="bar-row">
+      <div class="bar-label">X内蔵</div>
+      <div class="bar-track"><div class="bar-fill fill-gold" style="width:55%"></div></div>
+      <div class="bar-pct">55%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Safari</div>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:30%"></div></div>
+      <div class="bar-pct">30%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Chrome</div>
+      <div class="bar-track"><div class="bar-fill fill-slate" style="width:11%"></div></div>
+      <div class="bar-pct">11%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Firefox</div>
+      <div class="bar-track"><div class="bar-fill fill-rose" style="width:4%"></div></div>
+      <div class="bar-pct">4%</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="sub-h">参照元（流入経路）</div>
+  <div class="bar-group">
+    <div class="bar-row">
+      <div class="bar-label wide">X タイムライン</div>
+      <div class="bar-track"><div class="bar-fill fill-gold" style="width:60%"></div></div>
+      <div class="bar-pct">~60%</div>
+      <div class="bar-note">X内蔵ブラウザ経由</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label wide">Direct / ブックマーク</div>
+      <div class="bar-track"><div class="bar-fill fill-teal" style="width:32%"></div></div>
+      <div class="bar-pct">~32%</div>
+      <div class="bar-note">Google含む保存済み</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label wide">その他</div>
+      <div class="bar-track"><div class="bar-fill fill-slate" style="width:8%"></div></div>
+      <div class="bar-pct">~8%</div>
+      <div class="bar-note"></div>
+    </div>
+  </div>
+</div>
+
+<!-- INSIGHT -->
+
+<div class="section">
+  <div class="section-title">ファン層プロファイルと課題</div>
+
+  <div class="two-col" style="margin-bottom:14px;">
+    <div class="hbox">
+      <div class="hbox-label">現在のファン像</div>
+      日本在住・日本語話者が中心（<strong>83%</strong>）。デバイスはiPhoneが<strong>78%</strong>でX経由が主流。放送前からガイドを能動的に取りに来る<strong>情報感度の高い層</strong>。台湾・中国語圏が第2グループとして<strong>11%</strong>存在。
+    </div>
+    <div class="hbox warn">
+      <div class="hbox-label rose">課題</div>
+      スミンパーティーはユニーク5人が平均7回参照したにもかかわらず<strong>実参加者は少数</strong>。「見るけど動かない」ROM層が多い段階。ガイド系19人は能動的だが、絶対数としてはまだ少ない。
+    </div>
+  </div>
+
+  <div class="hbox" style="font-size:11px;color:var(--muted);border-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);">
+    ⚠️ 本データは放送前・サンプル極小（分析対象ユニーク最大24人）のため、傾向の参考値として扱うこと。放送後に投票ガイドへの流入が増えた段階で再分析を推奨。
+  </div>
+</div>
+
+<!-- STRATEGY -->
+
+<div class="section" style="border-bottom:none;">
+  <div class="section-title">放送後に向けた提言</div>
+
+  <div class="s-card">
+    <div class="s-num">1</div>
+    <div class="s-title">iPhone × X縦型に最適化した投票導線</div>
+    <div class="s-body">
+      閲覧者の<strong>78%がiPhone・55%がX内蔵ブラウザ</strong>。スクロールなしで読める情報量、タップ一発で投票画面へ飛ぶ設計が最重要。PC向けの凝ったレイアウトより、Xのタイムラインで映えるシンプルな縦型ビジュアルを優先する。
+    </div>
+  </div>
+
+  <div class="s-card">
+    <div class="s-num">2</div>
+    <div class="s-title">ROM層を動かす「ハードルゼロ」設計</div>
+    <div class="s-body">
+      イベントページを7回も見ながら参加しなかった層が存在する。「考えなくていい・タップするだけ」という設計がこのファン層には刺さる。ワンタッチポストが繰り返し使われている事実がその証拠。<strong>投票ガイドも読み物より「ボタン型」</strong>で届ける。
+    </div>
+  </div>
+
+  <div class="s-card blue">
+    <div class="s-num">3</div>
+    <div class="s-title">台湾・中国語圏への繁体字コンテンツ継続</div>
+    <div class="s-body">
+      放送前データにもかかわらず中国語圏が<strong>11%</strong>存在。「Juan Jay」という名前が中華圏に刺さりやすい資産になっている。繁体字の投票ガイド・布教素材を定期発信することで、放送後の票田として育てる余地がある。
+    </div>
+  </div>
+
+  <div class="s-card blue">
+    <div class="s-num">4</div>
+    <div class="s-title">放送後データで再分析</div>
+    <div class="s-body">
+      現時点の分析対象はユニーク最大24人という極めて小さなサンプル。<strong>今回の最大の収穫は「情報を取りに来る能動層がいること」と「ROM層が多い段階であること」の確認</strong>。放送後に投票ガイドへの流入が増えた段階で、国別・デバイス別を改めて分析することで精度が上がる。
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="divider"></div>
+  JAYBIRDS Fan Support for ジュアンジェイ / 日プ新世界 — 放送前データ（2026.3.19–3.26）<br>
+  分析対象：ガイド系2本・イベント1本 計53アクセス / ワンタッチポスト3本は分析対象外
+</div>
 
 </body>
 </html>
