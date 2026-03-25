@@ -182,7 +182,6 @@ main {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
   margin-bottom: 12px;
 }
-@media (max-width: 480px) { .vote-grid { grid-template-columns: 1fr; } }
 
 /* 有効な投票カード */
 .vote-card {
@@ -336,19 +335,19 @@ footer p {
   <p class="vote-label">✦ 投票はこちら ✦</p>
   <div class="vote-grid">
     <a href="https://vote.produce101.jp/?utm_source=x&utm_medium=social&utm_campaign=20260325_p101_x_promo" class="vote-card" target="_blank" rel="noopener">
-      <div class="vote-card-icon">🗳️</div>
+      <div class="vote-card-icon"><img src="icon_p101.JPG" alt="日プ" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
       <span class="vote-card-name">本サイト</span>
       <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
       <span class="vote-badge-open">▶ Vote Now</span>
     </a>
-    <a href="vote.html#section-lemino" class="vote-card">
-      <div class="vote-card-icon">📱</div>
+    <a href="lemino://" class="vote-card">
+      <div class="vote-card-icon"><img src="icon_lemino.JPG" alt="Lemino" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
       <span class="vote-card-name">Lemino</span>
       <p class="vote-card-desc">レミノアプリから<br>追加投票</p>
       <span class="vote-badge-open">▶ Vote Now</span>
     </a>
     <a href="https://mnetplus.onelink.me/TRa8/wrwoxakm?custom_link_value=produce101jp-shinsekai" class="vote-card" target="_blank" rel="noopener">
-      <div class="vote-card-icon">📺</div>
+      <div class="vote-card-icon"><img src="icon_mnetplus.PNG" alt="MNet+" style="width:44px;height:44px;border-radius:10px;object-fit:cover;"></div>
       <span class="vote-card-name">MNet Plus</span>
       <p class="vote-card-desc">エムネットプラスから<br>投票</p>
       <span class="vote-badge-open">▶ Vote Now</span>
