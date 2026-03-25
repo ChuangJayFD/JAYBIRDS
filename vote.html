@@ -236,6 +236,39 @@ body {
 .app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(--label); }
 .app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
 
+/* ===== Leminoアプリ起動ボタン群 ===== */
+.lemino-launch-block {
+  margin-top: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.lemino-open-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  text-decoration: none; width: 100%;
+  border-radius: 10px; padding: 14px 20px;
+  font-size: 13px; font-weight: 900; letter-spacing: 1.5px;
+  transition: transform 0.1s, filter 0.1s;
+  position: relative; overflow: hidden; cursor: pointer;
+  background: linear-gradient(180deg, #ff8ab8 0%, #ff6b9d 55%, #e0508a 100%);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #a0204a, 0 6px 14px rgba(0,0,0,0.4);
+}
+.lemino-open-btn::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+  pointer-events: none;
+}
+.lemino-open-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.lemino-open-btn:active { transform: translateY(2px); }
+.lemino-open-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
+
+.lemino-store-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.lemino-store-note {
+  font-size: 10px; color: var(--muted);
+  text-align: center; padding-bottom: 2px;
+}
+
 /* ===== 投票ボタン ===== */
 .vote-btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -256,11 +289,6 @@ body {
   background: linear-gradient(180deg, #2a6ad4 0%, #1a4fa0 55%, #0f2f70 100%);
   color: #fff;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #081a40, 0 6px 14px rgba(0,0,0,0.4);
-}
-.vote-btn.lemino {
-  background: linear-gradient(180deg, #ff8ab8 0%, #ff6b9d 55%, #e0508a 100%);
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #a0204a, 0 6px 14px rgba(0,0,0,0.4);
 }
 .vote-btn.mnet {
   background: linear-gradient(180deg, #ff4fa0 0%, #ff1f7d 55%, #c00060 100%);
@@ -283,19 +311,10 @@ body {
 .vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
 .vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.candidate-avatar {
-  width: 70px; height: 70px; border-radius: 50%;
-  object-fit: cover; border: 2px solid #c0ccee;
-}
+.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #c0ccee; }
 .candidate-avatar.selected { border-color: var(--p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
-.candidate-name {
-  font-size: 10px; color: #334; font-weight: 500;
-  white-space: nowrap; text-align: center;
-}
-.candidate-btn {
-  font-size: 10px; font-weight: 700; padding: 5px 14px;
-  border-radius: 20px; border: none; cursor: default; width: 100%;
-}
+.candidate-name { font-size: 10px; color: #334; font-weight: 500; white-space: nowrap; text-align: center; }
+.candidate-btn { font-size: 10px; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: none; cursor: default; width: 100%; }
 .candidate-btn.add { background: var(--p101); color: #fff; }
 .candidate-btn.remove { background: #dde4f8; color: var(--p101); }
 .vote-crown-btn {
@@ -570,10 +589,10 @@ body {
               <div class="flow-title">Leminoアプリをインストール（無料）</div>
               <div class="flow-desc">App Store または Google Play から無料でDL。</div>
               <div class="app-btns">
-                <a class="app-btn ios" href="https://apps.apple.com/jp/app/lemino/id1072357524" target="_blank" rel="noopener">
+                <a class="app-btn ios" href="https://apps.apple.com/jp/app/lemino-%E3%83%AC%E3%83%9F%E3%83%8E-%E6%98%A0%E7%94%BB%E3%82%84%E3%83%89%E3%83%A9%E3%83%9E-%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AA%E3%81%A9%E3%81%AE%E5%8B%95%E7%94%BB%E3%81%8C%E8%A6%8B%E6%94%BE%E9%A1%8C/id1641218070" target="_blank" rel="noopener">
                   <img src="icon_appstore.JPG" alt="App Store"> App Store
                 </a>
-                <a class="app-btn android" href="https://play.google.com/store/apps/details?id=jp.co.nttvdata.lemino" target="_blank" rel="noopener">
+                <a class="app-btn android" href="https://play.google.com/store/apps/details?id=jp.ne.docomo.lemino.android" target="_blank" rel="noopener">
                   <img src="icon_googleplay.JPG" alt="Google Play"> Google Play
                 </a>
               </div>
@@ -604,9 +623,22 @@ body {
             </div>
           </div>
         </div>
-        <a class="vote-btn lemino" href="lemino://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/jp/app/lemino/id1072357524'; }, 1500);">
-          <img src="icon_lemino.JPG" alt=""> Leminoアプリを開く →
-        </a>
+
+        <!-- Leminoアプリ起動ブロック -->
+        <div class="lemino-launch-block">
+          <a class="lemino-open-btn" href="lemino://" target="_blank">
+            <img src="icon_lemino.JPG" alt=""> Leminoアプリを開く →
+          </a>
+          <div class="lemino-store-note">アプリ未インストールの方はこちら ↓</div>
+          <div class="lemino-store-row">
+            <a class="app-btn ios" href="https://apps.apple.com/jp/app/lemino-%E3%83%AC%E3%83%9F%E3%83%8E-%E6%98%A0%E7%94%BB%E3%82%84%E3%83%89%E3%83%A9%E3%83%9E-%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AA%E3%81%A9%E3%81%AE%E5%8B%95%E7%94%BB%E3%81%8C%E8%A6%8B%E6%94%BE%E9%A1%8C/id1641218070" target="_blank" rel="noopener">
+              <img src="icon_appstore.JPG" alt="App Store"> App Store（日本）
+            </a>
+            <a class="app-btn android" href="https://play.google.com/store/apps/details?id=jp.ne.docomo.lemino.android" target="_blank" rel="noopener">
+              <img src="icon_googleplay.JPG" alt="Google Play"> Google Play
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -694,7 +726,7 @@ body {
         <div class="note-box">
           ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong>. 1 vote per account per day. Any irregular voting activity will be invalidated.
         </div>
-        <a class="vote-btn mnet" href="mnetplus://" onclick="setTimeout(function(){ window.location='https://apps.apple.com/app/mnet-plus/id1538144549'; }, 1500);">
+        <a class="vote-btn mnet" href="mnetplus://" target="_blank">
           <img src="icon_mnetplus.PNG" alt=""> Open MNet+ App →
         </a>
       </div>
