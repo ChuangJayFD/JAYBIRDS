@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="ja">
+<!DOCTYPE html><html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
+* { margin: 0; padding: 0; box-sizing: border-box; }:root {
 –bg: #000000;
 –card: #1c1c1e;
 –card2: #2c2c2e;
@@ -32,7 +28,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 –mnet-pink: #ff1f7d;
 –mnet-blue: #7b9eff;
 }
-
 body {
 background: var(–bg);
 color: var(–label);
@@ -40,9 +35,7 @@ font-family: ‘Noto Sans JP’, sans-serif;
 min-height: 100vh;
 padding: 40px 20px 80px;
 }
-
 .wrapper { max-width: 720px; margin: 0 auto; }
-
 .back-link {
 display: inline-block;
 font-size: 0.78rem; letter-spacing: 0.2em;
@@ -50,7 +43,6 @@ color: var(–gold2); text-decoration: none; text-transform: uppercase;
 margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
-
 /* ===== 注意書き ===== */
 .caution-banner {
 background: rgba(255,69,58,0.08);
@@ -65,21 +57,6 @@ font-size: 11px; font-weight: 700; color: #ff6b6b;
 margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
 }
 .caution-banner strong { color: #ff9090; }
-
-/* ===== OPEN バナー ===== */
-.open-banner {
-background: linear-gradient(135deg, #001a00, #003300);
-border: 2px solid var(–green);
-border-radius: 12px;
-padding: 16px 20px; margin-bottom: 24px;
-display: flex; align-items: center; gap: 14px;
-}
-.open-banner-icon { font-size: 28px; flex-shrink: 0; }
-.open-banner-text {}
-.open-banner-title { font-size: 14px; font-weight: 900; color: var(–green); letter-spacing: 1px; margin-bottom: 4px; }
-.open-banner-desc { font-size: 11px; color: var(–label2); line-height: 1.8; }
-.open-banner-desc strong { color: var(–label); }
-
 /* ===== HEADER ===== */
 .header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
 .header-bg {
@@ -113,7 +90,6 @@ background: linear-gradient(135deg, var(–gold3), var(–gold));
 }
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
 .header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(–p101), var(–p101-light), var(–gold), #000); }
-
 /* ===== 毎日投票バナー ===== */
 .daily-banner {
 background: linear-gradient(135deg, #1a1000, #3a2800);
@@ -129,7 +105,6 @@ border: 1px solid rgba(201,168,76,0.2); border-radius: 10px; pointer-events: non
 .daily-banner-title { font-size: 16px; font-weight: 900; color: var(–gold2); letter-spacing: 2px; margin-bottom: 6px; }
 .daily-banner-desc { font-size: 12px; color: var(–label2); line-height: 1.8; }
 .daily-banner-desc strong { color: var(–gold3); }
-
 /* ===== 11pick バナー ===== */
 .pick-banner {
 background: linear-gradient(135deg, #0a1a3a, #1a3a6e);
@@ -142,11 +117,9 @@ display: flex; align-items: center; gap: 14px;
 .pick-banner-title { font-size: 14px; font-weight: 900; color: var(–p101-accent); margin-bottom: 4px; letter-spacing: 1px; }
 .pick-banner-desc { font-size: 11px; color: var(–label2); line-height: 1.8; }
 .pick-banner-desc strong { color: var(–label); }
-
 /* ===== 概要 ===== */
 .overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
 @media (max-width: 560px) { .overview { grid-template-columns: 1fr; gap: 8px; } }
-
 .overview-card {
 background: var(–card); border: 1px solid var(–border);
 border-radius: 12px; overflow: hidden;
@@ -158,7 +131,6 @@ transition: border-color 0.2s, transform 0.15s;
 .overview-card.p101::before { background: linear-gradient(90deg, var(–p101), var(–p101-light)); }
 .overview-card.lemino::before { background: linear-gradient(90deg, var(–lemino-from), var(–lemino-to)); }
 .overview-card.mnet::before { background: linear-gradient(90deg, var(–mnet-pink), var(–mnet-blue)); }
-
 .overview-card-inner {
 padding: 16px 14px; text-align: center;
 display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -166,10 +138,8 @@ display: flex; flex-direction: column; align-items: center; gap: 8px;
 @media (max-width: 560px) {
 .overview-card-inner { flex-direction: row; text-align: left; padding: 14px 16px; gap: 14px; }
 }
-
 .overview-icon { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
 @media (max-width: 560px) { .overview-icon { width: 48px; height: 48px; } }
-
 .overview-text { flex: 1; }
 .overview-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
 .overview-card.p101 .overview-num { color: var(–p101-light); }
@@ -179,7 +149,6 @@ display: flex; flex-direction: column; align-items: center; gap: 8px;
 .overview-sub { font-size: 10px; color: var(–muted); line-height: 1.6; }
 .overview-arrow { margin-left: auto; color: var(–gold); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0; display: none; }
 @media (max-width: 560px) { .overview-arrow { display: block; } }
-
 /* ===== SECTION ===== */
 .section { margin-bottom: 28px; }
 .section-label {
@@ -189,7 +158,6 @@ display: flex; align-items: center; gap: 8px;
 }
 .section-label::before { content: ‘✦’; font-size: 9px; }
 .section-label::after { content: ‘’; flex: 1; height: 1px; background: var(–gold); opacity: 0.2; }
-
 /* ===== STEP CARD ===== */
 .step-card { border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
 .step-card-header {
@@ -200,13 +168,11 @@ padding: 14px 20px; border-bottom: 1px solid var(–border);
 .step-card.lemino .step-card-header { background: linear-gradient(90deg, rgba(255,107,157,0.2), rgba(0,0,0,0)); border-left: 3px solid var(–lemino-from); }
 .step-card.mnet .step-card-header { background: linear-gradient(90deg, rgba(255,31,125,0.2), rgba(0,0,0,0)); border-left: 3px solid var(–mnet-pink); }
 .step-card.prep .step-card-header { background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(0,0,0,0)); border-left: 3px solid var(–gold); }
-
 .step-card-body { background: var(–card); border: 1px solid var(–border); border-top: none; padding: 20px; }
 .step-card.p101 .step-card-body { border-left: 3px solid var(–p101-light); }
 .step-card.lemino .step-card-body { border-left: 3px solid var(–lemino-from); }
 .step-card.mnet .step-card-body { border-left: 3px solid var(–mnet-pink); }
 .step-card.prep .step-card-body { border-left: 3px solid var(–gold); }
-
 .step-card-icon { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
 .step-card-title-en { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 3px; }
 .step-card.p101 .step-card-title-en { color: var(–p101-light); }
@@ -214,7 +180,6 @@ padding: 14px 20px; border-bottom: 1px solid var(–border);
 .step-card.mnet .step-card-title-en { color: var(–mnet-pink); }
 .step-card.prep .step-card-title-en { color: var(–gold2); }
 .step-card-title { font-size: 15px; font-weight: 900; color: var(–label); }
-
 /* ===== FLOW ===== */
 .flow { display: flex; flex-direction: column; }
 .flow-item { display: flex; align-items: flex-start; gap: 14px; }
@@ -229,7 +194,6 @@ font-size: 12px; font-weight: 900; flex-shrink: 0; z-index: 1;
 .step-card.mnet .flow-dot { background: rgba(255,31,125,0.15); color: var(–mnet-pink); border: 1px solid var(–mnet-pink); }
 .step-card.prep .flow-dot { background: rgba(201,168,76,0.15); color: var(–gold2); border: 1px solid var(–gold); }
 .flow-dot.highlight { background: var(–gold) !important; color: #1a0e00 !important; border-color: var(–gold) !important; }
-
 .flow-line { width: 1px; flex: 1; min-height: 14px; background: rgba(201,168,76,0.15); }
 .flow-item:last-child .flow-line { display: none; }
 .flow-content { padding: 3px 0 18px; flex: 1; }
@@ -237,7 +201,6 @@ font-size: 12px; font-weight: 900; flex-shrink: 0; z-index: 1;
 .flow-title { font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 4px; }
 .flow-desc { font-size: 11px; color: var(–label2); line-height: 1.8; }
 .flow-desc strong { color: var(–label); }
-
 /* ===== アプリボタン ===== */
 .app-btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .app-btn {
@@ -250,7 +213,6 @@ transition: opacity 0.2s; flex-shrink: 0;
 .app-btn img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
 .app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(–label); }
 .app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
-
 /* ===== Leminoアプリ起動ボタン群 ===== */
 .lemino-launch-block {
 margin-top: 14px;
@@ -275,7 +237,6 @@ pointer-events: none;
 .lemino-open-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 .lemino-open-btn:active { transform: translateY(2px); }
 .lemino-open-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
-
 .lemino-store-row {
 display: flex; gap: 8px; flex-wrap: wrap;
 }
@@ -283,7 +244,6 @@ display: flex; gap: 8px; flex-wrap: wrap;
 font-size: 10px; color: var(–muted);
 text-align: center; padding-bottom: 2px;
 }
-
 /* ===== 投票ボタン ===== */
 .vote-btn {
 display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -311,7 +271,6 @@ color: #fff;
 box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #800040, 0 6px 14px rgba(0,0,0,0.4);
 }
 .vote-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
-
 /* ===== 投票画面モックアップ ===== */
 .vote-preview {
 background: #f0f4ff; border-radius: 16px; overflow: hidden;
@@ -338,7 +297,6 @@ margin-top: 14px; padding: 10px;
 background: linear-gradient(90deg, var(–p101), var(–p101-light));
 border-radius: 8px; font-size: 12px; font-weight: 900; color: #fff;
 }
-
 /* ===== NOTE / TIP ===== */
 .note-box {
 background: rgba(255,69,58,0.08); border: 1px solid rgba(255,69,58,0.25);
@@ -347,7 +305,6 @@ padding: 12px 16px; margin-top: 12px;
 font-size: 11px; color: var(–label2); line-height: 1.85;
 }
 .note-box strong { color: #ff6b6b; }
-
 .tip-box {
 background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
 border-left: 3px solid var(–gold); border-radius: 0 8px 8px 0;
@@ -355,7 +312,6 @@ padding: 12px 16px; margin-top: 12px;
 font-size: 11px; color: var(–label2); line-height: 1.85;
 }
 .tip-box strong { color: var(–gold2); }
-
 /* ===== ルール ===== */
 .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .rules-grid { grid-template-columns: 1fr; } }
@@ -363,20 +319,19 @@ font-size: 11px; color: var(–label2); line-height: 1.85;
 .rule-icon { font-size: 22px; margin-bottom: 8px; }
 .rule-title { font-size: 12px; font-weight: 700; color: var(–label); margin-bottom: 4px; }
 .rule-text { font-size: 11px; color: var(–label2); line-height: 1.6; }
-
 .footer-note {
 text-align: center; font-size: 11px;
 color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
 }
 </style>
-
 </head>
 <body>
-<div class="wrapper">
-
-<a href="index.html" class="back-link">← Home</a>
-
-  <div class="header">
+<div class="wrapper"><a href="index.html" class="back-link">← Home</a>
+<!-- 注意書き --><div class="caution-banner">
+    <div class="caution-banner-title">⚠️ このページについて</div>
+    このガイドは<strong>PRODUCE 101 JAPAN THE GIRLS（日プ女子）</strong>および<strong>BOYS PLANET / BOYS II PLANET（ボイプラ）</strong>の投票システムを参考に作成しています。<br>
+    PRODUCE 101 JAPAN 新世界の正式な投票方法が公開され次第、内容を更新します。<strong>実際の投票時は公式の案内を必ずご確認ください。</strong>
+  </div><div class="header">
     <div class="header-bg">
       <div class="header-star-row">
         <span>✦</span><span class="lg">✦</span><span>✦</span>
@@ -386,22 +341,14 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
       <p class="sub">毎日の投票でジェイくんをデビューへ🪶</p>
     </div>
     <div class="header-stripe"></div>
-  </div>
-
-  <!-- 毎日投票バナー -->
-
-  <div class="daily-banner">
+  </div><!-- 毎日投票バナー --><div class="daily-banner">
     <div class="daily-banner-icon">🗓️</div>
     <div class="daily-banner-title">✦ 毎日投票を習慣に！✦</div>
     <div class="daily-banner-desc">
       投票権は<strong>毎日0:00にリセット</strong>されます。<br>
       前日分を翌日にまとめることはできません。<strong>1日も欠かさず投票しよう！</strong>
     </div>
-  </div>
-
-  <!-- 11pick バナー -->
-
-  <div class="pick-banner">
+  </div><!-- 11pick バナー --><div class="pick-banner">
     <div class="pick-banner-icon">👑</div>
     <div class="pick-banner-text">
       <div class="pick-banner-title">最初は11pick！</div>
@@ -410,11 +357,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         投票できる人数は番組の進行に伴い変わる場合があります。
       </div>
     </div>
-  </div>
-
-  <!-- 概要 -->
-
-  <div class="section">
+  </div><!-- 概要 --><div class="section">
     <p class="section-label">投票方法の概要</p>
     <div class="overview">
       <a class="overview-card p101" href="#section-p101">
@@ -454,11 +397,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
     <div class="tip-box" style="margin-top:0;">
       🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> For overseas fans: vote via the MNet+ app ③
     </div>
-  </div>
-
-  <!-- STEP 0: dアカウント -->
-
-  <div class="section" id="section-prep">
+  </div><!-- STEP 0: dアカウント --><div class="section" id="section-prep">
     <p class="section-label">Step 0 — 事前準備</p>
     <div class="step-card prep">
       <div class="step-card-header">
@@ -508,11 +447,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- STEP 1: 国民投票 -->
-
-  <div class="section" id="section-p101">
+  </div><!-- STEP 1: 国民投票 --><div class="section" id="section-p101">
     <p class="section-label">Step 1 — 国民投票（公式サイト）</p>
     <div class="step-card p101">
       <div class="step-card-header">
@@ -574,16 +509,12 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
             </div>
           </div>
         </div>
-        <a class="vote-btn p101" href="https://vote.produce101.jp/?utm_source=x&utm_medium=social&utm_campaign=20260325_p101_x_promo" target="_blank" rel="noopener">
+        <a class="vote-btn p101" href="https://produce101.jp/feature/vote" target="_blank" rel="noopener">
           <img src="icon_p101.JPG" alt=""> 公式サイトで投票する →
         </a>
       </div>
     </div>
-  </div>
-
-  <!-- STEP 2: Lemino -->
-
-  <div class="section" id="section-lemino">
+  </div><!-- STEP 2: Lemino --><div class="section" id="section-lemino">
     <p class="section-label">Step 2 — Lemino追加投票</p>
     <div class="step-card lemino">
       <div class="step-card-header">
@@ -639,7 +570,6 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
           </div>
         </div>
 
-```
     <!-- Leminoアプリ起動ブロック -->
     <div class="lemino-launch-block">
       <a class="lemino-open-btn" href="lemino://" target="_blank">
@@ -657,13 +587,9 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
     </div>
   </div>
 </div>
-```
 
-  </div>
 
-  <!-- ルールまとめ -->
-
-  <div class="section">
+</div><!-- ルールまとめ --><div class="section">
     <p class="section-label">投票ルール まとめ</p>
     <div class="rules-grid">
       <div class="rule-card">
@@ -687,11 +613,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         <div class="rule-text">忘れた日の票は消滅。習慣づけが何より大切！</div>
       </div>
     </div>
-  </div>
-
-  <!-- MNet+ (English) -->
-
-  <div class="section" id="section-mnet">
+  </div><!-- MNet+ (English) --><div class="section" id="section-mnet">
     <p class="section-label">For Overseas Fans — MNet+ SEKAI Vote</p>
     <div class="step-card mnet">
       <div class="step-card-header">
@@ -746,15 +668,11 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         <div class="note-box">
           ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong>. 1 vote per account per day. Any irregular voting activity will be invalidated.
         </div>
-        <a class="vote-btn mnet" href="https://mnetplus.onelink.me/TRa8/wrwoxakm?custom_link_value=produce101jp-shinsekai" target="_blank" rel="noopener">
+        <a class="vote-btn mnet" href="mnetplus://" target="_blank">
           <img src="icon_mnetplus.PNG" alt=""> Open MNet+ App →
         </a>
       </div>
     </div>
-  </div>
-
-  <p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p>
-
-</div>
+  </div><p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p></div>
 </body>
 </html>
