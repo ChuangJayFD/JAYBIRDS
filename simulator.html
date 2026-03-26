@@ -260,9 +260,10 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
 .conclusion { margin-top: 16px; background: rgba(201,168,76,0.18); border: 1px solid #c9a84c; border-radius: 10px; padding: 16px 18px; }
 .conclusion-title { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #e2c47a; text-transform: uppercase; margin-bottom: 10px; }
 .conclusion-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.conclusion-list li { font-size: 12px; color: rgba(255,255,255,0.92); line-height: 1.7; padding-left: 16px; position: relative; }
-.conclusion-list li::before { content: ‘▸’; position: absolute; left: 0; color: #e2c47a; font-size: 11px; top: 3px; }
+.conclusion-list li { font-size: 12px; color: rgba(255,255,255,0.92); line-height: 1.7; padding-left: 0; position: relative; display: flex; gap: 8px; align-items: flex-start; }
+.conclusion-list li::before { display: none; }
 .conclusion-list li strong { color: #e2c47a; font-weight: 600; }
+.conclusion-marker { color: #e2c47a; font-size: 12px; flex-shrink: 0; margin-top: 3px; }
 
 .info-footer { padding: 12px 24px; border-top: 1px solid var(–gold-border); display: flex; align-items: center; justify-content: space-between; background: #091530; }
 .info-footer-brand { font-family: ‘Cormorant Garamond’, serif; font-size: 12px; font-weight: 700; letter-spacing: 0.28em; color: var(–gold); text-transform: uppercase; }
@@ -300,7 +301,7 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
   ══════════════════════════════════════ -->
 
   <div id="content-ja">
-    
+
 <div class="hero fade d1">
   <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
   <h1 class="hero-title">投票シミュレーター</h1>
@@ -439,12 +440,12 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
       <div class="conclusion">
         <div class="conclusion-title">✦ まとめ — なぜ両方必要か</div>
         <ul class="conclusion-list">
-          <li><strong>標準集計（国民70%）</strong>では国民票が少ない練習生は構造的に不利</li>
-          <li>救済枠（SEKAI70%）があるが<strong>他の海外練習生との相対順位</strong>で決まる</li>
-          <li>国民票がほぼゼロだとSEKAI優先集計でも<strong>30%分のハンデ</strong>を背負う</li>
-          <li><strong>SEKAIだけでは足りない。国民票も積み続けることが必須</strong></li>
-          <li>🌏 海外ファンは<strong>Mnet Plusで毎日1票</strong>を</li>
-          <li>🎌 日本ファンは<strong>Lemino＋公式サイトで毎日2票</strong>を</li>
+          <li><span class="conclusion-marker">▸</span><strong>標準集計（国民70%）</strong>では国民票が少ない練習生は構造的に不利</li>
+          <li><span class="conclusion-marker">▸</span>救済枠（SEKAI70%）があるが<strong>他の海外練習生との相対順位</strong>で決まる</li>
+          <li><span class="conclusion-marker">▸</span>国民票がほぼゼロだとSEKAI優先集計でも<strong>30%分のハンデ</strong>を背負う</li>
+          <li><span class="conclusion-marker">▸</span><strong>SEKAIだけでは足りない。国民票も積み続けることが必須</strong></li>
+          <li><span class="conclusion-marker">▸</span>🌏 海外ファンは<strong>Mnet Plusで毎日1票</strong>を</li>
+          <li><span class="conclusion-marker">▸</span>🎌 日本ファンは<strong>Lemino＋公式サイトで毎日2票</strong>を</li>
         </ul>
       </div>
     </div>
@@ -606,12 +607,12 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
       <div class="conclusion">
         <div class="conclusion-title">✦ The Bottom Line — Why Both Votes Matter</div>
         <ul class="conclusion-list">
-          <li>The <strong>Standard Tally weights Japan at 70%</strong> — a structural disadvantage for international trainees</li>
-          <li>The Rescue Round exists, but your position depends on <strong>outranking other international trainees in SEKAI votes</strong></li>
-          <li>Near-zero Kokumin votes means losing <strong>30% of your score even in the SEKAI round</strong></li>
-          <li><strong>SEKAI votes alone are not enough. Kokumin votes must be built up continuously</strong></li>
-          <li>🌏 Global fans: <strong>vote daily on Mnet Plus</strong></li>
-          <li>🎌 Japan fans: <strong>2 votes/day</strong> via Lemino + Official Site</li>
+          <li><span class="conclusion-marker">▸</span>The <strong>Standard Tally weights Japan at 70%</strong> — a structural disadvantage for international trainees</li>
+          <li><span class="conclusion-marker">▸</span>The Rescue Round exists, but your position depends on <strong>outranking other international trainees in SEKAI votes</strong></li>
+          <li><span class="conclusion-marker">▸</span>Near-zero Kokumin votes means losing <strong>30% of your score even in the SEKAI round</strong></li>
+          <li><span class="conclusion-marker">▸</span><strong>SEKAI votes alone are not enough. Kokumin votes must be built up continuously</strong></li>
+          <li><span class="conclusion-marker">▸</span>🌏 Global fans: <strong>vote daily on Mnet Plus</strong></li>
+          <li><span class="conclusion-marker">▸</span>🎌 Japan fans: <strong>2 votes/day</strong> via Lemino + Official Site</li>
         </ul>
       </div>
     </div>
