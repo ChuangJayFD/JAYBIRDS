@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -362,11 +363,68 @@ body {
   text-align: center; font-size: 11px;
   color: var(--gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
 }
+/* ===== TikTokモーダル ===== */
+.tiktok-modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.tiktok-modal {
+  background: #1c1c1e;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 280px; width: 100%;
+  max-height: 90vh;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.tiktok-modal-close {
+  position: absolute; top: 10px; right: 12px;
+  background: rgba(0,0,0,0.5); border: none;
+  border-radius: 50%; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 14px; cursor: pointer; z-index: 10;
+}
+.tiktok-modal-thumb {
+  width: 100%; aspect-ratio: 9/14; object-fit: cover; display: block;
+}
+.tiktok-modal-footer {
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;
+}
+.tiktok-modal-title {
+  font-size: 11px; font-weight: 700; color: rgba(235,235,245,0.9); line-height: 1.5;
+}
+.tiktok-open-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; width: 100%;
+  background: linear-gradient(135deg, #ff2d55, #ff6b9d);
+  border-radius: 8px; padding: 10px;
+  font-size: 12px; font-weight: 900; color: #fff;
+}
+.tiktok-skip-btn {
+  background: none; border: none; color: rgba(235,235,245,0.35);
+  font-size: 10px; cursor: pointer; padding: 2px;
+  text-align: center; width: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
 </style>
 </head>
 <body>
 <div class="wrapper">
-
+<div class="tiktok-modal-overlay" id="tiktokModal">
+  <div class="tiktok-modal">
+    <button class="tiktok-modal-close" onclick="closeModal()">✕</button>
+    <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" class="tiktok-modal-thumb">
+    <div class="tiktok-modal-footer">
+      <p class="tiktok-modal-title">📋 投票のやり方をまとめた動画です。TikTokで見てね🪶</p>
+      <a class="tiktok-open-btn" href="https://vt.tiktok.com/ZSuTCsu89/" target="_blank" rel="noopener" onclick="closeModal()">▶ TikTokで見る</a>
+      <button class="tiktok-skip-btn" onclick="closeModal()">スキップ →</button>
+    </div>
+  </div>
+</div>
+  
   <a href="index.html" class="back-link">← Home</a>
 
   <!-- 注意書き -->
@@ -745,5 +803,14 @@ body {
   <p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p>
 
 </div>
+  <script>
+  function closeModal() {
+    var modal = document.getElementById('tiktokModal');
+    modal.style.display = 'none';
+  }
+  document.getElementById('tiktokModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
 </body>
 </html>
