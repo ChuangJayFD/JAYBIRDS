@@ -2,15 +2,6 @@
 
 <html lang="ja">
 <head>
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EXHV880LX0');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>投票ガイド — JAYBIRDS</title>
@@ -459,18 +450,6 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
     </div>
   </div>
 
-  <script>
-    function closeModal() {
-      const modal = document.getElementById('tiktokModal');
-      modal.style.opacity = '0';
-      modal.style.transition = 'opacity 0.25s ease';
-      setTimeout(() => modal.remove(), 250);
-    }
-    document.getElementById('tiktokModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-  </script>
-
 <a href="index.html" class="back-link">← Home</a>
 
   <!-- 注意書き -->
@@ -861,5 +840,16 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
   <p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p>
 
 </div>
+<script>
+  function closeModal() {
+    const modal = document.getElementById('tiktokModal');
+    modal.style.opacity = '0';
+    modal.style.transition = 'opacity 0.25s ease';
+    setTimeout(() => modal.remove(), 250);
+  }
+  document.getElementById('tiktokModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
 </body>
 </html>
