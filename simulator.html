@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="ja" style="color-scheme: only dark;">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EXHV880LX0');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only dark">
+<title>Vote Simulator — JAYBIRDS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0a0a0a;
+  --black-card: #0d1b3e;
+  --black-card2: #112050;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-pale: rgba(201,168,76,0.1);
+  --gold-border: rgba(201,168,76,0.2);
+  --white: #fff;
+  --text: rgba(255,255,255,0.87);
+  --text-muted: rgba(255,255,255,0.4);
+  --k: #d4845a;
+  --k-soft: rgba(212,132,90,0.12);
+  --k-border: rgba(212,132,90,0.25);
+  --s: #5a9fd4;
+  --s-soft: rgba(90,159,212,0.12);
+  --s-border: rgba(90,159,212,0.25);
+  --rescue: #6ab87e;
+  --rescue-soft: rgba(106,184,126,0.1);
+  --rescue-border: rgba(106,184,126,0.25);
+  --danger: #d45a5a;
+  --danger-soft: rgba(212,90,90,0.1);
+}
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+scroll-behavior: smooth;
+background: #0a0a0a !important;
+color-scheme: only dark;
+}
+
+body {
+background: #0a0a0a !important;
+background-color: #0a0a0a !important;
+color: var(–text);
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+font-weight: 400;
+line-height: 1.7;
+}
+
+.page { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* ── NAV ── */
+.nav {
+padding: 26px 0 18px;
+display: flex; align-items: center; justify-content: space-between;
+border-bottom: 1px solid var(–gold-border);
+margin-bottom: 36px;
+}
+.nav-brand {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px; font-weight: 700; letter-spacing: 0.32em;
+color: var(–gold); text-transform: uppercase; text-decoration: none;
+}
+.nav-back { font-size: 11px; color: var(–text-muted); letter-spacing: 0.08em; text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(–gold-light); }
+
+/* ── LANG TABS ── */
+.lang-tabs {
+display: flex;
+gap: 8px;
+margin-bottom: 44px;
+align-items: center;
+}
+.lang-tab {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px; font-weight: 700; letter-spacing: 0.22em;
+text-transform: uppercase;
+padding: 10px 28px;
+border-radius: 6px;
+border: 1px solid var(–gold-border);
+background: transparent;
+color: var(–text-muted);
+cursor: pointer;
+transition: all 0.2s;
+}
+.lang-tab:hover {
+border-color: var(–gold);
+color: var(–gold-light);
+background: var(–gold-pale);
+}
+.lang-tab.active {
+background: var(–gold);
+border-color: var(–gold);
+color: #0a0a0a;
+font-weight: 700;
+}
+
+/* ── HERO ── */
+.hero { text-align: center; margin-bottom: 48px; }
+.hero-eye {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px; letter-spacing: 0.35em; color: var(–gold);
+text-transform: uppercase; margin-bottom: 14px;
+}
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(28px, 6vw, 42px); font-weight: 600;
+color: var(–white); line-height: 1.1;
+}
+.hero-title em { font-style: italic; color: var(–gold-light); }
+.hero-sub { font-size: 12px; color: var(–text-muted); margin-top: 12px; line-height: 1.8; }
+.ornament { color: var(–gold); letter-spacing: 0.5em; font-size: 11px; display: block; margin: 16px 0; opacity: 0.6; }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
+text-transform: uppercase; color: var(–gold);
+margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
+}
+.sec-label::after { content: ‘’; flex: 1; height: 1px; background: var(–gold-border); }
+
+/* ── SIMULATOR ── */
+.sim-wrap { margin-bottom: 56px; }
+
+.scenario-row { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.sc-btn {
+font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+padding: 6px 14px; border-radius: 20px;
+border: 1px solid rgba(255,255,255,0.12);
+background: transparent; color: var(–text-muted);
+cursor: pointer; transition: all 0.2s;
+font-family: inherit;
+}
+.sc-btn:hover { border-color: var(–gold-border); color: var(–gold-light); }
+.sc-btn.active { background: var(–gold-pale); border-color: var(–gold); color: var(–gold-light); }
+
+.slider-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+@media(max-width:500px){ .slider-grid { grid-template-columns: 1fr; } }
+
+.slider-card { background: var(–black-card); border-radius: 10px; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.06); }
+.slider-card.focus-card { border-color: var(–gold-border); background: var(–gold-pale); }
+.slider-label {
+font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+text-transform: uppercase; margin-bottom: 10px;
+display: flex; justify-content: space-between; align-items: center;
+color: var(–gold);
+}
+.slider-val { font-family: ‘Cormorant Garamond’, serif; font-size: 22px; font-weight: 700; color: var(–gold-light); }
+input[type=range] { width: 100%; margin-top: 8px; accent-color: var(–gold); cursor: pointer; }
+
+.result-wrap { background: var(–black-card); border-radius: 10px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.06); }
+.result-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 520px; }
+.result-table thead tr { background: var(–black-card2); }
+.result-table thead th {
+padding: 9px 12px; font-size: 9px; font-weight: 700;
+letter-spacing: 0.14em; text-transform: uppercase;
+text-align: center; color: var(–text-muted);
+border-bottom: 1px solid rgba(255,255,255,0.06);
+white-space: nowrap;
+}
+.result-table thead th:first-child { text-align: left; }
+.result-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+.result-table tbody tr:last-child { border-bottom: none; }
+.result-table tbody tr.focus-row { background: var(–gold-pale); }
+.result-table tbody tr.danger-row { background: var(–danger-soft); }
+.result-table tbody tr.rescue-row { background: var(–rescue-soft); }
+.result-table tbody td { padding: 9px 12px; text-align: center; color: var(–text); white-space: nowrap; }
+.result-table tbody td:first-child { text-align: left; font-weight: 600; }
+
+.rank-badge {
+display: inline-block; font-family: ‘Cormorant Garamond’, serif;
+font-size: 13px; font-weight: 700;
+width: 26px; height: 26px; line-height: 26px;
+border-radius: 50%; text-align: center;
+}
+.rank-safe { background: var(–rescue-soft); color: var(–rescue); border: 1px solid var(–rescue-border); }
+.rank-danger { background: var(–danger-soft); color: var(–danger); border: 1px solid rgba(212,90,90,0.3); }
+
+.td-k { color: var(–k); font-weight: 500; }
+.td-s { color: var(–s); font-weight: 500; }
+.td-score { font-family: ‘Cormorant Garamond’, serif; font-size: 14px; font-weight: 600; }
+
+.verdict { margin-top: 12px; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.8; border: 1px solid; }
+.verdict.safe { background: var(–rescue-soft); border-color: var(–rescue-border); color: var(–rescue); }
+.verdict.danger { background: var(–danger-soft); border-color: rgba(212,90,90,0.3); color: var(–danger); }
+.verdict.rescued { background: rgba(106,184,126,0.08); border-color: var(–rescue-border); color: var(–rescue); }
+.verdict strong { font-weight: 700; }
+
+/* ── DIVIDER ── */
+.section-divider {
+display: flex; align-items: center; gap: 14px;
+margin: 0 0 40px;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(–gold-border); }
+.section-divider-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px; letter-spacing: 0.28em; color: var(–gold);
+text-transform: uppercase; white-space: nowrap;
+}
+
+/* ── INFOGRAPHIC ── */
+.info-wrap { margin-bottom: 56px; }
+
+.info-intro {
+font-size: 12px; color: var(–text-muted); margin-bottom: 20px; line-height: 1.9;
+}
+
+.info-card { background: var(–black-card); border-radius: 12px; overflow: hidden; border: 1px solid var(–gold-border); }
+
+.info-top {
+background: linear-gradient(135deg, #091530, #0d1b3e);
+padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-align: center;
+}
+.info-top-eye { font-family: ‘Cormorant Garamond’, serif; font-size: 10px; letter-spacing: 0.32em; color: var(–gold); text-transform: uppercase; margin-bottom: 8px; }
+.info-top-title { font-family: ‘Cormorant Garamond’, serif; font-size: 20px; font-weight: 600; color: var(–white); line-height: 1.3; }
+.info-top-title em { font-style: italic; color: var(–gold-light); }
+.info-top-sub { font-size: 11px; color: var(–text-muted); margin-top: 7px; }
+
+.info-body { padding: 22px 24px; }
+
+.formula-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.formula-box { border-radius: 8px; padding: 12px 14px; }
+.formula-box.f-std { background: var(–k-soft); border: 1px solid var(–k-border); }
+.formula-box.f-sekai { background: var(–s-soft); border: 1px solid var(–s-border); }
+.formula-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 5px; }
+.f-std .formula-tag { color: var(–k); }
+.f-sekai .formula-tag { color: var(–s); }
+.formula-text { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; color: var(–white); line-height: 1.6; }
+
+.case-block { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+.case-block:last-of-type { margin-bottom: 0; }
+.case-header { padding: 9px 14px; display: flex; align-items: center; gap: 10px; }
+.case-header.c1 { background: rgba(106,184,126,0.12); border-bottom: 1px solid var(–rescue-border); }
+.case-header.c2 { background: rgba(201,168,76,0.1); border-bottom: 1px solid var(–gold-border); }
+.case-header.c3 { background: rgba(212,90,90,0.1); border-bottom: 1px solid rgba(212,90,90,0.25); }
+.case-num { font-family: ‘Cormorant Garamond’, serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.c1 .case-num { color: var(–rescue); } .c2 .case-num { color: var(–gold); } .c3 .case-num { color: var(–danger); }
+.case-title { font-size: 12px; font-weight: 700; color: var(–white); }
+.case-body { background: var(–black-card2); padding: 12px 14px; overflow-x: auto; }
+
+.mini-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 8px; min-width: 420px; }
+.mini-table th { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(–text-muted); padding: 4px 7px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.mini-table th:first-child { text-align: left; }
+.mini-table td { padding: 5px 7px; text-align: center; color: var(–text); border-bottom: 1px solid rgba(255,255,255,0.03); white-space: nowrap; }
+.mini-table td:first-child { text-align: left; font-weight: 600; font-size: 12px; }
+.mini-table tr:last-child td { border-bottom: none; }
+.mini-table tr.focus { background: var(–gold-pale); }
+.mini-table tr.focus td:first-child { color: var(–gold-light); }
+
+.ck { color: var(–k); font-weight: 500; } .cs { color: var(–s); font-weight: 500; }
+.cr { color: var(–rescue); font-weight: 700; } .cd { color: var(–danger); font-weight: 700; } .cg { color: var(–gold-light); font-weight: 700; }
+
+.mini-verdict { font-size: 11px; line-height: 1.7; padding: 8px 10px; border-radius: 6px; }
+.mv-safe { background: var(–rescue-soft); color: var(–rescue); border: 1px solid var(–rescue-border); }
+.mv-rescued { background: rgba(201,168,76,0.08); color: var(–gold-light); border: 1px solid var(–gold-border); }
+.mv-danger { background: var(–danger-soft); color: var(–danger); border: 1px solid rgba(212,90,90,0.25); }
+
+.conclusion { margin-top: 16px; background: var(–gold-pale); border: 1px solid var(–gold-border); border-radius: 10px; padding: 16px 18px; }
+.conclusion-title { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: var(–gold-light); text-transform: uppercase; margin-bottom: 10px; }
+.conclusion-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.conclusion-list li { font-size: 12px; color: var(–text); line-height: 1.7; padding-left: 14px; position: relative; }
+.conclusion-list li::before { content: ‘▸’; position: absolute; left: 0; color: var(–gold); font-size: 9px; top: 4px; }
+.conclusion-list li strong { color: var(–gold-light); font-weight: 600; }
+
+.info-footer { padding: 12px 24px; border-top: 1px solid var(–gold-border); display: flex; align-items: center; justify-content: space-between; background: #091530; }
+.info-footer-brand { font-family: ‘Cormorant Garamond’, serif; font-size: 12px; font-weight: 700; letter-spacing: 0.28em; color: var(–gold); text-transform: uppercase; }
+.info-footer-tag { font-size: 10px; color: var(–text-muted); }
+
+/* ── PAGE FOOTER ── */
+.footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(–gold-border); display: flex; align-items: center; justify-content: space-between; }
+.footer-brand { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; color: var(–gold); text-transform: uppercase; }
+.footer-tags { font-size: 10px; color: var(–text-muted); text-align: right; line-height: 1.8; }
+
+/* ── FADE ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade { animation: fadeUp 0.45s ease both; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.12s; } .d3 { animation-delay: 0.2s; }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" class="nav-brand">JAYBIRDS</a>
+    <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" class="nav-back">← Home</a>
+  </nav>
+
+  <!-- LANG TABS -->
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="setLang('ja', this)">日本語</button>
+    <button class="lang-tab" onclick="setLang('en', this)">English</button>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       JAPANESE CONTENT
+  ══════════════════════════════════════ -->
+
+  <div id="content-ja">
+
+<div class="hero fade d1">
+  <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
+  <h1 class="hero-title">投票シミュレーター</h1>
+  <p class="hero-sub">票数を動かして、集計結果がどう変わるかを確認できます。<br>シナリオボタンでサンプルも選べます。</p>
+  <span class="ornament">✦ ✦ ✦</span>
+</div>
+
+<div class="sim-wrap fade d2">
+  <div class="sec-label">インタラクティブ シミュレーター</div>
+
+  <div class="scenario-row">
+    <button class="sc-btn active" onclick="loadScenario(0,this,'ja')">ケース1 ギャップ小</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'ja')">ケース2 ギャップ中</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'ja')">ケース3 ギャップ大</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'ja')">⚠️ 海外競合あり</button>
+  </div>
+
+  <div class="slider-grid">
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>推し — 国民票</span>
+        <span class="slider-val" id="ja-val-k">150</span>
+      </div>
+      <input type="range" min="0" max="1000" value="150" id="ja-sl-k" oninput="renderSim('ja')">
+    </div>
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>推し — SEKAI票</span>
+        <span class="slider-val" id="ja-val-s">750</span>
+      </div>
+      <input type="range" min="0" max="1000" value="750" id="ja-sl-s" oninput="renderSim('ja')">
+    </div>
+  </div>
+
+  <div class="result-wrap">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>練習生</th><th>国民票</th><th>SEKAI票</th>
+          <th>標準スコア</th><th>標準順位</th>
+          <th>SEKAI優先スコア</th><th>SEKAI順位</th>
+        </tr>
+      </thead>
+      <tbody id="ja-tbody"></tbody>
+    </table>
+  </div>
+  <div id="ja-verdict"></div>
+</div>
+
+<div class="section-divider fade d3">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-text">✦ 詳しく見る ✦</div>
+  <div class="section-divider-line"></div>
+</div>
+
+<div class="info-wrap fade d3">
+  <div class="sec-label">投票構造の解説</div>
+  <p class="info-intro">
+    なぜ国民票とSEKAI票の両方が必要なのか。3つのシナリオと「落とし穴」を数字で整理しました。
+  </p>
+
+  <div class="info-card">
+    <div class="info-top">
+      <div class="info-top-eye">✦ JAYBIRDS — VOTE STRUCTURE ✦</div>
+      <div class="info-top-title">投票の仕組みと<em>落とし穴</em></div>
+      <div class="info-top-sub">なぜSEKAIだけでは足りないのか、数字で見る</div>
+    </div>
+    <div class="info-body">
+      <div class="formula-row">
+        <div class="formula-box f-std">
+          <div class="formula-tag">① 標準集計</div>
+          <div class="formula-text">国民票 × 0.7<br>＋ SEKAI票 × 0.3</div>
+        </div>
+        <div class="formula-box f-sekai">
+          <div class="formula-tag">② SEKAI優先（救済枠）</div>
+          <div class="formula-text">SEKAI票 × 0.7<br>＋ 国民票 × 0.3</div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:18px;line-height:1.9;">②の集計で上位12名は、標準集計で脱落圏でも次のステージへ進出できる。</p>
+
+      <div class="case-block">
+        <div class="case-header c1">
+          <span class="case-num">Case 1</span>
+          <span class="case-title">国民とSEKAIのギャップが小さい</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>国民票</th><th>SEKAI票</th><th>標準スコア</th><th>標準順位</th><th>SEKAI優先</th><th>SEKAI順位</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">400</td><td class="cs">600</td><td class="cg">460</td><td class="cr">2位 ✅</td><td class="cg">540</td><td class="cr">1位 ✅</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">600</td><td class="cs">400</td><td>540</td><td>1位 ✅</td><td>460</td><td>2位 ✅</td></tr>
+              <tr><td>練習生B</td><td class="ck">500</td><td class="cs">500</td><td>500</td><td>3位 ✅</td><td>500</td><td>3位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-safe">✅ ギャップが小さければ両集計で順位は安定。標準・救済ともに通過圏内。</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c2">
+          <span class="case-num">Case 2</span>
+          <span class="case-title">ギャップ中程度 — 標準で脱落、救済で復活</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>国民票</th><th>SEKAI票</th><th>標準スコア</th><th>標準順位</th><th>SEKAI優先</th><th>SEKAI順位</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">150</td><td class="cs">750</td><td class="cd">330</td><td class="cd">3位 🚨</td><td class="cg">570</td><td class="cr">1位 ✅</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">750</td><td class="cs">150</td><td>570</td><td>1位 ✅</td><td>330</td><td>3位 🚨</td></tr>
+              <tr><td>練習生B</td><td class="ck">500</td><td class="cs">500</td><td>500</td><td>2位 ✅</td><td>500</td><td>2位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-rescued">🟡 標準集計では脱落圏でも、SEKAI優先で1位 → 救済枠で次ステージへ。SEKAI票が鍵。</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c3">
+          <span class="case-num">Case 3 ⚠️</span>
+          <span class="case-title">落とし穴 — 海外練習生同士の競合</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>国民票</th><th>SEKAI票</th><th>標準スコア</th><th>標準順位</th><th>SEKAI優先</th><th>SEKAI順位</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">50</td><td class="cs">700</td><td class="cd">505</td><td class="cd">3位 🚨</td><td class="cd">505</td><td class="cd">3位 🚨</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">950</td><td class="cs">50</td><td>680</td><td>1位 ✅</td><td>320</td><td>4位 🚨</td></tr>
+              <tr><td>練習生B（海）</td><td class="ck">30</td><td class="cs">950</td><td>674</td><td>2位 ✅</td><td>674</td><td>1位 ✅</td></tr>
+              <tr><td>練習生C（海）</td><td class="ck">40</td><td class="cs">800</td><td>572</td><td>4位 🚨</td><td>572</td><td>2位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-danger">🚨 <strong>SEKAIが多くても、他の海外練習生がさらに多ければ救済枠からも弾かれる。</strong><br>SEKAI票は絶対数ではなく相対順位で決まる。国民票がゼロに近いと、SEKAI優先集計の30%分もほぼ失い不利が重なる。</div>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <div class="conclusion-title">✦ まとめ — なぜ両方必要か</div>
+        <ul class="conclusion-list">
+          <li><strong>標準集計（国民70%）</strong>では国民票が少ない練習生は構造的に不利</li>
+          <li>救済枠（SEKAI70%）があるが<strong>他の海外練習生との相対順位</strong>で決まる</li>
+          <li>国民票がほぼゼロだとSEKAI優先集計でも<strong>30%分のハンデ</strong>を背負う</li>
+          <li><strong>SEKAIだけでは足りない。国民票も積み続けることが必須</strong></li>
+          <li>🌏 海外ファンは<strong>Mnet Plusで毎日1票</strong>を</li>
+          <li>🎌 日本ファンは<strong>Lemino＋公式サイトで毎日2票</strong>を</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-footer">
+      <div class="info-footer-brand">JAYBIRDS</div>
+      <div class="info-footer-tag">#ジュアンジェイ　#ChuangJay　#JAY羽ばたくじぇい</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">JAYBIRDS</div>
+  <div class="footer-tags">#ジュアンジェイ　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
+</div>
+
+  </div><!-- /content-ja -->
+
+  <!-- ══════════════════════════════════════
+       ENGLISH CONTENT
+  ══════════════════════════════════════ -->
+
+  <div id="content-en" style="display:none;" lang="en">
+
+<div class="hero fade d1">
+  <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
+  <h1 class="hero-title">Vote <em>Simulator</em></h1>
+  <p class="hero-sub">Adjust vote counts and watch the rankings shift in real time.<br>Use the scenario buttons to load preset examples.</p>
+  <span class="ornament">✦ ✦ ✦</span>
+</div>
+
+<div class="sim-wrap fade d2">
+  <div class="sec-label">Interactive Simulator</div>
+
+  <div class="scenario-row">
+    <button class="sc-btn active" onclick="loadScenario(0,this,'en')">Case 1 — Small Gap</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'en')">Case 2 — Medium Gap</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'en')">Case 3 — Large Gap</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'en')">⚠️ Intl. Competition</button>
+  </div>
+
+  <div class="slider-grid">
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>Your Trainee — Kokumin</span>
+        <span class="slider-val" id="en-val-k">150</span>
+      </div>
+      <input type="range" min="0" max="1000" value="150" id="en-sl-k" oninput="renderSim('en')">
+    </div>
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>Your Trainee — SEKAI</span>
+        <span class="slider-val" id="en-val-s">750</span>
+      </div>
+      <input type="range" min="0" max="1000" value="750" id="en-sl-s" oninput="renderSim('en')">
+    </div>
+  </div>
+
+  <div class="result-wrap">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Trainee</th><th>Kokumin</th><th>SEKAI</th>
+          <th>Std. Score</th><th>Std. Rank</th>
+          <th>SEKAI Score</th><th>SEKAI Rank</th>
+        </tr>
+      </thead>
+      <tbody id="en-tbody"></tbody>
+    </table>
+  </div>
+  <div id="en-verdict"></div>
+</div>
+
+<div class="section-divider fade d3">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-text">✦ Learn More ✦</div>
+  <div class="section-divider-line"></div>
+</div>
+
+<div class="info-wrap fade d3">
+  <div class="sec-label">Voting Structure Explained</div>
+  <p class="info-intro">
+    Why both Kokumin and SEKAI votes matter — illustrated with three scenarios and the hidden trap, shown with numbers.
+  </p>
+
+  <div class="info-card">
+    <div class="info-top">
+      <div class="info-top-eye">✦ JAYBIRDS — VOTE STRUCTURE ✦</div>
+      <div class="info-top-title">How the Voting Works —<br>and the <em>Hidden Trap</em></div>
+      <div class="info-top-sub">Why SEKAI votes alone are not enough, shown with numbers</div>
+    </div>
+    <div class="info-body">
+      <div class="formula-row">
+        <div class="formula-box f-std">
+          <div class="formula-tag">① Standard Tally</div>
+          <div class="formula-text">Kokumin × 0.7<br>+ SEKAI × 0.3</div>
+        </div>
+        <div class="formula-box f-sekai">
+          <div class="formula-tag">② SEKAI Rescue Round</div>
+          <div class="formula-text">SEKAI × 0.7<br>+ Kokumin × 0.3</div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:18px;line-height:1.9;">In round ②, the top 12 by SEKAI-weighted score advance to the next stage — even if they were in the elimination zone in round ①.</p>
+
+      <div class="case-block">
+        <div class="case-header c1">
+          <span class="case-num">Case 1</span>
+          <span class="case-title">Small gap between Kokumin and SEKAI votes</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>Trainee</th><th>Kokumin</th><th>SEKAI</th><th>Std. Score</th><th>Std. Rank</th><th>SEKAI Score</th><th>SEKAI Rank</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 Yours</td><td class="ck">400</td><td class="cs">600</td><td class="cg">460</td><td class="cr">2nd ✅</td><td class="cg">540</td><td class="cr">1st ✅</td></tr>
+              <tr><td>Trainee A (JP)</td><td class="ck">600</td><td class="cs">400</td><td>540</td><td>1st ✅</td><td>460</td><td>2nd ✅</td></tr>
+              <tr><td>Trainee B</td><td class="ck">500</td><td class="cs">500</td><td>500</td><td>3rd ✅</td><td>500</td><td>3rd ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-safe">✅ When the gap is small, rankings stay stable across both tallies. Safe in both rounds.</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c2">
+          <span class="case-num">Case 2</span>
+          <span class="case-title">Medium gap — eliminated in Standard, rescued by SEKAI</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>Trainee</th><th>Kokumin</th><th>SEKAI</th><th>Std. Score</th><th>Std. Rank</th><th>SEKAI Score</th><th>SEKAI Rank</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 Yours</td><td class="ck">150</td><td class="cs">750</td><td class="cd">330</td><td class="cd">3rd 🚨</td><td class="cg">570</td><td class="cr">1st ✅</td></tr>
+              <tr><td>Trainee A (JP)</td><td class="ck">750</td><td class="cs">150</td><td>570</td><td>1st ✅</td><td>330</td><td>3rd 🚨</td></tr>
+              <tr><td>Trainee B</td><td class="ck">500</td><td class="cs">500</td><td>500</td><td>2nd ✅</td><td>500</td><td>2nd ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-rescued">🟡 Eliminated in the Standard Tally, but 1st in the SEKAI round → rescued and advances. SEKAI votes are the lifeline here.</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c3">
+          <span class="case-num">Case 3 ⚠️</span>
+          <span class="case-title">The Hidden Trap — competing international trainees</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>Trainee</th><th>Kokumin</th><th>SEKAI</th><th>Std. Score</th><th>Std. Rank</th><th>SEKAI Score</th><th>SEKAI Rank</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 Yours</td><td class="ck">50</td><td class="cs">700</td><td class="cd">505</td><td class="cd">3rd 🚨</td><td class="cd">505</td><td class="cd">3rd 🚨</td></tr>
+              <tr><td>Trainee A (JP)</td><td class="ck">950</td><td class="cs">50</td><td>680</td><td>1st ✅</td><td>320</td><td>4th 🚨</td></tr>
+              <tr><td>Trainee B (Intl)</td><td class="ck">30</td><td class="cs">950</td><td>674</td><td>2nd ✅</td><td>674</td><td>1st ✅</td></tr>
+              <tr><td>Trainee C (Intl)</td><td class="ck">40</td><td class="cs">800</td><td>572</td><td>4th 🚨</td><td>572</td><td>2nd ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-danger">🚨 <strong>Even with strong SEKAI votes, if other international trainees have more — you get pushed out of the Rescue Round too.</strong><br>SEKAI rank is relative, not absolute. Near-zero Kokumin votes also means losing 30% of your score in the SEKAI round — a compounding disadvantage.</div>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <div class="conclusion-title">✦ The Bottom Line — Why Both Votes Matter</div>
+        <ul class="conclusion-list">
+          <li>The <strong>Standard Tally weights Japan at 70%</strong> — a structural disadvantage for international trainees</li>
+          <li>The Rescue Round exists, but your position depends on <strong>outranking other international trainees in SEKAI votes</strong></li>
+          <li>Near-zero Kokumin votes means losing <strong>30% of your score even in the SEKAI round</strong></li>
+          <li><strong>SEKAI votes alone are not enough. Kokumin votes must be built up continuously</strong></li>
+          <li>🌏 Global fans: <strong>vote daily on Mnet Plus</strong></li>
+          <li>🎌 Japan fans: <strong>2 votes/day</strong> via Lemino + Official Site</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-footer">
+      <div class="info-footer-brand">JAYBIRDS</div>
+      <div class="info-footer-tag">#ChuangJay　#ジュアンジェイ　#JAY羽ばたくじぇい</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">JAYBIRDS</div>
+  <div class="footer-tags">#ChuangJay　#ジュアンジェイ<br>#PRODUCE101JAPAN新世界　#JAY羽ばたくじぇい</div>
+</div>
+
+  </div><!-- /content-en -->
+
+</div><!-- /page -->
+
+<script>
+// ── SCENARIOS ──
+const SCENARIOS = {
+  ja: [
+    { oshi:[400,600], others:[{name:'練習生A（日）',k:600,s:400},{name:'練習生B',k:500,s:500}] },
+    { oshi:[150,750], others:[{name:'練習生A（日）',k:750,s:150},{name:'練習生B',k:500,s:500}] },
+    { oshi:[50,700],  others:[{name:'練習生A（日）',k:950,s:50},{name:'練習生B（海）',k:30,s:950},{name:'練習生C（海）',k:40,s:800}] },
+    { oshi:[50,600],  others:[{name:'練習生A（日）',k:900,s:80},{name:'練習生B（海）',k:40,s:850},{name:'練習生C（海）',k:35,s:720},{name:'練習生D（海）',k:45,s:680}] }
+  ],
+  en: [
+    { oshi:[400,600], others:[{name:'Trainee A (JP)',k:600,s:400},{name:'Trainee B',k:500,s:500}] },
+    { oshi:[150,750], others:[{name:'Trainee A (JP)',k:750,s:150},{name:'Trainee B',k:500,s:500}] },
+    { oshi:[50,700],  others:[{name:'Trainee A (JP)',k:950,s:50},{name:'Trainee B (Intl)',k:30,s:950},{name:'Trainee C (Intl)',k:40,s:800}] },
+    { oshi:[50,600],  others:[{name:'Trainee A (JP)',k:900,s:80},{name:'Trainee B (Intl)',k:40,s:850},{name:'Trainee C (Intl)',k:35,s:720},{name:'Trainee D (Intl)',k:45,s:680}] }
+  ]
+};
+
+const currentSc = { ja: 0, en: 0 };
+
+function calcScore(k, s, sekaiMode) {
+  return sekaiMode ? Math.round(s*0.7 + k*0.3) : Math.round(k*0.7 + s*0.3);
+}
+
+function getRanks(arr, field) {
+  const sorted = [...arr].sort((a,b) => b[field]-a[field]);
+  return arr.map(item => sorted.indexOf(item)+1);
+}
+
+function renderSim(lang) {
+  const k = +document.getElementById(`${lang}-sl-k`).value;
+  const s = +document.getElementById(`${lang}-sl-s`).value;
+  document.getElementById(`${lang}-val-k`).textContent = k;
+  document.getElementById(`${lang}-val-s`).textContent = s;
+
+  const sc = SCENARIOS[lang][currentSc[lang]];
+  const oshiLabel = lang === 'ja' ? '🟡 推し' : '🟡 Yours';
+  const rows = [
+    { name: oshiLabel, k, s, isOshi: true },
+    ...sc.others.map(o => ({...o, isOshi:false}))
+  ];
+  rows.forEach(r => {
+    r.stdScore  = calcScore(r.k, r.s, false);
+    r.sekaiScore = calcScore(r.k, r.s, true);
+  });
+  const stdRanks   = getRanks(rows, 'stdScore');
+  const sekaiRanks = getRanks(rows, 'sekaiScore');
+  rows.forEach((r,i) => { r.stdRank=stdRanks[i]; r.sekaiRank=sekaiRanks[i]; });
+
+  const total = rows.length;
+  const stdSafe   = Math.ceil(total/2);
+  const sekaiSafe = Math.min(2, total-1);
+
+  const tbody = document.getElementById(`${lang}-tbody`);
+  tbody.innerHTML = '';
+  rows.forEach(r => {
+    const sp = r.stdRank   <= stdSafe;
+    const kp = r.sekaiRank <= sekaiSafe;
+    let cls = r.isOshi ? 'focus-row' : '';
+    if (r.isOshi && !sp &&  kp) cls = 'rescue-row';
+    if (r.isOshi && !sp && !kp) cls = 'danger-row';
+    const tr = document.createElement('tr');
+    if (cls) tr.className = cls;
+    tr.innerHTML = `
+      <td>${r.name}</td>
+      <td class="td-k">${r.k}</td><td class="td-s">${r.s}</td>
+      <td class="td-score">${r.stdScore}</td>
+      <td><span class="rank-badge ${sp?'rank-safe':'rank-danger'}">${r.stdRank}</span></td>
+      <td class="td-score">${r.sekaiScore}</td>
+      <td><span class="rank-badge ${kp?'rank-safe':'rank-danger'}">${r.sekaiRank}</span></td>`;
+    tbody.appendChild(tr);
+  });
+
+  const o = rows[0];
+  const sp = o.stdRank<=stdSafe, kp = o.sekaiRank<=sekaiSafe;
+  let vc, vt;
+  if (lang==='ja') {
+    if (sp)      { vc='safe';    vt=`✅ 標準集計 <strong>${o.stdRank}位</strong> で通過圏内。SEKAI優先でも <strong>${o.sekaiRank}位</strong>。両方で安定しています。`; }
+    else if (kp) { vc='rescued'; vt=`🟡 標準集計 <strong>${o.stdRank}位</strong> で脱落圏。SEKAI優先集計 <strong>${o.sekaiRank}位</strong> → 救済枠で次ステージへ進出できます。SEKAI票の維持が生命線。`; }
+    else         { vc='danger';  vt=`🚨 標準集計 <strong>${o.stdRank}位</strong>、SEKAI優先でも <strong>${o.sekaiRank}位</strong> で脱落圏。他の海外練習生にSEKAI票で上回られている状態。グローバルファンへの働きかけが急務。`; }
+  } else {
+    if (sp)      { vc='safe';    vt=`✅ Standard rank: <strong>${o.stdRank}</strong> — safe zone. SEKAI round rank: <strong>${o.sekaiRank}</strong>. Stable in both tallies.`; }
+    else if (kp) { vc='rescued'; vt=`🟡 Standard rank: <strong>${o.stdRank}</strong> — elimination zone. SEKAI round rank: <strong>${o.sekaiRank}</strong> → rescued and advances. Maintaining SEKAI votes is critical.`; }
+    else         { vc='danger';  vt=`🚨 Standard rank: <strong>${o.stdRank}</strong>, SEKAI round rank: <strong>${o.sekaiRank}</strong> — both in elimination zone. Being outranked by other international trainees. Global fan outreach is urgent.`; }
+  }
+  document.getElementById(`${lang}-verdict`).innerHTML = `<div class="verdict ${vc}">${vt}</div>`;
+}
+
+function loadScenario(idx, btn, lang) {
+  currentSc[lang] = idx;
+  const parent = btn.closest('.scenario-row');
+  parent.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const sc = SCENARIOS[lang][idx];
+  document.getElementById(`${lang}-sl-k`).value = sc.oshi[0];
+  document.getElementById(`${lang}-sl-s`).value = sc.oshi[1];
+  renderSim(lang);
+}
+
+// ── LANG SWITCH ──
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('content-ja').style.display = lang==='ja' ? '' : 'none';
+  document.getElementById('content-en').style.display = lang==='en' ? '' : 'none';
+  document.documentElement.lang = lang;
+}
+
+// ── INIT ──
+renderSim('ja');
+renderSim('en');
+</script>
+
+</body>
+</html>
