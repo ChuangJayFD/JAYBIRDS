@@ -229,14 +229,40 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
 
 .info-body { padding: 22px 24px; }
 
-.formula-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.formula-box { border-radius: 8px; padding: 12px 14px; }
-.formula-box.f-std { background: var(–k-soft); border: 1px solid var(–k-border); }
-.formula-box.f-sekai { background: var(–s-soft); border: 1px solid var(–s-border); }
-.formula-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 5px; }
-.f-std .formula-tag { color: var(–k); }
-.f-sekai .formula-tag { color: var(–s); }
-.formula-text { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; color: var(–white); line-height: 1.6; }
+.formula-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.formula-box { border-radius: 10px; padding: 16px 16px 14px; }
+.formula-box.f-std {
+background: rgba(212,132,90,0.1);
+border: 2px solid #d4845a;
+}
+.formula-box.f-sekai {
+background: rgba(90,159,212,0.1);
+border: 2px solid #5a9fd4;
+}
+.formula-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
+.f-std .formula-tag { color: #d4845a; }
+.f-sekai .formula-tag { color: #5a9fd4; }
+.formula-text { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; color: #ffffff; line-height: 1.6; margin-bottom: 12px; }
+
+/* ratio bar in formula */
+.formula-bar-wrap { margin-top: 4px; }
+.formula-bar {
+display: flex;
+height: 10px;
+border-radius: 5px;
+overflow: hidden;
+margin-bottom: 6px;
+}
+.fbar-k { background: #d4845a; transition: width 0.4s ease; }
+.fbar-s { background: #5a9fd4; transition: width 0.4s ease; }
+.formula-bar-labels {
+display: flex;
+justify-content: space-between;
+font-size: 10px;
+font-weight: 700;
+}
+.fbl-k { color: #d4845a; }
+.fbl-s { color: #5a9fd4; }
 
 .case-block { margin-bottom: 16px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
 .case-block:last-of-type { margin-bottom: 0; }
@@ -382,14 +408,34 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
       <div class="formula-row">
         <div class="formula-box f-std">
           <div class="formula-tag">① 標準集計</div>
-          <div class="formula-text">国民票 × 0.7<br>＋ SEKAI票 × 0.3</div>
+          <div class="formula-text">国民票 × 0.7　＋　SEKAI票 × 0.3</div>
+          <div class="formula-bar-wrap">
+            <div class="formula-bar">
+              <div class="fbar-k" style="width:70%"></div>
+              <div class="fbar-s" style="width:30%"></div>
+            </div>
+            <div class="formula-bar-labels">
+              <span class="fbl-k">国民 70%</span>
+              <span class="fbl-s">SEKAI 30%</span>
+            </div>
+          </div>
         </div>
         <div class="formula-box f-sekai">
           <div class="formula-tag">② SEKAI優先（救済枠）</div>
-          <div class="formula-text">SEKAI票 × 0.7<br>＋ 国民票 × 0.3</div>
+          <div class="formula-text">SEKAI票 × 0.7　＋　国民票 × 0.3</div>
+          <div class="formula-bar-wrap">
+            <div class="formula-bar">
+              <div class="fbar-s" style="width:70%"></div>
+              <div class="fbar-k" style="width:30%"></div>
+            </div>
+            <div class="formula-bar-labels">
+              <span class="fbl-s">SEKAI 70%</span>
+              <span class="fbl-k">国民 30%</span>
+            </div>
+          </div>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:18px;line-height:1.9;">②の集計で上位12名は、標準集計で脱落圏でも次のステージへ進出できる。</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.9;">②の集計で上位12名は、標準集計で脱落圏でも次のステージへ進出できる。</p>
 
       <div class="case-block">
         <div class="case-header c1">
@@ -477,7 +523,6 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
   ══════════════════════════════════════ -->
 
   <div id="content-en" style="display:none;" lang="en">
-
 <div class="hero fade d1">
   <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
   <h1 class="hero-title">Vote <em>Simulator</em></h1>
@@ -549,14 +594,34 @@ padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-alig
       <div class="formula-row">
         <div class="formula-box f-std">
           <div class="formula-tag">① Standard Tally</div>
-          <div class="formula-text">Kokumin × 0.7<br>+ SEKAI × 0.3</div>
+          <div class="formula-text">Kokumin × 0.7　+　SEKAI × 0.3</div>
+          <div class="formula-bar-wrap">
+            <div class="formula-bar">
+              <div class="fbar-k" style="width:70%"></div>
+              <div class="fbar-s" style="width:30%"></div>
+            </div>
+            <div class="formula-bar-labels">
+              <span class="fbl-k">Kokumin 70%</span>
+              <span class="fbl-s">SEKAI 30%</span>
+            </div>
+          </div>
         </div>
         <div class="formula-box f-sekai">
           <div class="formula-tag">② SEKAI Rescue Round</div>
-          <div class="formula-text">SEKAI × 0.7<br>+ Kokumin × 0.3</div>
+          <div class="formula-text">SEKAI × 0.7　+　Kokumin × 0.3</div>
+          <div class="formula-bar-wrap">
+            <div class="formula-bar">
+              <div class="fbar-s" style="width:70%"></div>
+              <div class="fbar-k" style="width:30%"></div>
+            </div>
+            <div class="formula-bar-labels">
+              <span class="fbl-s">SEKAI 70%</span>
+              <span class="fbl-k">Kokumin 30%</span>
+            </div>
+          </div>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--text-muted);margin-bottom:18px;line-height:1.9;">In round ②, the top 12 by SEKAI-weighted score advance to the next stage — even if they were in the elimination zone in round ①.</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.9;">In round ②, the top 12 by SEKAI-weighted score advance to the next stage — even if they were in the elimination zone in round ①.</p>
 
       <div class="case-block">
         <div class="case-header c1">
