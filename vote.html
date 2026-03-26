@@ -308,24 +308,24 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #800040, 0 6px 14px rgb
 
 /* ===== 投票画面モックアップ ===== */
 .vote-preview {
-background: #f0f4ff; border-radius: 16px; overflow: hidden;
-margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
+background: #1a2340; border-radius: 16px; overflow: hidden;
+margin-top: 16px; border: 1px solid rgba(58,127,212,0.3);
 }
-.vote-preview-body { background: #f8faff; padding: 16px; }
+.vote-preview-body { background: #1e2a4a; padding: 16px; }
 .vote-preview-title {
-font-size: 15px; font-weight: 900; color: #1a3a7a;
+font-size: 15px; font-weight: 900; color: #a0c4ff;
 text-align: center; margin-bottom: 4px; line-height: 1.4;
 }
-.vote-preview-title span { color: var(–p101-light); }
-.vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
+.vote-preview-title span { color: var(–p101-accent); }
+.vote-preview-sub { font-size: 10px; color: #6688bb; text-align: center; margin-bottom: 14px; }
 .vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #c0ccee; }
+.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #3a5a88; }
 .candidate-avatar.selected { border-color: var(–p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
-.candidate-name { font-size: 10px; color: #334; font-weight: 500; white-space: nowrap; text-align: center; }
+.candidate-name { font-size: 10px; color: #a0b8d8; font-weight: 500; white-space: nowrap; text-align: center; }
 .candidate-btn { font-size: 10px; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: none; cursor: default; width: 100%; }
 .candidate-btn.add { background: var(–p101); color: #fff; }
-.candidate-btn.remove { background: #dde4f8; color: var(–p101); }
+.candidate-btn.remove { background: #2a3f6a; color: #7ab0ff; }
 .vote-crown-btn {
 display: flex; align-items: center; justify-content: center; gap: 8px;
 margin-top: 14px; padding: 10px;
@@ -462,10 +462,11 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
   <div class="tiktok-modal-overlay" id="tiktokModal">
     <div class="tiktok-modal">
       <button class="tiktok-modal-close" onclick="closeModal()">✕</button>
-      <div class="tiktok-modal-thumb-placeholder">
-        <div class="tiktok-modal-play-icon">🎬</div>
-        <div class="tiktok-modal-label">投票方法 動画ガイド</div>
-        <div class="tiktok-modal-sublabel">How to Vote — JAYBIRDS</div>
+      <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" style="width:100%; aspect-ratio:9/16; object-fit:cover; display:block;" onerror="this.style.display='none'; document.getElementById('thumbFallback').style.display='flex';">
+      <div id="thumbFallback" style="display:none; width:100%; aspect-ratio:9/16; background:linear-gradient(160deg,#0a1a3a,#1a4fa0); flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,0.2);border:2px solid rgba(201,168,76,0.6);display:flex;align-items:center;justify-content:center;font-size:22px;">🎬</div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:rgba(201,168,76,0.9);">投票方法 動画ガイド</div>
+        <div style="font-size:10px;color:rgba(235,235,245,0.5);">How to Vote — JAYBIRDS</div>
       </div>
       <div class="tiktok-modal-footer">
         <p class="tiktok-modal-title">📋 投票のやり方をまとめた動画です。<br>TikTokで見てね🪶</p>
