@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
 <title>投票ガイド — JAYBIRDS</title>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
@@ -308,24 +309,24 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #800040, 0 6px 14px rgb
 
 /* ===== 投票画面モックアップ ===== */
 .vote-preview {
-background: #1a2340; border-radius: 16px; overflow: hidden;
-margin-top: 16px; border: 1px solid rgba(58,127,212,0.3);
+background: #f0f4ff; border-radius: 16px; overflow: hidden;
+margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
 }
-.vote-preview-body { background: #1e2a4a; padding: 16px; }
+.vote-preview-body { background: #f8faff; padding: 16px; }
 .vote-preview-title {
-font-size: 15px; font-weight: 900; color: #a0c4ff;
+font-size: 15px; font-weight: 900; color: #1a3a7a;
 text-align: center; margin-bottom: 4px; line-height: 1.4;
 }
-.vote-preview-title span { color: var(–p101-accent); }
-.vote-preview-sub { font-size: 10px; color: #6688bb; text-align: center; margin-bottom: 14px; }
+.vote-preview-title span { color: var(–p101-light); }
+.vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
 .vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #3a5a88; }
+.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #c0ccee; }
 .candidate-avatar.selected { border-color: var(–p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
-.candidate-name { font-size: 10px; color: #a0b8d8; font-weight: 500; white-space: nowrap; text-align: center; }
+.candidate-name { font-size: 10px; color: #334; font-weight: 500; white-space: nowrap; text-align: center; }
 .candidate-btn { font-size: 10px; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: none; cursor: default; width: 100%; }
 .candidate-btn.add { background: var(–p101); color: #fff; }
-.candidate-btn.remove { background: #2a3f6a; color: #7ab0ff; }
+.candidate-btn.remove { background: #dde4f8; color: var(–p101); }
 .vote-crown-btn {
 display: flex; align-items: center; justify-content: center; gap: 8px;
 margin-top: 14px; padding: 10px;
@@ -466,12 +467,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
   <div class="tiktok-modal-overlay" id="tiktokModal">
     <div class="tiktok-modal">
       <button class="tiktok-modal-close" onclick="closeModal()">✕</button>
-      <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" class="tiktok-modal-thumb" onerror="this.style.display='none'; document.getElementById('thumbFallback').style.display='flex';">
-      <div id="thumbFallback" style="display:none;" class="tiktok-modal-thumb-placeholder">
-        <div class="tiktok-modal-play-icon">🎬</div>
-        <div class="tiktok-modal-label">投票方法 動画ガイド</div>
-        <div class="tiktok-modal-sublabel">How to Vote — JAYBIRDS</div>
-      </div>
+      <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" class="tiktok-modal-thumb">
       <div class="tiktok-modal-footer">
         <p class="tiktok-modal-title">📋 投票のやり方をまとめた動画です。<br>TikTokで見てね🪶</p>
         <a class="tiktok-open-btn" href="https://vt.tiktok.com/ZSuTCsu89/" target="_blank" rel="noopener" onclick="closeModal()">
@@ -774,7 +770,7 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
       </div>
     </div>
   </div>
-</div>
+</div
 
   </div>
 
