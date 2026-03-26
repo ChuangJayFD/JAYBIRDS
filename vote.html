@@ -355,7 +355,7 @@ font-size: 11px; color: var(–label2); line-height: 1.85;
 position: fixed; inset: 0; z-index: 1000;
 background: rgba(0,0,0,0.85);
 display: flex; align-items: center; justify-content: center;
-padding: 24px;
+padding: 20px;
 animation: fadeIn 0.3s ease;
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -365,9 +365,11 @@ background: #1c1c1e;
 border: 1px solid rgba(201,168,76,0.4);
 border-radius: 16px;
 overflow: hidden;
-max-width: 320px; width: 100%;
+max-width: 280px; width: 100%;
+max-height: 90vh;
 position: relative;
 animation: slideUp 0.35s ease;
+display: flex; flex-direction: column;
 }
 @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -382,30 +384,32 @@ line-height: 1;
 .tiktok-modal-close:hover { background: rgba(0,0,0,0.8); }
 
 .tiktok-modal-thumb {
-width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block;
-background: #111;
+width: 100%; aspect-ratio: 9/14; object-fit: cover; display: block;
+background: #111; flex-shrink: 1; min-height: 0;
 }
 .tiktok-modal-thumb-placeholder {
-width: 100%; aspect-ratio: 9/16;
+width: 100%; aspect-ratio: 9/14;
 background: linear-gradient(160deg, #0a1a3a, #1a4fa0);
-display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+flex-shrink: 1; min-height: 0;
 }
 .tiktok-modal-play-icon {
-width: 56px; height: 56px; border-radius: 50%;
+width: 48px; height: 48px; border-radius: 50%;
 background: rgba(201,168,76,0.2); border: 2px solid rgba(201,168,76,0.6);
 display: flex; align-items: center; justify-content: center;
-font-size: 22px;
+font-size: 20px;
 }
 .tiktok-modal-label {
-font-size: 12px; font-weight: 700; letter-spacing: 2px;
+font-size: 11px; font-weight: 700; letter-spacing: 2px;
 color: rgba(201,168,76,0.9); text-transform: uppercase;
 }
 .tiktok-modal-sublabel {
-font-size: 10px; color: rgba(235,235,245,0.5); letter-spacing: 1px;
+font-size: 9px; color: rgba(235,235,245,0.5); letter-spacing: 1px;
 }
 
 .tiktok-modal-footer {
-padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
+padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;
+flex-shrink: 0;
 }
 .tiktok-modal-title {
 font-size: 11px; font-weight: 700; color: rgba(235,235,245,0.9);
@@ -415,7 +419,7 @@ letter-spacing: 0.5px; line-height: 1.5;
 display: flex; align-items: center; justify-content: center; gap: 8px;
 text-decoration: none; width: 100%;
 background: linear-gradient(135deg, #ff2d55, #ff6b9d);
-border-radius: 8px; padding: 11px;
+border-radius: 8px; padding: 10px;
 font-size: 12px; font-weight: 900; letter-spacing: 1.5px;
 color: #fff;
 box-shadow: 0 4px 14px rgba(255,45,85,0.35);
@@ -425,7 +429,7 @@ transition: filter 0.2s, transform 0.1s;
 .tiktok-skip-btn {
 background: none; border: none; color: rgba(235,235,245,0.35);
 font-size: 10px; letter-spacing: 1px; cursor: pointer;
-padding: 4px; text-align: center; width: 100%;
+padding: 2px; text-align: center; width: 100%;
 font-family: ‘Noto Sans JP’, sans-serif;
 }
 .tiktok-skip-btn:hover { color: rgba(235,235,245,0.6); }
@@ -462,11 +466,11 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
   <div class="tiktok-modal-overlay" id="tiktokModal">
     <div class="tiktok-modal">
       <button class="tiktok-modal-close" onclick="closeModal()">✕</button>
-      <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" style="width:100%; aspect-ratio:9/16; object-fit:cover; display:block;" onerror="this.style.display='none'; document.getElementById('thumbFallback').style.display='flex';">
-      <div id="thumbFallback" style="display:none; width:100%; aspect-ratio:9/16; background:linear-gradient(160deg,#0a1a3a,#1a4fa0); flex-direction:column; align-items:center; justify-content:center; gap:12px;">
-        <div style="width:56px;height:56px;border-radius:50%;background:rgba(201,168,76,0.2);border:2px solid rgba(201,168,76,0.6);display:flex;align-items:center;justify-content:center;font-size:22px;">🎬</div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:rgba(201,168,76,0.9);">投票方法 動画ガイド</div>
-        <div style="font-size:10px;color:rgba(235,235,245,0.5);">How to Vote — JAYBIRDS</div>
+      <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" class="tiktok-modal-thumb" onerror="this.style.display='none'; document.getElementById('thumbFallback').style.display='flex';">
+      <div id="thumbFallback" style="display:none;" class="tiktok-modal-thumb-placeholder">
+        <div class="tiktok-modal-play-icon">🎬</div>
+        <div class="tiktok-modal-label">投票方法 動画ガイド</div>
+        <div class="tiktok-modal-sublabel">How to Vote — JAYBIRDS</div>
       </div>
       <div class="tiktok-modal-footer">
         <p class="tiktok-modal-title">📋 投票のやり方をまとめた動画です。<br>TikTokで見てね🪶</p>
