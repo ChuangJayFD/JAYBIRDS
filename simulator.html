@@ -2,15 +2,6 @@
 
 <html lang="ja" style="color-scheme: only dark;">
 <head>
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EXHV880LX0');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only dark">
@@ -76,33 +67,84 @@ color: var(–gold); text-transform: uppercase; text-decoration: none;
 .nav-back:hover { color: var(–gold-light); }
 
 /* ── LANG TABS ── */
+.lang-tabs-wrap {
+border-bottom: 2px solid #c9a84c;
+margin-bottom: 36px;
+position: relative;
+}
 .lang-tabs {
 display: flex;
-gap: 8px;
-margin-bottom: 44px;
-align-items: center;
+gap: 0;
+align-items: flex-end;
+padding: 0 2px;
+flex-wrap: nowrap;
 }
 .lang-tab {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+font-size: 13px; font-weight: 700; letter-spacing: 0.14em;
 text-transform: uppercase;
-padding: 12px 32px;
-border-radius: 6px;
-border: 1px solid #c9a84c;
-background: #0a0a0a;
-color: #c9a84c;
+padding: 9px 18px 11px;
+border-radius: 8px 8px 0 0;
+border: 2px solid rgba(201,168,76,0.28);
+border-bottom: none;
+background: #0f0f0f;
+color: rgba(255,255,255,0.38);
 cursor: pointer;
-transition: all 0.2s;
+transition: all 0.18s;
+position: relative;
+margin-right: 3px;
+bottom: 0;
+white-space: nowrap;
+flex-shrink: 0;
 }
 .lang-tab:hover {
-background: rgba(201,168,76,0.15);
-color: #e2c47a;
+background: #162040;
+color: #c9a84c;
+border-color: rgba(201,168,76,0.55);
 }
 .lang-tab.active {
-background: #c9a84c !important;
+background: #0d1b3e !important;
+color: #f0d070 !important;
 border-color: #c9a84c !important;
-color: #0a0a0a !important;
+border-bottom: 2px solid #0d1b3e !important;
+z-index: 2;
+bottom: -2px;
+padding-bottom: 13px;
+}
+
+/* ── GLOBAL POWER BANNER ── */
+.global-banner {
+margin: -8px 0 32px;
+border-radius: 10px;
+padding: 14px 20px;
+background: linear-gradient(135deg, #0a1f1a, #0d2a22);
+border: 2px solid #4ab87a;
+display: flex;
+align-items: center;
+gap: 12px;
+animation: fadeUp 0.5s ease 0.2s both;
+}
+.global-banner-icon {
+font-size: 24px;
+flex-shrink: 0;
+line-height: 1;
+}
+.global-banner-text {
+font-size: 13px;
 font-weight: 700;
+line-height: 1.65;
+color: #ffffff;
+}
+.global-banner-text .gb-hl {
+color: #6de09a;
+font-size: 14px;
+display: block;
+margin-bottom: 2px;
+}
+.global-banner-text .gb-sub {
+font-size: 11px;
+font-weight: 400;
+color: rgba(255,255,255,0.65);
 }
 
 /* ── HERO ── */
@@ -313,8 +355,105 @@ font-weight: 700;
 @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .fade { animation: fadeUp 0.45s ease both; }
 .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.12s; } .d3 { animation-delay: 0.2s; }
-</style>
 
+/* ── BREAKDOWN ACCORDION ── */
+.breakdown-toggle {
+margin-top: 10px;
+width: 100%;
+background: rgba(201,168,76,0.08);
+border: 1px solid rgba(201,168,76,0.25);
+border-radius: 8px;
+padding: 9px 14px;
+font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+color: #c9a84c; cursor: pointer;
+text-align: left; font-family: inherit;
+display: flex; align-items: center; justify-content: space-between;
+transition: background 0.2s;
+}
+.breakdown-toggle:hover { background: rgba(201,168,76,0.14); }
+.breakdown-toggle .arrow { transition: transform 0.25s; font-style: normal; }
+.breakdown-toggle.open .arrow { transform: rotate(180deg); }
+
+.breakdown-panel {
+display: none;
+background: #0d1b3e;
+border: 1px solid rgba(201,168,76,0.2);
+border-top: none;
+border-radius: 0 0 8px 8px;
+padding: 14px 16px;
+font-size: 11px; line-height: 1.9;
+color: rgba(255,255,255,0.8);
+}
+.breakdown-panel.open { display: block; }
+
+.bd-section { margin-bottom: 12px; }
+.bd-section:last-child { margin-bottom: 0; }
+.bd-head {
+font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+text-transform: uppercase; margin-bottom: 6px;
+}
+.bd-head.k { color: #d4845a; } .bd-head.s { color: #5a9fd4; }
+.bd-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
+.bd-label { font-size: 11px; color: rgba(255,255,255,0.55); min-width: 80px; }
+.bd-calc { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; }
+.bd-calc.k { color: #f5a060; } .bd-calc.s { color: #70c0f5; }
+.bd-arrow { color: rgba(255,255,255,0.3); font-size: 11px; }
+.bd-result { font-size: 12px; font-weight: 700; }
+.bd-result.k { color: #f5a060; } .bd-result.s { color: #70c0f5; }
+.bd-total {
+margin-top: 10px; padding: 8px 12px;
+background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+border-radius: 6px; font-size: 12px; font-weight: 700; color: #e2c47a;
+}
+
+/* ── 3-STEP PROCESS DIAGRAM ── */
+.process-steps {
+display: flex; flex-direction: column; gap: 0;
+margin-bottom: 20px;
+}
+.process-step {
+display: grid; grid-template-columns: 36px 1fr;
+gap: 12px; align-items: start;
+padding: 12px 14px;
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 0; background: #0d1b3e;
+position: relative;
+}
+.process-step:first-child { border-radius: 8px 8px 0 0; }
+.process-step:last-child { border-radius: 0 0 8px 8px; }
+.process-step + .process-step { border-top: none; }
+.process-step-connector {
+height: 0; /* spacer removed — using border trick */
+}
+.step-num-circle {
+width: 28px; height: 28px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px; font-weight: 700;
+flex-shrink: 0; margin-top: 2px;
+}
+.step-num-circle.c1 { background: rgba(212,132,90,0.25); color: #f5a060; border: 1px solid rgba(212,132,90,0.5); }
+.step-num-circle.c2 { background: rgba(90,159,212,0.25); color: #70c0f5; border: 1px solid rgba(90,159,212,0.5); }
+.step-num-circle.c3 { background: rgba(201,168,76,0.2); color: #e2c47a; border: 1px solid rgba(201,168,76,0.4); }
+.step-content-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.step-content-body { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+.step-content-body strong { color: #e2c47a; }
+.step-content-body .c-k { color: #f5a060; font-weight: 600; }
+.step-content-body .c-s { color: #70c0f5; font-weight: 600; }
+
+/* example calc box inside step */
+.step-example {
+margin-top: 8px;
+background: rgba(0,0,0,0.25);
+border-radius: 6px; padding: 8px 10px;
+font-size: 11px; line-height: 1.9;
+font-family: ‘Noto Sans JP’, monospace;
+}
+.step-example .ex-k { color: #f5a060; }
+.step-example .ex-s { color: #70c0f5; }
+.step-example .ex-g { color: #e2c47a; font-weight: 700; }
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -326,9 +465,12 @@ font-weight: 700;
 
   <!-- LANG TABS -->
 
+  <div class="lang-tabs-wrap">
   <div class="lang-tabs">
     <button class="lang-tab active" onclick="setLang('ja', this)">日本語</button>
     <button class="lang-tab" onclick="setLang('en', this)">English</button>
+    <button class="lang-tab" onclick="setLang('zh', this)">繁體中文</button>
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -337,6 +479,7 @@ font-weight: 700;
 
   <div id="content-ja">
 
+```
 <div class="hero fade d1">
   <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
   <h1 class="hero-title">投票シミュレーター</h1>
@@ -346,6 +489,9 @@ font-weight: 700;
 
 <div class="sim-wrap fade d2">
   <div class="sec-label">インタラクティブ シミュレーター</div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
+    ※ 計算はボイプラ準拠の正規化方式：各練習生スコア ＝ （自身の国民票 ÷ 国民票総数）×70 ＋ （自身のSEKAI票 ÷ SEKAI票総数）×30。<strong style="color:#e2c47a;">SEKAI票の母数が少ないほど、1票の価値が上がります。</strong>
+  </p>
 
   <div class="scenario-row">
     <button class="sc-btn active" onclick="loadScenario(0,this,'ja')">ケース1 ギャップ小</button>
@@ -383,6 +529,11 @@ font-weight: 700;
       <tbody id="ja-tbody"></tbody>
     </table>
   </div>
+  <div id="ja-worth" style="font-size:11px;padding:8px 12px;background:#112050;border-radius:0 0 10px 10px;line-height:1.9;border:1px solid rgba(255,255,255,0.07);border-top:none;"></div>
+  <button class="breakdown-toggle" onclick="toggleBreakdown('ja',this)">
+    📐 計算の内訳を見る <span class="arrow">▼</span>
+  </button>
+  <div class="breakdown-panel" id="ja-breakdown"></div>
   <div id="ja-verdict"></div>
 </div>
 
@@ -405,32 +556,46 @@ font-weight: 700;
       <div class="info-top-sub">なぜSEKAIだけでは足りないのか、数字で見る</div>
     </div>
     <div class="info-body">
-      <div class="formula-row">
-        <div class="formula-box f-std">
-          <div class="formula-tag">① 標準集計</div>
-          <div class="formula-text">国民票 × 0.7　＋　SEKAI票 × 0.3</div>
-          <div class="formula-bar-wrap">
-            <div class="formula-bar">
-              <div class="fbar-k" style="width:70%"></div>
-              <div class="fbar-s" style="width:30%"></div>
-            </div>
-            <div class="formula-bar-labels">
-              <span class="fbl-k">国民 70%</span>
-              <span class="fbl-s">SEKAI 30%</span>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num-circle c1">1</div>
+          <div>
+            <div class="step-content-title">総票数を2つに分けて集計する</div>
+            <div class="step-content-body">
+              国民票の合計と、SEKAI票の合計を<strong>それぞれ別々に</strong>カウントする。<br>
+              <span class="c-k">国民票の総数</span>と<span class="c-s">SEKAI票の総数</span>は、参加者数によって毎回変わる。
+              <div class="step-example">
+                例） <span class="ex-k">国民票の総数 ＝ 10万票</span>　<span class="ex-s">SEKAI票の総数 ＝ 100万票</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="formula-box f-sekai">
-          <div class="formula-tag">② SEKAI優先（救済枠）</div>
-          <div class="formula-text">SEKAI票 × 0.7　＋　国民票 × 0.3</div>
-          <div class="formula-bar-wrap">
-            <div class="formula-bar">
-              <div class="fbar-s" style="width:70%"></div>
-              <div class="fbar-k" style="width:30%"></div>
+        <div class="process-step">
+          <div class="step-num-circle c2">2</div>
+          <div>
+            <div class="step-content-title">各練習生の「得票率」を計算する</div>
+            <div class="step-content-body">
+              各練習生の票数を、それぞれの<strong>総数で割って比率化</strong>する。<br>
+              これがポイント計算の核心。<strong>母数が少ないほど、同じ1票でも比率が大きくなる。</strong>
+              <div class="step-example">
+                練習生Aが<span class="ex-k">国民票1万票</span>を獲得：1万 ÷ 10万 ＝ <span class="ex-k">10%</span><br>
+                練習生Aが<span class="ex-s">SEKAI票1万票</span>を獲得：1万 ÷ 100万 ＝ <span class="ex-s">1%</span><br>
+                <span style="color:rgba(255,255,255,0.5);font-size:10px;">→ 同じ1万票でも、SEKAIの母数が大きいと比率が10分の1になる</span>
+              </div>
             </div>
-            <div class="formula-bar-labels">
-              <span class="fbl-s">SEKAI 70%</span>
-              <span class="fbl-k">国民 30%</span>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c3">3</div>
+          <div>
+            <div class="step-content-title">得票率に重み（70:30）をかけてポイント化</div>
+            <div class="step-content-body">
+              ①標準集計：<span class="c-k">国民得票率 × 70</span> ＋ <span class="c-s">SEKAI得票率 × 30</span><br>
+              ②救済枠：<span class="c-s">SEKAI得票率 × 70</span> ＋ <span class="c-k">国民得票率 × 30</span>
+              <div class="step-example">
+                ①標準：<span class="ex-k">10% × 70 ＝ 7pt</span>　＋　<span class="ex-s">1% × 30 ＝ 0.3pt</span>　＝　<span class="ex-g">7.3pt</span><br>
+                ②救済：<span class="ex-s">1% × 70 ＝ 0.7pt</span>　＋　<span class="ex-k">10% × 30 ＝ 3pt</span>　＝　<span class="ex-g">3.7pt</span>
+              </div>
             </div>
           </div>
         </div>
@@ -515,6 +680,7 @@ font-weight: 700;
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#ジュアンジェイ　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
 </div>
+```
 
   </div><!-- /content-ja -->
 
@@ -523,6 +689,8 @@ font-weight: 700;
   ══════════════════════════════════════ -->
 
   <div id="content-en" style="display:none;" lang="en">
+
+```
 <div class="hero fade d1">
   <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
   <h1 class="hero-title">Vote <em>Simulator</em></h1>
@@ -530,8 +698,19 @@ font-weight: 700;
   <span class="ornament">✦ ✦ ✦</span>
 </div>
 
+<div class="global-banner">
+  <div class="global-banner-icon">🌏</div>
+  <div class="global-banner-text">
+    <span class="gb-hl">Your vote from outside Japan is especially critical for Jay.</span>
+    <span class="gb-sub">The SEKAI vote pool is smaller — meaning each global vote carries far more weight than you might think. Every single day counts.</span>
+  </div>
+</div>
+
 <div class="sim-wrap fade d2">
   <div class="sec-label">Interactive Simulator</div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
+    ※ Scoring uses normalized method (Boys Planet reference): each trainee's score ＝ (own Kokumin ÷ total Kokumin) ×70 ＋ (own SEKAI ÷ total SEKAI) ×30. <strong style="color:#e2c47a;">The fewer total SEKAI voters, the more each individual SEKAI vote is worth.</strong>
+  </p>
 
   <div class="scenario-row">
     <button class="sc-btn active" onclick="loadScenario(0,this,'en')">Case 1 — Small Gap</button>
@@ -569,6 +748,11 @@ font-weight: 700;
       <tbody id="en-tbody"></tbody>
     </table>
   </div>
+  <div id="en-worth" style="font-size:11px;padding:8px 12px;background:#112050;border-radius:0 0 10px 10px;line-height:1.9;border:1px solid rgba(255,255,255,0.07);border-top:none;"></div>
+  <button class="breakdown-toggle" onclick="toggleBreakdown('en',this)">
+    📐 Show calculation breakdown <span class="arrow">▼</span>
+  </button>
+  <div class="breakdown-panel" id="en-breakdown"></div>
   <div id="en-verdict"></div>
 </div>
 
@@ -591,32 +775,45 @@ font-weight: 700;
       <div class="info-top-sub">Why SEKAI votes alone are not enough, shown with numbers</div>
     </div>
     <div class="info-body">
-      <div class="formula-row">
-        <div class="formula-box f-std">
-          <div class="formula-tag">① Standard Tally</div>
-          <div class="formula-text">Kokumin × 0.7　+　SEKAI × 0.3</div>
-          <div class="formula-bar-wrap">
-            <div class="formula-bar">
-              <div class="fbar-k" style="width:70%"></div>
-              <div class="fbar-s" style="width:30%"></div>
-            </div>
-            <div class="formula-bar-labels">
-              <span class="fbl-k">Kokumin 70%</span>
-              <span class="fbl-s">SEKAI 30%</span>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num-circle c1">1</div>
+          <div>
+            <div class="step-content-title">Count the two vote pools separately</div>
+            <div class="step-content-body">
+              The total Kokumin votes and total SEKAI votes are counted <strong>independently</strong>.<br>
+              These totals change every round depending on how many people voted.
+              <div class="step-example">
+                e.g. <span class="ex-k">Total Kokumin = 100,000</span>　<span class="ex-s">Total SEKAI = 1,000,000</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="formula-box f-sekai">
-          <div class="formula-tag">② SEKAI Rescue Round</div>
-          <div class="formula-text">SEKAI × 0.7　+　Kokumin × 0.3</div>
-          <div class="formula-bar-wrap">
-            <div class="formula-bar">
-              <div class="fbar-s" style="width:70%"></div>
-              <div class="fbar-k" style="width:30%"></div>
+        <div class="process-step">
+          <div class="step-num-circle c2">2</div>
+          <div>
+            <div class="step-content-title">Calculate each trainee's share within their pool</div>
+            <div class="step-content-body">
+              Divide each trainee's votes by the total for that pool. <strong>The smaller the pool, the bigger the share per vote.</strong>
+              <div class="step-example">
+                Trainee A gets <span class="ex-k">10,000 Kokumin votes</span>: 10K ÷ 100K = <span class="ex-k">10%</span><br>
+                Trainee A gets <span class="ex-s">10,000 SEKAI votes</span>: 10K ÷ 1M = <span class="ex-s">1%</span><br>
+                <span style="color:rgba(255,255,255,0.5);font-size:10px;">→ Same 10K votes, but SEKAI share is 10× smaller due to larger pool</span>
+              </div>
             </div>
-            <div class="formula-bar-labels">
-              <span class="fbl-s">SEKAI 70%</span>
-              <span class="fbl-k">Kokumin 30%</span>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c3">3</div>
+          <div>
+            <div class="step-content-title">Multiply share by weight (70:30) to get points</div>
+            <div class="step-content-body">
+              ① Standard: <span class="c-k">Kokumin share × 70</span> + <span class="c-s">SEKAI share × 30</span><br>
+              ② Rescue: <span class="c-s">SEKAI share × 70</span> + <span class="c-k">Kokumin share × 30</span>
+              <div class="step-example">
+                ① Standard: <span class="ex-k">10% × 70 = 7pt</span> + <span class="ex-s">1% × 30 = 0.3pt</span> = <span class="ex-g">7.3pt</span><br>
+                ② Rescue: <span class="ex-s">1% × 70 = 0.7pt</span> + <span class="ex-k">10% × 30 = 3pt</span> = <span class="ex-g">3.7pt</span>
+              </div>
             </div>
           </div>
         </div>
@@ -701,8 +898,228 @@ font-weight: 700;
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#ChuangJay　#ジュアンジェイ<br>#PRODUCE101JAPAN新世界　#JAY羽ばたくじぇい</div>
 </div>
+```
 
   </div><!-- /content-en -->
+
+  <!-- ══════════ 繁體中文 ══════════ -->
+
+  <div id="content-zh" style="display:none;" lang="zh-TW">
+
+```
+<div class="hero fade d1">
+  <p class="hero-eye">✦ JAYBIRDS — 投票模擬器 ✦</p>
+  <h1 class="hero-title">投票<em>模擬器</em></h1>
+  <p class="hero-sub">調整票數，即時查看排名如何變化。<br>也可使用情境按鈕載入預設範例。</p>
+  <span class="ornament">✦ ✦ ✦</span>
+</div>
+
+<div class="global-banner">
+  <div class="global-banner-icon">🌏</div>
+  <div class="global-banner-text">
+    <span class="gb-hl">來自日本以外的你的一票，對Jay來說至關重要。</span>
+    <span class="gb-sub">SEKAI票的母數較小，代表每一票的影響力遠比你想像的更大。每一天的投票都不能缺席。</span>
+  </div>
+</div>
+
+<div class="sim-wrap fade d2">
+  <div class="sec-label">互動式模擬器</div>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
+    ※ 計分採用正規化方式（參考Boys Planet）：各練習生得分 ＝ （自身國民票 ÷ 國民票總數）×70 ＋ （自身SEKAI票 ÷ SEKAI票總數）×30。<strong style="color:#e2c47a;">SEKAI票的母數越少，每一票的價值越高。</strong>
+  </p>
+
+  <div class="scenario-row">
+    <button class="sc-btn active" onclick="loadScenario(0,this,'zh')">情境1 差距小</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'zh')">情境2 差距中</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'zh')">情境3 差距大</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'zh')">⚠️ 海外競爭</button>
+  </div>
+
+  <div class="slider-grid">
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>推し — 國民票</span>
+        <span class="slider-val" id="zh-val-k">150</span>
+      </div>
+      <input type="range" min="0" max="1000" value="150" id="zh-sl-k" oninput="renderSim('zh')">
+    </div>
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>推し — SEKAI票</span>
+        <span class="slider-val" id="zh-val-s">750</span>
+      </div>
+      <input type="range" min="0" max="1000" value="750" id="zh-sl-s" oninput="renderSim('zh')">
+    </div>
+  </div>
+
+  <div class="result-wrap">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>練習生</th><th>國民票</th><th>SEKAI票</th>
+          <th>標準分數</th><th>標準排名</th>
+          <th>SEKAI優先分數</th><th>SEKAI排名</th>
+        </tr>
+      </thead>
+      <tbody id="zh-tbody"></tbody>
+    </table>
+  </div>
+  <div id="zh-worth" style="font-size:11px;padding:8px 12px;background:#112050;border-radius:0 0 10px 10px;line-height:1.9;border:1px solid rgba(255,255,255,0.07);border-top:none;"></div>
+  <button class="breakdown-toggle" onclick="toggleBreakdown('zh',this)">
+    📐 查看計算明細 <span class="arrow">▼</span>
+  </button>
+  <div class="breakdown-panel" id="zh-breakdown"></div>
+  <div id="zh-verdict"></div>
+</div>
+
+<div class="section-divider fade d3">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-text">✦ 了解更多 ✦</div>
+  <div class="section-divider-line"></div>
+</div>
+
+<div class="info-wrap fade d3">
+  <div class="sec-label">投票結構說明</div>
+  <p class="info-intro">
+    為什麼國民票和SEKAI票兩者都不可或缺？以三個情境和「陷阱」用數字整理說明。
+  </p>
+
+  <div class="info-card">
+    <div class="info-top">
+      <div class="info-top-eye">✦ JAYBIRDS — VOTE STRUCTURE ✦</div>
+      <div class="info-top-title">投票機制與<em>隱藏陷阱</em></div>
+      <div class="info-top-sub">為什麼光靠SEKAI票是不夠的，用數字說明</div>
+    </div>
+    <div class="info-body">
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num-circle c1">1</div>
+          <div>
+            <div class="step-content-title">將兩種票分開計算總數</div>
+            <div class="step-content-body">
+              國民票總數與SEKAI票總數<strong>分別獨立計算</strong>。<br>
+              每次集計的總票數會依投票人數而有所不同。
+              <div class="step-example">
+                例） <span class="ex-k">國民票總數 ＝ 10萬票</span>　<span class="ex-s">SEKAI票總數 ＝ 100萬票</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c2">2</div>
+          <div>
+            <div class="step-content-title">計算各練習生在各票池中的得票率</div>
+            <div class="step-content-body">
+              將各練習生的票數除以該票池總數，得出比率。<strong>母數越小，每一票的比率越大。</strong>
+              <div class="step-example">
+                練習生A獲得<span class="ex-k">國民票1萬票</span>：1萬 ÷ 10萬 ＝ <span class="ex-k">10%</span><br>
+                練習生A獲得<span class="ex-s">SEKAI票1萬票</span>：1萬 ÷ 100萬 ＝ <span class="ex-s">1%</span><br>
+                <span style="color:rgba(255,255,255,0.5);font-size:10px;">→ 同樣1萬票，但SEKAI母數大，比率只有國民票的十分之一</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c3">3</div>
+          <div>
+            <div class="step-content-title">將得票率乘以權重（70:30）換算為積分</div>
+            <div class="step-content-body">
+              ①標準集計：<span class="c-k">國民得票率 × 70</span> ＋ <span class="c-s">SEKAI得票率 × 30</span><br>
+              ②救濟名額：<span class="c-s">SEKAI得票率 × 70</span> ＋ <span class="c-k">國民得票率 × 30</span>
+              <div class="step-example">
+                ①標準：<span class="ex-k">10% × 70 ＝ 7分</span>　＋　<span class="ex-s">1% × 30 ＝ 0.3分</span>　＝　<span class="ex-g">7.3分</span><br>
+                ②救濟：<span class="ex-s">1% × 70 ＝ 0.7分</span>　＋　<span class="ex-k">10% × 30 ＝ 3分</span>　＝　<span class="ex-g">3.7分</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.9;">在②的集計中，前12名即使在標準集計中處於淘汰圈，也能晉級下一階段。</p>
+
+      <!-- Case 1 ZH -->
+      <div class="case-block">
+        <div class="case-header c1">
+          <span class="case-num">情境 1</span>
+          <span class="case-title">國民票與SEKAI票差距小</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>國民票</th><th>SEKAI票</th><th>標準分數</th><th>標準排名</th><th>SEKAI優先</th><th>SEKAI排名</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">400</td><td class="cs">600</td><td class="cg">—</td><td class="cr">2位 ✅</td><td class="cg">—</td><td class="cr">1位 ✅</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">600</td><td class="cs">400</td><td>—</td><td>1位 ✅</td><td>—</td><td>2位 ✅</td></tr>
+              <tr><td>練習生B</td><td class="ck">500</td><td class="cs">500</td><td>—</td><td>3位 ✅</td><td>—</td><td>3位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-safe">✅ 差距小時，兩種集計的排名都穩定。標準集計和救濟名額均在安全圈內。</div>
+        </div>
+      </div>
+
+      <!-- Case 2 ZH -->
+      <div class="case-block">
+        <div class="case-header c2">
+          <span class="case-num">情境 2</span>
+          <span class="case-title">差距中等 — 標準集計淘汰，SEKAI救濟復活</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>國民票</th><th>SEKAI票</th><th>標準分數</th><th>標準排名</th><th>SEKAI優先</th><th>SEKAI排名</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">150</td><td class="cs">750</td><td class="cd">—</td><td class="cd">3位 🚨</td><td class="cg">—</td><td class="cr">1位 ✅</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">750</td><td class="cs">150</td><td>—</td><td>1位 ✅</td><td>—</td><td>3位 🚨</td></tr>
+              <tr><td>練習生B</td><td class="ck">500</td><td class="cs">500</td><td>—</td><td>2位 ✅</td><td>—</td><td>2位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-rescued">🟡 標準集計雖在淘汰圈，但SEKAI優先排名第1 → 透過救濟名額晉級下一階段。SEKAI票是關鍵。</div>
+        </div>
+      </div>
+
+      <!-- Case 3 ZH -->
+      <div class="case-block">
+        <div class="case-header c3">
+          <span class="case-num">情境 3 ⚠️</span>
+          <span class="case-title">隱藏陷阱 — 海外練習生之間的競爭</span>
+        </div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>練習生</th><th>國民票</th><th>SEKAI票</th><th>標準分數</th><th>標準排名</th><th>SEKAI優先</th><th>SEKAI排名</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 推し</td><td class="ck">50</td><td class="cs">700</td><td class="cd">—</td><td class="cd">3位 🚨</td><td class="cd">—</td><td class="cd">3位 🚨</td></tr>
+              <tr><td>練習生A（日）</td><td class="ck">950</td><td class="cs">50</td><td>—</td><td>1位 ✅</td><td>—</td><td>4位 🚨</td></tr>
+              <tr><td>練習生B（海外）</td><td class="ck">30</td><td class="cs">950</td><td>—</td><td>2位 ✅</td><td>—</td><td>1位 ✅</td></tr>
+              <tr><td>練習生C（海外）</td><td class="ck">40</td><td class="cs">800</td><td>—</td><td>4位 🚨</td><td>—</td><td>2位 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-danger">🚨 <strong>即使SEKAI票很多，若其他海外練習生的票更多，也會被踢出救濟名額。</strong><br>SEKAI排名是相對排名，不是絕對數量。國民票近乎為零時，SEKAI優先集計的30%份額也幾乎損失殆盡，劣勢雙重疊加。</div>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <div class="conclusion-title">✦ 總結 — 為什麼兩種票都需要</div>
+        <ul class="conclusion-list">
+          <li><span class="conclusion-marker">▸</span><strong>標準集計（國民70%）</strong>中，國民票少的練習生在結構上處於不利地位</li>
+          <li><span class="conclusion-marker">▸</span>救濟名額（SEKAI70%）由<strong>與其他海外練習生的相對排名</strong>決定</li>
+          <li><span class="conclusion-marker">▸</span>國民票近乎為零時，SEKAI優先集計也要承受<strong>30%的劣勢</strong></li>
+          <li><span class="conclusion-marker">▸</span><strong>光靠SEKAI票是不夠的。必須持續累積國民票</strong></li>
+          <li><span class="conclusion-marker">▸</span>🌏 海外粉絲請每天在<strong>Mnet Plus投1票</strong></li>
+          <li><span class="conclusion-marker">▸</span>🇯🇵 日本粉絲請每天透過<strong>Lemino＋官網投2票</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-footer">
+      <div class="info-footer-brand">JAYBIRDS</div>
+      <div class="info-footer-tag">#莊傑　#ChuangJay　#JAY羽ばたくじぇい</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">JAYBIRDS</div>
+  <div class="footer-tags">#莊傑　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
+</div>
+```
+
+  </div><!-- /content-zh -->
 
 </div><!-- /page -->
 
@@ -720,13 +1137,35 @@ const SCENARIOS = {
     { oshi:[150,750], others:[{name:'Trainee A (JP)',k:750,s:150},{name:'Trainee B',k:500,s:500}] },
     { oshi:[50,700],  others:[{name:'Trainee A (JP)',k:950,s:50},{name:'Trainee B (Intl)',k:30,s:950},{name:'Trainee C (Intl)',k:40,s:800}] },
     { oshi:[50,600],  others:[{name:'Trainee A (JP)',k:900,s:80},{name:'Trainee B (Intl)',k:40,s:850},{name:'Trainee C (Intl)',k:35,s:720},{name:'Trainee D (Intl)',k:45,s:680}] }
+  ],
+  zh: [
+    { oshi:[400,600], others:[{name:'練習生A（日）',k:600,s:400},{name:'練習生B',k:500,s:500}] },
+    { oshi:[150,750], others:[{name:'練習生A（日）',k:750,s:150},{name:'練習生B',k:500,s:500}] },
+    { oshi:[50,700],  others:[{name:'練習生A（日）',k:950,s:50},{name:'練習生B（海外）',k:30,s:950},{name:'練習生C（海外）',k:40,s:800}] },
+    { oshi:[50,600],  others:[{name:'練習生A（日）',k:900,s:80},{name:'練習生B（海外）',k:40,s:850},{name:'練習生C（海外）',k:35,s:720},{name:'練習生D（海外）',k:45,s:680}] }
   ]
 };
 
-const currentSc = { ja: 0, en: 0 };
+const currentSc = { ja: 0, en: 0, zh: 0 };
 
-function calcScore(k, s, sekaiMode) {
-  return sekaiMode ? Math.round(s*0.7 + k*0.3) : Math.round(k*0.7 + s*0.3);
+// ── NORMALIZED SCORING (Boys Planet method) ──
+// Each trainee's score = (own_k / total_k) * 70 + (own_s / total_s) * 30
+// This means: fewer total SEKAI voters → each SEKAI vote is worth MORE
+function calcNormalizedScores(rows, sekaiMode) {
+  const totalK = rows.reduce((sum, r) => sum + r.k, 0) || 1;
+  const totalS = rows.reduce((sum, r) => sum + r.s, 0) || 1;
+  rows.forEach(r => {
+    if (sekaiMode) {
+      r.sekaiScore = Math.round((r.s / totalS) * 70 * 1000 + (r.k / totalK) * 30 * 1000) / 10;
+    } else {
+      r.stdScore   = Math.round((r.k / totalK) * 70 * 1000 + (r.s / totalS) * 30 * 1000) / 10;
+    }
+  });
+  // also store per-vote worth for display
+  rows.forEach(r => {
+    r._totalK = totalK;
+    r._totalS = totalS;
+  });
 }
 
 function getRanks(arr, field) {
@@ -741,22 +1180,41 @@ function renderSim(lang) {
   document.getElementById(`${lang}-val-s`).textContent = s;
 
   const sc = SCENARIOS[lang][currentSc[lang]];
-  const oshiLabel = lang === 'ja' ? '🟡 推し' : '🟡 Yours';
+  const oshiLabel = lang === 'ja' ? '🟡 推し' : lang === 'zh' ? '🟡 推し' : '🟡 Yours';
   const rows = [
     { name: oshiLabel, k, s, isOshi: true },
     ...sc.others.map(o => ({...o, isOshi:false}))
   ];
-  rows.forEach(r => {
-    r.stdScore  = calcScore(r.k, r.s, false);
-    r.sekaiScore = calcScore(r.k, r.s, true);
-  });
+
+  // Normalized scoring — mother number matters
+  calcNormalizedScores(rows, false);
+  calcNormalizedScores(rows, true);
+
   const stdRanks   = getRanks(rows, 'stdScore');
   const sekaiRanks = getRanks(rows, 'sekaiScore');
   rows.forEach((r,i) => { r.stdRank=stdRanks[i]; r.sekaiRank=sekaiRanks[i]; });
 
-  const total = rows.length;
-  const stdSafe   = Math.ceil(total/2);
+  const total    = rows.length;
+  const stdSafe  = Math.ceil(total/2);
   const sekaiSafe = Math.min(2, total-1);
+
+  // 1票あたりの価値を表示
+  const totalK = rows[0]._totalK;
+  const totalS = rows[0]._totalS;
+  const kWorth = (70 / totalK).toFixed(4);
+  const sWorth = (30 / totalS).toFixed(4);
+
+  // Worth display
+  const worthEl = document.getElementById(`${lang}-worth`);
+  if (worthEl) {
+    if (lang === 'ja') {
+      worthEl.innerHTML = `<span style="color:#d4845a;">国民票1票の価値：<strong>${kWorth}pt</strong>（総数 ${totalK}票）</span>　<span style="color:#5a9fd4;">SEKAI票1票の価値：<strong>${sWorth}pt</strong>（総数 ${totalS}票）</span>`;
+    } else if (lang === 'zh') {
+      worthEl.innerHTML = `<span style="color:#d4845a;">國民票每票價值：<strong>${kWorth}pt</strong>（共 ${totalK}票）</span>　<span style="color:#5a9fd4;">SEKAI票每票價值：<strong>${sWorth}pt</strong>（共 ${totalS}票）</span>`;
+    } else {
+      worthEl.innerHTML = `<span style="color:#d4845a;">Kokumin vote worth: <strong>${kWorth}pt</strong> (total ${totalK})</span>　<span style="color:#5a9fd4;">SEKAI vote worth: <strong>${sWorth}pt</strong> (total ${totalS})</span>`;
+    }
+  }
 
   const tbody = document.getElementById(`${lang}-tbody`);
   tbody.innerHTML = '';
@@ -785,12 +1243,73 @@ function renderSim(lang) {
     if (sp)      { vc='safe';    vt=`✅ 標準集計 <strong>${o.stdRank}位</strong> で通過圏内。SEKAI優先でも <strong>${o.sekaiRank}位</strong>。両方で安定しています。`; }
     else if (kp) { vc='rescued'; vt=`🟡 標準集計 <strong>${o.stdRank}位</strong> で脱落圏。SEKAI優先集計 <strong>${o.sekaiRank}位</strong> → 救済枠で次ステージへ進出できます。SEKAI票の維持が生命線。`; }
     else         { vc='danger';  vt=`🚨 標準集計 <strong>${o.stdRank}位</strong>、SEKAI優先でも <strong>${o.sekaiRank}位</strong> で脱落圏。他の海外練習生にSEKAI票で上回られている状態。グローバルファンへの働きかけが急務。`; }
+  } else if (lang==='zh') {
+    if (sp)      { vc='safe';    vt=`✅ 標準集計排名 <strong>第${o.stdRank}名</strong>，在安全圈內。SEKAI優先也排 <strong>第${o.sekaiRank}名</strong>。兩項集計均穩定。`; }
+    else if (kp) { vc='rescued'; vt=`🟡 標準集計排名 <strong>第${o.stdRank}名</strong>，落入淘汰圈。但SEKAI優先集計排 <strong>第${o.sekaiRank}名</strong> → 可透過救濟名額晉級下一階段。維持SEKAI票至關重要。`; }
+    else         { vc='danger';  vt=`🚨 標準集計 <strong>第${o.stdRank}名</strong>、SEKAI優先也排 <strong>第${o.sekaiRank}名</strong>，均在淘汰圈。被其他海外練習生在SEKAI票上超越。須緊急向全球粉絲呼籲投票。`; }
   } else {
     if (sp)      { vc='safe';    vt=`✅ Standard rank: <strong>${o.stdRank}</strong> — safe zone. SEKAI round rank: <strong>${o.sekaiRank}</strong>. Stable in both tallies.`; }
     else if (kp) { vc='rescued'; vt=`🟡 Standard rank: <strong>${o.stdRank}</strong> — elimination zone. SEKAI round rank: <strong>${o.sekaiRank}</strong> → rescued and advances. Maintaining SEKAI votes is critical.`; }
     else         { vc='danger';  vt=`🚨 Standard rank: <strong>${o.stdRank}</strong>, SEKAI round rank: <strong>${o.sekaiRank}</strong> — both in elimination zone. Being outranked by other international trainees. Global fan outreach is urgent.`; }
   }
   document.getElementById(`${lang}-verdict`).innerHTML = `<div class="verdict ${vc}">${vt}</div>`;
+  renderBreakdown(lang, rows);
+}
+
+function toggleBreakdown(lang, btn) {
+  btn.classList.toggle('open');
+  document.getElementById(`${lang}-breakdown`).classList.toggle('open');
+}
+
+function renderBreakdown(lang, rows) {
+  const panel = document.getElementById(`${lang}-breakdown`);
+  if (!panel) return;
+  const o = rows[0];
+  const totalK = o._totalK, totalS = o._totalS;
+  const shareK = (o.k / totalK * 100).toFixed(2);
+  const shareS = (o.s / totalS * 100).toFixed(2);
+  const ptK_std = (o.k / totalK * 70).toFixed(2);
+  const ptS_std = (o.s / totalS * 30).toFixed(2);
+  const ptK_sek = (o.k / totalK * 30).toFixed(2);
+  const ptS_sek = (o.s / totalS * 70).toFixed(2);
+  const totalStd = (parseFloat(ptK_std) + parseFloat(ptS_std)).toFixed(2);
+  const totalSek = (parseFloat(ptK_sek) + parseFloat(ptS_sek)).toFixed(2);
+
+  const L = {
+    ja: { pool1:'国民票の内訳', pool2:'SEKAI票の内訳', total:'総数', own:'推しの票数',
+          s1:'① 標準集計スコア', s2:'② SEKAI優先スコア（救済枠）', sum:'合計スコア', unit:'pt', ku:'国民', su:'SEKAI' },
+    en: { pool1:'Kokumin Pool', pool2:'SEKAI Pool', total:'Total votes', own:'Your trainee',
+          s1:'① Standard Tally Score', s2:'② SEKAI Rescue Round Score', sum:'Total score', unit:'pt', ku:'Kokumin', su:'SEKAI' },
+    zh: { pool1:'國民票票池', pool2:'SEKAI票票池', total:'總票數', own:'推し票數',
+          s1:'① 標準集計積分', s2:'② SEKAI優先積分（救濟名額）', sum:'總積分', unit:'分', ku:'國民', su:'SEKAI' }
+  }[lang];
+  const mul = lang === 'ja' ? '×' : '×';
+  const eq  = lang === 'en' ? '=' : '＝';
+  const div = lang === 'en' ? '÷' : '÷';
+
+  panel.innerHTML = `
+    <div class="bd-section">
+      <div class="bd-head k">${L.pool1}</div>
+      <div class="bd-row"><span class="bd-label">${L.total}</span><span class="bd-calc k">${totalK}</span></div>
+      <div class="bd-row"><span class="bd-label">${L.own}</span><span class="bd-calc k">${o.k}</span><span class="bd-arrow">${div}</span><span class="bd-calc k">${totalK}</span><span class="bd-arrow">${eq}</span><span class="bd-result k">${shareK}%</span></div>
+    </div>
+    <div class="bd-section">
+      <div class="bd-head s">${L.pool2}</div>
+      <div class="bd-row"><span class="bd-label">${L.total}</span><span class="bd-calc s">${totalS}</span></div>
+      <div class="bd-row"><span class="bd-label">${L.own}</span><span class="bd-calc s">${o.s}</span><span class="bd-arrow">${div}</span><span class="bd-calc s">${totalS}</span><span class="bd-arrow">${eq}</span><span class="bd-result s">${shareS}%</span></div>
+    </div>
+    <div class="bd-section">
+      <div class="bd-head" style="color:#e2c47a;">${L.s1}</div>
+      <div class="bd-row"><span class="bd-label">${L.ku}</span><span class="bd-calc k">${shareK}%</span><span class="bd-arrow">${mul}70${eq}</span><span class="bd-result k">${ptK_std}${L.unit}</span></div>
+      <div class="bd-row"><span class="bd-label">${L.su}</span><span class="bd-calc s">${shareS}%</span><span class="bd-arrow">${mul}30${eq}</span><span class="bd-result s">${ptS_std}${L.unit}</span></div>
+      <div class="bd-total">${L.sum}：${totalStd}${L.unit}</div>
+    </div>
+    <div class="bd-section">
+      <div class="bd-head" style="color:#e2c47a;">${L.s2}</div>
+      <div class="bd-row"><span class="bd-label">${L.su}</span><span class="bd-calc s">${shareS}%</span><span class="bd-arrow">${mul}70${eq}</span><span class="bd-result s">${ptS_sek}${L.unit}</span></div>
+      <div class="bd-row"><span class="bd-label">${L.ku}</span><span class="bd-calc k">${shareK}%</span><span class="bd-arrow">${mul}30${eq}</span><span class="bd-result k">${ptK_sek}${L.unit}</span></div>
+      <div class="bd-total">${L.sum}：${totalSek}${L.unit}</div>
+    </div>`;
 }
 
 function loadScenario(idx, btn, lang) {
@@ -810,12 +1329,14 @@ function setLang(lang, btn) {
   btn.classList.add('active');
   document.getElementById('content-ja').style.display = lang==='ja' ? '' : 'none';
   document.getElementById('content-en').style.display = lang==='en' ? '' : 'none';
-  document.documentElement.lang = lang;
+  document.getElementById('content-zh').style.display = lang==='zh' ? '' : 'none';
+  document.documentElement.lang = lang==='zh' ? 'zh-TW' : lang;
 }
 
 // ── INIT ──
 renderSim('ja');
 renderSim('en');
+renderSim('zh');
 </script>
 
 </body>
