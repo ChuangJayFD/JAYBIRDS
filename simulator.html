@@ -190,7 +190,7 @@ inset: 0;
 width: 100%;
 height: 100%;
 object-fit: cover;
-object-position: left top;
+object-position: 20% top;
 z-index: 0;
 pointer-events: none;
 }
@@ -605,6 +605,7 @@ font-family: ‘Noto Sans JP’, monospace;
     <button class="lang-tab active" onclick="setLang('ja', this)">日本語</button>
     <button class="lang-tab" onclick="setLang('en', this)">English</button>
     <button class="lang-tab" onclick="setLang('zh', this)">繁體中文</button>
+    <button class="lang-tab" onclick="setLang('ko', this)">한국어</button>
   </div>
   </div>
 
@@ -614,6 +615,7 @@ font-family: ‘Noto Sans JP’, monospace;
 
   <div id="content-ja">
 
+```
 <div class="hero fade d1">
   <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay ジュアンジェイ">
   <div class="hero-overlay"></div>
@@ -835,6 +837,7 @@ font-family: ‘Noto Sans JP’, monospace;
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#ジュアンジェイ　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
 </div>
+```
 
   </div><!-- /content-ja -->
 
@@ -844,6 +847,7 @@ font-family: ‘Noto Sans JP’, monospace;
 
   <div id="content-en" style="display:none;" lang="en">
 
+```
 <div class="hero fade d1">
   <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay">
   <div class="hero-overlay"></div>
@@ -1072,6 +1076,7 @@ font-family: ‘Noto Sans JP’, monospace;
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#ChuangJay　#ジュアンジェイ<br>#PRODUCE101JAPAN新世界　#JAY羽ばたくじぇい</div>
 </div>
+```
 
   </div><!-- /content-en -->
 
@@ -1079,6 +1084,7 @@ font-family: ‘Noto Sans JP’, monospace;
 
   <div id="content-zh" style="display:none;" lang="zh-TW">
 
+```
 <div class="hero fade d1">
   <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay 趙宇傑">
   <div class="hero-overlay"></div>
@@ -1310,6 +1316,7 @@ font-family: ‘Noto Sans JP’, monospace;
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#莊傑　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
 </div>
+```
 
   </div><!-- /content-zh -->
 
@@ -1336,10 +1343,16 @@ const SCENARIOS = {
     { oshi:[100,800], others:[{name:'練習生A（日）',k:750,s:100},{name:'練習生B（海外）',k:80,s:750}] },
     { oshi:[600,700], others:[{name:'練習生A（日）',k:700,s:200},{name:'練習生B（海外）',k:90,s:850}] },
     { oshi:[80,120],  others:[{name:'練習生A（日）',k:800,s:50},{name:'練習生B（海外）',k:60,s:900},{name:'練習生C（海外）',k:50,s:700}] }
+  ],
+  ko: [
+    { oshi:[700,200], others:[{name:'연습생A（일）',k:650,s:250},{name:'연습생B（해외）',k:100,s:800}] },
+    { oshi:[100,800], others:[{name:'연습생A（일）',k:750,s:100},{name:'연습생B（해외）',k:80,s:750}] },
+    { oshi:[600,700], others:[{name:'연습생A（일）',k:700,s:200},{name:'연습생B（해외）',k:90,s:850}] },
+    { oshi:[80,120],  others:[{name:'연습생A（일）',k:800,s:50},{name:'연습생B（해외）',k:60,s:900},{name:'연습생C（해외）',k:50,s:700}] }
   ]
 };
 
-const currentSc = { ja: 0, en: 0, zh: 0 };
+const currentSc = { ja: 0, en: 0, zh: 0, ko: 0 };
 
 // ── NORMALIZED SCORING (Boys Planet method) ──
 // Each trainee's score = (own_k / total_k) * 70 + (own_s / total_s) * 30
@@ -1373,7 +1386,7 @@ function renderSim(lang) {
   document.getElementById(`${lang}-val-s`).textContent = s;
 
   const sc = SCENARIOS[lang][currentSc[lang]];
-  const oshiLabel = lang === 'ja' ? '🟡 推し' : lang === 'zh' ? '🟡 推し' : '🟡 Yours';
+  const oshiLabel = lang === 'ja' ? '🟡 推し' : lang === 'zh' ? '🟡 推し' : lang === 'ko' ? '🟡 추천' : '🟡 Yours';
   const rows = [
     { name: oshiLabel, k, s, isOshi: true },
     ...sc.others.map(o => ({...o, isOshi:false}))
@@ -1404,6 +1417,8 @@ function renderSim(lang) {
       worthEl.innerHTML = `<span style="color:#d4845a;">国民票1票の価値：<strong>${kWorth}pt</strong>（総数 ${totalK}票）</span>　<span style="color:#5a9fd4;">SEKAI票1票の価値：<strong>${sWorth}pt</strong>（総数 ${totalS}票）</span>`;
     } else if (lang === 'zh') {
       worthEl.innerHTML = `<span style="color:#d4845a;">國民票每票價值：<strong>${kWorth}pt</strong>（共 ${totalK}票）</span>　<span style="color:#5a9fd4;">SEKAI票每票價值：<strong>${sWorth}pt</strong>（共 ${totalS}票）</span>`;
+    } else if (lang === 'ko') {
+      worthEl.innerHTML = `<span style="color:#d4845a;">국민투표 1표 가치：<strong>${kWorth}pt</strong>（총 ${totalK}표）</span>　<span style="color:#5a9fd4;">SEKAI투표 1표 가치：<strong>${sWorth}pt</strong>（총 ${totalS}표）</span>`;
     } else {
       worthEl.innerHTML = `<span style="color:#d4845a;">Kokumin vote worth: <strong>${kWorth}pt</strong> (total ${totalK})</span>　<span style="color:#5a9fd4;">SEKAI vote worth: <strong>${sWorth}pt</strong> (total ${totalS})</span>`;
     }
@@ -1444,6 +1459,14 @@ function renderSim(lang) {
     if (sp)      { vc='safe';    vt=`✅ Standard rank: <strong>${o.stdRank}</strong> — safe zone. SEKAI round rank: <strong>${o.sekaiRank}</strong>. Stable in both tallies.`; }
     else if (kp) { vc='rescued'; vt=`🟡 Standard rank: <strong>${o.stdRank}</strong> — elimination zone. SEKAI round rank: <strong>${o.sekaiRank}</strong> → rescued and advances. Maintaining SEKAI votes is critical.`; }
     else         { vc='danger';  vt=`🚨 Standard rank: <strong>${o.stdRank}</strong>, SEKAI round rank: <strong>${o.sekaiRank}</strong> — both in elimination zone. Being outranked by other international trainees. Global fan outreach is urgent.`; }
+  } else if (lang==='ko') {
+    if (sp)      { vc='safe';    vt=`✅ 표준집계 <strong>${o.stdRank}위</strong>로 통과권。SEKAI우선도 <strong>${o.sekaiRank}위</strong>。두 집계 모두 안정적입니다。`; }
+    else if (kp) { vc='rescued'; vt=`🟡 표준집계 <strong>${o.stdRank}위</strong>로 탈락권。SEKAI우선집계 <strong>${o.sekaiRank}위</strong> → 구제 명단으로 다음 스테이지 진출 가능。`; }
+    else         { vc='danger';  vt=`🚨 표준집계 <strong>${o.stdRank}위</strong>、SEKAI우선도 <strong>${o.sekaiRank}위</strong>로 탈락권。다른 해외 연습생에게 SEKAI표에서 뒤지고 있습니다。`; }
+  } else if (lang==='ko') {
+    if (sp)      { vc='safe';    vt=`✅ 표준집계 <strong>${o.stdRank}위</strong>로 통과권。SEKAI우선도 <strong>${o.sekaiRank}위</strong>。두 집계 모두 안정적입니다。`; }
+    else if (kp) { vc='rescued'; vt=`🟡 표준집계 <strong>${o.stdRank}위</strong>로 탈락권。SEKAI우선집계 <strong>${o.sekaiRank}위</strong> → 구제 명단으로 다음 스테이지 진출 가능。SEKAI표 유지가 생명줄입니다。`; }
+    else         { vc='danger';  vt=`🚨 표준집계 <strong>${o.stdRank}위</strong>、SEKAI우선도 <strong>${o.sekaiRank}위</strong>로 탈락권。다른 해외 연습생에게 SEKAI표에서 뒤지고 있습니다。글로벌 팬들에게 빠른 투표 촉구가 필요합니다。`; }
   }
   document.getElementById(`${lang}-verdict`).innerHTML = `<div class="verdict ${vc}">${vt}</div>`;
   renderBreakdown(lang, rows);
@@ -1474,7 +1497,9 @@ function renderBreakdown(lang, rows) {
     en: { pool1:'Kokumin Pool', pool2:'SEKAI Pool', total:'Total votes', own:'Your trainee',
           s1:'① Standard Tally Score', s2:'② SEKAI Rescue Round Score', sum:'Total score', unit:'pt', ku:'Kokumin', su:'SEKAI' },
     zh: { pool1:'國民票票池', pool2:'SEKAI票票池', total:'總票數', own:'推し票數',
-          s1:'① 標準集計積分', s2:'② SEKAI優先積分（救濟名額）', sum:'總積分', unit:'分', ku:'國民', su:'SEKAI' }
+          s1:'① 標準集計積分', s2:'② SEKAI優先積分（救濟名額）', sum:'總積分', unit:'分', ku:'國民', su:'SEKAI' },
+    ko: { pool1:'국민투표 풀', pool2:'SEKAI투표 풀', total:'총 표수', own:'추천 연습생',
+          s1:'① 표준집계 점수', s2:'② SEKAI우선 점수（구제 명단）', sum:'합계 점수', unit:'점', ku:'국민', su:'SEKAI' }
   }[lang];
   const mul = lang === 'ja' ? '×' : '×';
   const eq  = lang === 'en' ? '=' : '＝';
@@ -1523,6 +1548,7 @@ function setLang(lang, btn) {
   document.getElementById('content-ja').style.display = lang==='ja' ? '' : 'none';
   document.getElementById('content-en').style.display = lang==='en' ? '' : 'none';
   document.getElementById('content-zh').style.display = lang==='zh' ? '' : 'none';
+  document.getElementById('content-ko').style.display = lang==='ko' ? '' : 'none';
   document.documentElement.lang = lang==='zh' ? 'zh-TW' : lang;
 }
 
@@ -1530,6 +1556,8 @@ function setLang(lang, btn) {
 renderSim('ja');
 renderSim('en');
 renderSim('zh');
+renderSim('ko');
+renderSim('ko');
 </script>
 
 </body>
