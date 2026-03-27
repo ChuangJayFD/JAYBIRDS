@@ -2,7 +2,10 @@
 
 <html lang="ja" style="color-scheme: only dark;">
 <head>
-  <!-- Google Analytics -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only dark">
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,11 +13,25 @@
   gtag('js', new Date());
   gtag('config', 'G-EXHV880LX0');
 </script>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="only dark">
-<title>Vote Simulator — JAYBIRDS</title>
+<meta name="description" content="日プ新世界（PRODUCE 101 JAPAN 新世界）の投票仕組みをシミュレーション。国民票・SEKAI票の重みと正規化方式を数字で体験できます。ジュアンジェイ(Chuang Jay)応援ファンサイト JAYBIRDS。">
+<meta name="keywords" content="日プ新世界,ジュアンジェイ,ChuangJay,101SHINSEKAI,PRODUCE101JAPAN新世界,PRODUCE101JAPAN,SEKAI投票,国民投票,投票方法,サバイバルオーディション,サバ番,日プ,推し活,デビューを夢見て,練習生,アイドルオーディション,K-POP,SEKAIVote,JAY羽ばたくじぇい,JO1,INI,ME:I,LAPONE,DXTEEN,IS:SUE,吉本,Lemino,MnetPlus,ボイプラ,BOYSPLANET,サバ番オタク,オーディション番組,デビュー,日本アイドル">
+<!-- OGP -->
+<meta property="og:title" content="投票シミュレーター | 101SHINSEKAI HOW TO VOTE — JAYBIRDS">
+<meta property="og:description" content="日本とセカイの票数の重みって何？国民票・SEKAI票の仕組みを数字で体験。ジュアンジェイ(Chuang Jay)応援ファンサイト。">
+<meta property="og:image" content="https://chuangjayfd.github.io/JAYBIRDS/how_to_101SHINSEKAI.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JAYBIRDS — Chuang Jay Fan Support">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="投票シミュレーター | 101SHINSEKAI HOW TO VOTE — JAYBIRDS">
+<meta name="twitter:description" content="日本とセカイの票数の重みって何？国民票・SEKAI票の仕組みを数字で体験。#ジュアンジェイ #101SHINSEKAI">
+<meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/how_to_101SHINSEKAI.png">
+<meta name="twitter:site" content="@JAYBIRDS_jay">
+<title>投票シミュレーター | 101SHINSEKAI HOW TO VOTE — JAYBIRDS (Chuang Jay)</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -157,19 +174,118 @@ color: rgba(255,255,255,0.65);
 }
 
 /* ── HERO ── */
-.hero { text-align: center; margin-bottom: 48px; }
+.hero {
+margin-bottom: 36px;
+border-radius: 14px;
+overflow: hidden;
+background: linear-gradient(135deg, #0b1a40 0%, #0d1f4a 60%, #081530 100%);
+border: 2px solid #c9a84c;
+position: relative;
+}
+
+.hero-inner {
+display: flex;
+align-items: stretch;
+min-height: 230px;
+position: relative;
+}
+
+/* Jay image column */
+.hero-img-col {
+flex-shrink: 0;
+width: 170px;
+position: relative;
+overflow: hidden;
+}
+.hero-img-col img {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+height: 110%;
+width: auto;
+object-fit: contain;
+object-position: top center;
+filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+
+/* Text column */
+.hero-text-col {
+flex: 1;
+padding: 22px 20px 20px 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: relative;
+z-index: 1;
+}
+
 .hero-eye {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 11px; letter-spacing: 0.35em; color: var(–gold);
-text-transform: uppercase; margin-bottom: 14px;
+font-family: ‘Noto Sans JP’, sans-serif;
+font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+color: #c9a84c; text-transform: uppercase; margin-bottom: 8px;
+opacity: 0.9;
 }
+
 .hero-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(28px, 6vw, 42px); font-weight: 600;
-color: var(–white); line-height: 1.1;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+font-size: clamp(20px, 5vw, 32px);
+font-weight: 900;
+color: #ffffff;
+line-height: 1.25;
+letter-spacing: -0.01em;
+margin-bottom: 10px;
 }
-.hero-title em { font-style: italic; color: var(–gold-light); }
-.hero-sub { font-size: 12px; color: var(–text-muted); margin-top: 12px; line-height: 1.8; }
+.hero-title .ht-gold { color: #f0d070; }
+.hero-title .ht-blue { color: #70c0f5; }
+.hero-title .ht-big {
+display: block;
+font-size: clamp(38px, 9vw, 58px);
+font-weight: 900;
+line-height: 1.05;
+letter-spacing: -0.02em;
+text-shadow: 0 2px 12px rgba(112,192,245,0.4);
+}
+
+.hero-sub {
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+font-size: 12px;
+font-weight: 400;
+color: rgba(255,255,255,0.72);
+line-height: 1.8;
+margin-bottom: 12px;
+}
+
+.hero-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 5px;
+}
+.hero-tag {
+font-size: 10px; font-weight: 700;
+padding: 3px 9px; border-radius: 20px;
+background: rgba(201,168,76,0.15);
+border: 1px solid rgba(201,168,76,0.4);
+color: #e2c47a;
+letter-spacing: 0.04em;
+}
+
+/* gold bottom line */
+.hero::after {
+content: ‘’;
+display: block;
+height: 3px;
+background: linear-gradient(90deg, transparent, #c9a84c, #f0d070, #c9a84c, transparent);
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+.hero-inner { flex-direction: row; min-height: 180px; }
+.hero-img-col { width: 130px; }
+.hero-title { font-size: 15px; }
+.hero-sub { font-size: 11px; }
+}
+
 .ornament { color: var(–gold); letter-spacing: 0.5em; font-size: 11px; display: block; margin: 16px 0; opacity: 0.6; }
 
 /* ── SECTION LABEL ── */
@@ -487,25 +603,47 @@ font-family: ‘Noto Sans JP’, monospace;
   ══════════════════════════════════════ -->
 
   <div id="content-ja">
-    
+
 <div class="hero fade d1">
-  <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
-  <h1 class="hero-title">投票シミュレーター</h1>
-  <p class="hero-sub">票数を動かして、集計結果がどう変わるかを確認できます。<br>シナリオボタンでサンプルも選べます。</p>
-  <span class="ornament">✦ ✦ ✦</span>
+  <div class="hero-inner">
+    <div class="hero-img-col">
+      <img src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay ジュアンジェイ">
+    </div>
+    <div class="hero-text-col">
+      <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+      <h1 class="hero-title">
+        日プ新世界<br>
+        <span class="ht-gold">投票の仕組み</span><br>
+        <span class="ht-blue">大解剖！</span>
+      </h1>
+      <p class="hero-sub">
+        国民票とセカイ票、何が違うの？<br>
+        票数の「重み」って一体何？<br>
+        仕組みを完全解説します。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">#日プ新世界</span>
+        <span class="hero-tag">#101SHINSEKAI</span>
+        <span class="hero-tag">#ジュアンジェイ</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="sim-wrap fade d2">
   <div class="sec-label">インタラクティブ シミュレーター</div>
-  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
-    ※ 計算はボイプラ準拠の正規化方式：各練習生スコア ＝ （自身の国民票 ÷ 国民票総数）×70 ＋ （自身のSEKAI票 ÷ SEKAI票総数）×30。<strong style="color:#e2c47a;">SEKAI票の母数が少ないほど、1票の価値が上がります。</strong>
-  </p>
+
+  <div style="background:#0d1b3e;border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+    <p style="font-size:14px;font-weight:700;color:#f0d070;margin-bottom:6px;line-height:1.5;">あなたの推しは、どのタイプ？🔍</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.85;margin-bottom:10px;">下のボタンで推しのタイプを選ぶと、生き残るために必要な票のバランスがシミュレーションできます。スライダーを動かして票数を変えると、集計結果がリアルタイムで変わります。</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.7;">※ 計算はボイプラ準拠の正規化方式。各練習生スコア ＝ （自身の国民票 ÷ 国民票総数）×70 ＋ （自身のSEKAI票 ÷ SEKAI票総数）×30。<strong style="color:#e2c47a;">SEKAI票の母数が少ないほど、1票の価値が上がります。</strong></p>
+  </div>
 
   <div class="scenario-row">
-    <button class="sc-btn active" onclick="loadScenario(0,this,'ja')">ケース1 ギャップ小</button>
-    <button class="sc-btn" onclick="loadScenario(1,this,'ja')">ケース2 ギャップ中</button>
-    <button class="sc-btn" onclick="loadScenario(2,this,'ja')">ケース3 ギャップ大</button>
-    <button class="sc-btn" onclick="loadScenario(3,this,'ja')">⚠️ 海外競合あり</button>
+    <button class="sc-btn active" onclick="loadScenario(0,this,'ja')">🇯🇵 日本で人気！</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'ja')">🌏 海外で人気！</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'ja')">✨ 両方で人気！</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'ja')">😶 両方で苦戦中…</button>
   </div>
 
   <div class="slider-grid">
@@ -698,10 +836,29 @@ font-family: ‘Noto Sans JP’, monospace;
   <div id="content-en" style="display:none;" lang="en">
 
 <div class="hero fade d1">
-  <p class="hero-eye">✦ JAYBIRDS — VOTE SIMULATOR ✦</p>
-  <h1 class="hero-title">Vote <em>Simulator</em></h1>
-  <p class="hero-sub">Adjust vote counts and watch the rankings shift in real time.<br>Use the scenario buttons to load preset examples.</p>
-  <span class="ornament">✦ ✦ ✦</span>
+  <div class="hero-inner">
+    <div class="hero-img-col">
+      <img src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay">
+    </div>
+    <div class="hero-text-col">
+      <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+      <h1 class="hero-title">
+        <span class="ht-gold">How Voting Works</span><br>
+        in<br>
+        <span class="ht-blue">101 SHINSEKAI</span>
+      </h1>
+      <p class="hero-sub">
+        What's the difference between<br>
+        Kokumin &amp; SEKAI votes?<br>
+        Full breakdown, explained simply.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">#PRODUCE101Japan</span>
+        <span class="hero-tag">#101SHINSEKAI</span>
+        <span class="hero-tag">#ChuangJay</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="global-banner">
@@ -714,15 +871,18 @@ font-family: ‘Noto Sans JP’, monospace;
 
 <div class="sim-wrap fade d2">
   <div class="sec-label">Interactive Simulator</div>
-  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
-    ※ Scoring uses normalized method (Boys Planet reference): each trainee's score ＝ (own Kokumin ÷ total Kokumin) ×70 ＋ (own SEKAI ÷ total SEKAI) ×30. <strong style="color:#e2c47a;">The fewer total SEKAI voters, the more each individual SEKAI vote is worth.</strong>
-  </p>
+
+  <div style="background:#0d1b3e;border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+    <p style="font-size:14px;font-weight:700;color:#f0d070;margin-bottom:6px;line-height:1.5;">What type is your trainee? 🔍</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.85;margin-bottom:10px;">Pick a scenario below to see how the vote balance affects survival. Adjust the sliders to change vote counts — the results update in real time.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.7;">※ Scoring uses normalized method (Boys Planet reference): score ＝ (own Kokumin ÷ total Kokumin) ×70 ＋ (own SEKAI ÷ total SEKAI) ×30. <strong style="color:#e2c47a;">Fewer total SEKAI voters = each vote is worth more.</strong></p>
+  </div>
 
   <div class="scenario-row">
-    <button class="sc-btn active" onclick="loadScenario(0,this,'en')">Case 1 — Small Gap</button>
-    <button class="sc-btn" onclick="loadScenario(1,this,'en')">Case 2 — Medium Gap</button>
-    <button class="sc-btn" onclick="loadScenario(2,this,'en')">Case 3 — Large Gap</button>
-    <button class="sc-btn" onclick="loadScenario(3,this,'en')">⚠️ Intl. Competition</button>
+    <button class="sc-btn active" onclick="loadScenario(0,this,'en')">🇯🇵 Popular in Japan</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'en')">🌏 Popular Globally</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'en')">✨ Popular Both!</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'en')">😶 Struggling Both…</button>
   </div>
 
   <div class="slider-grid">
@@ -912,10 +1072,29 @@ font-family: ‘Noto Sans JP’, monospace;
   <div id="content-zh" style="display:none;" lang="zh-TW">
 
 <div class="hero fade d1">
-  <p class="hero-eye">✦ JAYBIRDS — 投票模擬器 ✦</p>
-  <h1 class="hero-title">投票<em>模擬器</em></h1>
-  <p class="hero-sub">調整票數，即時查看排名如何變化。<br>也可使用情境按鈕載入預設範例。</p>
-  <span class="ornament">✦ ✦ ✦</span>
+  <div class="hero-inner">
+    <div class="hero-img-col">
+      <img src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay 趙宇傑">
+    </div>
+    <div class="hero-text-col">
+      <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+      <h1 class="hero-title">
+        <span class="ht-gold">投票機制</span><br>
+        完全解析<br>
+        <span class="ht-blue">101 新世界</span>
+      </h1>
+      <p class="hero-sub">
+        國民票和SEKAI票有什麼不同？<br>
+        「票數比重」到底是什麼意思？<br>
+        用簡單易懂的方式完整說明。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">#日プ新世界</span>
+        <span class="hero-tag">#101SHINSEKAI</span>
+        <span class="hero-tag">#趙宇傑ChuangJay</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="global-banner">
@@ -928,15 +1107,18 @@ font-family: ‘Noto Sans JP’, monospace;
 
 <div class="sim-wrap fade d2">
   <div class="sec-label">互動式模擬器</div>
-  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px;line-height:1.9;">
-    ※ 計分採用正規化方式（參考Boys Planet）：各練習生得分 ＝ （自身國民票 ÷ 國民票總數）×70 ＋ （自身SEKAI票 ÷ SEKAI票總數）×30。<strong style="color:#e2c47a;">SEKAI票的母數越少，每一票的價值越高。</strong>
-  </p>
+
+  <div style="background:#0d1b3e;border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+    <p style="font-size:14px;font-weight:700;color:#f0d070;margin-bottom:6px;line-height:1.5;">你的推し是哪種類型？🔍</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.85;margin-bottom:10px;">選擇下方情境，模擬練習生生存所需的票數平衡。拖動滑桿調整票數，結果即時更新。</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.7;">※ 計分採用正規化方式（參考Boys Planet）：得分 ＝ （自身國民票 ÷ 國民票總數）×70 ＋ （自身SEKAI票 ÷ SEKAI票總數）×30。<strong style="color:#e2c47a;">SEKAI票母數越少，每票價值越高。</strong></p>
+  </div>
 
   <div class="scenario-row">
-    <button class="sc-btn active" onclick="loadScenario(0,this,'zh')">情境1 差距小</button>
-    <button class="sc-btn" onclick="loadScenario(1,this,'zh')">情境2 差距中</button>
-    <button class="sc-btn" onclick="loadScenario(2,this,'zh')">情境3 差距大</button>
-    <button class="sc-btn" onclick="loadScenario(3,this,'zh')">⚠️ 海外競爭</button>
+    <button class="sc-btn active" onclick="loadScenario(0,this,'zh')">🇯🇵 在日本很受歡迎！</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'zh')">🌏 在海外很受歡迎！</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'zh')">✨ 兩邊都受歡迎！</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'zh')">😶 兩邊都在苦戰中…</button>
   </div>
 
   <div class="slider-grid">
@@ -1120,7 +1302,7 @@ font-family: ‘Noto Sans JP’, monospace;
 <div class="footer">
   <div class="footer-brand">JAYBIRDS</div>
   <div class="footer-tags">#莊傑　#ChuangJay<br>#日プ新世界　#JAY羽ばたくじぇい</div>
-</div>
+</div
 
   </div><!-- /content-zh -->
 
@@ -1129,23 +1311,24 @@ font-family: ‘Noto Sans JP’, monospace;
 <script>
 // ── SCENARIOS ──
 const SCENARIOS = {
+  // 0:日本人気 1:海外人気 2:両方人気 3:両方苦戦
   ja: [
-    { oshi:[400,600], others:[{name:'練習生A（日）',k:600,s:400},{name:'練習生B',k:500,s:500}] },
-    { oshi:[150,750], others:[{name:'練習生A（日）',k:750,s:150},{name:'練習生B',k:500,s:500}] },
-    { oshi:[50,700],  others:[{name:'練習生A（日）',k:950,s:50},{name:'練習生B（海）',k:30,s:950},{name:'練習生C（海）',k:40,s:800}] },
-    { oshi:[50,600],  others:[{name:'練習生A（日）',k:900,s:80},{name:'練習生B（海）',k:40,s:850},{name:'練習生C（海）',k:35,s:720},{name:'練習生D（海）',k:45,s:680}] }
+    { oshi:[700,200], others:[{name:'練習生A（日）',k:650,s:250},{name:'練習生B（海）',k:100,s:800}] },
+    { oshi:[100,800], others:[{name:'練習生A（日）',k:750,s:100},{name:'練習生B（海）',k:80,s:750}] },
+    { oshi:[600,700], others:[{name:'練習生A（日）',k:700,s:200},{name:'練習生B（海）',k:90,s:850}] },
+    { oshi:[80,120],  others:[{name:'練習生A（日）',k:800,s:50},{name:'練習生B（海）',k:60,s:900},{name:'練習生C（海）',k:50,s:700}] }
   ],
   en: [
-    { oshi:[400,600], others:[{name:'Trainee A (JP)',k:600,s:400},{name:'Trainee B',k:500,s:500}] },
-    { oshi:[150,750], others:[{name:'Trainee A (JP)',k:750,s:150},{name:'Trainee B',k:500,s:500}] },
-    { oshi:[50,700],  others:[{name:'Trainee A (JP)',k:950,s:50},{name:'Trainee B (Intl)',k:30,s:950},{name:'Trainee C (Intl)',k:40,s:800}] },
-    { oshi:[50,600],  others:[{name:'Trainee A (JP)',k:900,s:80},{name:'Trainee B (Intl)',k:40,s:850},{name:'Trainee C (Intl)',k:35,s:720},{name:'Trainee D (Intl)',k:45,s:680}] }
+    { oshi:[700,200], others:[{name:'Trainee A (JP)',k:650,s:250},{name:'Trainee B (Intl)',k:100,s:800}] },
+    { oshi:[100,800], others:[{name:'Trainee A (JP)',k:750,s:100},{name:'Trainee B (Intl)',k:80,s:750}] },
+    { oshi:[600,700], others:[{name:'Trainee A (JP)',k:700,s:200},{name:'Trainee B (Intl)',k:90,s:850}] },
+    { oshi:[80,120],  others:[{name:'Trainee A (JP)',k:800,s:50},{name:'Trainee B (Intl)',k:60,s:900},{name:'Trainee C (Intl)',k:50,s:700}] }
   ],
   zh: [
-    { oshi:[400,600], others:[{name:'練習生A（日）',k:600,s:400},{name:'練習生B',k:500,s:500}] },
-    { oshi:[150,750], others:[{name:'練習生A（日）',k:750,s:150},{name:'練習生B',k:500,s:500}] },
-    { oshi:[50,700],  others:[{name:'練習生A（日）',k:950,s:50},{name:'練習生B（海外）',k:30,s:950},{name:'練習生C（海外）',k:40,s:800}] },
-    { oshi:[50,600],  others:[{name:'練習生A（日）',k:900,s:80},{name:'練習生B（海外）',k:40,s:850},{name:'練習生C（海外）',k:35,s:720},{name:'練習生D（海外）',k:45,s:680}] }
+    { oshi:[700,200], others:[{name:'練習生A（日）',k:650,s:250},{name:'練習生B（海外）',k:100,s:800}] },
+    { oshi:[100,800], others:[{name:'練習生A（日）',k:750,s:100},{name:'練習生B（海外）',k:80,s:750}] },
+    { oshi:[600,700], others:[{name:'練習生A（日）',k:700,s:200},{name:'練習生B（海外）',k:90,s:850}] },
+    { oshi:[80,120],  others:[{name:'練習生A（日）',k:800,s:50},{name:'練習生B（海外）',k:60,s:900},{name:'練習生C（海外）',k:50,s:700}] }
   ]
 };
 
