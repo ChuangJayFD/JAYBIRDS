@@ -32,6 +32,11 @@
 <meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/how_to_101SHINSEKAI.png">
 <meta name="twitter:site" content="@JAYBIRDS_jay">
 <title>投票シミュレーター | 101SHINSEKAI HOW TO VOTE — JAYBIRDS (Chuang Jay)</title>
+<link rel="alternate" hreflang="ja" href="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
+<link rel="alternate" hreflang="en" href="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
+<link rel="alternate" hreflang="zh-TW" href="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
+<link rel="alternate" hreflang="ko" href="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
+<link rel="alternate" hreflang="x-default" href="https://chuangjayfd.github.io/JAYBIRDS/simulator.html">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1106,7 +1111,6 @@ font-family: ‘Noto Sans JP’, monospace;
   <!-- ══════════ 繁體中文 ══════════ -->
 
   <div id="content-zh" style="display:none;" lang="zh-TW">
-
 <div class="hero fade d1">
   <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay 趙宇傑">
   <div class="hero-overlay"></div>
@@ -1341,6 +1345,220 @@ font-family: ‘Noto Sans JP’, monospace;
 
   </div><!-- /content-zh -->
 
+  <!-- ══════════════════════════════════════
+       KOREAN CONTENT
+  ══════════════════════════════════════ -->
+
+  <div id="content-ko" style="display:none;" lang="ko">
+
+<div class="hero fade d1">
+  <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay 추앙제이">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-text-col">
+      <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+      <h1 class="hero-title">
+        <span class="ht-gold">투표 방식</span><br>
+        완전 해설<br>
+        <span class="ht-blue">101 신세계</span>
+      </h1>
+      <p class="hero-sub">
+        국민투표와 SEKAI투표의 차이는?<br>
+        「표의 가중치」가 뭔지 알고 있나요?<br>
+        구조를 완전히 설명합니다.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">#일프신세계</span>
+        <span class="hero-tag">#101SHINSEKAI</span>
+        <span class="hero-tag">#추앙제이</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="global-banner">
+  <div class="global-banner-icon">🌏</div>
+  <div class="global-banner-text">
+    <span class="gb-hl">일본 밖에서 보내는 당신의 한 표가 Jay에게 매우 중요합니다.</span>
+    <span class="gb-sub">SEKAI 투표 모수가 작기 때문에, 한 표 한 표의 영향력이 생각보다 훨씬 큽니다. 매일 투표를 잊지 마세요.</span>
+  </div>
+</div>
+
+<div class="sim-wrap fade d2">
+  <div class="sec-label">인터랙티브 시뮬레이터</div>
+
+  <div style="background:#0d1b3e;border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:16px 18px;margin-bottom:20px;">
+    <p style="font-size:14px;font-weight:700;color:#f0d070;margin-bottom:6px;line-height:1.5;">당신의 추천 연습생은 어떤 타입? 🔍</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.85;margin-bottom:10px;">아래 버튼으로 타입을 선택하면, 생존에 필요한 투표 밸런스를 시뮬레이션할 수 있습니다. 슬라이더로 투표수를 조정하면 결과가 실시간으로 바뀝니다.</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.7;">※ 계산은 보이프라 기준 정규화 방식：점수 ＝ (자신의 국민표 ÷ 국민표 총수) ×70 ＋ (자신의 SEKAI표 ÷ SEKAI표 총수) ×30。<strong style="color:#e2c47a;">SEKAI 투표 모수가 적을수록 한 표의 가치가 올라갑니다。</strong></p>
+  </div>
+
+  <div class="scenario-row">
+    <button class="sc-btn active" onclick="loadScenario(0,this,'ko')">🇯🇵 일본에서 인기!</button>
+    <button class="sc-btn" onclick="loadScenario(1,this,'ko')">🌏 해외에서 인기!</button>
+    <button class="sc-btn" onclick="loadScenario(2,this,'ko')">✨ 양쪽 다 인기!</button>
+    <button class="sc-btn" onclick="loadScenario(3,this,'ko')">😶 양쪽 다 고전 중…</button>
+  </div>
+
+  <div class="slider-grid">
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>추천 — 국민투표</span>
+        <span class="slider-val" id="ko-val-k">150</span>
+      </div>
+      <input type="range" min="0" max="1000" value="150" id="ko-sl-k" oninput="renderSim('ko')">
+    </div>
+    <div class="slider-card focus-card">
+      <div class="slider-label">
+        <span>추천 — SEKAI투표</span>
+        <span class="slider-val" id="ko-val-s">750</span>
+      </div>
+      <input type="range" min="0" max="1000" value="750" id="ko-sl-s" oninput="renderSim('ko')">
+    </div>
+  </div>
+
+  <div class="result-wrap">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>연습생</th><th>국민투표</th><th>SEKAI투표</th>
+          <th>표준 점수</th><th>표준 순위</th>
+          <th>SEKAI 우선 점수</th><th>SEKAI 순위</th>
+        </tr>
+      </thead>
+      <tbody id="ko-tbody"></tbody>
+    </table>
+  </div>
+  <div id="ko-worth" style="font-size:11px;padding:8px 12px;background:#112050;border-radius:0 0 10px 10px;line-height:1.9;border:1px solid rgba(255,255,255,0.07);border-top:none;"></div>
+  <button class="breakdown-toggle" onclick="toggleBreakdown('ko',this)">
+    📐 계산 내역 보기 <span class="arrow">▼</span>
+  </button>
+  <div class="breakdown-panel" id="ko-breakdown"></div>
+  <div id="ko-verdict"></div>
+</div>
+
+<div class="section-divider fade d3">
+  <div class="section-divider-line"></div>
+  <div class="section-divider-text">✦ 자세히 보기 ✦</div>
+  <div class="section-divider-line"></div>
+</div>
+
+<div class="info-wrap fade d3">
+  <div class="sec-label">투표 구조 해설</div>
+  <p class="info-intro">국민투표와 SEKAI투표가 왜 둘 다 필요한지. 세 가지 시나리오와 「함정」을 숫자로 정리했습니다.</p>
+
+  <div class="info-card">
+    <div class="info-top">
+      <div class="info-top-eye">✦ JAYBIRDS — VOTE STRUCTURE ✦</div>
+      <div class="info-top-title">투표 방식과 <em>숨겨진 함정</em></div>
+      <div class="info-top-sub">왜 SEKAI 투표만으로는 부족한가, 숫자로 설명합니다</div>
+    </div>
+    <div class="info-body">
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num-circle c1">1</div>
+          <div>
+            <div class="step-content-title">두 종류의 투표를 각각 집계</div>
+            <div class="step-content-body">국민투표 총수와 SEKAI투표 총수를 <strong>각각 독립적으로</strong> 집계합니다. 각 총수는 투표 참여자 수에 따라 매번 달라집니다.
+              <div class="step-example">예） <span class="ex-k">국민투표 총수 ＝ 10만 표</span>　<span class="ex-s">SEKAI투표 총수 ＝ 100만 표</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c2">2</div>
+          <div>
+            <div class="step-content-title">각 연습생의 득표율을 계산</div>
+            <div class="step-content-body">각 연습생의 득표수를 해당 총수로 나누어 비율화합니다. <strong>모수가 작을수록 같은 1표라도 비율이 커집니다.</strong>
+              <div class="step-example">연습생A가 <span class="ex-k">국민투표 1만 표</span>：1만 ÷ 10만 ＝ <span class="ex-k">10%</span><br>연습생A가 <span class="ex-s">SEKAI투표 1만 표</span>：1만 ÷ 100만 ＝ <span class="ex-s">1%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num-circle c3">3</div>
+          <div>
+            <div class="step-content-title">득표율에 가중치(70:30)를 곱해 점수화</div>
+            <div class="step-content-body">
+              ①표준집계：<span class="c-k">국민 득표율 × 70</span> ＋ <span class="c-s">SEKAI 득표율 × 30</span><br>
+              ②구제 명단：<span class="c-s">SEKAI 득표율 × 70</span> ＋ <span class="c-k">국민 득표율 × 30</span>
+              <div class="step-example">①표준：<span class="ex-k">10% × 70 ＝ 7점</span>　＋　<span class="ex-s">1% × 30 ＝ 0.3점</span>　＝　<span class="ex-g">7.3점</span><br>②구제：<span class="ex-s">1% × 70 ＝ 0.7점</span>　＋　<span class="ex-k">10% × 30 ＝ 3점</span>　＝　<span class="ex-g">3.7점</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.9;">②의 집계에서 상위 12명은 표준집계에서 탈락권이더라도 다음 스테이지로 진출할 수 있습니다。</p>
+
+      <div class="case-block">
+        <div class="case-header c1"><span class="case-num">Case 1</span><span class="case-title">국민과 SEKAI의 격차가 작은 경우</span></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>연습생</th><th>국민</th><th>SEKAI</th><th>표준점수</th><th>표준순위</th><th>SEKAI우선</th><th>SEKAI순위</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 추천</td><td class="ck">400</td><td class="cs">600</td><td class="cg">—</td><td class="cr">2위 ✅</td><td class="cg">—</td><td class="cr">1위 ✅</td></tr>
+              <tr><td>연습생A（일）</td><td class="ck">600</td><td class="cs">400</td><td>—</td><td>1위 ✅</td><td>—</td><td>2위 ✅</td></tr>
+              <tr><td>연습생B</td><td class="ck">500</td><td class="cs">500</td><td>—</td><td>3위 ✅</td><td>—</td><td>3위 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-safe">✅ 격차가 작으면 두 집계 모두 순위가 안정적입니다.</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c2"><span class="case-num">Case 2</span><span class="case-title">격차 중간 — 표준에서 탈락, 구제로 부활</span></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>연습생</th><th>국민</th><th>SEKAI</th><th>표준점수</th><th>표준순위</th><th>SEKAI우선</th><th>SEKAI순위</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 추천</td><td class="ck">150</td><td class="cs">750</td><td class="cd">—</td><td class="cd">3위 🚨</td><td class="cg">—</td><td class="cr">1위 ✅</td></tr>
+              <tr><td>연습생A（일）</td><td class="ck">750</td><td class="cs">150</td><td>—</td><td>1위 ✅</td><td>—</td><td>3위 🚨</td></tr>
+              <tr><td>연습생B</td><td class="ck">500</td><td class="cs">500</td><td>—</td><td>2위 ✅</td><td>—</td><td>2위 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-rescued">🟡 표준집계에서 탈락권이더라도 SEKAI우선 1위 → 구제 명단으로 다음 스테이지 진출。</div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <div class="case-header c3"><span class="case-num">Case 3 ⚠️</span><span class="case-title">함정 — 해외 연습생끼리의 경쟁</span></div>
+        <div class="case-body">
+          <table class="mini-table">
+            <thead><tr><th>연습생</th><th>국민</th><th>SEKAI</th><th>표준점수</th><th>표준순위</th><th>SEKAI우선</th><th>SEKAI순위</th></tr></thead>
+            <tbody>
+              <tr class="focus"><td>🟡 추천</td><td class="ck">50</td><td class="cs">700</td><td class="cd">—</td><td class="cd">3위 🚨</td><td class="cd">—</td><td class="cd">3위 🚨</td></tr>
+              <tr><td>연습생A（일）</td><td class="ck">950</td><td class="cs">50</td><td>—</td><td>1위 ✅</td><td>—</td><td>4위 🚨</td></tr>
+              <tr><td>연습생B（해외）</td><td class="ck">30</td><td class="cs">950</td><td>—</td><td>2위 ✅</td><td>—</td><td>1위 ✅</td></tr>
+              <tr><td>연습생C（해외）</td><td class="ck">40</td><td class="cs">800</td><td>—</td><td>4위 🚨</td><td>—</td><td>2위 ✅</td></tr>
+            </tbody>
+          </table>
+          <div class="mini-verdict mv-danger">🚨 <strong>SEKAI 표가 많아도 다른 해외 연습생이 더 많으면 구제 명단에서도 탈락합니다.</strong><br>SEKAI 순위는 절대 수가 아닌 상대 순위로 결정됩니다.</div>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <div class="conclusion-title">✦ 정리 — 왜 둘 다 필요한가</div>
+        <ul class="conclusion-list">
+          <li><span class="conclusion-marker">▸</span><strong>표준집계（국민 70%）</strong>에서는 국민표가 적은 연습생은 구조적으로 불리합니다</li>
+          <li><span class="conclusion-marker">▸</span>구제 명단（SEKAI 70%）이 있지만 <strong>다른 해외 연습생과의 상대 순위</strong>로 결정됩니다</li>
+          <li><span class="conclusion-marker">▸</span>국민표가 거의 없으면 SEKAI 우선집계에서도 <strong>30% 분의 핸디캡</strong>을 안게 됩니다</li>
+          <li><span class="conclusion-marker">▸</span><strong>SEKAI만으로는 부족합니다. 국민표도 계속 쌓아야 합니다</strong></li>
+          <li><span class="conclusion-marker">▸</span>🌏 해외 팬은 <strong>Mnet Plus에서 매일 1표</strong>를</li>
+          <li><span class="conclusion-marker">▸</span>🇯🇵 일본 팬은 <strong>Lemino＋공식 사이트에서 매일 2표</strong>를</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-footer">
+      <div class="info-footer-brand">JAYBIRDS</div>
+      <div class="info-footer-tag">#추앙제이　#ChuangJay　#JAY羽ばたくじぇい</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">JAYBIRDS</div>
+  <div class="footer-tags">#추앙제이　#ChuangJay<br>#일프신세계　#101SHINSEKAI</div>
+</div>
+
+  </div><!-- /content-ko -->
 </div><!-- /page -->
 
 <script>
