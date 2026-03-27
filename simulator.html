@@ -13,6 +13,7 @@
   gtag('js', new Date());
   gtag('config', 'G-EXHV880LX0');
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <meta name="description" content="日プ新世界（PRODUCE 101 JAPAN 新世界）の投票仕組みをシミュレーション。国民票・SEKAI票の重みと正規化方式を数字で体験できます。ジュアンジェイ(Chuang Jay)応援ファンサイト JAYBIRDS。">
 <meta name="keywords" content="日プ新世界,ジュアンジェイ,ChuangJay,101SHINSEKAI,PRODUCE101JAPAN新世界,PRODUCE101JAPAN,SEKAI投票,国民投票,投票方法,サバイバルオーディション,サバ番,日プ,推し活,デビューを夢見て,練習生,アイドルオーディション,K-POP,SEKAIVote,JAY羽ばたくじぇい,JO1,INI,ME:I,LAPONE,DXTEEN,IS:SUE,吉本,Lemino,MnetPlus,ボイプラ,BOYSPLANET,サバ番オタク,オーディション番組,デビュー,日本アイドル">
 <!-- OGP -->
@@ -525,6 +526,82 @@ font-weight: 700;
 .fade { animation: fadeUp 0.45s ease both; }
 .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.12s; } .d3 { animation-delay: 0.2s; }
 
+/* ── SHARE BUTTONS ── */
+.share-wrap {
+margin-top: 14px;
+border: 1px solid rgba(201,168,76,0.2);
+border-radius: 10px;
+overflow: hidden;
+}
+.share-cta {
+padding: 14px 16px;
+background: rgba(0,0,0,0.3);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.share-cta-text {
+font-size: 12px;
+color: rgba(255,255,255,0.6);
+line-height: 1.6;
+flex: 1;
+}
+.share-cta-text strong { color: #e2c47a; }
+.share-btn {
+display: flex;
+align-items: center;
+gap: 7px;
+padding: 10px 18px;
+border-radius: 8px;
+font-size: 12px;
+font-weight: 700;
+cursor: pointer;
+border: none;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+letter-spacing: 0.04em;
+transition: all 0.2s;
+white-space: nowrap;
+flex-shrink: 0;
+}
+.share-btn-x {
+background: #000;
+color: #fff;
+border: 1px solid rgba(255,255,255,0.25);
+}
+.share-btn-x:hover { background: #1a1a1a; border-color: rgba(255,255,255,0.5); }
+
+.share-unlock {
+display: none;
+padding: 12px 16px;
+background: rgba(201,168,76,0.08);
+border-top: 1px solid rgba(201,168,76,0.2);
+gap: 10px;
+align-items: center;
+}
+.share-unlock.visible { display: flex; }
+.share-unlock-text {
+font-size: 11px;
+color: rgba(255,255,255,0.55);
+flex: 1;
+line-height: 1.6;
+}
+.share-btn-dl {
+background: linear-gradient(135deg, #c9a84c, #e2c47a);
+color: #0a0a0a;
+border: none;
+padding: 10px 18px;
+border-radius: 8px;
+font-size: 12px;
+font-weight: 700;
+cursor: pointer;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+white-space: nowrap;
+flex-shrink: 0;
+transition: all 0.2s;
+}
+.share-btn-dl:hover { opacity: 0.85; transform: scale(1.02); }
+.share-btn-dl.loading { opacity: 0.6; pointer-events: none; }
+
 /* ── BREAKDOWN ACCORDION ── */
 .breakdown-toggle {
 margin-top: 10px;
@@ -726,6 +803,20 @@ font-family: ‘Noto Sans JP’, monospace;
   </button>
   <div class="breakdown-panel" id="ja-breakdown"></div>
   <div id="ja-verdict"></div>
+  <div class="share-wrap">
+    <div class="share-cta">
+      <div class="share-cta-text">Xでシェアして、<strong>シミュレーション結果を画像で保存しよう！</strong></div>
+      <button class="share-btn share-btn-x" onclick="shareToX('ja')">
+        𝕏&nbsp;シェアする
+      </button>
+    </div>
+    <div class="share-unlock" id="ja-unlock">
+      <div class="share-unlock-text">ありがとう！下のボタンで画像を保存できます🎉</div>
+      <button class="share-btn-dl" onclick="downloadResult('ja')">
+        📥 画像を保存
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="section-divider fade d3">
@@ -964,6 +1055,20 @@ font-family: ‘Noto Sans JP’, monospace;
   </button>
   <div class="breakdown-panel" id="en-breakdown"></div>
   <div id="en-verdict"></div>
+  <div class="share-wrap">
+    <div class="share-cta">
+      <div class="share-cta-text">Share on X and <strong>download your simulation result as an image!</strong></div>
+      <button class="share-btn share-btn-x" onclick="shareToX('en')">
+        𝕏&nbsp;Share on X
+      </button>
+    </div>
+    <div class="share-unlock" id="en-unlock">
+      <div class="share-unlock-text">Thanks for sharing! Save your result below 🎉</div>
+      <button class="share-btn-dl" onclick="downloadResult('en')">
+        📥 Save Image
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="section-divider fade d3">
@@ -1199,6 +1304,20 @@ font-family: ‘Noto Sans JP’, monospace;
   </button>
   <div class="breakdown-panel" id="zh-breakdown"></div>
   <div id="zh-verdict"></div>
+  <div class="share-wrap">
+    <div class="share-cta">
+      <div class="share-cta-text">分享到X，<strong>將模擬結果儲存為圖片！</strong></div>
+      <button class="share-btn share-btn-x" onclick="shareToX('zh')">
+        𝕏&nbsp;分享到 X
+      </button>
+    </div>
+    <div class="share-unlock" id="zh-unlock">
+      <div class="share-unlock-text">感謝分享！點擊下方按鈕儲存圖片 🎉</div>
+      <button class="share-btn-dl" onclick="downloadResult('zh')">
+        📥 儲存圖片
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="section-divider fade d3">
@@ -1354,6 +1473,7 @@ font-family: ‘Noto Sans JP’, monospace;
   ══════════════════════════════════════ -->
 
   <div id="content-ko" style="display:none;" lang="ko">
+
 <div class="hero fade d1">
   <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay 추앙제이">
   <div class="hero-overlay"></div>
@@ -1438,6 +1558,20 @@ font-family: ‘Noto Sans JP’, monospace;
   </button>
   <div class="breakdown-panel" id="ko-breakdown"></div>
   <div id="ko-verdict"></div>
+  <div class="share-wrap">
+    <div class="share-cta">
+      <div class="share-cta-text">X에서 공유하고 <strong>시뮬레이션 결과를 이미지로 저장하세요！</strong></div>
+      <button class="share-btn share-btn-x" onclick="shareToX('ko')">
+        𝕏&nbsp;X에 공유
+      </button>
+    </div>
+    <div class="share-unlock" id="ko-unlock">
+      <div class="share-unlock-text">공유해 주셔서 감사합니다! 아래 버튼으로 이미지를 저장하세요 🎉</div>
+      <button class="share-btn-dl" onclick="downloadResult('ko')">
+        📥 이미지 저장
+      </button>
+    </div>
+  </div>
 </div>
 
 <div class="section-divider fade d3">
@@ -1796,6 +1930,116 @@ renderSim('en');
 renderSim('zh');
 renderSim('ko');
 renderSim('ko');
+
+// ── SHARE FUNCTIONS ──
+const SHARE_URL = 'https://chuangjayfd.github.io/JAYBIRDS/simulator.html';
+
+const SHARE_TEXT = {
+  ja: (vc) => {
+    const emoji = vc==='safe' ? '✅' : vc==='rescued' ? '🟡' : '🚨';
+    return emoji + ' 日プ新世界 投票シミュレーション結果！\n国民票・SEKAI票の仕組みを解説中👇\n#ジュアンジェイ #101SHINSEKAI #日プ新世界';
+  },
+  en: (vc) => {
+    const emoji = vc==='safe' ? '✅' : vc==='rescued' ? '🟡' : '🚨';
+    return emoji + ' 101 SHINSEKAI Vote Simulator result!\nCheck how Kokumin & SEKAI votes work👇\n#ChuangJay #101SHINSEKAI #PRODUCE101Japan';
+  },
+  zh: (vc) => {
+    const emoji = vc==='safe' ? '✅' : vc==='rescued' ? '🟡' : '🚨';
+    return emoji + ' 101新世界投票模擬器結果！\n了解國民票・SEKAI票的機制👇\n#趙宇傑ChuangJay #101SHINSEKAI';
+  },
+  ko: (vc) => {
+    const emoji = vc==='safe' ? '✅' : vc==='rescued' ? '🟡' : '🚨';
+    return emoji + ' 101신세계 투표 시뮬레이터 결과！\n국민투표・SEKAI투표 구조 확인👇\n#추앙제이 #101SHINSEKAI #프듀재팬신세계';
+  }
+};
+
+function getCurrentVerdict(lang) {
+  const el = document.getElementById(lang + '-verdict');
+  if (!el) return 'safe';
+  const v = el.querySelector('.verdict');
+  if (!v) return 'safe';
+  if (v.classList.contains('rescued')) return 'rescued';
+  if (v.classList.contains('danger')) return 'danger';
+  return 'safe';
+}
+
+function shareToX(lang) {
+  const vc = getCurrentVerdict(lang);
+  const text = SHARE_TEXT[lang](vc);
+  const url = encodeURIComponent(SHARE_URL);
+  const tweet = encodeURIComponent(text);
+  window.open('https://twitter.com/intent/tweet?text=' + tweet + '&url=' + url, '_blank');
+  // Reveal unlock section after a short delay (give time for X to open)
+  setTimeout(function() {
+    const unlock = document.getElementById(lang + '-unlock');
+    if (unlock) {
+      unlock.classList.add('visible');
+      unlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 1200);
+}
+
+function downloadResult(lang) {
+  const btn = event.currentTarget;
+  btn.classList.add('loading');
+  const originalText = btn.innerHTML;
+  const loadingLabel = lang === 'ja' ? '⏳ 生成中...' : lang === 'ko' ? '⏳ 생성 중...' : lang === 'zh' ? '⏳ 生成中...' : '⏳ Generating...';
+  btn.innerHTML = loadingLabel;
+
+  const wrap = document.getElementById(lang + '-verdict').closest('.sim-wrap');
+  const resultWrap = wrap.querySelector('.result-wrap');
+  const worthEl = document.getElementById(lang + '-worth');
+  const verdictEl = document.getElementById(lang + '-verdict');
+
+  const captureDiv = document.createElement('div');
+  captureDiv.style.cssText = 'background:#0a0a0a;padding:20px;border-radius:12px;font-family:sans-serif;width:' + (resultWrap.offsetWidth + 40) + 'px;position:fixed;left:-9999px;top:0;';
+
+  const header = document.createElement('div');
+  header.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.3);';
+  header.innerHTML = '<span style="font-size:14px;font-weight:700;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;">JAYBIRDS</span><span style="font-size:10px;color:rgba(255,255,255,0.4);">#ジュアンジェイ #101SHINSEKAI</span>';
+  captureDiv.appendChild(header);
+
+  captureDiv.appendChild(resultWrap.cloneNode(true));
+
+  if (worthEl && worthEl.textContent.trim()) {
+    const w = worthEl.cloneNode(true);
+    captureDiv.appendChild(w);
+  }
+  if (verdictEl) {
+    const v = verdictEl.cloneNode(true);
+    v.style.marginTop = '8px';
+    captureDiv.appendChild(v);
+  }
+
+  const footer = document.createElement('div');
+  footer.style.cssText = 'margin-top:12px;font-size:10px;color:rgba(255,255,255,0.35);text-align:right;';
+  footer.textContent = 'chuangjayfd.github.io/JAYBIRDS/simulator.html';
+  captureDiv.appendChild(footer);
+
+  document.body.appendChild(captureDiv);
+
+  html2canvas(captureDiv, {
+    backgroundColor: '#0a0a0a',
+    scale: 2,
+    useCORS: true,
+    logging: false,
+  }).then(function(canvas) {
+    const link = document.createElement('a');
+    link.download = 'jaybirds_vote_sim_' + lang + '_' + Date.now() + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    document.body.removeChild(captureDiv);
+    btn.classList.remove('loading');
+    const doneLabel = lang === 'ja' ? '✅ 保存完了!' : lang === 'ko' ? '✅ 저장 완료!' : lang === 'zh' ? '✅ 儲存完成!' : '✅ Saved!';
+    btn.innerHTML = doneLabel;
+    setTimeout(function() { btn.innerHTML = originalText; }, 2500);
+  }).catch(function(err) {
+    console.error(err);
+    document.body.removeChild(captureDiv);
+    btn.classList.remove('loading');
+    btn.innerHTML = originalText;
+  });
+}
 </script>
 
 </body>
