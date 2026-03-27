@@ -1983,59 +1983,159 @@ function downloadResult(lang) {
   const btn = event.currentTarget;
   btn.classList.add('loading');
   const originalText = btn.innerHTML;
-  const loadingLabel = lang === 'ja' ? '⏳ 生成中...' : lang === 'ko' ? '⏳ 생성 중...' : lang === 'zh' ? '⏳ 生成中...' : '⏳ Generating...';
+  const loadingLabel = lang==='ja' ? '⏳ 生成中...' : lang==='ko' ? '⏳ 생성 중...' : lang==='zh' ? '⏳ 生成中...' : '⏳ Generating...';
   btn.innerHTML = loadingLabel;
 
-  const wrap = document.getElementById(lang + '-verdict').closest('.sim-wrap');
-  const resultWrap = wrap.querySelector('.result-wrap');
-  const worthEl = document.getElementById(lang + '-worth');
+  // Get verdict info
   const verdictEl = document.getElementById(lang + '-verdict');
-
-  const captureDiv = document.createElement('div');
-  captureDiv.style.cssText = 'background:#0a0a0a;padding:20px;border-radius:12px;font-family:sans-serif;width:' + (resultWrap.offsetWidth + 40) + 'px;position:fixed;left:-9999px;top:0;';
-
-  const header = document.createElement('div');
-  header.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.3);';
-  header.innerHTML = '<span style="font-size:14px;font-weight:700;letter-spacing:0.3em;color:#c9a84c;text-transform:uppercase;">JAYBIRDS</span><span style="font-size:10px;color:rgba(255,255,255,0.4);">#ジュアンジェイ #101SHINSEKAI</span>';
-  captureDiv.appendChild(header);
-
-  captureDiv.appendChild(resultWrap.cloneNode(true));
-
-  if (worthEl && worthEl.textContent.trim()) {
-    const w = worthEl.cloneNode(true);
-    captureDiv.appendChild(w);
+  const vDiv = verdictEl ? verdictEl.querySelector('.verdict') : null;
+  let vcClass = 'safe';
+  if (vDiv) {
+    if (vDiv.classList.contains('danger')) vcClass = 'danger';
+    else if (vDiv.classList.contains('rescued')) vcClass = 'rescued';
   }
-  if (verdictEl) {
-    const v = verdictEl.cloneNode(true);
-    v.style.marginTop = '8px';
-    captureDiv.appendChild(v);
+  const verdictText = vDiv ? vDiv.innerText : '';
+
+  // Verdict big label config
+  const BIG = {
+    safe:    { emoji: '✅', color: '#6ab87e', bg: 'rgba(106,184,126,0.15)', border: 'rgba(106,184,126,0.4)',
+               ja:'通過圏内', en:'SAFE ZONE', zh:'安全圈', ko:'통과권' },
+    rescued: { emoji: '🟡', color: '#e2c47a', bg: 'rgba(201,168,76,0.15)', border: 'rgba(201,168,76,0.4)',
+               ja:'救済で進出', en:'RESCUED', zh:'救濟晉級', ko:'구제 진출' },
+    danger:  { emoji: '🚨', color: '#d45a5a', bg: 'rgba(212,90,90,0.15)', border: 'rgba(212,90,90,0.4)',
+               ja:'脱落圏内', en:'DANGER ZONE', zh:'淘汰圈', ko:'탈락권' },
+  };
+  const bv = BIG[vcClass];
+  const bigLabel = bv[lang] || bv.en;
+
+  // Get table HTML
+  const wrap = document.getElementById(lang + '-verdict').closest('.sim-wrap');
+  const tableWrap = wrap.querySelector('.result-wrap');
+  const tableHTML = tableWrap ? tableWrap.outerHTML : '';
+
+  // Worth text
+  const worthEl = document.getElementById(lang + '-worth');
+  const worthText = worthEl ? worthEl.innerText : '';
+
+  // Labels
+  const LABELS = {
+    ja: { title:'投票シミュレーション結果', sub:'日プ新世界 国民票・SEKAI票の仕組み', tag:'#ジュアンジェイ #101SHINSEKAI #日プ新世界', url:'chuangjayfd.github.io/JAYBIRDS/simulator.html' },
+    en: { title:'Vote Simulation Result', sub:'101 SHINSEKAI — Kokumin & SEKAI Vote Structure', tag:'#ChuangJay #101SHINSEKAI #PRODUCE101Japan', url:'chuangjayfd.github.io/JAYBIRDS/simulator.html' },
+    zh: { title:'投票模擬結果', sub:'101新世界 國民票・SEKAI票機制', tag:'#趙宇傑ChuangJay #101SHINSEKAI', url:'chuangjayfd.github.io/JAYBIRDS/simulator.html' },
+    ko: { title:'투표 시뮬레이션 결과', sub:'101신세계 국민투표・SEKAI투표 구조', tag:'#추앙제이 #101SHINSEKAI #프듀재팬신세계', url:'chuangjayfd.github.io/JAYBIRDS/simulator.html' },
+  };
+  const lb = LABELS[lang] || LABELS.ja;
+
+  // Build capture card — 1200×630 ratio via inline styles
+  const card = document.createElement('div');
+  card.style.cssText = [
+    'position:fixed', 'left:-9999px', 'top:0',
+    'width:900px',   // will be scaled ×1.333 → ~1200px @scale:2
+    'background:#0b1530',
+    'font-family:"Noto Sans JP","Noto Sans",sans-serif',
+    'border:2px solid #c9a84c',
+    'border-radius:16px',
+    'overflow:hidden',
+    'display:flex',
+    'flex-direction:column',
+  ].join(';');
+
+  // ── TOP BAR ──
+  const topBar = document.createElement('div');
+  topBar.style.cssText = 'display:flex;align-items:center;justify-content:space-between;padding:16px 24px 14px;border-bottom:1px solid rgba(201,168,76,0.25);background:rgba(0,0,0,0.3);';
+  topBar.innerHTML =
+    '<div style="display:flex;align-items:center;gap:12px;">' +
+      '<img src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" ' +
+        'style="width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #c9a84c;" ' +
+        'crossorigin="anonymous">' +
+      '<div>' +
+        '<div style="font-size:13px;font-weight:900;letter-spacing:0.22em;color:#c9a84c;text-transform:uppercase;">JAYBIRDS</div>' +
+        '<div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;">CHUANG JAY (ジュアンジェイ) FD</div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="text-align:right;">' +
+      '<div style="font-size:11px;font-weight:700;color:#ffffff;">' + lb.title + '</div>' +
+      '<div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">' + lb.sub + '</div>' +
+    '</div>';
+  card.appendChild(topBar);
+
+  // ── MAIN AREA ──
+  const main = document.createElement('div');
+  main.style.cssText = 'display:flex;flex:1;gap:0;';
+
+  // Left: big verdict
+  const left = document.createElement('div');
+  left.style.cssText = [
+    'width:280px', 'flex-shrink:0',
+    'display:flex', 'flex-direction:column',
+    'align-items:center', 'justify-content:center',
+    'padding:28px 20px',
+    'background:' + bv.bg,
+    'border-right:1px solid ' + bv.border,
+    'gap:12px',
+  ].join(';');
+  left.innerHTML =
+    '<div style="font-size:56px;line-height:1;">' + bv.emoji + '</div>' +
+    '<div style="font-size:22px;font-weight:900;color:' + bv.color + ';text-align:center;line-height:1.2;">' + bigLabel + '</div>' +
+    '<div style="font-size:10px;color:rgba(255,255,255,0.55);text-align:center;line-height:1.7;padding:0 4px;">' +
+      verdictText.replace(/[✅🟡🚨]/g,'').trim().slice(0,80) +
+    '</div>';
+  main.appendChild(left);
+
+  // Right: table + worth
+  const right = document.createElement('div');
+  right.style.cssText = 'flex:1;padding:16px 20px;overflow:hidden;';
+
+  // Clone and restyle the table
+  const tClone = tableWrap ? tableWrap.cloneNode(true) : document.createElement('div');
+  tClone.style.cssText = 'overflow:hidden;border-radius:8px;border:1px solid rgba(255,255,255,0.08);';
+  // Force white text on all tds
+  const tds = tClone.querySelectorAll('td,th');
+  tds.forEach(td => { td.style.fontSize = '11px'; td.style.padding = '6px 8px'; });
+  right.appendChild(tClone);
+
+  // Worth line
+  if (worthText.trim()) {
+    const w = document.createElement('div');
+    w.style.cssText = 'margin-top:8px;font-size:10px;color:rgba(255,255,255,0.55);line-height:1.8;padding:6px 10px;background:rgba(255,255,255,0.04);border-radius:6px;';
+    w.textContent = worthText;
+    right.appendChild(w);
   }
 
-  const footer = document.createElement('div');
-  footer.style.cssText = 'margin-top:12px;font-size:10px;color:rgba(255,255,255,0.35);text-align:right;';
-  footer.textContent = 'chuangjayfd.github.io/JAYBIRDS/simulator.html';
-  captureDiv.appendChild(footer);
+  main.appendChild(right);
+  card.appendChild(main);
 
-  document.body.appendChild(captureDiv);
+  // ── BOTTOM BAR ──
+  const bot = document.createElement('div');
+  bot.style.cssText = 'padding:10px 24px;border-top:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.3);';
+  bot.innerHTML =
+    '<span style="font-size:10px;color:#c9a84c;font-weight:700;">' + lb.tag + '</span>' +
+    '<span style="font-size:10px;color:rgba(255,255,255,0.3);">' + lb.url + '</span>';
+  card.appendChild(bot);
 
-  html2canvas(captureDiv, {
-    backgroundColor: '#0a0a0a',
-    scale: 2,
+  document.body.appendChild(card);
+
+  html2canvas(card, {
+    backgroundColor: '#0b1530',
+    scale: 1.334,
     useCORS: true,
+    allowTaint: true,
     logging: false,
+    width: 900,
+    height: card.offsetHeight,
   }).then(function(canvas) {
     const link = document.createElement('a');
     link.download = 'jaybirds_vote_sim_' + lang + '_' + Date.now() + '.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
-    document.body.removeChild(captureDiv);
+    document.body.removeChild(card);
     btn.classList.remove('loading');
-    const doneLabel = lang === 'ja' ? '✅ 保存完了!' : lang === 'ko' ? '✅ 저장 완료!' : lang === 'zh' ? '✅ 儲存完成!' : '✅ Saved!';
+    const doneLabel = lang==='ja' ? '✅ 保存完了!' : lang==='ko' ? '✅ 저장 완료!' : lang==='zh' ? '✅ 儲存完成!' : '✅ Saved!';
     btn.innerHTML = doneLabel;
     setTimeout(function() { btn.innerHTML = originalText; }, 2500);
   }).catch(function(err) {
     console.error(err);
-    document.body.removeChild(captureDiv);
+    if (document.body.contains(card)) document.body.removeChild(card);
     btn.classList.remove('loading');
     btn.innerHTML = originalText;
   });
