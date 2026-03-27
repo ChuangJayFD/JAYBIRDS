@@ -106,7 +106,7 @@ padding: 0 2px;
 flex-wrap: nowrap;
 }
 .lang-tab {
-font-family: ‘Cormorant Garamond’, serif;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 font-size: 13px; font-weight: 700; letter-spacing: 0.14em;
 text-transform: uppercase;
 padding: 9px 18px 11px;
@@ -186,13 +186,20 @@ min-height: 260px;
 /* Jay image — full background */
 .hero-bg-img {
 position: absolute;
-inset: 0;
-width: 100%;
+top: 0;
+left: 0;
+width: 55%;
 height: 100%;
 object-fit: cover;
-object-position: 20% top;
+object-position: center top;
 z-index: 0;
 pointer-events: none;
+}
+@media (max-width: 480px) {
+.hero-bg-img {
+width: 75%;
+object-position: left top;
+}
 }
 
 /* gradient overlay — left transparent, right dark navy */
@@ -201,13 +208,25 @@ position: absolute;
 inset: 0;
 background: linear-gradient(
 to right,
-rgba(8,20,55,0.05) 0%,
-rgba(8,20,55,0.35) 30%,
-rgba(8,20,55,0.82) 55%,
-rgba(8,20,55,0.97) 75%,
-rgba(8,20,55,1) 100%
+rgba(8,20,55,0.0)  0%,
+rgba(8,20,55,0.1)  35%,
+rgba(8,20,55,0.75) 52%,
+rgba(8,20,55,0.97) 65%,
+rgba(8,20,55,1)    100%
 );
 z-index: 1;
+}
+@media (max-width: 480px) {
+.hero-overlay {
+background: linear-gradient(
+to right,
+rgba(8,20,55,0.0)  0%,
+rgba(8,20,55,0.1)  45%,
+rgba(8,20,55,0.8)  62%,
+rgba(8,20,55,0.98) 72%,
+rgba(8,20,55,1)    100%
+);
+}
 }
 
 /* content on top */
@@ -218,7 +237,13 @@ display: flex;
 align-items: flex-end;
 justify-content: flex-end;
 min-height: 260px;
-padding: 24px 22px 22px 40%;
+padding: 24px 20px 22px 42%;
+}
+@media (max-width: 480px) {
+.hero-inner {
+padding: 20px 16px 18px 52%;
+min-height: 240px;
+}
 }
 
 .hero-text-col {
@@ -300,7 +325,7 @@ min-height: 230px;
 
 /* ── SECTION LABEL ── */
 .sec-label {
-font-family: ‘Cormorant Garamond’, serif;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
 text-transform: uppercase; color: var(–gold);
 margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
@@ -333,7 +358,7 @@ text-transform: uppercase; margin-bottom: 10px;
 display: flex; justify-content: space-between; align-items: center;
 color: var(–gold);
 }
-.slider-val { font-family: ‘Cormorant Garamond’, serif; font-size: 22px; font-weight: 700; color: var(–gold-light); }
+.slider-val { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 22px; font-weight: 700; color: var(–gold-light); }
 input[type=range] { width: 100%; margin-top: 8px; accent-color: var(–gold); cursor: pointer; }
 
 .result-wrap { background: #0d1b3e; border-radius: 10px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.10); }
@@ -341,7 +366,8 @@ input[type=range] { width: 100%; margin-top: 8px; accent-color: var(–gold); cu
 .result-table thead tr { background: #112050; }
 .result-table thead th {
 padding: 9px 12px; font-size: 9px; font-weight: 700;
-letter-spacing: 0.14em; text-transform: uppercase;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+letter-spacing: 0.05em; text-transform: uppercase;
 text-align: center; color: var(–text-muted);
 border-bottom: 1px solid rgba(255,255,255,0.06);
 white-space: nowrap;
@@ -356,7 +382,7 @@ white-space: nowrap;
 .result-table tbody td:first-child { text-align: left; font-weight: 600; }
 
 .rank-badge {
-display: inline-block; font-family: ‘Cormorant Garamond’, serif;
+display: inline-block; font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 font-size: 13px; font-weight: 700;
 width: 26px; height: 26px; line-height: 26px;
 border-radius: 50%; text-align: center;
@@ -366,9 +392,9 @@ border-radius: 50%; text-align: center;
 
 .td-k { color: var(–k); font-weight: 500; }
 .td-s { color: var(–s); font-weight: 500; }
-.td-score { font-family: ‘Cormorant Garamond’, serif; font-size: 14px; font-weight: 600; }
+.td-score { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 13px; font-weight: 600; }
 
-.verdict { margin-top: 12px; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.8; border: 1px solid; }
+.verdict { margin-top: 12px; border-radius: 10px; padding: 13px 16px; font-size: 13px; line-height: 1.8; border: 1px solid; font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; }
 .verdict.safe { background: var(–rescue-soft); border-color: var(–rescue-border); color: var(–rescue); }
 .verdict.danger { background: var(–danger-soft); border-color: rgba(212,90,90,0.3); color: var(–danger); }
 .verdict.rescued { background: rgba(106,184,126,0.08); border-color: var(–rescue-border); color: var(–rescue); }
@@ -381,7 +407,7 @@ margin: 0 0 40px;
 }
 .section-divider-line { flex: 1; height: 1px; background: var(–gold-border); }
 .section-divider-text {
-font-family: ‘Cormorant Garamond’, serif;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 font-size: 10px; letter-spacing: 0.28em; color: var(–gold);
 text-transform: uppercase; white-space: nowrap;
 }
@@ -399,8 +425,8 @@ font-size: 12px; color: var(–text-muted); margin-bottom: 20px; line-height: 1.
 background: linear-gradient(135deg, #091530, #0d1b3e);
 padding: 26px 28px 18px; border-bottom: 1px solid var(–gold-border); text-align: center;
 }
-.info-top-eye { font-family: ‘Cormorant Garamond’, serif; font-size: 10px; letter-spacing: 0.32em; color: var(–gold); text-transform: uppercase; margin-bottom: 8px; }
-.info-top-title { font-family: ‘Cormorant Garamond’, serif; font-size: 20px; font-weight: 600; color: var(–white); line-height: 1.3; }
+.info-top-eye { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 10px; letter-spacing: 0.32em; color: var(–gold); text-transform: uppercase; margin-bottom: 8px; }
+.info-top-title { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 20px; font-weight: 600; color: var(–white); line-height: 1.3; }
 .info-top-title em { font-style: italic; color: var(–gold-light); }
 .info-top-sub { font-size: 11px; color: var(–text-muted); margin-top: 7px; }
 
@@ -419,7 +445,7 @@ border: 2px solid #5a9fd4;
 .formula-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
 .f-std .formula-tag { color: #d4845a; }
 .f-sekai .formula-tag { color: #5a9fd4; }
-.formula-text { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; color: #ffffff; line-height: 1.6; margin-bottom: 12px; }
+.formula-text { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 12px; font-weight: 600; color: #ffffff; line-height: 1.6; margin-bottom: 12px; }
 
 /* ratio bar in formula */
 .formula-bar-wrap { margin-top: 4px; }
@@ -447,7 +473,7 @@ font-weight: 700;
 .case-header.c1 { background: rgba(106,184,126,0.12); border-bottom: 1px solid var(–rescue-border); }
 .case-header.c2 { background: rgba(201,168,76,0.1); border-bottom: 1px solid var(–gold-border); }
 .case-header.c3 { background: rgba(212,90,90,0.1); border-bottom: 1px solid rgba(212,90,90,0.25); }
-.case-num { font-family: ‘Cormorant Garamond’, serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.case-num { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .c1 .case-num { color: var(–rescue); } .c2 .case-num { color: var(–gold); } .c3 .case-num { color: var(–danger); }
 .case-title { font-size: 12px; font-weight: 700; color: var(–white); }
 .case-body { background: #2a2a3a; padding: 12px 14px; overflow-x: auto; }
@@ -470,7 +496,7 @@ font-weight: 700;
 .mv-danger { background: var(–danger-soft); color: var(–danger); border: 1px solid rgba(212,90,90,0.25); }
 
 .conclusion { margin-top: 16px; background: rgba(201,168,76,0.18); border: 1px solid #c9a84c; border-radius: 10px; padding: 16px 18px; }
-.conclusion-title { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #e2c47a; text-transform: uppercase; margin-bottom: 10px; }
+.conclusion-title { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #e2c47a; text-transform: uppercase; margin-bottom: 10px; }
 .conclusion-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
 .conclusion-list li { font-size: 12px; color: rgba(255,255,255,0.92); line-height: 1.7; padding-left: 0; position: relative; display: flex; gap: 8px; align-items: flex-start; }
 .conclusion-list li::before { display: none; }
@@ -501,7 +527,7 @@ border-radius: 8px;
 padding: 9px 14px;
 font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
 color: #c9a84c; cursor: pointer;
-text-align: left; font-family: inherit;
+text-align: left; font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 display: flex; align-items: center; justify-content: space-between;
 transition: background 0.2s;
 }
@@ -512,6 +538,7 @@ transition: background 0.2s;
 .breakdown-panel {
 display: none;
 background: #0d1b3e;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
 border: 1px solid rgba(201,168,76,0.2);
 border-top: none;
 border-radius: 0 0 8px 8px;
@@ -530,7 +557,7 @@ text-transform: uppercase; margin-bottom: 6px;
 .bd-head.k { color: #d4845a; } .bd-head.s { color: #5a9fd4; }
 .bd-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
 .bd-label { font-size: 11px; color: rgba(255,255,255,0.55); min-width: 80px; }
-.bd-calc { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-weight: 600; }
+.bd-calc { font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; font-size: 13px; font-weight: 600; }
 .bd-calc.k { color: #f5a060; } .bd-calc.s { color: #70c0f5; }
 .bd-arrow { color: rgba(255,255,255,0.3); font-size: 11px; }
 .bd-result { font-size: 12px; font-weight: 700; }
@@ -563,14 +590,14 @@ height: 0; /* spacer removed — using border trick */
 .step-num-circle {
 width: 28px; height: 28px; border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 14px; font-weight: 700;
+font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif;
+font-size: 13px; font-weight: 700;
 flex-shrink: 0; margin-top: 2px;
 }
 .step-num-circle.c1 { background: rgba(212,132,90,0.25); color: #f5a060; border: 1px solid rgba(212,132,90,0.5); }
 .step-num-circle.c2 { background: rgba(90,159,212,0.25); color: #70c0f5; border: 1px solid rgba(90,159,212,0.5); }
 .step-num-circle.c3 { background: rgba(201,168,76,0.2); color: #e2c47a; border: 1px solid rgba(201,168,76,0.4); }
-.step-content-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.step-content-title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; font-family: ‘Noto Sans JP’, ‘Noto Sans’, sans-serif; }
 .step-content-body { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.8; }
 .step-content-body strong { color: #e2c47a; }
 .step-content-body .c-k { color: #f5a060; font-weight: 600; }
