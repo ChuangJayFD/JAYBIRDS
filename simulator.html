@@ -1476,14 +1476,10 @@ function renderSim(lang) {
     if (sp)      { vc='safe';    vt=`✅ 標準集計排名 <strong>第${o.stdRank}名</strong>，在安全圈內。SEKAI優先也排 <strong>第${o.sekaiRank}名</strong>。兩項集計均穩定。`; }
     else if (kp) { vc='rescued'; vt=`🟡 標準集計排名 <strong>第${o.stdRank}名</strong>，落入淘汰圈。但SEKAI優先集計排 <strong>第${o.sekaiRank}名</strong> → 可透過救濟名額晉級下一階段。維持SEKAI票至關重要。`; }
     else         { vc='danger';  vt=`🚨 標準集計 <strong>第${o.stdRank}名</strong>、SEKAI優先也排 <strong>第${o.sekaiRank}名</strong>，均在淘汰圈。被其他海外練習生在SEKAI票上超越。須緊急向全球粉絲呼籲投票。`; }
-  } else {
+  } else if (lang==='en') {
     if (sp)      { vc='safe';    vt=`✅ Standard rank: <strong>${o.stdRank}</strong> — safe zone. SEKAI round rank: <strong>${o.sekaiRank}</strong>. Stable in both tallies.`; }
     else if (kp) { vc='rescued'; vt=`🟡 Standard rank: <strong>${o.stdRank}</strong> — elimination zone. SEKAI round rank: <strong>${o.sekaiRank}</strong> → rescued and advances. Maintaining SEKAI votes is critical.`; }
     else         { vc='danger';  vt=`🚨 Standard rank: <strong>${o.stdRank}</strong>, SEKAI round rank: <strong>${o.sekaiRank}</strong> — both in elimination zone. Being outranked by other international trainees. Global fan outreach is urgent.`; }
-  } else if (lang==='ko') {
-    if (sp)      { vc='safe';    vt=`✅ 표준집계 <strong>${o.stdRank}위</strong>로 통과권。SEKAI우선도 <strong>${o.sekaiRank}위</strong>。두 집계 모두 안정적입니다。`; }
-    else if (kp) { vc='rescued'; vt=`🟡 표준집계 <strong>${o.stdRank}위</strong>로 탈락권。SEKAI우선집계 <strong>${o.sekaiRank}위</strong> → 구제 명단으로 다음 스테이지 진출 가능。`; }
-    else         { vc='danger';  vt=`🚨 표준집계 <strong>${o.stdRank}위</strong>、SEKAI우선도 <strong>${o.sekaiRank}위</strong>로 탈락권。다른 해외 연습생에게 SEKAI표에서 뒤지고 있습니다。`; }
   } else if (lang==='ko') {
     if (sp)      { vc='safe';    vt=`✅ 표준집계 <strong>${o.stdRank}위</strong>로 통과권。SEKAI우선도 <strong>${o.sekaiRank}위</strong>。두 집계 모두 안정적입니다。`; }
     else if (kp) { vc='rescued'; vt=`🟡 표준집계 <strong>${o.stdRank}위</strong>로 탈락권。SEKAI우선집계 <strong>${o.sekaiRank}위</strong> → 구제 명단으로 다음 스테이지 진출 가능。SEKAI표 유지가 생명줄입니다。`; }
