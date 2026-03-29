@@ -80,17 +80,18 @@ margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 .hero {
 margin-bottom: 32px;
 border-radius: 14px;
+/* ゴールド枠 + 下部ゴールドラインをborder-bottomで確実に描画 */
 border: 2px solid var(–gold);
+border-bottom: 5px solid var(–gold);
 position: relative;
 overflow: hidden;
 background: linear-gradient(160deg, #081437 0%, #0d1b3e 60%, #112050 100%);
-isolation: isolate;
 }
 .hero-bg-img {
 position: absolute; top: 0; left: 0;
 width: 52%; height: 100%;
 object-fit: cover; object-position: center top;
-z-index: 1; pointer-events: none;
+z-index: 0; pointer-events: none;
 }
 .hero-fade {
 position: absolute; inset: 0;
@@ -101,19 +102,13 @@ rgba(8,20,55,0.15) 30%,
 rgba(8,20,55,0.80) 50%,
 rgba(8,20,55,1)    65%
 );
-z-index: 2;
+z-index: 1;
 }
 .hero-body {
-position: relative; z-index: 3;
+position: relative; z-index: 2;
 display: flex; align-items: flex-end; justify-content: flex-end;
 min-height: 220px;
-padding: 24px 20px 23px 44%;
-}
-.hero-gold-line {
-height: 3px;
-background: linear-gradient(90deg, transparent 0%, var(–gold) 20%, #f0d070 50%, var(–gold) 80%, transparent 100%);
-position: relative; z-index: 3;
-display: block; width: 100%;
+padding: 24px 20px 20px 44%;
 }
 .hero-text { width: 100%; text-align: right; }
 .hero-eyebrow {
@@ -143,7 +138,7 @@ color: var(–gold2); letter-spacing: 0.04em;
 }
 @media (max-width: 480px) {
 .hero-bg-img { width: 46%; }
-.hero-body { padding: 18px 14px 23px 38%; min-height: 200px; }
+.hero-body { padding: 18px 14px 18px 38%; min-height: 200px; }
 .hero-title { font-size: clamp(19px, 5.5vw, 26px); }
 .hero-title .t-blue { font-size: clamp(26px, 7.5vw, 38px); }
 }
@@ -157,6 +152,7 @@ border-radius: 12px;
 padding: 16px 20px;
 margin-bottom: 32px;
 text-decoration: none;
+color: var(–label); /* リンクデフォルト色を上書き */
 cursor: pointer;
 transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
 box-shadow: 0 2px 12px rgba(201,168,76,0.15);
@@ -165,19 +161,26 @@ box-shadow: 0 2px 12px rgba(201,168,76,0.15);
 background: linear-gradient(135deg, #112050, #1a2f52);
 border-color: var(–gold2);
 transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(201,168,76,0.28), 0 0 0 1px rgba(112,192,245,0.15);
+box-shadow: 0 6px 20px rgba(201,168,76,0.28);
+color: var(–label);
 }
+.contribute-btn:visited { color: var(–label); }
 .contribute-btn:active { transform: translateY(0); }
 .contribute-btn-icon { font-size: 26px; flex-shrink: 0; }
 .contribute-btn-text { flex: 1; }
 .contribute-btn-label {
 font-size: 9px; font-weight: 700; letter-spacing: 3px;
 text-transform: uppercase; color: var(–gold2); margin-bottom: 4px; opacity: 0.85;
+display: block;
 }
 .contribute-btn-title {
-font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 3px;
+font-size: 13px; font-weight: 700; color: #ffffff; margin-bottom: 3px;
+display: block;
 }
-.contribute-btn-desc { font-size: 11px; color: var(–label2); line-height: 1.6; }
+.contribute-btn-desc {
+font-size: 11px; color: rgba(235,235,245,0.65); line-height: 1.6;
+display: block;
+}
 .contribute-btn-arrow {
 width: 32px; height: 32px; border-radius: 50%;
 background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
@@ -485,7 +488,6 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         </div>
       </div>
     </div>
-    <div class="hero-gold-line"></div>
   </div>
 
   <!-- 素材提供ボタン -->
