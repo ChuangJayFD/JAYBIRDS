@@ -83,13 +83,15 @@ border-radius: 14px;
 border: 2px solid var(–gold);
 position: relative;
 min-height: 220px;
+display: flex;
+flex-direction: column;
+overflow: hidden;
 }
 .hero-bg-img {
 position: absolute; top: 0; left: 0;
 width: 55%; height: 100%;
 object-fit: cover; object-position: center top;
 z-index: 0; pointer-events: none;
-border-radius: 12px 0 0 12px;
 }
 .hero-overlay {
 position: absolute; inset: 0;
@@ -102,11 +104,11 @@ rgba(8,20,55,0.97) 65%,
 rgba(8,20,55,1)    100%
 );
 z-index: 1;
-border-radius: 12px;
 }
 .hero-inner {
 position: relative; z-index: 2;
 display: flex; align-items: flex-end; justify-content: flex-end;
+flex: 1;
 min-height: 220px;
 padding: 24px 20px 22px 42%;
 }
@@ -143,15 +145,11 @@ background: rgba(201,168,76,0.15);
 border: 1px solid rgba(201,168,76,0.4);
 color: var(–gold2); letter-spacing: 0.04em;
 }
-.hero::after {
-content: none;
-}
 .hero-stripe {
 height: 3px;
 background: linear-gradient(90deg, transparent, var(–gold), #f0d070, var(–gold), transparent);
-border-radius: 0 0 12px 12px;
-position: relative; z-index: 3;
-margin-top: -3px;
+position: relative; z-index: 4;
+flex-shrink: 0;
 }
 @media (max-width: 480px) {
 .hero-bg-img { width: 50%; object-position: left top; }
@@ -500,8 +498,8 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
         </div>
       </div>
     </div>
+    <div class="hero-stripe"></div>
   </div>
-  <div class="hero-stripe"></div>
 
   <!-- 素材提供バナー -->
 
