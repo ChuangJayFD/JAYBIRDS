@@ -74,9 +74,9 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color-scheme: onl
 
 :root {
 –bg: #000000;
-–card: #1c1c1e;
-–card2: #2c2c2e;
-–border: #38383a;
+–card: #16213e;
+–card2: #1a2744;
+–border: #2a3a5c;
 –gold: #c9a84c;
 –gold2: #e8c96a;
 –gold3: #f5e0a0;
@@ -85,17 +85,17 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color-scheme: onl
 –label2: rgba(235,235,245,0.65);
 –muted: rgba(235,235,245,0.4);
 –c-group: #4a9fd4;
-–c-group-bg: rgba(74,159,212,0.15);
+–c-group-bg: rgba(74,159,212,0.18);
 –c-position: #a78bfa;
-–c-position-bg: rgba(167,139,250,0.15);
+–c-position-bg: rgba(167,139,250,0.18);
 –c-concept: #fbbf24;
-–c-concept-bg: rgba(251,191,36,0.15);
+–c-concept-bg: rgba(251,191,36,0.18);
 –c-debut: #34d399;
-–c-debut-bg: rgba(52,211,153,0.15);
+–c-debut-bg: rgba(52,211,153,0.18);
 –c-vote: #fb7185;
-–c-vote-bg: rgba(251,113,133,0.15);
+–c-vote-bg: rgba(251,113,133,0.18);
 –c-rank: #94a3b8;
-–c-rank-bg: rgba(148,163,184,0.15);
+–c-rank-bg: rgba(148,163,184,0.18);
 }
 
 body {
@@ -157,7 +157,7 @@ color: var(–gold2); font-size: 11px; padding: 4px 14px; border-radius: 2px;
 .outer { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
 .legend {
-background: var(–card); border: 1px solid var(–border);
+background: #16213e; border: 1px solid #2a3a5c;
 padding: 12px 16px; margin: 16px 0 0;
 display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center;
 border-radius: 8px;
@@ -237,7 +237,35 @@ flex-shrink: 0; margin-bottom: 4px;
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(–label); }
 .ep-body { padding: 10px 0 16px 12px; }
 
-.card { background: var(–card); border: 1px solid var(–border); border-radius: 10px; padding: 12px 14px; }
+/* ===== フェーズ別カード色 ===== */
+/* Phase 1: グループバトル — 青 */
+#ep-326 .card, #ep-402 .card, #ep-409 .card, #ep-416 .card {
+background: #0e1f3a; border-color: rgba(74,159,212,0.35);
+}
+/* 投票締切カード */
+#ep-417 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
+/* 順位発表カード */
+#ep-423 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+
+/* Phase 2: ポジションバトル — 紫 */
+#ep-430 .card, #ep-507 .card {
+background: #16103a; border-color: rgba(167,139,250,0.35);
+}
+#ep-508 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
+#ep-514 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+
+/* Phase 3: コンセプト評価 — 黄 */
+#ep-521 .card {
+background: #1e1700; border-color: rgba(251,191,36,0.35);
+}
+#ep-522 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
+#ep-528 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+
+/* Phase 4: デビュー評価 — 緑 */
+#ep-606-vote-end .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
+#card-606-debut { background: #0a1f14; border-color: rgba(52,211,153,0.35); }
+
+.card { background: #16213e; border: 1px solid #2a3a5c; border-radius: 10px; padding: 12px 14px; }
 .card + .card { margin-top: 8px; }
 .card-ep { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); margin-bottom: 3px; }
 .card-ttl { font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 4px; }
@@ -272,7 +300,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
 
 .ref-video { margin-top: 10px; }
 .ref-video-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); margin-bottom: 6px; }
-.ref-vc { background: var(–card2); border: 1px solid var(–border); border-radius: 10px; overflow: hidden; }
+.ref-vc { background: #1a2744; border: 1px solid #2a3a5c; border-radius: 10px; overflow: hidden; }
 .ref-thumb { position: relative; padding-top: 56.25%; background: #111; }
 .ref-thumb iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 .ref-info { padding: 10px 12px; }
@@ -282,11 +310,11 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
 .ref-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
 @media (max-width: 480px) { .ref-video-grid { grid-template-columns: 1fr; } }
 
-.vsum { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 16px 18px; margin-top: 16px; }
+.vsum { background: #16213e; border: 1px solid #2a3a5c; border-radius: 12px; padding: 16px 18px; margin-top: 16px; }
 .vsum-ttl { font-size: 11px; font-weight: 700; color: var(–gold2); margin-bottom: 12px; letter-spacing: 1px; }
 .vs-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; text-align: center; }
 @media (max-width: 480px) { .vs-grid { grid-template-columns: 1fr 1fr; } }
-.vs-c { background: var(–card2); border-radius: 8px; padding: 10px 6px; border: 1px solid var(–border); }
+.vs-c { background: #1a2744; border-radius: 8px; padding: 10px 6px; border: 1px solid #2a3a5c; }
 .vs-ph { font-size: 9px; color: var(–muted); margin-bottom: 3px; line-height: 1.4; }
 .vs-n { font-family: ‘Noto Sans JP’, sans-serif; font-size: 32px; font-weight: 900; color: var(–c-vote); line-height: 1; letter-spacing: -1px; }
 .vs-u { font-size: 9px; color: var(–muted); }
