@@ -80,7 +80,6 @@ margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 .hero {
 margin-bottom: 32px;
 border-radius: 14px;
-overflow: hidden;
 border: 2px solid var(–gold);
 position: relative;
 min-height: 220px;
@@ -90,6 +89,7 @@ position: absolute; top: 0; left: 0;
 width: 55%; height: 100%;
 object-fit: cover; object-position: center top;
 z-index: 0; pointer-events: none;
+border-radius: 12px 0 0 12px;
 }
 .hero-overlay {
 position: absolute; inset: 0;
@@ -102,6 +102,7 @@ rgba(8,20,55,0.97) 65%,
 rgba(8,20,55,1)    100%
 );
 z-index: 1;
+border-radius: 12px;
 }
 .hero-inner {
 position: relative; z-index: 2;
@@ -143,9 +144,14 @@ border: 1px solid rgba(201,168,76,0.4);
 color: var(–gold2); letter-spacing: 0.04em;
 }
 .hero::after {
-content: ‘’; display: block; height: 3px;
+content: none;
+}
+.hero-stripe {
+height: 3px;
 background: linear-gradient(90deg, transparent, var(–gold), #f0d070, var(–gold), transparent);
+border-radius: 0 0 12px 12px;
 position: relative; z-index: 3;
+margin-top: -3px;
 }
 @media (max-width: 480px) {
 .hero-bg-img { width: 50%; object-position: left top; }
