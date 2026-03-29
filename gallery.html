@@ -76,129 +76,116 @@ margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
 
-/* ===== HERO HEADER (simulator style) ===== */
+/* ===== HERO HEADER ===== */
 .hero {
 margin-bottom: 32px;
 border-radius: 14px;
-overflow: hidden;
 border: 2px solid var(–gold);
 position: relative;
+overflow: hidden;
+background: linear-gradient(160deg, #081437 0%, #0d1b3e 60%, #112050 100%);
 }
 .hero-bg-img {
 position: absolute; top: 0; left: 0;
-width: 55%; height: 100%;
+width: 52%; height: calc(100% - 3px);
 object-fit: cover; object-position: center top;
 z-index: 0; pointer-events: none;
 }
-.hero-overlay {
-position: absolute; inset: 0;
+.hero-fade {
+position: absolute; top: 0; left: 0; bottom: 3px; right: 0;
 background: linear-gradient(
 to right,
 rgba(8,20,55,0.0)  0%,
-rgba(8,20,55,0.1)  35%,
-rgba(8,20,55,0.75) 52%,
-rgba(8,20,55,0.97) 65%,
-rgba(8,20,55,1)    100%
+rgba(8,20,55,0.15) 30%,
+rgba(8,20,55,0.80) 50%,
+rgba(8,20,55,1)    65%
 );
 z-index: 1;
 }
-.hero-inner {
-position: relative;
+.hero-body {
+position: relative; z-index: 2;
 display: flex; align-items: flex-end; justify-content: flex-end;
 min-height: 220px;
-padding: 24px 20px 22px 42%;
+padding: 24px 20px 20px 44%;
 }
-.hero-text-col { width: 100%; text-align: right; position: relative; z-index: 2; }
-.hero-eye {
-font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+.hero-text { width: 100%; text-align: right; }
+.hero-eyebrow {
+font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
 color: var(–gold); text-transform: uppercase;
-margin-bottom: 10px; opacity: 0.9;
+margin-bottom: 10px; opacity: 0.9; display: block;
 }
-.hero h1 {
-font-size: clamp(22px, 6vw, 36px); font-weight: 900;
-color: #ffffff; line-height: 1.2; letter-spacing: -0.01em;
-margin-bottom: 10px;
+.hero-title {
+font-size: clamp(22px, 6vw, 34px); font-weight: 900;
+color: #fff; line-height: 1.2; margin-bottom: 10px;
 }
-.hero h1 .ht-gold { color: #f0d070; }
-.hero h1 .ht-blue {
-color: #70c0f5;
-font-size: clamp(28px, 8vw, 48px);
-display: block; line-height: 1.0;
-letter-spacing: -0.02em;
-text-shadow: 0 2px 16px rgba(112,192,245,0.5);
+.hero-title .t-gold { color: #f0d070; }
+.hero-title .t-blue {
+color: #70c0f5; display: block;
+font-size: clamp(30px, 8vw, 50px); line-height: 1.0;
+text-shadow: 0 2px 20px rgba(112,192,245,0.5);
 }
-.hero-sub {
-font-size: 11px; color: rgba(255,255,255,0.72);
+.hero-desc {
+font-size: 11px; color: rgba(255,255,255,0.7);
 line-height: 1.8; margin-bottom: 12px;
 }
-.hero-tags {
-display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end;
-}
-.hero-tag {
-font-size: 10px; font-weight: 700;
-padding: 3px 9px; border-radius: 20px;
-background: rgba(201,168,76,0.15);
-border: 1px solid rgba(201,168,76,0.4);
+.hero-chips { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+.hero-chip {
+font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
 color: var(–gold2); letter-spacing: 0.04em;
 }
-.hero-stripe {
-display: block;
+.hero-gold-line {
 height: 3px;
-background: linear-gradient(90deg, transparent, var(–gold), #f0d070, var(–gold), transparent);
-position: relative;
-z-index: 3;
+background: linear-gradient(90deg, transparent 0%, var(–gold) 20%, #f0d070 50%, var(–gold) 80%, transparent 100%);
 }
 @media (max-width: 480px) {
-.hero-bg-img { width: 50%; object-position: left top; }
-.hero-overlay {
-background: linear-gradient(
-to right,
-rgba(8,20,55,0.0)  0%,
-rgba(8,20,55,0.1)  30%,
-rgba(8,20,55,0.85) 48%,
-rgba(8,20,55,0.98) 55%,
-rgba(8,20,55,1)    100%
-);
-}
-.hero-inner { padding: 20px 16px 18px 38%; min-height: 200px; }
-.hero h1 { font-size: clamp(20px, 5.5vw, 28px); }
-.hero h1 .ht-blue { font-size: clamp(26px, 7.5vw, 38px); }
+.hero-bg-img { width: 46%; }
+.hero-body { padding: 18px 14px 18px 38%; min-height: 200px; }
+.hero-title { font-size: clamp(19px, 5.5vw, 26px); }
+.hero-title .t-blue { font-size: clamp(26px, 7.5vw, 38px); }
 }
 
-/* ===== 素材提供バナー ===== */
-.contribute-banner {
-display: flex; align-items: center; gap: 16px;
-background: var(–card);
-border: 1px solid var(–border);
-border-left: 3px solid var(–gold);
-border-radius: 0 12px 12px 0;
+/* ===== CONTRIBUTE BUTTON ===== */
+.contribute-btn {
+display: flex; align-items: center; gap: 14px;
+background: linear-gradient(135deg, #1a2035, #222840);
+border: 1.5px solid var(–gold);
+border-radius: 12px;
 padding: 16px 20px;
 margin-bottom: 32px;
 text-decoration: none;
-transition: border-color 0.2s, transform 0.15s;
-position: relative; overflow: hidden;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+box-shadow: 0 2px 12px rgba(201,168,76,0.15);
 }
-.contribute-banner:hover {
-border-color: rgba(201,168,76,0.6);
-transform: translateX(3px);
+.contribute-btn:hover {
+background: linear-gradient(135deg, #222840, #2a3260);
+border-color: var(–gold2);
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(201,168,76,0.25);
 }
-.contribute-banner-icon { font-size: 24px; flex-shrink: 0; }
-.contribute-banner-text { flex: 1; }
-.contribute-banner-label {
+.contribute-btn:active { transform: translateY(0); }
+.contribute-btn-icon { font-size: 26px; flex-shrink: 0; }
+.contribute-btn-text { flex: 1; }
+.contribute-btn-label {
 font-size: 9px; font-weight: 700; letter-spacing: 3px;
-text-transform: uppercase; color: var(–gold2); margin-bottom: 4px; opacity: 0.8;
+text-transform: uppercase; color: var(–gold2); margin-bottom: 4px; opacity: 0.85;
 }
-.contribute-banner-title {
+.contribute-btn-title {
 font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 3px;
 }
-.contribute-banner-desc {
-font-size: 11px; color: var(–label2); line-height: 1.6;
+.contribute-btn-desc { font-size: 11px; color: var(–label2); line-height: 1.6; }
+.contribute-btn-arrow {
+width: 32px; height: 32px; border-radius: 50%;
+background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+display: flex; align-items: center; justify-content: center;
+color: var(–gold2); font-size: 1rem; flex-shrink: 0;
+transition: background 0.2s, transform 0.2s;
 }
-.contribute-banner-arrow {
-color: var(–gold); opacity: 0.5; font-size: 1.2rem; flex-shrink: 0;
-transition: opacity 0.2s, transform 0.2s;
+.contribute-btn:hover .contribute-btn-arrow {
+background: rgba(201,168,76,0.3);
+transform: translateX(3px);
 }
-.contribute-banner:hover .contribute-banner-arrow { opacity: 1; transform: translateX(4px); }
 
 /* ===== SECTION ===== */
 .section { margin-bottom: 36px; }
@@ -475,39 +462,39 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
 
   <div class="hero">
     <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay ジュアンジェイ">
-    <div class="hero-overlay"></div>
-    <div class="hero-inner">
-      <div class="hero-text-col">
-        <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
-        <h1>
-          <span class="ht-gold">布教画像</span><br>
+    <div class="hero-fade"></div>
+    <div class="hero-body">
+      <div class="hero-text">
+        <span class="hero-eyebrow">✦ JAYBIRDS × 101SHINSEKAI</span>
+        <h1 class="hero-title">
+          <span class="t-gold">布教画像</span><br>
           配布素材<br>
-          <span class="ht-blue">Gallery</span>
+          <span class="t-blue">Gallery</span>
         </h1>
-        <p class="hero-sub">
+        <p class="hero-desc">
           アイコンフレーム・X布教画像<br>
           ミニペーパー・配布素材まとめ
         </p>
-        <div class="hero-tags">
-          <span class="hero-tag">#ジュアンジェイ</span>
-          <span class="hero-tag">#101SHINSEKAI</span>
-          <span class="hero-tag">#JAY羽ばたくじぇい</span>
+        <div class="hero-chips">
+          <span class="hero-chip">#ジュアンジェイ</span>
+          <span class="hero-chip">#101SHINSEKAI</span>
+          <span class="hero-chip">#JAY羽ばたくじぇい</span>
         </div>
       </div>
     </div>
-    <div class="hero-stripe"></div>
+    <div class="hero-gold-line"></div>
   </div>
 
-  <!-- 素材提供バナー -->
+  <!-- 素材提供ボタン -->
 
-  <a href="contribute.html" class="contribute-banner">
-    <div class="contribute-banner-icon">🎨</div>
-    <div class="contribute-banner-text">
-      <p class="contribute-banner-label">Contribute</p>
-      <p class="contribute-banner-title">素材を共有してくれる方はこちら</p>
-      <p class="contribute-banner-desc">作った応援素材をみんなに使ってもらおう！</p>
+  <a href="contribute.html" class="contribute-btn">
+    <div class="contribute-btn-icon">🎨</div>
+    <div class="contribute-btn-text">
+      <p class="contribute-btn-label">Contribute</p>
+      <p class="contribute-btn-title">素材を共有してくれる方はこちら</p>
+      <p class="contribute-btn-desc">作った応援素材をみんなに使ってもらおう！</p>
     </div>
-    <span class="contribute-banner-arrow">→</span>
+    <div class="contribute-btn-arrow">→</div>
   </a>
 
   <!-- ミニペーパー -->
