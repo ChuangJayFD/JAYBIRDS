@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ja">
+<html lang="ja" style="color-scheme: only dark;">
 <head>
   <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
@@ -13,7 +13,30 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — JAYBIRDS</title>
+<meta name="color-scheme" content="only dark">
+<meta name="description" content="ジュアンジェイ(Chuang Jay)応援ファンサイト JAYBIRDS の配布素材ページ。アイコンフレーム・X布教画像・ミニペーパーなど、布教に使える素材をまとめています。">
+<meta name="keywords" content="ジュアンジェイ,ChuangJay,日プ新世界,101SHINSEKAI,PRODUCE101JAPAN新世界,布教画像,配布素材,アイコンフレーム,ミニペーパー,JAYBIRDS,JAY羽ばたくじぇい,推し活,ファンサイト">
+<!-- OGP -->
+<meta property="og:title" content="Gallery — 布教画像・配布素材 | JAYBIRDS (Chuang Jay)">
+<meta property="og:description" content="ジュアンジェイ応援ファンサイト JAYBIRDS の配布素材ページ。アイコンフレーム・X布教画像・ミニペーパーなど布教素材まとめ。">
+<meta property="og:image" content="https://chuangjayfd.github.io/JAYBIRDS/Jaygallery.PNG">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="JAYBIRDS Gallery — ジュアンジェイ 布教画像・配布素材">
+<meta property="og:url" content="https://chuangjayfd.github.io/JAYBIRDS/gallery.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JAYBIRDS — Chuang Jay Fan Support">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gallery — 布教画像・配布素材 | JAYBIRDS (Chuang Jay)">
+<meta name="twitter:description" content="ジュアンジェイ応援ファンサイト JAYBIRDS の配布素材ページ。アイコンフレーム・X布教画像・ミニペーパーなど布教素材まとめ。#ジュアンジェイ #101SHINSEKAI">
+<meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/Jaygallery.PNG">
+<meta name="twitter:image:alt" content="JAYBIRDS Gallery — ジュアンジェイ 布教画像・配布素材">
+<meta name="twitter:site" content="@JAYBIRDS_jay">
+<title>Gallery — 布教画像・配布素材 | JAYBIRDS (Chuang Jay)</title>
+<link rel="canonical" href="https://chuangjayfd.github.io/JAYBIRDS/gallery.html">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color-scheme: dark; }
@@ -53,41 +76,93 @@ margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
 
-/* ===== HEADER ===== */
-.header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
-.header-bg {
-background: linear-gradient(160deg, #0a0f1e 0%, #0f1d36 45%, #1a2f52 80%, #243a6a 100%);
-padding: 40px 32px 32px; position: relative; overflow: hidden;
+/* ===== HERO HEADER (simulator style) ===== */
+.hero {
+margin-bottom: 32px;
+border-radius: 14px;
+overflow: hidden;
+border: 2px solid var(–gold);
+position: relative;
+min-height: 220px;
 }
-.header-bg::before {
-content: ‘’; position: absolute; top: -40px; right: -40px;
-width: 180px; height: 180px;
-border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
+.hero-bg-img {
+position: absolute; top: 0; left: 0;
+width: 55%; height: 100%;
+object-fit: cover; object-position: center top;
+z-index: 0; pointer-events: none;
 }
-.header-bg::after {
-content: ‘’; position: absolute; bottom: -30px; left: -30px;
-width: 130px; height: 130px;
-border: 2px solid rgba(201,168,76,0.1); transform: rotate(45deg);
+.hero-overlay {
+position: absolute; inset: 0;
+background: linear-gradient(
+to right,
+rgba(8,20,55,0.0)  0%,
+rgba(8,20,55,0.1)  35%,
+rgba(8,20,55,0.75) 52%,
+rgba(8,20,55,0.97) 65%,
+rgba(8,20,55,1)    100%
+);
+z-index: 1;
 }
-.header-tag {
-display: inline-block; font-size: 10px; font-weight: 700;
-letter-spacing: 4px; text-transform: uppercase;
-color: var(–gold2); border: 1px solid rgba(201,168,76,0.4);
-padding: 4px 16px; margin-bottom: 16px;
+.hero-inner {
+position: relative; z-index: 2;
+display: flex; align-items: flex-end; justify-content: flex-end;
+min-height: 220px;
+padding: 24px 20px 22px 42%;
 }
-.header-star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 14px; }
-.header-star-row span { color: var(–gold); font-size: 10px; opacity: 0.7; }
-.header-star-row span.lg { font-size: 16px; opacity: 1; }
-.header h1 {
-font-size: clamp(28px, 8vw, 44px); font-weight: 900;
-letter-spacing: 4px; color: var(–white); margin-bottom: 8px;
+.hero-text-col { width: 100%; text-align: right; }
+.hero-eye {
+font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+color: var(–gold); text-transform: uppercase;
+margin-bottom: 10px; opacity: 0.9;
 }
-.header h1 .accent {
-background: linear-gradient(135deg, var(–gold3), var(–gold), var(–white));
--webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+.hero h1 {
+font-size: clamp(22px, 6vw, 36px); font-weight: 900;
+color: #ffffff; line-height: 1.2; letter-spacing: -0.01em;
+margin-bottom: 10px;
 }
-.header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
-.header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(–gold), var(–gold2), var(–gold), transparent); }
+.hero h1 .ht-gold { color: #f0d070; }
+.hero h1 .ht-blue {
+color: #70c0f5;
+font-size: clamp(28px, 8vw, 48px);
+display: block; line-height: 1.0;
+letter-spacing: -0.02em;
+text-shadow: 0 2px 16px rgba(112,192,245,0.5);
+}
+.hero-sub {
+font-size: 11px; color: rgba(255,255,255,0.72);
+line-height: 1.8; margin-bottom: 12px;
+}
+.hero-tags {
+display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end;
+}
+.hero-tag {
+font-size: 10px; font-weight: 700;
+padding: 3px 9px; border-radius: 20px;
+background: rgba(201,168,76,0.15);
+border: 1px solid rgba(201,168,76,0.4);
+color: var(–gold2); letter-spacing: 0.04em;
+}
+.hero::after {
+content: ‘’; display: block; height: 3px;
+background: linear-gradient(90deg, transparent, var(–gold), #f0d070, var(–gold), transparent);
+position: relative; z-index: 3;
+}
+@media (max-width: 480px) {
+.hero-bg-img { width: 50%; object-position: left top; }
+.hero-overlay {
+background: linear-gradient(
+to right,
+rgba(8,20,55,0.0)  0%,
+rgba(8,20,55,0.1)  30%,
+rgba(8,20,55,0.85) 48%,
+rgba(8,20,55,0.98) 55%,
+rgba(8,20,55,1)    100%
+);
+}
+.hero-inner { padding: 20px 16px 18px 38%; min-height: 200px; }
+.hero h1 { font-size: clamp(20px, 5.5vw, 28px); }
+.hero h1 .ht-blue { font-size: clamp(26px, 7.5vw, 38px); }
+}
 
 /* ===== 素材提供バナー ===== */
 .contribute-banner {
@@ -397,16 +472,28 @@ color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
 
 <a href="index.html" class="back-link">← Home</a>
 
-  <div class="header">
-    <div class="header-bg">
-      <div class="header-star-row">
-        <span>✦</span><span class="lg">✦</span><span>✦</span>
+  <div class="hero">
+    <img class="hero-bg-img" src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png" alt="Chuang Jay ジュアンジェイ">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-text-col">
+        <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+        <h1>
+          <span class="ht-gold">布教画像</span><br>
+          配布素材<br>
+          <span class="ht-blue">Gallery</span>
+        </h1>
+        <p class="hero-sub">
+          アイコンフレーム・X布教画像<br>
+          ミニペーパー・配布素材まとめ
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">#ジュアンジェイ</span>
+          <span class="hero-tag">#101SHINSEKAI</span>
+          <span class="hero-tag">#JAY羽ばたくじぇい</span>
+        </div>
       </div>
-      <div class="header-tag">JAYBIRDS — GALLERY</div>
-      <h1><span class="accent">Gallery</span></h1>
-      <p class="sub">布教画像・配布素材</p>
     </div>
-    <div class="header-stripe"></div>
   </div>
 
   <!-- 素材提供バナー -->
