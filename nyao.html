@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
   <!-- Google Analytics -->
@@ -13,789 +13,484 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>投票ガイド — JAYBIRDS</title>
+<title>Gallery — JAYBIRDS</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #000000;
-  --card: #1c1c1e;
-  --card2: #2c2c2e;
-  --border: #38383a;
-  --gold: #c9a84c;
-  --gold2: #e8c96a;
-  --gold3: #f5e0a0;
-  --white: #ffffff;
-  --label: #ebebf5;
-  --label2: rgba(235,235,245,0.65);
-  --muted: rgba(235,235,245,0.4);
-  --danger: #ff453a;
-  --green: #30d158;
-  --p101: #1a4fa0;
-  --p101-light: #3a7fd4;
-  --p101-accent: #5aa0f0;
-  --lemino-from: #ff6b9d;
-  --lemino-to: #ff9a3c;
-  --mnet-pink: #ff1f7d;
-  --mnet-blue: #7b9eff;
+–bg: #0e1420;
+–card: #1a2035;
+–card2: #222840;
+–border: rgba(201,168,76,0.25);
+–border2: rgba(201,168,76,0.1);
+–gold: #c9a84c;
+–gold2: #e8c96a;
+–gold3: #f5e0a0;
+–white: #ffffff;
+–label: #ebebf5;
+–label2: rgba(235,235,245,0.65);
+–muted: rgba(235,235,245,0.4);
 }
 
 body {
-  background: var(--bg);
-  color: var(--label);
-  font-family: 'Noto Sans JP', sans-serif;
-  min-height: 100vh;
-  padding: 40px 20px 80px;
+background: var(–bg);
+color: var(–label);
+font-family: ‘Noto Sans JP’, sans-serif;
+min-height: 100vh;
+padding: 40px 20px 80px;
 }
 
 .wrapper { max-width: 720px; margin: 0 auto; }
 
 .back-link {
-  display: inline-block;
-  font-size: 0.78rem; letter-spacing: 0.2em;
-  color: var(--gold2); text-decoration: none; text-transform: uppercase;
-  margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
+display: inline-block;
+font-size: 0.78rem; letter-spacing: 0.2em;
+color: var(–gold2); text-decoration: none; text-transform: uppercase;
+margin-bottom: 24px; opacity: 0.7; transition: opacity 0.2s;
 }
 .back-link:hover { opacity: 1; }
-
-/* ===== 注意書き ===== */
-.caution-banner {
-  background: rgba(255,69,58,0.08);
-  border: 1px solid rgba(255,69,58,0.3);
-  border-left: 3px solid var(--danger);
-  border-radius: 0 10px 10px 0;
-  padding: 14px 18px; margin-bottom: 24px;
-  font-size: 11px; color: var(--label2); line-height: 1.9;
-}
-.caution-banner-title {
-  font-size: 11px; font-weight: 700; color: #ff6b6b;
-  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
-}
-.caution-banner strong { color: #ff9090; }
 
 /* ===== HEADER ===== */
 .header { text-align: center; margin-bottom: 32px; border-radius: 4px; overflow: hidden; }
 .header-bg {
-  background: linear-gradient(160deg, #000000 0%, #0a1a3a 45%, #1a4fa0 80%, #3a7fd4 100%);
-  padding: 40px 32px 32px; position: relative; overflow: hidden;
+background: linear-gradient(160deg, #0a0f1e 0%, #0f1d36 45%, #1a2f52 80%, #243a6a 100%);
+padding: 40px 32px 32px; position: relative; overflow: hidden;
 }
 .header-bg::before {
-  content: ''; position: absolute; top: -40px; right: -40px;
-  width: 180px; height: 180px; border: 2px solid rgba(201,168,76,0.2); transform: rotate(45deg);
+content: ‘’; position: absolute; top: -40px; right: -40px;
+width: 180px; height: 180px;
+border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
 }
 .header-bg::after {
-  content: ''; position: absolute; bottom: -30px; left: -30px;
-  width: 130px; height: 130px; border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
+content: ‘’; position: absolute; bottom: -30px; left: -30px;
+width: 130px; height: 130px;
+border: 2px solid rgba(201,168,76,0.1); transform: rotate(45deg);
 }
 .header-tag {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  letter-spacing: 4px; text-transform: uppercase;
-  color: var(--gold2); border: 1px solid rgba(201,168,76,0.4);
-  padding: 4px 16px; margin-bottom: 14px;
+display: inline-block; font-size: 10px; font-weight: 700;
+letter-spacing: 4px; text-transform: uppercase;
+color: var(–gold2); border: 1px solid rgba(201,168,76,0.4);
+padding: 4px 16px; margin-bottom: 16px;
 }
-.header-star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 12px; }
-.header-star-row span { color: var(--gold); font-size: 10px; opacity: 0.7; }
+.header-star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 14px; }
+.header-star-row span { color: var(–gold); font-size: 10px; opacity: 0.7; }
 .header-star-row span.lg { font-size: 16px; opacity: 1; }
 .header h1 {
-  font-size: clamp(24px, 6vw, 36px); font-weight: 900;
-  letter-spacing: 2px; color: var(--white); margin-bottom: 8px; line-height: 1.3;
+font-size: clamp(28px, 8vw, 44px); font-weight: 900;
+letter-spacing: 4px; color: var(–white); margin-bottom: 8px;
 }
 .header h1 .accent {
-  background: linear-gradient(135deg, var(--gold3), var(--gold));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+background: linear-gradient(135deg, var(–gold3), var(–gold), var(–white));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .header .sub { font-size: 12px; color: rgba(201,168,76,0.8); line-height: 1.9; }
-.header-stripe { height: 4px; background: linear-gradient(90deg, #000, var(--p101), var(--p101-light), var(--gold), #000); }
+.header-stripe { height: 3px; background: linear-gradient(90deg, transparent, var(–gold), var(–gold2), var(–gold), transparent); }
 
-/* ===== 毎日投票バナー ===== */
-.daily-banner {
-  background: linear-gradient(135deg, #1a1000, #3a2800);
-  border: 2px solid var(--gold); border-radius: 12px;
-  padding: 20px 24px; margin-bottom: 20px; text-align: center;
-  position: relative; overflow: hidden;
+/* ===== 素材提供バナー ===== */
+.contribute-banner {
+display: flex; align-items: center; gap: 16px;
+background: var(–card);
+border: 1px solid var(–border);
+border-left: 3px solid var(–gold);
+border-radius: 0 12px 12px 0;
+padding: 16px 20px;
+margin-bottom: 32px;
+text-decoration: none;
+transition: border-color 0.2s, transform 0.15s;
+position: relative; overflow: hidden;
 }
-.daily-banner::before {
-  content: ''; position: absolute; inset: 3px;
-  border: 1px solid rgba(201,168,76,0.2); border-radius: 10px; pointer-events: none;
+.contribute-banner:hover {
+border-color: rgba(201,168,76,0.6);
+transform: translateX(3px);
 }
-.daily-banner-icon { font-size: 28px; margin-bottom: 8px; }
-.daily-banner-title { font-size: 16px; font-weight: 900; color: var(--gold2); letter-spacing: 2px; margin-bottom: 6px; }
-.daily-banner-desc { font-size: 12px; color: var(--label2); line-height: 1.8; }
-.daily-banner-desc strong { color: var(--gold3); }
-
-/* ===== 11pick バナー ===== */
-.pick-banner {
-  background: linear-gradient(135deg, #0a1a3a, #1a3a6e);
-  border: 1px solid var(--p101-light);
-  border-radius: 12px; padding: 16px 20px;
-  margin-bottom: 28px;
-  display: flex; align-items: center; gap: 14px;
+.contribute-banner-icon { font-size: 24px; flex-shrink: 0; }
+.contribute-banner-text { flex: 1; }
+.contribute-banner-label {
+font-size: 9px; font-weight: 700; letter-spacing: 3px;
+text-transform: uppercase; color: var(–gold2); margin-bottom: 4px; opacity: 0.8;
 }
-.pick-banner-icon { font-size: 28px; flex-shrink: 0; }
-.pick-banner-title { font-size: 14px; font-weight: 900; color: var(--p101-accent); margin-bottom: 4px; letter-spacing: 1px; }
-.pick-banner-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
-.pick-banner-desc strong { color: var(--label); }
-
-/* ===== 概要 ===== */
-.overview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-@media (max-width: 560px) { .overview { grid-template-columns: 1fr; gap: 8px; } }
-
-.overview-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 12px; overflow: hidden;
-  text-decoration: none; display: block;
-  transition: border-color 0.2s, transform 0.15s;
+.contribute-banner-title {
+font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 3px;
 }
-.overview-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
-.overview-card::before { content: ''; display: block; height: 3px; }
-.overview-card.p101::before { background: linear-gradient(90deg, var(--p101), var(--p101-light)); }
-.overview-card.lemino::before { background: linear-gradient(90deg, var(--lemino-from), var(--lemino-to)); }
-.overview-card.mnet::before { background: linear-gradient(90deg, var(--mnet-pink), var(--mnet-blue)); }
-
-.overview-card-inner {
-  padding: 16px 14px; text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+.contribute-banner-desc {
+font-size: 11px; color: var(–label2); line-height: 1.6;
 }
-@media (max-width: 560px) {
-  .overview-card-inner { flex-direction: row; text-align: left; padding: 14px 16px; gap: 14px; }
+.contribute-banner-arrow {
+color: var(–gold); opacity: 0.5; font-size: 1.2rem; flex-shrink: 0;
+transition: opacity 0.2s, transform 0.2s;
 }
-
-.overview-icon { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
-@media (max-width: 560px) { .overview-icon { width: 48px; height: 48px; } }
-
-.overview-text { flex: 1; }
-.overview-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
-.overview-card.p101 .overview-num { color: var(--p101-light); }
-.overview-card.lemino .overview-num { color: var(--lemino-from); }
-.overview-card.mnet .overview-num { color: var(--mnet-pink); }
-.overview-name { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 3px; }
-.overview-sub { font-size: 10px; color: var(--muted); line-height: 1.6; }
-.overview-arrow { margin-left: auto; color: var(--gold); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0; display: none; }
-@media (max-width: 560px) { .overview-arrow { display: block; } }
+.contribute-banner:hover .contribute-banner-arrow { opacity: 1; transform: translateX(4px); }
 
 /* ===== SECTION ===== */
-.section { margin-bottom: 28px; }
+.section { margin-bottom: 36px; }
 .section-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold); opacity: 0.85; margin-bottom: 16px;
-  display: flex; align-items: center; gap: 8px;
+font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: var(–gold); opacity: 0.85; margin-bottom: 12px;
+display: flex; align-items: center; gap: 8px;
 }
-.section-label::before { content: '✦'; font-size: 9px; }
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
+.section-label::before { content: ‘✦’; font-size: 9px; }
+.section-label::after { content: ‘’; flex: 1; height: 1px; background: var(–gold); opacity: 0.2; }
 
-/* ===== STEP CARD ===== */
-.step-card { border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
-.step-card-header {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 20px; border-bottom: 1px solid var(--border);
+.section-note {
+font-size: 12px; color: var(–label2); line-height: 1.8; margin-bottom: 6px;
 }
-.step-card.p101 .step-card-header { background: linear-gradient(90deg, rgba(26,79,160,0.3), rgba(0,0,0,0)); border-left: 3px solid var(--p101-light); }
-.step-card.lemino .step-card-header { background: linear-gradient(90deg, rgba(255,107,157,0.2), rgba(0,0,0,0)); border-left: 3px solid var(--lemino-from); }
-.step-card.mnet .step-card-header { background: linear-gradient(90deg, rgba(255,31,125,0.2), rgba(0,0,0,0)); border-left: 3px solid var(--mnet-pink); }
-.step-card.prep .step-card-header { background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(0,0,0,0)); border-left: 3px solid var(--gold); }
-
-.step-card-body { background: var(--card); border: 1px solid var(--border); border-top: none; padding: 20px; }
-.step-card.p101 .step-card-body { border-left: 3px solid var(--p101-light); }
-.step-card.lemino .step-card-body { border-left: 3px solid var(--lemino-from); }
-.step-card.mnet .step-card-body { border-left: 3px solid var(--mnet-pink); }
-.step-card.prep .step-card-body { border-left: 3px solid var(--gold); }
-
-.step-card-icon { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
-.step-card-title-en { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 3px; }
-.step-card.p101 .step-card-title-en { color: var(--p101-light); }
-.step-card.lemino .step-card-title-en { color: var(--lemino-from); }
-.step-card.mnet .step-card-title-en { color: var(--mnet-pink); }
-.step-card.prep .step-card-title-en { color: var(--gold2); }
-.step-card-title { font-size: 15px; font-weight: 900; color: var(--label); }
-
-/* ===== FLOW ===== */
-.flow { display: flex; flex-direction: column; }
-.flow-item { display: flex; align-items: flex-start; gap: 14px; }
-.flow-left { display: flex; flex-direction: column; align-items: center; width: 32px; flex-shrink: 0; }
-.flow-dot {
-  width: 30px; height: 30px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 900; flex-shrink: 0; z-index: 1;
+.section-note-highlight {
+background: rgba(201,168,76,0.07);
+border: 1px solid rgba(201,168,76,0.2);
+border-left: 3px solid var(–gold);
+padding: 10px 14px; margin-bottom: 14px;
+font-size: 11px; color: var(–gold2); line-height: 1.8;
+border-radius: 0 8px 8px 0;
 }
-.step-card.p101 .flow-dot { background: rgba(26,79,160,0.3); color: var(--p101-light); border: 1px solid var(--p101-light); }
-.step-card.lemino .flow-dot { background: rgba(255,107,157,0.15); color: var(--lemino-from); border: 1px solid var(--lemino-from); }
-.step-card.mnet .flow-dot { background: rgba(255,31,125,0.15); color: var(--mnet-pink); border: 1px solid var(--mnet-pink); }
-.step-card.prep .flow-dot { background: rgba(201,168,76,0.15); color: var(--gold2); border: 1px solid var(--gold); }
-.flow-dot.highlight { background: var(--gold) !important; color: #1a0e00 !important; border-color: var(--gold) !important; }
+.section-note-highlight::before { content: ’✦ ’; font-size: 9px; }
 
-.flow-line { width: 1px; flex: 1; min-height: 14px; background: rgba(201,168,76,0.15); }
-.flow-item:last-child .flow-line { display: none; }
-.flow-content { padding: 3px 0 18px; flex: 1; }
-.flow-item:last-child .flow-content { padding-bottom: 0; }
-.flow-title { font-size: 13px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
-.flow-desc { font-size: 11px; color: var(--label2); line-height: 1.8; }
-.flow-desc strong { color: var(--label); }
+/* ===== アイコンフレーム ===== */
+.frame-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+gap: 16px;
+}
+.frame-item {
+background: var(–card); border: 1px solid var(–border);
+border-radius: 12px; overflow: hidden;
+display: flex; flex-direction: column;
+}
+.frame-img-wrap {
+width: 100%; aspect-ratio: 1 / 1;
+background: rgba(255,255,255,0.03);
+display: flex; align-items: center; justify-content: center;
+padding: 12px; border-bottom: 1px solid var(–border2);
+}
+.frame-img-wrap img {
+width: 100%; height: 100%;
+object-fit: contain; display: block;
+-webkit-touch-callout: default;
+}
+.frame-info { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.frame-name { font-size: 12px; font-weight: 700; color: var(–label); line-height: 1.4; }
+.frame-credit { font-size: 10px; color: var(–muted); letter-spacing: 0.5px; }
+.frame-link {
+display: flex; align-items: center; justify-content: center; gap: 6px;
+text-decoration: none; margin-top: auto;
+background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
+border-radius: 8px; padding: 9px 14px;
+font-size: 11px; font-weight: 900; color: #1a0e00; letter-spacing: 1px;
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 3px 0 #7a5a0a, 0 5px 10px rgba(0,0,0,0.3);
+transition: transform 0.1s, filter 0.1s;
+}
+.frame-link:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.frame-link:active { transform: translateY(2px); }
 
-/* ===== アプリボタン ===== */
-.app-btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-.app-btn {
-  display: flex; align-items: center; gap: 8px;
-  text-decoration: none; border-radius: 8px;
-  padding: 8px 14px; font-size: 11px; font-weight: 700;
-  transition: opacity 0.2s; flex-shrink: 0;
+/* ===== X風グリッド ===== */
+.x-grid-2x2 {
+display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
 }
-.app-btn:hover { opacity: 0.8; }
-.app-btn img { width: 22px; height: 22px; border-radius: 5px; object-fit: cover; }
-.app-btn.ios { background: #1c1c1e; border: 1px solid #3a3a3c; color: var(--label); }
-.app-btn.android { background: #1a2e1a; border: 1px solid #2a4a2a; color: #a0e0a0; }
-
-/* ===== Leminoアプリ起動ボタン群 ===== */
-.lemino-launch-block {
-  margin-top: 14px;
-  display: flex; flex-direction: column; gap: 10px;
+.x-item {
+overflow: hidden; background: var(–card);
+cursor: pointer; aspect-ratio: 16 / 9;
+position: relative; border-radius: 10px;
+border: 1px solid var(–border2);
+transition: border-color 0.2s, transform 0.2s;
 }
-.lemino-open-btn {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  text-decoration: none; width: 100%;
-  border-radius: 10px; padding: 14px 20px;
-  font-size: 13px; font-weight: 900; letter-spacing: 1.5px;
-  transition: transform 0.1s, filter 0.1s;
-  position: relative; overflow: hidden; cursor: pointer;
-  background: linear-gradient(180deg, #ff8ab8 0%, #ff6b9d 55%, #e0508a 100%);
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #a0204a, 0 6px 14px rgba(0,0,0,0.4);
+.x-item:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+.x-item img {
+width: 100%; height: 100%;
+object-fit: cover; object-position: center center;
+display: block; transition: transform 0.2s;
+-webkit-touch-callout: default;
 }
-.lemino-open-btn::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
-  pointer-events: none;
-}
-.lemino-open-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
-.lemino-open-btn:active { transform: translateY(2px); }
-.lemino-open-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
-
-.lemino-store-row {
-  display: flex; gap: 8px; flex-wrap: wrap;
-}
-.lemino-store-note {
-  font-size: 10px; color: var(--muted);
-  text-align: center; padding-bottom: 2px;
+.x-item:hover img { transform: scale(1.03); }
+.x-item::after {
+content: ‘✦ TAP’;
+position: absolute; bottom: 7px; right: 9px;
+font-size: 9px; font-weight: 700; letter-spacing: 1px;
+color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.45);
+padding: 3px 8px; border-radius: 4px; pointer-events: none;
 }
 
-/* ===== 投票ボタン ===== */
-.vote-btn {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  text-decoration: none; width: 100%; margin-top: 14px;
-  border-radius: 10px; padding: 14px 20px;
-  font-size: 13px; font-weight: 900; letter-spacing: 1.5px;
-  transition: transform 0.1s, filter 0.1s;
-  position: relative; overflow: hidden; cursor: pointer;
+/* ===== ライトボックス ===== */
+.lightbox {
+display: none; position: fixed; inset: 0;
+background: rgba(0,0,0,0.95); z-index: 1000;
+align-items: center; justify-content: center;
 }
-.vote-btn::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
-  pointer-events: none;
+.lightbox.active { display: flex; }
+.lightbox-img-wrap {
+max-width: 92vw; max-height: 88vh;
+display: flex; align-items: center; justify-content: center;
 }
-.vote-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
-.vote-btn:active { transform: translateY(2px); }
-.vote-btn.p101 {
-  background: linear-gradient(180deg, #2a6ad4 0%, #1a4fa0 55%, #0f2f70 100%);
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #081a40, 0 6px 14px rgba(0,0,0,0.4);
+.lightbox-img-wrap img {
+max-width: 92vw; max-height: 82vh;
+object-fit: contain; display: block; border-radius: 4px;
+-webkit-touch-callout: default;
 }
-.vote-btn.mnet {
-  background: linear-gradient(180deg, #ff4fa0 0%, #ff1f7d 55%, #c00060 100%);
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 0 #800040, 0 6px 14px rgba(0,0,0,0.4);
+.lightbox-close {
+position: fixed; top: 16px; right: 20px;
+font-size: 1.8rem; color: var(–gold2);
+cursor: pointer; opacity: 0.7; z-index: 1001;
+background: none; border: none; line-height: 1;
 }
-.vote-btn img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
-
-/* ===== 投票画面モックアップ ===== */
-.vote-preview {
-  background: #f0f4ff; border-radius: 16px; overflow: hidden;
-  margin-top: 16px; border: 1px solid rgba(26,79,160,0.2);
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav {
+position: fixed; top: 50%; transform: translateY(-50%);
+font-size: 2rem; color: var(–gold2);
+cursor: pointer; opacity: 0.6; z-index: 1001;
+background: rgba(0,0,0,0.4); border: none;
+padding: 12px 10px; line-height: 1; border-radius: 4px;
+transition: opacity 0.2s;
 }
-.vote-preview-body { background: #f8faff; padding: 16px; }
-.vote-preview-title {
-  font-size: 15px; font-weight: 900; color: #1a3a7a;
-  text-align: center; margin-bottom: 4px; line-height: 1.4;
+.lightbox-nav:hover { opacity: 1; }
+.lightbox-prev { left: 8px; }
+.lightbox-next { right: 8px; }
+.lightbox-counter {
+position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+font-size: 12px; letter-spacing: 2px; color: var(–gold2); opacity: 0.6;
 }
-.vote-preview-title span { color: var(--p101-light); }
-.vote-preview-sub { font-size: 10px; color: #8899bb; text-align: center; margin-bottom: 14px; }
-.vote-candidates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.candidate { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.candidate-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #c0ccee; }
-.candidate-avatar.selected { border-color: var(--p101-light); border-width: 3px; box-shadow: 0 0 0 2px rgba(58,127,212,0.3); }
-.candidate-name { font-size: 10px; color: #334; font-weight: 500; white-space: nowrap; text-align: center; }
-.candidate-btn { font-size: 10px; font-weight: 700; padding: 5px 14px; border-radius: 20px; border: none; cursor: default; width: 100%; }
-.candidate-btn.add { background: var(--p101); color: #fff; }
-.candidate-btn.remove { background: #dde4f8; color: var(--p101); }
-.vote-crown-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 14px; padding: 10px;
-  background: linear-gradient(90deg, var(--p101), var(--p101-light));
-  border-radius: 8px; font-size: 12px; font-weight: 900; color: #fff;
+.lightbox-hint {
+position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+font-size: 10px; letter-spacing: 1px; color: var(–muted); white-space: nowrap;
 }
 
-/* ===== NOTE / TIP ===== */
-.note-box {
-  background: rgba(255,69,58,0.08); border: 1px solid rgba(255,69,58,0.25);
-  border-left: 3px solid var(--danger); border-radius: 0 8px 8px 0;
-  padding: 12px 16px; margin-top: 12px;
-  font-size: 11px; color: var(--label2); line-height: 1.85;
+/* ===== ミニペーパー ===== */
+.minipaper-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 16px;
+overflow: hidden;
 }
-.note-box strong { color: #ff6b6b; }
-
-.tip-box {
-  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
-  border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
-  padding: 12px 16px; margin-top: 12px;
-  font-size: 11px; color: var(--label2); line-height: 1.85;
+.minipaper-preview {
+width: 100%;
+aspect-ratio: 16 / 9;
+background: rgba(255,255,255,0.03);
+border-bottom: 1px solid var(–border2);
+display: flex; align-items: center; justify-content: center;
+overflow: hidden;
+cursor: pointer;
+position: relative;
+transition: background 0.2s;
 }
-.tip-box strong { color: var(--gold2); }
+.minipaper-preview:hover { background: rgba(255,255,255,0.05); }
+.minipaper-preview img {
+width: 100%; height: 100%;
+object-fit: contain;
+padding: 12px;
+-webkit-touch-callout: default;
+}
+.minipaper-preview-label {
+position: absolute; bottom: 8px; right: 10px;
+font-size: 9px; font-weight: 700; letter-spacing: 1px;
+color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.5);
+padding: 3px 8px; border-radius: 4px;
+}
+.minipaper-body {
+padding: 18px 20px 20px;
+display: flex; flex-direction: column; gap: 14px;
+}
+.minipaper-title {
+font-size: 14px; font-weight: 700; color: var(–label); line-height: 1.5;
+}
+.minipaper-desc {
+font-size: 11px; color: var(–label2); line-height: 1.8;
+}
+.minipaper-actions {
+display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.minipaper-btn {
+display: flex; align-items: center; justify-content: center; gap: 7px;
+border-radius: 10px; padding: 12px 14px;
+font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+cursor: pointer; border: none; transition: transform 0.1s, filter 0.1s;
+text-decoration: none; line-height: 1.3; text-align: center;
+}
+.minipaper-btn:active { transform: scale(0.97); }
+.minipaper-btn-primary {
+background: linear-gradient(180deg, #f0d472 0%, #d4a830 55%, #b8901e 100%);
+color: #1a0e00;
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 3px 0 #7a5a0a, 0 5px 10px rgba(0,0,0,0.3);
+}
+.minipaper-btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.minipaper-btn-secondary {
+background: rgba(201,168,76,0.1);
+border: 1px solid rgba(201,168,76,0.35);
+color: var(–gold2);
+}
+.minipaper-btn-secondary:hover { background: rgba(201,168,76,0.18); }
 
-/* ===== ルール ===== */
-.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 480px) { .rules-grid { grid-template-columns: 1fr; } }
-.rule-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-.rule-icon { font-size: 22px; margin-bottom: 8px; }
-.rule-title { font-size: 12px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
-.rule-text { font-size: 11px; color: var(--label2); line-height: 1.6; }
+/* ===== QRポップアップ ===== */
+.qr-modal {
+display: none; position: fixed; inset: 0;
+background: rgba(0,0,0,0.92); z-index: 2000;
+align-items: center; justify-content: center;
+padding: 20px;
+}
+.qr-modal.active { display: flex; }
+.qr-modal-inner {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 20px;
+padding: 28px 24px 24px;
+max-width: 320px; width: 100%;
+text-align: center;
+position: relative;
+}
+.qr-modal-close {
+position: absolute; top: 14px; right: 18px;
+font-size: 1.4rem; color: var(–gold2);
+cursor: pointer; opacity: 0.6; background: none; border: none; line-height: 1;
+}
+.qr-modal-close:hover { opacity: 1; }
+.qr-modal-tag {
+font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+color: var(–gold2); opacity: 0.8; margin-bottom: 12px;
+}
+.qr-modal-title {
+font-size: 15px; font-weight: 700; color: var(–label);
+margin-bottom: 6px; line-height: 1.4;
+}
+.qr-modal-subtitle {
+font-size: 11px; color: var(–label2); margin-bottom: 18px; line-height: 1.7;
+}
+.qr-modal-img-wrap {
+background: #fff;
+border-radius: 12px;
+padding: 14px;
+margin-bottom: 18px;
+display: flex; align-items: center; justify-content: center;
+}
+.qr-modal-img-wrap img {
+width: 100%; max-width: 220px;
+display: block; border-radius: 4px;
+}
+.qr-modal-number {
+display: inline-flex; align-items: center; gap: 8px;
+background: rgba(201,168,76,0.1);
+border: 1px solid rgba(201,168,76,0.3);
+border-radius: 8px;
+padding: 8px 16px;
+font-size: 13px; font-weight: 700; letter-spacing: 3px;
+color: var(–gold2); margin-bottom: 6px;
+cursor: pointer; transition: background 0.2s;
+width: 100%; justify-content: center;
+}
+.qr-modal-number:hover { background: rgba(201,168,76,0.18); }
+.qr-modal-copy-hint {
+font-size: 10px; color: var(–muted); letter-spacing: 0.5px;
+}
+.qr-modal-copy-hint.copied { color: var(–gold2); }
+.qr-modal-store {
+font-size: 10px; color: var(–muted); margin-top: 14px; line-height: 1.7;
+}
 
 .footer-note {
-  text-align: center; font-size: 11px;
-  color: var(--gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
-}
-/* ===== TikTokモーダル ===== */
-.tiktok-modal-overlay {
-  position: fixed; inset: 0; z-index: 1000;
-  background: rgba(0,0,0,0.85);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-}
-.tiktok-modal {
-  background: #1c1c1e;
-  border: 1px solid rgba(201,168,76,0.4);
-  border-radius: 16px;
-  overflow: hidden;
-  max-width: 280px; width: 100%;
-  max-height: 90vh;
-  position: relative;
-  display: flex; flex-direction: column;
-}
-.tiktok-modal-close {
-  position: absolute; top: 10px; right: 12px;
-  background: rgba(0,0,0,0.5); border: none;
-  border-radius: 50%; width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 14px; cursor: pointer; z-index: 10;
-}
-.tiktok-modal-thumb {
-  width: 100%; aspect-ratio: 9/14; object-fit: cover; display: block;
-}
-.tiktok-modal-footer {
-  padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;
-}
-.tiktok-modal-title {
-  font-size: 11px; font-weight: 700; color: rgba(235,235,245,0.9); line-height: 1.5;
-}
-.tiktok-open-btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  text-decoration: none; width: 100%;
-  background: linear-gradient(135deg, #ff2d55, #ff6b9d);
-  border-radius: 8px; padding: 10px;
-  font-size: 12px; font-weight: 900; color: #fff;
-}
-.tiktok-skip-btn {
-  background: none; border: none; color: rgba(235,235,245,0.35);
-  font-size: 10px; cursor: pointer; padding: 2px;
-  text-align: center; width: 100%;
-  font-family: 'Noto Sans JP', sans-serif;
+text-align: center; font-size: 11px;
+color: var(–gold); opacity: 0.4; margin-top: 28px; line-height: 1.8;
 }
 </style>
+
 </head>
 <body>
 <div class="wrapper">
-<div class="tiktok-modal-overlay" id="tiktokModal">
-  <div class="tiktok-modal">
-    <button class="tiktok-modal-close" onclick="closeModal()">✕</button>
-    <img src="TikTokvote.jpg" alt="投票方法動画サムネイル" class="tiktok-modal-thumb">
-    <div class="tiktok-modal-footer">
-      <p class="tiktok-modal-title">📋 投票のやり方をまとめた動画です。TikTokで見てね🪶</p>
-      <a class="tiktok-open-btn" href="https://vt.tiktok.com/ZSuTCsu89/" target="_blank" rel="noopener" onclick="closeModal()">▶ TikTokで見る</a>
-      <button class="tiktok-skip-btn" onclick="closeModal()">スキップ →</button>
-    </div>
-  </div>
-</div>
-  
-  <a href="index.html" class="back-link">← Home</a>
 
-  <!-- 注意書き -->
-    <div class="caution-banner">
-    <div class="caution-banner-title">⚠️ このページについて</div>
-    PRODUCE 101 JAPAN 新世界の投票が開始されました。<strong>公式サイトからdアカウントでログインして投票してください。</strong><br>
-    投票方法は変更される場合があります。<strong>実際の投票時は公式の案内を必ずご確認ください。</strong>
-  </div>
+<a href="index.html" class="back-link">← Home</a>
 
   <div class="header">
     <div class="header-bg">
       <div class="header-star-row">
         <span>✦</span><span class="lg">✦</span><span>✦</span>
       </div>
-      <div class="header-tag">JAYBIRDS — VOTE GUIDE</div>
-      <h1>投票ガイド<br><span class="accent">JAYに1票を届けよう</span></h1>
-      <p class="sub">毎日の投票でジェイくんをデビューへ🪶</p>
+      <div class="header-tag">JAYBIRDS — GALLERY</div>
+      <h1><span class="accent">Gallery</span></h1>
+      <p class="sub">布教画像・配布素材</p>
     </div>
     <div class="header-stripe"></div>
   </div>
 
-  <!-- 毎日投票バナー -->
-  <div class="daily-banner">
-    <div class="daily-banner-icon">🗓️</div>
-    <div class="daily-banner-title">✦ 毎日投票を習慣に！✦</div>
-    <div class="daily-banner-desc">
-      投票権は<strong>毎日0:00にリセット</strong>されます。<br>
-      前日分を翌日にまとめることはできません。<strong>1日も欠かさず投票しよう！</strong>
-    </div>
-  </div>
+  <!-- 素材提供バナー -->
 
-  <!-- 11pick バナー -->
-  <div class="pick-banner">
-    <div class="pick-banner-icon">👑</div>
-    <div class="pick-banner-text">
-      <div class="pick-banner-title">最初は11pick！</div>
-      <div class="pick-banner-desc">
-        番組開始当初は<strong>11人まで選んで投票</strong>できます。JAYを必ず1枠に入れよう！<br>
-        投票できる人数は番組の進行に伴い変わる場合があります。
-      </div>
+  <a href="contribute.html" class="contribute-banner">
+    <div class="contribute-banner-icon">🎨</div>
+    <div class="contribute-banner-text">
+      <p class="contribute-banner-label">Contribute</p>
+      <p class="contribute-banner-title">素材を共有してくれる方はこちら</p>
+      <p class="contribute-banner-desc">作った応援素材をみんなに使ってもらおう！</p>
     </div>
-  </div>
+    <span class="contribute-banner-arrow">→</span>
+  </a>
 
-  <!-- 概要 -->
+  <!-- ミニペーパー -->
+
   <div class="section">
-    <p class="section-label">投票方法の概要</p>
-    <div class="overview">
-      <a class="overview-card p101" href="#section-p101">
-        <div class="overview-card-inner">
-          <img class="overview-icon" src="icon_p101.JPG" alt="日プ新世界">
-          <div class="overview-text">
-            <div class="overview-num">① 国民投票</div>
-            <div class="overview-name">公式サイト</div>
-            <div class="overview-sub">1票 / 日<br>dアカウント必須</div>
-          </div>
-          <span class="overview-arrow">→</span>
+    <p class="section-label">ミニペーパー</p>
+    <p class="section-note">ティッシュの裏に挟んだり、お菓子と一緒に渡せる布教用ミニペーパーです。</p>
+    <div class="section-note-highlight">ファミマ・ローソンのネットプリントから印刷できます。番号入力またはQRコードで！</div>
+    <div class="minipaper-card">
+      <div class="minipaper-preview" onclick="openMinipaperPreview()">
+        <img src="minipaper.pdf" alt="ミニペーパープレビュー" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div style="display:none; flex-direction:column; align-items:center; gap:10px; color:var(--muted);">
+          <span style="font-size:2.5rem;">🪶</span>
+          <span style="font-size:12px; letter-spacing:1px;">Mini Paper</span>
         </div>
-      </a>
-      <a class="overview-card lemino" href="#section-lemino">
-        <div class="overview-card-inner">
-          <img class="overview-icon" src="icon_lemino.JPG" alt="Lemino">
-          <div class="overview-text">
-            <div class="overview-num">② 追加投票</div>
-            <div class="overview-name">Lemino</div>
-            <div class="overview-sub">+1票 / 日<br>アプリのみ</div>
-          </div>
-          <span class="overview-arrow">→</span>
-        </div>
-      </a>
-      <a class="overview-card mnet" href="#section-mnet">
-        <div class="overview-card-inner">
-          <img class="overview-icon" src="icon_mnetplus.PNG" alt="MNet+">
-          <div class="overview-text">
-            <div class="overview-num">③ Overseas</div>
-            <div class="overview-name">MNet+</div>
-            <div class="overview-sub">App only<br>Outside Japan</div>
-          </div>
-          <span class="overview-arrow">→</span>
-        </div>
-      </a>
-    </div>
-    <div class="tip-box" style="margin-top:0;">
-      🌏 <strong>日本在住の方は①＋②で合計1日2票！</strong> For overseas fans: vote via the MNet+ app ③
-    </div>
-  </div>
-
-  <!-- STEP 0: dアカウント -->
-  <div class="section" id="section-prep">
-    <p class="section-label">Step 0 — 事前準備</p>
-    <div class="step-card prep">
-      <div class="step-card-header">
-        <img class="step-card-icon" src="icon_p101.JPG" alt="日プ">
-        <div>
-          <div class="step-card-title-en">Preparation — Required for ① ②</div>
-          <div class="step-card-title">dアカウントを作ろう</div>
-        </div>
+        <div class="minipaper-preview-label">✦ TAP TO PREVIEW</div>
       </div>
-      <div class="step-card-body">
-        <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          ✅ <strong>ドコモユーザーでなくてもOK！</strong>au・SoftBank・格安SIM・楽天でも無料で作れます。<br>
-          ✅ SMS受信できる<strong>携帯電話番号（090/080/070）</strong>が必要です。
-        </div>
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">dアカウント登録ページを開く</div>
-              <div class="flow-desc">ドコモ公式サイトから無料で作成できます。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">メールアドレスを入力して仮登録</div>
-              <div class="flow-desc">届いたURLから本登録へ進みます。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">携帯電話番号でSMS認証（必須！）</div>
-              <div class="flow-desc"><strong>SMS認証済みでないと投票できません。</strong>必ず完了させてください。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">4</div></div>
-            <div class="flow-content">
-              <div class="flow-title">パスワードを設定して完了</div>
-              <div class="flow-desc">IDとパスワードはメモしておきましょう。</div>
-            </div>
-          </div>
-        </div>
-        <div class="note-box">
-          ⚠️ <strong>1人1アカウント厳守。</strong>複数アカウントは規約違反で投票が無効になります。
+      <div class="minipaper-body">
+        <p class="minipaper-title">🪶 ジュアンジェイ 布教ミニペーパー</p>
+        <p class="minipaper-desc">
+          切り取って持ち歩ける名刺サイズの布教ペーパー。ティッシュ配りやお菓子のおまけにどうぞ。
+          ファミリーマート・ローソン店頭のマルチコピー機でプリントアウトできます。
+        </p>
+        <div class="minipaper-actions">
+          <button class="minipaper-btn minipaper-btn-primary" onclick="openQR()">
+            📲 QRコードで印刷
+          </button>
+          <button class="minipaper-btn minipaper-btn-secondary" onclick="copyNumber()">
+            🖨️ 番号をコピー
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 1: 国民投票 -->
-  <div class="section" id="section-p101">
-    <p class="section-label">Step 1 — 国民投票（公式サイト）</p>
-    <div class="step-card p101">
-      <div class="step-card-header">
-        <img class="step-card-icon" src="icon_p101.JPG" alt="日プ新世界">
-        <div>
-          <div class="step-card-title-en">Official Site · 1 vote / day</div>
-          <div class="step-card-title">PRODUCE 101 JAPAN 新世界</div>
-        </div>
-      </div>
-      <div class="step-card-body">
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">公式投票ページを開く</div>
-              <div class="flow-desc">下のボタンから投票ページへアクセス。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">dアカウントでログイン</div>
-              <div class="flow-desc">Step 0で作成したID・パスワードを入力。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">JAYを選んで投票ボックスに追加！</div>
-              <div class="flow-desc">練習生一覧からJAYを見つけて<strong>「投票ボックス追加」</strong>をタップ。最初は11人まで選べます。</div>
-              <div class="vote-preview">
-                <div class="vote-preview-body">
-                  <div class="vote-preview-title">あなたの<span>推し</span>に<br>投票してください</div>
-                  <div class="vote-preview-sub">投票できる回数は1日1回（0:00〜23:59）</div>
-                  <div class="vote-candidates">
-                    <div class="candidate">
-                      <img class="candidate-avatar selected" src="icon_jay.JPG" alt="JAY">
-                      <div class="candidate-name">JAY（ジュアンジェイ）</div>
-                      <button class="candidate-btn remove">取り消し ✓</button>
-                    </div>
-                    <div class="candidate">
-                      <img class="candidate-avatar" src="icon_jay.JPG" alt="" style="opacity:0.15; filter:grayscale(1);">
-                      <div class="candidate-name" style="color:#8899bb;">他の練習生</div>
-                      <button class="candidate-btn add">投票ボックス追加</button>
-                    </div>
-                  </div>
-                  <div class="vote-crown-btn">
-                    👑 画面右上のアイコンをタップして投票！
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">4</div></div>
-            <div class="flow-content">
-              <div class="flow-title">毎日0:00リセット → 翌日もまた投票！</div>
-              <div class="flow-desc">投票権は毎日午前0時に更新。前日分の持ち越しはNG。</div>
-            </div>
-          </div>
-        </div>
-        <a class="vote-btn p101" href="https://vote.produce101.jp" target="_blank" rel="noopener">
-          <img src="icon_p101.JPG" alt=""> 公式サイトで投票する →
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- アイコンフレーム -->
 
-  <!-- STEP 2: Lemino -->
-  <div class="section" id="section-lemino">
-    <p class="section-label">Step 2 — Lemino追加投票</p>
-    <div class="step-card lemino">
-      <div class="step-card-header">
-        <img class="step-card-icon" src="icon_lemino.JPG" alt="Lemino">
-        <div>
-          <div class="step-card-title-en">Lemino App Only · +1 vote / day</div>
-          <div class="step-card-title">Leminoアプリから追加投票</div>
+  <div class="section">
+    <p class="section-label">アイコンフレーム</p>
+    <p class="section-note">アイコンデコッターでアイコンに使えるフレームです。</p>
+    <div class="frame-grid">
+      <div class="frame-item">
+        <div class="frame-img-wrap">
+          <img src="frame01.PNG" alt="ジュアンジェイ応援フレーム" loading="lazy">
         </div>
-      </div>
-      <div class="step-card-body">
-        <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          📱 <strong>アプリからのみ投票できます。</strong>事前にインストール＆ログインまで済ませておこう！
-        </div>
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">Leminoアプリをインストール（無料）</div>
-              <div class="flow-desc">App Store または Google Play から無料でDL。</div>
-              <div class="app-btns">
-                <a class="app-btn ios" href="https://apps.apple.com/jp/app/lemino-%E3%83%AC%E3%83%9F%E3%83%8E-%E6%98%A0%E7%94%BB%E3%82%84%E3%83%89%E3%83%A9%E3%83%9E-%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AA%E3%81%A9%E3%81%AE%E5%8B%95%E7%94%BB%E3%81%8C%E8%A6%8B%E6%94%BE%E9%A1%8C/id1641218070" target="_blank" rel="noopener">
-                  <img src="icon_appstore.JPG" alt="App Store"> App Store
-                </a>
-                <a class="app-btn android" href="https://play.google.com/store/apps/details?id=jp.ne.docomo.lemino.android" target="_blank" rel="noopener">
-                  <img src="icon_googleplay.JPG" alt="Google Play"> Google Play
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">dアカウントでログイン</div>
-              <div class="flow-desc">国民投票と<strong>必ず同じdアカウント</strong>でログインしてください。</div>
-              <div class="note-box">
-                ⚠️ <strong>別のdアカウントでログインすると追加投票が反映されません！</strong>
-              </div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">トップ画面の「日プ新世界」バナーをタップ</div>
-              <div class="flow-desc">特設投票ページへ移動します。</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot highlight">4</div></div>
-            <div class="flow-content">
-              <div class="flow-title">JAYを選んで投票！</div>
-              <div class="flow-desc">これで1日2票分の応援完了です🪶</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Leminoアプリ起動ブロック -->
-        <div class="lemino-launch-block">
-          <a class="lemino-open-btn" href="lemino://" target="_blank">
-            <img src="icon_lemino.JPG" alt=""> Leminoアプリを開く →
+        <div class="frame-info">
+          <p class="frame-name">ジュアンジェイ応援フレーム</p>
+          <p class="frame-credit">✦ by JAYBIRDS</p>
+          <a class="frame-link" href="https://icondecotter.jp/detail.php?id=107098" target="_blank" rel="noopener">
+            🪶 フレームを使う
           </a>
-          <div class="lemino-store-note">アプリ未インストールの方はこちら ↓</div>
-          <div class="lemino-store-row">
-            <a class="app-btn ios" href="https://apps.apple.com/jp/app/lemino-%E3%83%AC%E3%83%9F%E3%83%8E-%E6%98%A0%E7%94%BB%E3%82%84%E3%83%89%E3%83%A9%E3%83%9E-%E3%82%A2%E3%83%8B%E3%83%A1%E3%81%AA%E3%81%A9%E3%81%AE%E5%8B%95%E7%94%BB%E3%81%8C%E8%A6%8B%E6%94%BE%E9%A1%8C/id1641218070" target="_blank" rel="noopener">
-              <img src="icon_appstore.JPG" alt="App Store"> App Store（日本）
-            </a>
-            <a class="app-btn android" href="https://play.google.com/store/apps/details?id=jp.ne.docomo.lemino.android" target="_blank" rel="noopener">
-              <img src="icon_googleplay.JPG" alt="Google Play"> Google Play
-            </a>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ルールまとめ -->
+  <!-- X布教画像 -->
+
   <div class="section">
-    <p class="section-label">投票ルール まとめ</p>
-    <div class="rules-grid">
-      <div class="rule-card">
-        <div class="rule-icon">🔄</div>
-        <div class="rule-title">毎日0:00リセット</div>
-        <div class="rule-text">投票権は毎日午前0時に更新。前日分の持ち越しはNG。</div>
+    <p class="section-label">X布教画像</p>
+    <p class="section-note">Xへの投稿・拡散用の布教素材です。</p>
+    <div class="section-note-highlight">画像は一部だけ表示されています。タップすると全ての情報が確認できます。長押しで保存。</div>
+    <div class="x-grid-2x2">
+      <div class="x-item" onclick="openLightbox('fukyo01', 0)">
+        <img src="fukyo01_01.JPG" alt="布教画像1" loading="lazy">
       </div>
-      <div class="rule-card">
-        <div class="rule-icon">👤</div>
-        <div class="rule-title">1人1アカウント</div>
-        <div class="rule-text">複数アカウントは規約違反。投票が無効になる場合あり。</div>
+      <div class="x-item" onclick="openLightbox('fukyo01', 1)">
+        <img src="fukyo01_02.JPG" alt="布教画像2" loading="lazy">
       </div>
-      <div class="rule-card">
-        <div class="rule-icon">📱</div>
-        <div class="rule-title">Lemino・MNet+はアプリのみ</div>
-        <div class="rule-text">ブラウザからは投票できません。必ずアプリをDLしておこう。</div>
+      <div class="x-item" onclick="openLightbox('fukyo01', 2)">
+        <img src="fukyo01_03.JPG" alt="布教画像3" loading="lazy">
       </div>
-      <div class="rule-card">
-        <div class="rule-icon">🗓️</div>
-        <div class="rule-title">1日も欠かさずに</div>
-        <div class="rule-text">忘れた日の票は消滅。習慣づけが何より大切！</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MNet+ (English) -->
-  <div class="section" id="section-mnet">
-    <p class="section-label">For Overseas Fans — MNet+ SEKAI Vote</p>
-    <div class="step-card mnet">
-      <div class="step-card-header">
-        <img class="step-card-icon" src="icon_mnetplus.PNG" alt="MNet+">
-        <div>
-          <div class="step-card-title-en">MNet Plus App Only · Outside Japan</div>
-          <div class="step-card-title">Vote on MNet+</div>
-        </div>
-      </div>
-      <div class="step-card-body">
-        <div class="tip-box" style="margin-top:0; margin-bottom:16px;">
-          🌏 <strong>Available outside Japan only. App only — browser voting is not supported.</strong>
-        </div>
-        <div class="flow">
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">1</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">Download MNet Plus (Free)</div>
-              <div class="flow-desc">Get the free app from App Store or Google Play.<br>Sign up with Google, Apple, Kakao, LINE, or email.</div>
-              <div class="app-btns">
-                <a class="app-btn ios" href="https://apps.apple.com/app/mnet-plus/id1538144549" target="_blank" rel="noopener">
-                  <img src="icon_appstore.JPG" alt="App Store"> App Store
-                </a>
-                <a class="app-btn android" href="https://play.google.com/store/apps/details?id=com.cj.mnetplus" target="_blank" rel="noopener">
-                  <img src="icon_googleplay.JPG" alt="Google Play"> Google Play
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">2</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">Log in and find the voting banner</div>
-              <div class="flow-desc">After logging in, tap the <strong>PRODUCE 101 JAPAN SHINSEKAI</strong> banner on the home screen.</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot highlight">3</div><div class="flow-line"></div></div>
-            <div class="flow-content">
-              <div class="flow-title">Select JAY and submit your vote!</div>
-              <div class="flow-desc">Find <strong>JAY (Chuang Jay)</strong> from the trainee list and tap <strong>[Submit Vote]</strong>. You may need to watch a short ad to confirm.</div>
-            </div>
-          </div>
-          <div class="flow-item">
-            <div class="flow-left"><div class="flow-dot">4</div></div>
-            <div class="flow-content">
-              <div class="flow-title">Vote resets daily — come back every day!</div>
-              <div class="flow-desc">1 vote per account per day. Don't miss a single day. 🪶</div>
-            </div>
-          </div>
-        </div>
-        <div class="note-box">
-          ⚠️ <strong>Reminder:</strong> Voting is only available on the <strong>MNet Plus app</strong>. 1 vote per account per day. Any irregular voting activity will be invalidated.
-        </div>
-        <a class="vote-btn mnet" href="mnetplus://" target="_blank">
-          <img src="icon_mnetplus.PNG" alt=""> Open MNet+ App →
-        </a>
+      <div class="x-item" onclick="openLightbox('fukyo01', 3)">
+        <img src="fukyo01_04.JPG" alt="布教画像4" loading="lazy">
       </div>
     </div>
   </div>
@@ -803,14 +498,141 @@ body {
   <p class="footer-note">✦ JAYBIRDS — Chuang Jay Fan Support Account ✦</p>
 
 </div>
-  <script>
-  function closeModal() {
-    var modal = document.getElementById('tiktokModal');
-    modal.style.display = 'none';
-  }
-  document.getElementById('tiktokModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+
+<!-- ライトボックス -->
+
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">›</button>
+  <div class="lightbox-hint">長押しで保存できます</div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- QRモーダル -->
+
+<div class="qr-modal" id="qr-modal" onclick="closeQROutside(event)">
+  <div class="qr-modal-inner">
+    <button class="qr-modal-close" onclick="closeQR()">✕</button>
+    <p class="qr-modal-tag">Net Print — ファミマ・ローソン</p>
+    <p class="qr-modal-title">ミニペーパー 印刷用QR</p>
+    <p class="qr-modal-subtitle">マルチコピー機でQRをスキャン、<br>または番号を直接入力してください。</p>
+    <div class="qr-modal-img-wrap">
+      <img src="printerqr.jpg" alt="印刷用QRコード">
+    </div>
+    <div class="qr-modal-number" onclick="copyNumber(true)">
+      🖨️ &nbsp;7875H74ZK2
+    </div>
+    <p class="qr-modal-copy-hint" id="copy-hint">タップしてコピー</p>
+    <p class="qr-modal-store">📍 ファミリーマート・ローソン<br>マルチコピー機 → ネットプリント → 番号入力</p>
+  </div>
+</div>
+
+<script>
+/* ===== Lightbox ===== */
+const galleries = {
+  fukyo01: [
+    'fukyo01_01.JPG',
+    'fukyo01_02.JPG',
+    'fukyo01_03.JPG',
+    'fukyo01_04.JPG'
+  ]
+};
+
+let currentGallery = null;
+let currentIndex = 0;
+
+function openLightbox(galleryId, index) {
+  currentGallery = galleryId;
+  currentIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  const imgs = galleries[currentGallery];
+  document.getElementById('lightbox-img').src = imgs[currentIndex];
+  document.getElementById('lightbox-counter').textContent =
+    (currentIndex + 1) + ' / ' + imgs.length;
+}
+
+function navigateLightbox(dir) {
+  const imgs = galleries[currentGallery];
+  currentIndex = (currentIndex + dir + imgs.length) % imgs.length;
+  updateLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOutside(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+let touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
+});
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'Escape') closeLightbox();
+});
+
+/* ===== Mini Paper Preview ===== */
+function openMinipaperPreview() {
+  window.open('minipaper.pdf', '_blank');
+}
+
+/* ===== QR Modal ===== */
+function openQR() {
+  document.getElementById('qr-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQR() {
+  document.getElementById('qr-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeQROutside(e) {
+  if (e.target === document.getElementById('qr-modal')) closeQR();
+}
+
+/* ===== Copy Number ===== */
+let copyTimer = null;
+function copyNumber(fromModal = false) {
+  navigator.clipboard.writeText('7875H74ZK2').then(() => {
+    const hint = document.getElementById('copy-hint');
+    hint.textContent = 'コピーしました！✦';
+    hint.classList.add('copied');
+    if (!fromModal) openQR();
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(() => {
+      hint.textContent = 'タップしてコピー';
+      hint.classList.remove('copied');
+    }, 2500);
+  }).catch(() => {
+    if (!fromModal) openQR();
   });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeQR();
+});
 </script>
+
 </body>
 </html>
