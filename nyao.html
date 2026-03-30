@@ -283,9 +283,14 @@ flex-shrink: 0; margin-bottom: 4px;
 forced-color-adjust: none;
 -webkit-print-color-adjust: exact;
 }
-.ep-dot.a { border-color: #c9a84c; background: #c9a84c; width: 13px; height: 13px; }
-.ep-dot.v { border-color: #fb7185; background: #fb7185; width: 13px; height: 13px; }
-.ep-dot.f { width: 18px; height: 18px; background: #c9a84c; border-color: #c9a84c; box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+.ep-dot.a  { border-color: #c9a84c; background: #c9a84c; width: 13px; height: 13px; }
+.ep-dot.v  { border-color: #fb7185; background: #fb7185; width: 13px; height: 13px; }
+.ep-dot.f  { width: 18px; height: 18px; background: #c9a84c; border-color: #c9a84c; box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+.ep-dot.dg { border-color: #4a9fd4; background: #4a9fd4; width: 13px; height: 13px; }
+.ep-dot.dp { border-color: #a78bfa; background: #a78bfa; width: 13px; height: 13px; }
+.ep-dot.dc { border-color: #34d399; background: #34d399; width: 13px; height: 13px; }
+.ep-dot.dd { border-color: #c9a84c; background: #c9a84c; width: 13px; height: 13px; }
+.ep-dot.dr { border-color: #94a3b8; background: #94a3b8; width: 13px; height: 13px; }
 .ep-date { font-size: 9px; color: var(–muted); text-align: center; line-height: 1.3; white-space: nowrap; }
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(–label); }
 .ep-body { padding: 10px 0 16px 12px; }
@@ -295,28 +300,24 @@ forced-color-adjust: none;
 #ep-326 .card, #ep-402 .card, #ep-409 .card, #ep-416 .card {
 background: #152640; border-color: rgba(74,159,212,0.5);
 }
-/* 投票締切カード */
-#ep-417 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
-/* 順位発表カード */
-#ep-423 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
-
+/* 投票締切カード — 赤 */
+#ep-417 .card, #ep-508 .card, #ep-522 .card, #ep-606-vote-end .card {
+background: #2a0f18; border-color: rgba(251,113,133,0.45);
+}
+/* 順位発表カード — グレー */
+#ep-423 .card, #ep-514 .card, #ep-528 .card {
+background: #1e2228; border-color: rgba(148,163,184,0.45);
+}
 /* Phase 2: ポジションバトル — 紫 */
 #ep-430 .card, #ep-507 .card {
 background: #1e1540; border-color: rgba(167,139,250,0.5);
 }
-#ep-508 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
-#ep-514 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
-
-/* Phase 3: コンセプト評価 — 黄 */
+/* Phase 3: コンセプト評価 — 緑 */
 #ep-521 .card {
-background: #2a2000; border-color: rgba(251,191,36,0.5);
+background: #0f2a1a; border-color: rgba(52,211,153,0.5);
 }
-#ep-522 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
-#ep-528 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
-
-/* Phase 4: デビュー評価 — 緑 */
-#ep-606-vote-end .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
-#card-606-debut { background: #0f2a1a; border-color: rgba(52,211,153,0.5); }
+/* Phase 4: デビュー評価 — ゴールド */
+#card-606-debut { background: #1e1800; border-color: rgba(201,168,76,0.5); }
 
 .card { background: #1c2a45; border: 1px solid #2e4068; border-radius: 10px; padding: 12px 14px; }
 .card + .card { margin-top: 8px; }
@@ -445,7 +446,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ph-hd"><div class="ph-num">01</div><div class="ph-name">レベル分け＆グループバトルフェーズ</div><div class="ph-line"></div></div>
 
   <div class="ep" id="ep-326">
-    <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>3/26</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dg"></div><div class="ep-date"><strong>3/26</strong>木</div></div>
     <div class="ep-body">
       <div class="card" id="card-326">
         <div class="card-ep">第1話 · 配信スタート</div>
@@ -462,7 +463,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   </div>
 
   <div class="ep" id="ep-402">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/2</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dg"></div><div class="ep-date"><strong>4/2</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第2話</div>
@@ -474,7 +475,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   </div>
 
   <div class="ep" id="ep-409">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/9</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dg"></div><div class="ep-date"><strong>4/9</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第3話</div>
@@ -490,7 +491,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   </div>
 
   <div class="ep" id="ep-416">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/16</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dg"></div><div class="ep-date"><strong>4/16</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第4話</div>
@@ -515,16 +516,16 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ep" id="ep-417">
     <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>4/17</strong>木</div></div>
     <div class="ep-body">
-      <div class="card" id="card-417" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
-        <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票①締切</div>
-        <div class="card-ttl" style="color:var(--c-vote);">🗳️ 投票① 終了 AM 4:00</div>
-        <div class="card-txt" style="color:var(--label2);">3/26〜4/17 4:00まで。この投票結果が第1回順位発表式に反映されます。</div>
+      <div class="card" id="card-417" style="background:#2a0f18; border-color:rgba(251,113,133,0.45);">
+        <div class="card-ep" style="color:rgba(251,113,133,0.6);">投票①締切</div>
+        <div class="card-ttl" style="color:#fb7185;">🗳️ 投票① 終了 AM 4:00</div>
+        <div class="card-txt" style="color:rgba(235,235,245,0.65);">3/26〜4/17 4:00まで。この投票結果が第1回順位発表式に反映されます。</div>
       </div>
     </div>
   </div>
 
   <div class="ep" id="ep-423">
-    <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>4/23</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dr"></div><div class="ep-date"><strong>4/23</strong>木</div></div>
     <div class="ep-body">
       <div class="card" id="card-423">
         <div class="card-ep">第5話</div>
@@ -542,7 +543,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ph-hd"><div class="ph-num">02</div><div class="ph-name">ポジションバトルフェーズ</div><div class="ph-line"></div></div>
 
   <div class="ep" id="ep-430">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>4/30</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dp"></div><div class="ep-date"><strong>4/30</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第6話</div>
@@ -558,7 +559,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   </div>
 
   <div class="ep" id="ep-507">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>5/7</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dp"></div><div class="ep-date"><strong>5/7</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第7話</div>
@@ -583,16 +584,16 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ep" id="ep-508">
     <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>5/8</strong>木</div></div>
     <div class="ep-body">
-      <div class="card" id="card-508" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
-        <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票②締切</div>
-        <div class="card-ttl" style="color:var(--c-vote);">🗳️ 投票② 終了 AM 10:00</div>
-        <div class="card-txt" style="color:var(--label2);">4/23〜5/8 10:00まで。この投票結果が第2回順位発表式に反映されます。</div>
+      <div class="card" id="card-508" style="background:#2a0f18; border-color:rgba(251,113,133,0.45);">
+        <div class="card-ep" style="color:rgba(251,113,133,0.6);">投票②締切</div>
+        <div class="card-ttl" style="color:#fb7185;">🗳️ 投票② 終了 AM 10:00</div>
+        <div class="card-txt" style="color:rgba(235,235,245,0.65);">4/23〜5/8 10:00まで。この投票結果が第2回順位発表式に反映されます。</div>
       </div>
     </div>
   </div>
 
   <div class="ep" id="ep-514">
-    <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>5/14</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dr"></div><div class="ep-date"><strong>5/14</strong>木</div></div>
     <div class="ep-body">
       <div class="card" id="card-514">
         <div class="card-ep">第8話</div>
@@ -614,7 +615,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ph-hd"><div class="ph-num">03</div><div class="ph-name">コンセプト評価フェーズ</div><div class="ph-line"></div></div>
 
   <div class="ep" id="ep-521">
-    <div class="ep-dc"><div class="ep-dot"></div><div class="ep-date"><strong>5/21</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dc"></div><div class="ep-date"><strong>5/21</strong>木</div></div>
     <div class="ep-body">
       <div class="card">
         <div class="card-ep">第9話</div>
@@ -639,16 +640,16 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ep" id="ep-522">
     <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>5/22</strong>木</div></div>
     <div class="ep-body">
-      <div class="card" id="card-522" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
-        <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票③締切</div>
-        <div class="card-ttl" style="color:var(--c-vote);">🗳️ 投票③ 終了 AM 10:00</div>
-        <div class="card-txt" style="color:var(--label2);">5/14〜5/22 10:00まで。この投票結果が第3回順位発表式に反映されます。</div>
+      <div class="card" id="card-522" style="background:#2a0f18; border-color:rgba(251,113,133,0.45);">
+        <div class="card-ep" style="color:rgba(251,113,133,0.6);">投票③締切</div>
+        <div class="card-ttl" style="color:#fb7185;">🗳️ 投票③ 終了 AM 10:00</div>
+        <div class="card-txt" style="color:rgba(235,235,245,0.65);">5/14〜5/22 10:00まで。この投票結果が第3回順位発表式に反映されます。</div>
       </div>
     </div>
   </div>
 
   <div class="ep" id="ep-528">
-    <div class="ep-dc"><div class="ep-dot a"></div><div class="ep-date"><strong>5/28</strong>木</div></div>
+    <div class="ep-dc"><div class="ep-dot dr"></div><div class="ep-date"><strong>5/28</strong>木</div></div>
     <div class="ep-body">
       <div class="card" id="card-528">
         <div class="card-ep">第10話</div>
@@ -668,10 +669,10 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
   <div class="ep" id="ep-606-vote-end">
     <div class="ep-dc"><div class="ep-dot v"></div><div class="ep-date"><strong>6/6</strong>土</div></div>
     <div class="ep-body">
-      <div class="card" id="card-606-vote-end" style="background:#1a0a10; border-color:rgba(251,113,133,0.3);">
-        <div class="card-ep" style="color:rgba(251,113,133,0.5);">投票④締切</div>
-        <div class="card-ttl" style="color:var(--c-vote);">🗳️ 投票④ 終了 AM 10:00</div>
-        <div class="card-txt" style="color:var(--label2);">5/28〜6/6 10:00まで。最終投票の結果でデビューメンバーが決定します。</div>
+      <div class="card" id="card-606-vote-end" style="background:#2a0f18; border-color:rgba(251,113,133,0.45);">
+        <div class="card-ep" style="color:rgba(251,113,133,0.6);">投票④締切</div>
+        <div class="card-ttl" style="color:#fb7185;">🗳️ 投票④ 終了 AM 10:00</div>
+        <div class="card-txt" style="color:rgba(235,235,245,0.65);">5/28〜6/6 10:00まで。最終投票の結果でデビューメンバーが決定します。</div>
       </div>
     </div>
   </div>
