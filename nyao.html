@@ -210,7 +210,12 @@ border-radius: 8px;
 }
 .leg-lbl { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(–muted); }
 .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(–label2); }
-.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot {
+width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+forced-color-adjust: none;
+-webkit-print-color-adjust: exact;
+print-color-adjust: exact;
+}
 
 .disc {
 background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
@@ -259,9 +264,9 @@ pointer-events: none; z-index: 12;
 .ph-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .ph-num {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 24px; font-weight: 700; color: rgba(201,168,76,0.55); line-height: 1; min-width: 28px;
+font-size: 24px; font-weight: 700; color: #c9a84c; line-height: 1; min-width: 28px;
 }
-.ph-name { font-size: 12px; font-weight: 700; color: var(–gold2); letter-spacing: 1px; }
+.ph-name { font-size: 12px; font-weight: 700; color: #e8c96a; letter-spacing: 1px; }
 .ph-line { flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
 
 .ep { display: grid; grid-template-columns: 54px 1fr; position: relative; }
@@ -275,10 +280,12 @@ width: 1px; background: rgba(201,168,76,0.15); z-index: 0;
 width: 11px; height: 11px; border-radius: 50%;
 background: #0a0a0a; border: 2px solid rgba(201,168,76,0.55);
 flex-shrink: 0; margin-bottom: 4px;
+forced-color-adjust: none;
+-webkit-print-color-adjust: exact;
 }
-.ep-dot.a { border-color: var(–gold); background: var(–gold); width: 13px; height: 13px; }
-.ep-dot.v { border-color: var(–c-vote); background: var(–c-vote); width: 13px; height: 13px; }
-.ep-dot.f { width: 18px; height: 18px; background: var(–gold); border-color: var(–gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+.ep-dot.a { border-color: #c9a84c; background: #c9a84c; width: 13px; height: 13px; }
+.ep-dot.v { border-color: #fb7185; background: #fb7185; width: 13px; height: 13px; }
+.ep-dot.f { width: 18px; height: 18px; background: #c9a84c; border-color: #c9a84c; box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
 .ep-date { font-size: 9px; color: var(–muted); text-align: center; line-height: 1.3; white-space: nowrap; }
 .ep-date strong { display: block; font-size: 12px; font-weight: 700; color: var(–label); }
 .ep-body { padding: 10px 0 16px 12px; }
@@ -319,14 +326,19 @@ background: #2a2000; border-color: rgba(251,191,36,0.5);
 .card-txt strong { color: var(–label); }
 
 .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
-.tag { display: inline-flex; align-items: center; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
-.tg  { background: var(–c-group-bg);    color: var(–c-group); }
-.tp  { background: var(–c-position-bg); color: var(–c-position); }
-.tc  { background: var(–c-concept-bg);  color: var(–c-concept); }
-.td  { background: var(–c-debut-bg);    color: var(–c-debut); }
-.tv  { background: var(–c-vote-bg);     color: var(–c-vote); }
-.tr  { background: var(–c-rank-bg);     color: var(–c-rank); }
-.tf  { background: rgba(251,191,36,0.15); color: var(–gold2); }
+.tag {
+display: inline-flex; align-items: center; font-size: 9.5px; font-weight: 700;
+padding: 2px 7px; border-radius: 4px;
+forced-color-adjust: none;
+-webkit-print-color-adjust: exact;
+}
+.tg  { background: #1a3a4a; color: #4a9fd4; }
+.tp  { background: #2a1f4a; color: #a78bfa; }
+.tc  { background: #2a2200; color: #fbbf24; }
+.td  { background: #0f2a1a; color: #34d399; }
+.tv  { background: #2a1020; color: #fb7185; }
+.tr  { background: #1e2430; color: #94a3b8; }
+.tf  { background: #2a2000; color: #e8c96a; }
 
 .vbadge {
 display: inline-flex; align-items: center; gap: 6px;
@@ -412,13 +424,13 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
 <div class="outer">
   <div class="legend">
     <span class="leg-lbl">凡例</span>
-    <span class="leg"><span class="dot" style="background:var(--c-group)"></span>グループバトル</span>
-    <span class="leg"><span class="dot" style="background:var(--c-position)"></span>ポジションバトル</span>
-    <span class="leg"><span class="dot" style="background:var(--c-concept)"></span>コンセプト評価</span>
-    <span class="leg"><span class="dot" style="background:var(--c-debut)"></span>デビュー評価</span>
-    <span class="leg"><span class="dot" style="background:var(--c-vote)"></span>投票</span>
-    <span class="leg"><span class="dot" style="background:var(--c-rank)"></span>順位発表</span>
-    <span class="leg"><span class="dot" style="background:#fbbf24"></span>2倍投票</span>
+    <span class="leg"><span class="dot" style="background:#4a9fd4;forced-color-adjust:none;"></span>グループバトル</span>
+    <span class="leg"><span class="dot" style="background:#a78bfa;forced-color-adjust:none;"></span>ポジションバトル</span>
+    <span class="leg"><span class="dot" style="background:#fbbf24;forced-color-adjust:none;"></span>コンセプト評価</span>
+    <span class="leg"><span class="dot" style="background:#34d399;forced-color-adjust:none;"></span>デビュー評価</span>
+    <span class="leg"><span class="dot" style="background:#fb7185;forced-color-adjust:none;"></span>投票</span>
+    <span class="leg"><span class="dot" style="background:#94a3b8;forced-color-adjust:none;"></span>順位発表</span>
+    <span class="leg"><span class="dot" style="background:#fbbf24;forced-color-adjust:none;"></span>2倍投票</span>
   </div>
 
   <div class="disc">
@@ -441,7 +453,7 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
         <div class="card-txt">101名が初顔合わせ。ユニットごとに指定曲でパフォーマンスし、トレーナーが<strong>A〜Fクラス</strong>に振り分け。クラス別レッスン後にシグナルソングで再評価も行われます。</div>
         <div class="tags"><span class="tag tg">レベル分けテスト</span></div>
       </div>
-      <div class="vbadge">🗳️ ①投票スタート（12人 pick）3/26 21:00〜</div>
+      <div class="vbadge">🗳️ ①投票スタート（12人 pick）3/26 23:45〜</div>
       <div class="info-box">
         <div class="info-box-title">📹 動画公開の目安</div>
         レベル分けは<strong>グループ単位の動画のみ</strong>が公開されます（推しカメラは公開されません）。
