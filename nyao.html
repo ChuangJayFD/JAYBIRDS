@@ -107,54 +107,100 @@ line-height: 1.7;
 min-height: 100vh;
 }
 
-.back-wrap { padding: 28px 20px 0; max-width: 720px; margin: 0 auto; }
+.back-wrap { padding: 26px 20px 0; max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(201,168,76,0.2); padding-bottom: 18px; }
+.nav-brand {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px; font-weight: 700; letter-spacing: 0.32em;
+color: var(–gold); text-transform: uppercase; text-decoration: none;
+}
 .back-link {
-display: inline-block; font-size: 0.78rem; letter-spacing: 0.2em;
-color: var(–gold2); text-decoration: none; text-transform: uppercase;
-opacity: 0.7; transition: opacity 0.2s;
+display: inline-block; font-size: 11px; letter-spacing: 0.08em;
+color: var(–muted); text-decoration: none;
+transition: color 0.2s;
 }
-.back-link:hover { opacity: 1; }
+.back-link:hover { color: var(–gold2); }
 
-.header { text-align: center; margin: 24px auto 0; border-radius: 4px; overflow: hidden; max-width: 720px; }
-.header-bg {
-background: linear-gradient(160deg, #000000 0%, #0a1a3a 45%, #1a4fa0 80%, #3a7fd4 100%);
-padding: 40px 32px 32px; position: relative; overflow: hidden;
+/* ── HERO — simulator.html と同じ構造 ── */
+.hero {
+margin: 0 20px 0; max-width: 720px;
+margin-left: auto; margin-right: auto;
+margin-top: 36px; margin-bottom: 0;
+border-radius: 14px; overflow: hidden;
+border: 2px solid #c9a84c;
+position: relative; min-height: 260px;
 }
-.header-bg::before {
-content: ‘’; position: absolute; top: -40px; right: -40px;
-width: 180px; height: 180px; border: 2px solid rgba(201,168,76,0.2); transform: rotate(45deg);
+.hero-bg-img {
+position: absolute; top: 0; left: 0;
+width: 55%; height: 100%;
+object-fit: cover; object-position: center top;
+z-index: 0; pointer-events: none;
 }
-.header-bg::after {
-content: ‘’; position: absolute; bottom: -30px; left: -30px;
-width: 130px; height: 130px; border: 2px solid rgba(201,168,76,0.15); transform: rotate(45deg);
+@media (max-width: 480px) { .hero-bg-img { width: 50%; object-position: left top; } }
+.hero-overlay {
+position: absolute; inset: 0;
+background: linear-gradient(to right,
+rgba(8,20,55,0.0) 0%, rgba(8,20,55,0.1) 35%,
+rgba(8,20,55,0.75) 52%, rgba(8,20,55,0.97) 65%,
+rgba(8,20,55,1) 100%);
+z-index: 1;
 }
-.header-tag {
-display: inline-block; font-size: 10px; font-weight: 700;
-letter-spacing: 4px; text-transform: uppercase;
-color: var(–gold2); border: 1px solid rgba(201,168,76,0.4);
-padding: 4px 16px; margin-bottom: 14px;
+@media (max-width: 480px) {
+.hero-overlay { background: linear-gradient(to right,
+rgba(8,20,55,0.0) 0%, rgba(8,20,55,0.1) 30%,
+rgba(8,20,55,0.85) 48%, rgba(8,20,55,0.98) 55%,
+rgba(8,20,55,1) 100%); }
 }
-.header-star-row { display: flex; justify-content: center; gap: 14px; margin-bottom: 12px; }
-.header-star-row span { color: var(–gold); font-size: 10px; opacity: 0.7; }
-.header-star-row span.lg { font-size: 16px; opacity: 1; }
-.header h1 {
-font-size: clamp(20px, 5vw, 28px); font-weight: 900;
-color: var(–white); margin-bottom: 8px; line-height: 1.3; letter-spacing: 1px;
+.hero-inner {
+position: relative; z-index: 2;
+display: flex; align-items: flex-end; justify-content: flex-end;
+min-height: 260px; padding: 24px 20px 22px 42%;
 }
-.header h1 em {
-background: linear-gradient(135deg, var(–gold3), var(–gold));
--webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-font-style: normal;
+@media (max-width: 480px) { .hero-inner { padding: 20px 16px 18px 54%; min-height: 240px; } }
+.hero-text-col { width: 100%; text-align: right; }
+.hero-eye {
+font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+color: #c9a84c; text-transform: uppercase; margin-bottom: 10px; opacity: 0.9;
 }
-.header .sub { font-size: 12px; color: var(–label2); line-height: 1.85; max-width: 500px; margin: 0 auto 16px; }
-.h-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hero-title {
+font-family: ‘Noto Sans JP’, sans-serif;
+font-size: clamp(22px, 6vw, 36px); font-weight: 900;
+color: #fff; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 10px;
+}
+.hero-title .ht-gold { color: #f0d070; }
+.hero-title .ht-blue {
+color: #70c0f5; font-size: clamp(28px, 8vw, 48px);
+display: block; line-height: 1.0; letter-spacing: -0.02em;
+text-shadow: 0 2px 16px rgba(112,192,245,0.5);
+}
+.hero-sub {
+font-size: 11px; font-weight: 400;
+color: rgba(255,255,255,0.72); line-height: 1.8; margin-bottom: 12px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+.hero-tag {
+font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+color: #e2c47a; letter-spacing: 0.04em;
+}
+.hero::after {
+content: ‘’; display: block; height: 3px;
+background: linear-gradient(90deg, transparent, #c9a84c, #f0d070, #c9a84c, transparent);
+position: relative; z-index: 3;
+}
+@media (max-width: 480px) {
+.hero-inner { padding: 20px 16px 18px 38%; min-height: 230px; }
+.hero-title { font-size: clamp(19px, 5.5vw, 26px); }
+.hero-title .ht-blue { font-size: clamp(24px, 7vw, 36px); }
+}
+
+/* h-chips はヒーロー下に移動 */
+.h-chips-wrap { max-width: 720px; margin: 0 auto; padding: 14px 20px 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .h-chip {
 background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.4);
 color: var(–gold2); font-size: 11px; padding: 4px 14px; border-radius: 2px;
 }
-.header-stripe { height: 4px; background: linear-gradient(90deg, #000, #1a4fa0, #3a7fd4, var(–gold), #000); }
 
-.outer { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.outer { max-width: 720px; margin: 0 auto; padding: 20px 20px 0; }
 
 .legend {
 background: #16213e; border: 1px solid #2a3a5c;
@@ -328,22 +374,39 @@ font-size: 11px; color: var(–label2); line-height: 1.8;
 <body>
 
 <div class="back-wrap">
-  <a href="index.html" class="back-link">← Home</a>
+  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" class="nav-brand">JAYBIRDS</a>
+  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" class="back-link">← Home</a>
 </div>
 
-<div class="header">
-  <div class="header-bg">
-    <div class="header-star-row"><span>✦</span><span class="lg">✦</span><span>✦</span></div>
-    <div class="header-tag">JAYBIRDS — SCHEDULE GUIDE</div>
-    <h1>番組スケジュール<br><em>ロードマップ</em></h1>
-    <p class="sub">各評価の流れ・投票タイミングをひと目でわかるようにまとめました。<br>※日プ女子（2023年）をベースにした新世界の推定スケジュールです。</p>
-    <div class="h-chips">
-      <span class="h-chip">📅 3月26日（木）スタート</span>
-      <span class="h-chip">🏁 6月6日（土）ファイナル</span>
-      <span class="h-chip">📺 毎週木曜 21:00〜 Lemino</span>
+<div class="hero">
+  <img class="hero-bg-img"
+       src="https://chuangjayfd.github.io/JAYBIRDS/Jay2.png"
+       alt="Chuang Jay ジュアンジェイ — 日プ新世界">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-text-col">
+      <p class="hero-eye">✦ JAYBIRDS × 101SHINSEKAI</p>
+      <h1 class="hero-title">
+        番組<span class="ht-gold">スケジュール</span><br>
+        <span class="ht-blue">ロードマップ</span>
+      </h1>
+      <p class="hero-sub">
+        各評価の流れ・投票タイミングを<br>
+        ひと目でわかるようにまとめました。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">#日プ新世界</span>
+        <span class="hero-tag">#ジュアンジェイ</span>
+        <span class="hero-tag">#101SHINSEKAI</span>
+      </div>
     </div>
   </div>
-  <div class="header-stripe"></div>
+</div>
+
+<div class="h-chips-wrap">
+  <span class="h-chip">📅 3月26日（木）スタート</span>
+  <span class="h-chip">🏁 6月6日（土）ファイナル</span>
+  <span class="h-chip">📺 毎週木曜 21:00〜 Lemino</span>
 </div>
 
 <div class="outer">
