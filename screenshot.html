@@ -442,12 +442,11 @@
   const images = Array.from({ length: TOTAL }, (_, i) => `sshot_${String(i + 1).padStart(2, '0')}.png`);
 
   // ===== ツイート文面 =====
-  const SHARE_URL = `${BASE_URL}/screenshot.html`;
   const tweetTexts = {
-    ja: (n) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${SHARE_URL}`,
-    en: (n) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${SHARE_URL}`,
-    zh: (n) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${SHARE_URL}`,
-    ko: (n) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${SHARE_URL}`,
+    ja: (n) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
+    en: (n) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
+    zh: (n) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
+    ko: (n) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
   };
 
   // ===== State =====
