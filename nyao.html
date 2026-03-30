@@ -259,7 +259,7 @@ pointer-events: none; z-index: 12;
 .ph-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .ph-num {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 24px; font-weight: 700; color: rgba(201,168,76,0.2); line-height: 1; min-width: 28px;
+font-size: 24px; font-weight: 700; color: rgba(201,168,76,0.55); line-height: 1; min-width: 28px;
 }
 .ph-name { font-size: 12px; font-weight: 700; color: var(–gold2); letter-spacing: 1px; }
 .ph-line { flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
@@ -273,7 +273,7 @@ width: 1px; background: rgba(201,168,76,0.15); z-index: 0;
 .ep-dc { display: flex; flex-direction: column; align-items: center; padding-top: 14px; position: relative; z-index: 1; }
 .ep-dot {
 width: 11px; height: 11px; border-radius: 50%;
-background: var(–bg); border: 2px solid rgba(201,168,76,0.3);
+background: #0a0a0a; border: 2px solid rgba(201,168,76,0.55);
 flex-shrink: 0; margin-bottom: 4px;
 }
 .ep-dot.a { border-color: var(–gold); background: var(–gold); width: 13px; height: 13px; }
@@ -286,32 +286,32 @@ flex-shrink: 0; margin-bottom: 4px;
 /* ===== フェーズ別カード色 ===== */
 /* Phase 1: グループバトル — 青 */
 #ep-326 .card, #ep-402 .card, #ep-409 .card, #ep-416 .card {
-background: #0e1f3a; border-color: rgba(74,159,212,0.35);
+background: #152640; border-color: rgba(74,159,212,0.5);
 }
 /* 投票締切カード */
-#ep-417 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
+#ep-417 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
 /* 順位発表カード */
-#ep-423 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+#ep-423 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
 
 /* Phase 2: ポジションバトル — 紫 */
 #ep-430 .card, #ep-507 .card {
-background: #16103a; border-color: rgba(167,139,250,0.35);
+background: #1e1540; border-color: rgba(167,139,250,0.5);
 }
-#ep-508 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
-#ep-514 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+#ep-508 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
+#ep-514 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
 
 /* Phase 3: コンセプト評価 — 黄 */
 #ep-521 .card {
-background: #1e1700; border-color: rgba(251,191,36,0.35);
+background: #2a2000; border-color: rgba(251,191,36,0.5);
 }
-#ep-522 .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
-#ep-528 .card { background: #0d1f0d; border-color: rgba(52,211,153,0.3); }
+#ep-522 .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
+#ep-528 .card { background: #0f2a14; border-color: rgba(52,211,153,0.45); }
 
 /* Phase 4: デビュー評価 — 緑 */
-#ep-606-vote-end .card { background: #1a0a10; border-color: rgba(251,113,133,0.3); }
-#card-606-debut { background: #0a1f14; border-color: rgba(52,211,153,0.35); }
+#ep-606-vote-end .card { background: #2a0f18; border-color: rgba(251,113,133,0.45); }
+#card-606-debut { background: #0f2a1a; border-color: rgba(52,211,153,0.5); }
 
-.card { background: #16213e; border: 1px solid #2a3a5c; border-radius: 10px; padding: 12px 14px; }
+.card { background: #1c2a45; border: 1px solid #2e4068; border-radius: 10px; padding: 12px 14px; }
 .card + .card { margin-top: 8px; }
 .card-ep { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); margin-bottom: 3px; }
 .card-ttl { font-size: 13px; font-weight: 700; color: var(–label); margin-bottom: 4px; }
