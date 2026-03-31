@@ -93,10 +93,7 @@ body {
 }
 
 /* 星の上にコンテンツが乗るようにz-indexを統一 */
-.nav, .campaign-wrap, .hero, .about-banner, main, footer {
-  position: relative;
-  z-index: 1;
-}
+.nav { position: sticky; }
 
 /* ─── 四点星SVG ─── */
 .star4 {
@@ -144,15 +141,18 @@ body {
   display: flex; align-items: flex-end;
 }
 
-/* 写真 — 左寄せ */
+/* 写真 — 左寄せ・余白あり */
 .hero-photo {
   position: absolute;
-  left: 0; bottom: 0;
+  left: 20px; bottom: 0;
   height: 100%; width: auto;
-  max-width: 55%;
+  max-width: 52%;
   object-fit: contain; object-position: left bottom;
   z-index: 1;
   pointer-events: none;
+}
+@media (max-width: 480px) {
+  .hero-photo { left: 16px; max-width: 48%; }
 }
 
 /* グラデーションオーバーレイ */
@@ -199,13 +199,12 @@ body {
   position: relative; z-index: 3;
   width: 100%;
   max-width: 680px; margin: 0 auto;
-  padding: 60px 20px 48px 44%;
+  padding: 60px 20px 48px 46%;
   display: flex; flex-direction: column; align-items: flex-end;
   text-align: right;
 }
 @media (max-width: 480px) {
-  .hero-content { padding: 48px 16px 36px 46%; }
-  .hero-photo { max-width: 52%; }
+  .hero-content { padding: 48px 16px 36px 48%; }
 }
 
 .hero-eyebrow {
@@ -419,6 +418,7 @@ main {
   font-size: 0.62rem; color: rgba(240,228,184,0.55);
   letter-spacing: 0.04em; margin-bottom: 10px; line-height: 1.6;
   word-break: keep-all;
+  overflow-wrap: break-word;
 }
 .vote-badge-live {
   font-family: 'Cormorant Garamond', serif;
@@ -556,7 +556,7 @@ footer p {
 .stars-canvas {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   overflow: hidden;
 }
@@ -678,11 +678,6 @@ footer p {
     <p class="hero-desc">
       ジュアンジェイ（Chuang Jay）を応援する非公式ファンサポートアカウント
     </p>
-    <div class="hero-tags">
-      <span class="hero-tag">#ジュアンジェイ</span>
-      <span class="hero-tag">#JAYどこ</span>
-      <span class="hero-tag">#FINDJAY</span>
-    </div>
   </div>
 </section>
 
