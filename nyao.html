@@ -208,13 +208,13 @@ body {
   width: 58%;
   z-index: 3;
   display: flex; flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
   text-align: right;
-  padding: 32px 20px 32px 8px;
+  padding: 32px 20px 28px 8px;
 }
 @media (max-width: 480px) {
-  .hero-content { width: 56%; padding: 24px 16px 24px 4px; }
+  .hero-content { width: 56%; padding: 24px 16px 20px 4px; justify-content: flex-end; }
 }
 
 .hero-eyebrow {
@@ -248,6 +248,8 @@ body {
   margin-bottom: 20px;
   max-width: 100%;
   white-space: pre-line;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .hero-tags {
