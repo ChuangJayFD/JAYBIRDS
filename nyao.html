@@ -28,14 +28,22 @@
 
 <meta property="og:title" content="JAYBIRDS — ジュアンジェイ Fan Support">
 <meta property="og:description" content="ジュアンジェイ（Chuang Jay）を応援する非公式ファンサポートアカウント。投票情報・応援タグ・布教素材を発信中。#ジュアンジェイ #JAYどこ #FINDJAY">
-<meta property="og:image" content="https://chuangjayfd.github.io/JAYBIRDS/ogp.png">
+<meta property="og:image" content="https://chuangjayfd.github.io/JAYBIRDS/index.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="JAYBIRDS — ジュアンジェイ Chuang Jay Fan Support">
+
 <meta property="og:url" content="https://chuangjayfd.github.io/JAYBIRDS/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JAYBIRDS — Chuang Jay Fan Support">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@CHUANGJAY_FD">
-<meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/ogp.png">
+<meta name="twitter:title" content="JAYBIRDS — ジュアンジェイ Fan Support">
+<meta name="twitter:description" content="ジュアンジェイ（Chuang Jay）を応援する非公式ファンサポートアカウント。投票情報・応援タグ・布教素材を発信中。">
+<meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/index.png">
+<meta name="twitter:image:alt" content="JAYBIRDS — ジュアンジェイ Chuang Jay Fan Support">
 
 <!-- JSON-LD -->
 
@@ -81,6 +89,13 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* 星の上にコンテンツが乗るようにz-indexを統一 */
+.nav, .campaign-wrap, .hero, .about-banner, main, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── 四点星SVG ─── */
@@ -221,7 +236,8 @@ body {
 .hero-desc {
   font-size: 11px; color: rgba(255,255,255,0.55);
   line-height: 1.8; letter-spacing: 0.04em;
-  margin-bottom: 20px; max-width: 260px;
+  margin-bottom: 20px; max-width: 320px;
+  word-break: keep-all;
 }
 
 .hero-tags {
@@ -402,6 +418,7 @@ main {
 .vote-card-desc {
   font-size: 0.62rem; color: rgba(240,228,184,0.55);
   letter-spacing: 0.04em; margin-bottom: 10px; line-height: 1.6;
+  word-break: keep-all;
 }
 .vote-badge-live {
   font-family: 'Cormorant Garamond', serif;
@@ -535,6 +552,58 @@ footer p {
   color: rgba(201,168,76,0.35);
 }
 
+/* ─── 星空背景 ─── */
+.stars-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* CSS静止星 — 小さい点がじわっと光る */
+.star-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: starTwinkle var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50%       { opacity: var(--peak, 0.6); transform: scale(1.2); }
+}
+
+/* 四点星 — キラッと光る */
+.star-cross {
+  position: absolute;
+  width: var(--sz, 10px);
+  height: var(--sz, 10px);
+  animation: crossGlow var(--dur, 4s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+.star-cross::before,
+.star-cross::after {
+  content: '';
+  position: absolute;
+  background: var(--gold-light);
+  border-radius: 2px;
+}
+.star-cross::before {
+  width: 100%; height: 1.5px;
+  top: 50%; left: 0; transform: translateY(-50%);
+}
+.star-cross::after {
+  width: 1.5px; height: 100%;
+  left: 50%; top: 0; transform: translateX(-50%);
+}
+@keyframes crossGlow {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  40%, 60% { opacity: var(--peak, 0.7); transform: scale(1); }
+}
+
 /* ─── フェードイン ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
@@ -550,6 +619,10 @@ footer p {
 
 </head>
 <body>
+
+<!-- ── 星空背景 ── -->
+
+<div class="stars-canvas" id="starsCanvas" aria-hidden="true"></div>
 
 <!-- ── NAV ── -->
 
@@ -603,8 +676,7 @@ footer p {
     <h1 class="hero-title">JAYBIRDS</h1>
     <p class="hero-sub">ジェイバーズ</p>
     <p class="hero-desc">
-      ジュアンジェイ（Chuang Jay）を応援する<br>
-      非公式ファンサポートアカウント
+      ジュアンジェイ（Chuang Jay）を応援する非公式ファンサポートアカウント
     </p>
     <div class="hero-tags">
       <span class="hero-tag">#ジュアンジェイ</span>
@@ -652,7 +724,7 @@ footer p {
       <img src="icon_p101.JPG" alt="PRODUCE 101 公式">
     </div>
     <span class="vote-card-name">本サイト</span>
-    <p class="vote-card-desc">PRODUCE 101<br>JAPAN 公式サイト</p>
+    <p class="vote-card-desc">PRODUCE 101 JAPAN 公式サイト</p>
     <span class="vote-badge-live">▶ Vote Now</span>
   </a>
   <a href="lemino://" class="vote-card">
@@ -660,7 +732,7 @@ footer p {
       <img src="icon_lemino.JPG" alt="Lemino">
     </div>
     <span class="vote-card-name">Lemino</span>
-    <p class="vote-card-desc">レミノアプリから<br>追加投票</p>
+    <p class="vote-card-desc">レミノアプリから追加投票</p>
     <span class="vote-badge-live">▶ Vote Now</span>
   </a>
   <a href="https://mnetplus.onelink.me/TRa8/wrwoxakm?custom_link_value=produce101jp-shinsekai"
@@ -669,7 +741,7 @@ footer p {
       <img src="icon_mnetplus.PNG" alt="MNet Plus">
     </div>
     <span class="vote-card-name">MNet Plus</span>
-    <p class="vote-card-desc">エムネットプラスから<br>投票</p>
+    <p class="vote-card-desc">エムネットプラスから投票</p>
     <span class="vote-badge-live">▶ Vote Now</span>
   </a>
 </div>
@@ -792,6 +864,132 @@ footer p {
   <p>JAYBIRDS — Chuang Jay Fan Support Account</p>
   <p style="margin-top:6px;">This is an unofficial fan account. Not affiliated with Chuang Jay or any related organizations.</p>
 </footer>
+
+<script>
+// ── 星空生成 ──
+(function() {
+  const canvas = document.getElementById('starsCanvas');
+  const W = window.innerWidth;
+  const H = Math.max(document.body.scrollHeight, window.innerHeight);
+
+  // 1) CSS小点星 — 60個
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'star-dot';
+    const size = Math.random() * 2 + 1;
+    el.style.cssText = [
+      `left:${Math.random()*100}%`,
+      `top:${Math.random()*100}%`,
+      `width:${size}px`,
+      `height:${size}px`,
+      `--dur:${(Math.random()*4+2).toFixed(1)}s`,
+      `--delay:${(Math.random()*6).toFixed(1)}s`,
+      `--peak:${(Math.random()*0.4+0.3).toFixed(2)}`,
+    ].join(';');
+    canvas.appendChild(el);
+  }
+
+  // 2) 四点星 — 18個（ゴールド系、控えめに配置）
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('div');
+    el.className = 'star-cross';
+    const sz = Math.random() * 8 + 6;
+    el.style.cssText = [
+      `left:${Math.random()*100}%`,
+      `top:${Math.random()*100}%`,
+      `--sz:${sz}px`,
+      `--dur:${(Math.random()*5+3).toFixed(1)}s`,
+      `--delay:${(Math.random()*8).toFixed(1)}s`,
+      `--peak:${(Math.random()*0.3+0.4).toFixed(2)}`,
+    ].join(';');
+    canvas.appendChild(el);
+  }
+
+  // 3) 流れ星 — Canvas2Dで描画
+  const shooting = document.createElement('canvas');
+  shooting.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;';
+  shooting.width  = W;
+  shooting.height = H;
+  canvas.appendChild(shooting);
+  const ctx = shooting.getContext('2d');
+
+  const meteors = [];
+  function spawnMeteor() {
+    const x = Math.random() * W * 1.2;
+    const y = Math.random() * H * 0.4;
+    meteors.push({
+      x, y,
+      vx: -(Math.random() * 3 + 2),
+      vy:  (Math.random() * 1.5 + 0.8),
+      len: Math.random() * 80 + 60,
+      alpha: 0,
+      phase: 'in', // in → hold → out
+      life: 0,
+      maxLife: Math.floor(Math.random() * 40 + 30),
+    });
+  }
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // 一定間隔で流れ星を生成（多くなりすぎないよう制限）
+    if (frame % 180 === 0 && meteors.length < 3) spawnMeteor();
+    frame++;
+
+    for (let i = meteors.length - 1; i >= 0; i--) {
+      const m = meteors[i];
+      m.life++;
+      m.x += m.vx;
+      m.y += m.vy;
+
+      // フェードイン/アウト
+      if (m.life < 12) m.alpha = m.life / 12;
+      else if (m.life > m.maxLife - 12) m.alpha = (m.maxLife - m.life) / 12;
+      else m.alpha = 1;
+
+      if (m.life >= m.maxLife || m.x < -100) {
+        meteors.splice(i, 1);
+        continue;
+      }
+
+      // 描画
+      const grad = ctx.createLinearGradient(
+        m.x, m.y,
+        m.x - m.vx / Math.hypot(m.vx, m.vy) * m.len,
+        m.y - m.vy / Math.hypot(m.vx, m.vy) * m.len
+      );
+      grad.addColorStop(0, `rgba(240,228,184,${m.alpha * 0.9})`);
+      grad.addColorStop(0.3, `rgba(201,168,76,${m.alpha * 0.5})`);
+      grad.addColorStop(1, 'rgba(201,168,76,0)');
+
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(
+        m.x - m.vx / Math.hypot(m.vx, m.vy) * m.len,
+        m.y - m.vy / Math.hypot(m.vx, m.vy) * m.len
+      );
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // 先端の光点
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,248,220,${m.alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // ページが見えているときだけ動かす（省電力）
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) requestAnimationFrame(draw);
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
 
 </body>
 </html>
