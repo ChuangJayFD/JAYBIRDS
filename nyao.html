@@ -14,6 +14,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only dark">
 <title>JAYBIRDS — ジュアンジェイ (Chuang Jay) Fan Support | PRODUCE 101 JAPAN 新世界</title>
+<meta name="application-name" content="CHUANG JAY FD | JAYBIRDS">
+<link rel="icon" type="image/png" href="/JAYBIRDS/favicon.png">
+<link rel="apple-touch-icon" href="/JAYBIRDS/favicon.png">
 
 <!-- SEO -->
 
@@ -136,23 +139,27 @@ body {
 /* ─── HERO ─── */
 .hero {
   position: relative;
-  min-height: 480px;
   overflow: hidden;
   display: flex; align-items: flex-end;
 }
 
-/* 写真 — 左寄せ・余白あり */
+/* 写真 — 左寄せ・余白あり・高さ基準 */
 .hero-photo {
-  position: absolute;
-  left: 20px; bottom: 0;
-  height: 100%; width: auto;
+  position: relative;
+  left: 20px;
+  height: auto;
+  width: auto;
   max-width: 52%;
-  object-fit: contain; object-position: left bottom;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: left bottom;
   z-index: 1;
   pointer-events: none;
+  display: block;
+  flex-shrink: 0;
 }
 @media (max-width: 480px) {
-  .hero-photo { left: 16px; max-width: 48%; }
+  .hero-photo { left: 16px; max-width: 48%; max-height: 440px; }
 }
 
 /* グラデーションオーバーレイ */
@@ -196,15 +203,18 @@ body {
 
 /* テキストコンテンツ */
 .hero-content {
-  position: relative; z-index: 3;
-  width: 100%;
-  max-width: 680px; margin: 0 auto;
-  padding: 60px 20px 48px 46%;
-  display: flex; flex-direction: column; align-items: flex-end;
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 58%;
+  z-index: 3;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
   text-align: right;
+  padding: 32px 20px 32px 8px;
 }
 @media (max-width: 480px) {
-  .hero-content { padding: 48px 16px 36px 48%; }
+  .hero-content { width: 56%; padding: 24px 16px 24px 4px; }
 }
 
 .hero-eyebrow {
@@ -235,8 +245,9 @@ body {
 .hero-desc {
   font-size: 11px; color: rgba(255,255,255,0.55);
   line-height: 1.8; letter-spacing: 0.04em;
-  margin-bottom: 20px; max-width: 320px;
-  word-break: keep-all;
+  margin-bottom: 20px;
+  max-width: 100%;
+  white-space: pre-line;
 }
 
 .hero-tags {
@@ -711,6 +722,7 @@ footer p {
       投票はこちら
     </div>
 
+```
 <div class="vote-grid">
   <a href="https://vote.produce101.jp/?utm_source=x&utm_medium=social&utm_campaign=20260325_p101_x_promo"
      class="vote-card" target="_blank" rel="noopener">
@@ -757,6 +769,7 @@ footer p {
   </div>
   <span class="vote-guide-arrow">→</span>
 </a>
+```
 
   </div>
 
