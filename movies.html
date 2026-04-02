@@ -176,22 +176,42 @@ body {
 }
 .platform-card:hover .platform-arrow { opacity: 1; transform: translateX(3px); }
 
+/* ===== サムネイル共通 ===== */
+.thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.3s; }
+.thumb-img.loaded { opacity: 1; }
+.thumb-placeholder {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: var(--muted); background: var(--card2);
+  transition: opacity 0.3s;
+}
+.thumb-placeholder.hidden { opacity: 0; pointer-events: none; }
+
 /* ===== X投稿 ===== */
 .x-post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 @media (max-width: 480px) { .x-post-grid { grid-template-columns: 1fr; } }
 
 .x-post-card {
-  display: flex; align-items: center; gap: 12px;
+  display: block;
   text-decoration: none; background: var(--card); border: 1px solid var(--border);
-  padding: 14px 16px; border-radius: 12px;
+  border-radius: 12px;
   transition: border-color 0.25s, transform 0.2s;
   position: relative; overflow: hidden;
 }
 .x-post-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--x), #60b8f8);
+  background: linear-gradient(90deg, var(--x), #60b8f8); z-index: 1;
 }
 .x-post-card:hover { border-color: rgba(29,155,240,0.4); transform: translateY(-2px); }
+
+.x-thumb-wrap {
+  width: 100%; aspect-ratio: 16/9; background: var(--card2);
+  position: relative; overflow: hidden;
+}
+
+.x-post-body {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+}
 .x-post-icon {
   width: 36px; height: 36px; border-radius: 8px;
   background: rgba(29,155,240,0.15);
@@ -206,6 +226,40 @@ body {
   transition: opacity 0.2s, transform 0.2s;
 }
 .x-post-card:hover .x-post-arrow { opacity: 1; transform: translateX(3px); }
+
+/* ===== Instagram ===== */
+.insta-card {
+  display: block; text-decoration: none;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color 0.25s, transform 0.2s;
+}
+.insta-card:hover { border-color: rgba(225,48,108,0.5); transform: translateY(-2px); }
+.insta-card::before {
+  content: ''; display: block; height: 2px;
+  background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.insta-thumb {
+  width: 100%; aspect-ratio: 1/1; background: var(--card2);
+  position: relative; overflow: hidden;
+}
+.insta-info {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+}
+.insta-icon {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: rgba(225,48,108,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; flex-shrink: 0;
+}
+.insta-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(225,48,108,0.8); margin-bottom: 1px; }
+.insta-name  { font-size: 12px; font-weight: 700; color: var(--label); }
+.insta-arrow {
+  margin-left: auto; color: var(--insta); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.insta-card:hover .insta-arrow { opacity: 1; transform: translateX(3px); }
 
 .footer-note { text-align: center; font-size: 11px; color: var(--gold); opacity: 0.5; margin-top: 28px; line-height: 1.8; }
 </style>
@@ -304,45 +358,75 @@ body {
   <div class="section">
     <p class="section-label">𝕏 Post</p>
     <div class="x-post-grid">
-      <a href="https://x.com/produce101jp_/status/2015998334893441125" target="_blank" rel="noopener" class="x-post-card">
-        <div class="x-post-icon">𝕏</div>
-        <div>
-          <p class="x-post-label">X / Twitter</p>
-          <p class="x-post-name">@produce101jp_<br>投稿 #1</p>
+      <a href="https://x.com/produce101jp_/status/2015998334893441125" target="_blank" rel="noopener" class="x-post-card" data-thumb="https://x.com/produce101jp_/status/2015998334893441125">
+        <div class="x-thumb-wrap">
+          <div class="thumb-placeholder">𝕏</div>
+          <img class="thumb-img" src="" alt="X投稿 #1" loading="lazy">
         </div>
-        <span class="x-post-arrow">→</span>
+        <div class="x-post-body">
+          <div class="x-post-icon">𝕏</div>
+          <div>
+            <p class="x-post-label">X / Twitter</p>
+            <p class="x-post-name">@produce101jp_<br>投稿 #1</p>
+          </div>
+          <span class="x-post-arrow">→</span>
+        </div>
       </a>
-      <a href="https://x.com/produce101jp_/status/2017436423842943099" target="_blank" rel="noopener" class="x-post-card">
-        <div class="x-post-icon">𝕏</div>
-        <div>
-          <p class="x-post-label">X / Twitter</p>
-          <p class="x-post-name">@produce101jp_<br>投稿 #2</p>
+      <a href="https://x.com/produce101jp_/status/2017436423842943099" target="_blank" rel="noopener" class="x-post-card" data-thumb="https://x.com/produce101jp_/status/2017436423842943099">
+        <div class="x-thumb-wrap">
+          <div class="thumb-placeholder">𝕏</div>
+          <img class="thumb-img" src="" alt="X投稿 #2" loading="lazy">
         </div>
-        <span class="x-post-arrow">→</span>
+        <div class="x-post-body">
+          <div class="x-post-icon">𝕏</div>
+          <div>
+            <p class="x-post-label">X / Twitter</p>
+            <p class="x-post-name">@produce101jp_<br>投稿 #2</p>
+          </div>
+          <span class="x-post-arrow">→</span>
+        </div>
       </a>
-      <a href="https://x.com/produce101jp_/status/2017436565438619739" target="_blank" rel="noopener" class="x-post-card">
-        <div class="x-post-icon">𝕏</div>
-        <div>
-          <p class="x-post-label">X / Twitter</p>
-          <p class="x-post-name">@produce101jp_<br>投稿 #3</p>
+      <a href="https://x.com/produce101jp_/status/2017436565438619739" target="_blank" rel="noopener" class="x-post-card" data-thumb="https://x.com/produce101jp_/status/2017436565438619739">
+        <div class="x-thumb-wrap">
+          <div class="thumb-placeholder">𝕏</div>
+          <img class="thumb-img" src="" alt="X投稿 #3" loading="lazy">
         </div>
-        <span class="x-post-arrow">→</span>
+        <div class="x-post-body">
+          <div class="x-post-icon">𝕏</div>
+          <div>
+            <p class="x-post-label">X / Twitter</p>
+            <p class="x-post-name">@produce101jp_<br>投稿 #3</p>
+          </div>
+          <span class="x-post-arrow">→</span>
+        </div>
       </a>
-      <a href="https://x.com/produce101jp_/status/2035556823617413604" target="_blank" rel="noopener" class="x-post-card">
-        <div class="x-post-icon">𝕏</div>
-        <div>
-          <p class="x-post-label">X / Twitter</p>
-          <p class="x-post-name">@produce101jp_<br>投稿 #4</p>
+      <a href="https://x.com/produce101jp_/status/2035556823617413604" target="_blank" rel="noopener" class="x-post-card" data-thumb="https://x.com/produce101jp_/status/2035556823617413604">
+        <div class="x-thumb-wrap">
+          <div class="thumb-placeholder">𝕏</div>
+          <img class="thumb-img" src="" alt="X投稿 #4" loading="lazy">
         </div>
-        <span class="x-post-arrow">→</span>
+        <div class="x-post-body">
+          <div class="x-post-icon">𝕏</div>
+          <div>
+            <p class="x-post-label">X / Twitter</p>
+            <p class="x-post-name">@produce101jp_<br>投稿 #4</p>
+          </div>
+          <span class="x-post-arrow">→</span>
+        </div>
       </a>
-      <a href="https://x.com/produce101jp_/status/2038548285028548685" target="_blank" rel="noopener" class="x-post-card">
-        <div class="x-post-icon">𝕏</div>
-        <div>
-          <p class="x-post-label">X / Twitter</p>
-          <p class="x-post-name">@produce101jp_<br>投稿 #5</p>
+      <a href="https://x.com/produce101jp_/status/2038548285028548685" target="_blank" rel="noopener" class="x-post-card" data-thumb="https://x.com/produce101jp_/status/2038548285028548685">
+        <div class="x-thumb-wrap">
+          <div class="thumb-placeholder">𝕏</div>
+          <img class="thumb-img" src="" alt="X投稿 #5" loading="lazy">
         </div>
-        <span class="x-post-arrow">→</span>
+        <div class="x-post-body">
+          <div class="x-post-icon">𝕏</div>
+          <div>
+            <p class="x-post-label">X / Twitter</p>
+            <p class="x-post-name">@produce101jp_<br>投稿 #5</p>
+          </div>
+          <span class="x-post-arrow">→</span>
+        </div>
       </a>
     </div>
     <div class="howto">
@@ -379,50 +463,104 @@ body {
   <div class="section">
     <p class="section-label">Instagram</p>
     <div class="platform-grid">
-      <a href="https://www.instagram.com/p/DUAbO9Jj-Bm/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #1</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DUAbO9Jj-Bm/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DUAbO9Jj-Bm/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #1" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #1</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DUKNyXfD3pU/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #2</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DUKNyXfD3pU/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DUKNyXfD3pU/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #2" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #2</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DV2dbXLiRfo/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #3</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DV2dbXLiRfo/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DV2dbXLiRfo/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #3" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #3</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #4</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DVtEF3QCRFM/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DVtEF3QCRFM/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #4" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #4</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DWK9-jxCVA8/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #5</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DWK9-jxCVA8/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DWK9-jxCVA8/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #5" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #5</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DWaffR3CXsm/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #6</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DWaffR3CXsm/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DWaffR3CXsm/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #6" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #6</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DWaiXu1Cfup/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #7</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DWaiXu1Cfup/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DWaiXu1Cfup/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #7" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #7</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DWduEP8CREs/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #8</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DWduEP8CREs/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DWduEP8CREs/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #8" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #8</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
-      <a href="https://www.instagram.com/p/DWkzyNDCU_M/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-insta">📸</div>
-        <div><p class="platform-label">Instagram</p><p class="platform-name">投稿 #9</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://www.instagram.com/p/DWkzyNDCU_M/" target="_blank" rel="noopener" class="insta-card" data-thumb="https://www.instagram.com/p/DWkzyNDCU_M/">
+        <div class="insta-thumb">
+          <div class="thumb-placeholder">📸</div>
+          <img class="thumb-img" src="" alt="Instagram投稿 #9" loading="lazy">
+        </div>
+        <div class="insta-info">
+          <div class="insta-icon">📸</div>
+          <div><p class="insta-label">Instagram</p><p class="insta-name">投稿 #9</p></div>
+          <span class="insta-arrow">→</span>
+        </div>
       </a>
     </div>
     <div class="howto">
@@ -433,5 +571,30 @@ body {
   <p class="footer-note">JAYBIRDS — Chuang Jay Fan Support Account</p>
 
 </div>
+
+<script>
+(async function loadThumbnails() {
+  const cards = document.querySelectorAll('[data-thumb]');
+  for (const card of cards) {
+    const url = card.dataset.thumb;
+    const img = card.querySelector('.thumb-img');
+    const placeholder = card.querySelector('.thumb-placeholder');
+    if (!img) continue;
+    try {
+      const res = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
+      const json = await res.json();
+      const imgUrl = json?.data?.image?.url;
+      if (imgUrl) {
+        img.src = imgUrl;
+        img.onload = () => {
+          img.classList.add('loaded');
+          if (placeholder) placeholder.classList.add('hidden');
+        };
+        img.onerror = () => {};
+      }
+    } catch (e) {}
+  }
+})();
+</script>
 </body>
 </html>
