@@ -468,6 +468,13 @@
     別の画像を引く
   </button>
 
+  <!-- 話数選択 -->
+
+  <div class="lang-section" id="episodeSection" style="display:none">
+    <div class="section-label">Episode</div>
+    <div class="lang-tabs" id="episodeTabs"></div>
+  </div>
+
   <!-- 言語選択 -->
 
   <div class="lang-section">
@@ -555,36 +562,96 @@
   const OGP_PATH = `${BASE_URL}/screenshot/`;
 
   // ===== State =====
-  let currentIndex = null;
-  let currentLang = 'ja';
-  let TOTAL = 30;
-  let cacheVer = '';
+  let currentLang    = 'ja';
+  let currentEpisode = null;   // null = 全話
+  let currentPageId  = null;   // "ep01_003" 形式
+  let manifest       = null;
+  let cacheVer       = '';
+
+  // 現在のエピソードで使える画像リストを返す
+  function getPool() {
+    if (!manifest || !manifest.episodes.length) return [];
+    if (currentEpisode === null) {
+      return manifest.episodes.flatMap(ep =>
+        ep.images.map((img, i) => ({
+          ep: ep, idx: i + 1, img,
+          pageId: `ep${String(ep.number).padStart(2,'0')}_${String(i+1).padStart(3,'0')}`
+        }))
+      );
+    }
+    const ep = manifest.episodes.find(e => e.number === currentEpisode);
+    if (!ep) return [];
+    return ep.images.map((img, i) => ({
+      ep, idx: i + 1, img,
+      pageId: `ep${String(ep.number).padStart(2,'0')}_${String(i+1).padStart(3,'0')}`
+    }));
+  }
 
   // ===== ツイート文面 =====
   const tweetTexts = {
-    ja: (n) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    en: (n) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    zh: (n) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    ko: (n) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
+    ja: (item) => `ジュアンジェイ ${item.ep.label} のスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${item.pageId}.html`,
+    en: (item) => `Drew a Chuang Jay ${item.ep.label} screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${item.pageId}.html`,
+    zh: (item) => `抽到莊傑 ${item.ep.label} 的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${item.pageId}.html`,
+    ko: (item) => `Chuang Jay ${item.ep.label} 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${item.pageId}.html`,
   };
 
-  // ===== 初期化：cache-version.json を取得してからスタート =====
-  fetch(`${BASE_URL}/cache-version.json?t=${Date.now()}`)
-    .then(r => r.json())
-    .then(data => {
-      if (data.total) TOTAL = data.total;
-      if (data.version) cacheVer = data.version;
-    })
-    .catch(() => {})
-    .finally(() => rollImage());
+  // ===== 初期化：マニフェスト → cache-version の順に取得 =====
+  Promise.all([
+    fetch(`${BASE_URL}/screenshots_manifest.json?t=${Date.now()}`).then(r => r.json()).catch(() => null),
+    fetch(`${BASE_URL}/cache-version.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({})),
+  ]).then(([mf, cv]) => {
+    manifest = mf;
+    cacheVer = cv?.version || '';
+    buildEpisodeButtons();
+    rollImage();
+  });
+
+  // ===== 話数ボタンを動的に生成 =====
+  function buildEpisodeButtons() {
+    if (!manifest || !manifest.episodes.length) return;
+    const section = document.getElementById('episodeSection');
+    const tabs    = document.getElementById('episodeTabs');
+    section.style.display = '';
+
+    const allBtn = document.createElement('button');
+    allBtn.className = 'lang-tab active';
+    allBtn.textContent = '全話';
+    allBtn.onclick = () => setEpisode(null, allBtn);
+    tabs.appendChild(allBtn);
+
+    manifest.episodes.forEach(ep => {
+      const btn = document.createElement('button');
+      btn.className = 'lang-tab';
+      btn.textContent = ep.label;
+      btn.onclick = () => setEpisode(ep.number, btn);
+      tabs.appendChild(btn);
+    });
+  }
+
+  function setEpisode(epNum, btn) {
+    currentEpisode = epNum;
+    document.querySelectorAll('#episodeTabs .lang-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPageId = null;
+    rollImage();
+  }
 
   function rollImage() {
-    let next;
-    do { next = Math.floor(Math.random() * TOTAL) + 1; } while (next === currentIndex && TOTAL > 1);
-    currentIndex = next;
+    const pool = getPool();
+    if (!pool.length) {
+      document.getElementById('placeholder').style.display = 'flex';
+      document.getElementById('imgBadge').textContent = '— / —';
+      return;
+    }
 
-    const img = document.getElementById('screenshotImg');
-    const badge = document.getElementById('imgBadge');
+    let item;
+    do {
+      item = pool[Math.floor(Math.random() * pool.length)];
+    } while (pool.length > 1 && item.pageId === currentPageId);
+    currentPageId = item.pageId;
+
+    const img         = document.getElementById('screenshotImg');
+    const badge       = document.getElementById('imgBadge');
     const placeholder = document.getElementById('placeholder');
 
     img.classList.add('loading');
@@ -594,42 +661,34 @@
       img.classList.remove('loading');
       placeholder.style.display = 'none';
     };
-    img.onerror = () => {
-      // 画像がまだない場合はプレースホルダー表示
-      placeholder.style.display = 'flex';
-    };
-    const filename = `sshot_${String(currentIndex).padStart(2, '0')}.png`;
-    img.src = `${IMG_PATH}${filename}${cacheVer ? '?v=' + cacheVer : ''}`;
-    badge.textContent = `No.${String(currentIndex).padStart(2, '0')}`;
+    img.onerror = () => { placeholder.style.display = 'flex'; };
+    img.src = `${IMG_PATH}${item.img}${cacheVer ? '?v=' + cacheVer : ''}`;
+    badge.textContent = `${item.ep.label} No.${String(item.idx).padStart(3, '0')}`;
 
-    updateTweetBtn();
-
-    // GA4イベント
-    gtag('event', 'screenshot_roll', { image_index: currentIndex });
+    updateTweetBtn(item);
+    gtag('event', 'screenshot_roll', { episode: item.ep.label, page_id: item.pageId });
   }
 
   function setLang(lang) {
     currentLang = lang;
-    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-section:last-of-type .lang-tab').forEach(el => el.classList.remove('active'));
     event.target.classList.add('active');
-    updateTweetBtn();
+    const pool = getPool();
+    const item = pool.find(p => p.pageId === currentPageId);
+    if (item) updateTweetBtn(item);
   }
 
-  function updateTweetBtn() {
-    if (!currentIndex) return;
-    const text = tweetTexts[currentLang](currentIndex);
+  function updateTweetBtn(item) {
+    if (!item) return;
+    const text = tweetTexts[currentLang](item);
     document.getElementById('tweetPreview').textContent = text;
-
-    const encoded = encodeURIComponent(text);
-    document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${encoded}`;
+    document.getElementById('tweetBtn').href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
   }
 
   // ツイートクリックGA4
   document.getElementById('tweetBtn').addEventListener('click', () => {
-    gtag('event', 'screenshot_tweet', {
-      image_index: currentIndex,
-      lang: currentLang
-    });
+    gtag('event', 'screenshot_tweet', { page_id: currentPageId, lang: currentLang });
   });
 </script>
 

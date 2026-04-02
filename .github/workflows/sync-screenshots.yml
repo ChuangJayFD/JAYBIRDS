@@ -1,0 +1,40 @@
+name: Sync Screenshots from Drive
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 毎日 02:00 UTC（日本時間 11:00）
+  workflow_dispatch:        # 手動実行も可能
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth
+
+      - name: Sync screenshots from Drive
+        env:
+          GA4_SERVICE_ACCOUNT_KEY: ${{ secrets.GA4_SERVICE_ACCOUNT_KEY }}
+          DRIVE_SCREENSHOTS_FOLDER_ID: ${{ secrets.DRIVE_SCREENSHOTS_FOLDER_ID }}
+        run: python sync_screenshots.py
+
+      - name: Generate OGP pages
+        run: python generate_ogp_pages.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add images/screenshots/ screenshots_manifest.json screenshot/
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "sync: update screenshots $(date -u +%Y-%m-%d)"
+          git push
