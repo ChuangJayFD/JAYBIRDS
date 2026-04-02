@@ -20,14 +20,15 @@ const property    = `properties/${PROP_ID}`;
 const client      = new BetaAnalyticsDataClient({ credentials });
 
 async function report({ dimensions = [], metrics, dateRanges, orderBys, limit }) {
-  const [res] = await client.runReport({
+  const req = {
     property,
-    dimensions: dimensions.map(n => ({ name: n })),
     metrics:    metrics.map(n => ({ name: n })),
     dateRanges,
-    ...(orderBys ? { orderBys } : {}),
-    ...(limit    ? { limit }    : {}),
-  });
+    ...(orderBys          ? { orderBys }                               : {}),
+    ...(limit             ? { limit }                                  : {}),
+    ...(dimensions.length ? { dimensions: dimensions.map(n => ({ name: n })) } : {}),
+  };
+  const [res] = await client.runReport(req);
   return res;
 }
 

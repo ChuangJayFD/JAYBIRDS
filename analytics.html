@@ -416,9 +416,14 @@
   }
 
   // ===== 新規/リピーター =====
-  if (data.userType && data.userType.length > 0) {
-    const labels = data.userType.map(r => r.d[0] === 'new' ? '新規' : 'リピーター');
-    const values = data.userType.map(r => r.m[0]);
+  const nvr = { new: 0, returning: 0 };
+  (data.userType || []).forEach(r => {
+    if      (r.d[0] === 'new')       nvr.new       += r.m[0];
+    else if (r.d[0] === 'returning') nvr.returning += r.m[0];
+  });
+  if (nvr.new + nvr.returning > 0) {
+    const labels = ['新規', 'リピーター'];
+    const values = [nvr.new, nvr.returning];
 
     new Chart(document.getElementById('userTypeChart'), {
       type: 'doughnut',
