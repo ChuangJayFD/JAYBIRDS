@@ -1,0 +1,37 @@
+name: Fetch GA4 Analytics
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 毎日 01:00 UTC（日本時間 10:00）
+  workflow_dispatch:        # 手動実行も可能
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install GA4 client
+        run: npm install @google-analytics/data
+
+      - name: Fetch analytics data
+        env:
+          GA4_SERVICE_ACCOUNT_KEY: ${{ secrets.GA4_SERVICE_ACCOUNT_KEY }}
+          GA4_PROPERTY_ID: '529950201'
+        run: node fetch_analytics.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add analytics_data.json
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update analytics $(date -u +%Y-%m-%d)"
+          git push

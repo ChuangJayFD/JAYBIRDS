@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — JAYBIRDS</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="/JAYBIRDS/favicon.png">
+  <link rel="apple-touch-icon" href="/JAYBIRDS/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --navy:      #080f20;
+      --navy-mid:  #0d1630;
+      --navy-card: #101d3a;
+      --navy-h:    #16244a;
+      --gold:      #c9a84c;
+      --gold2:     #e2c06a;
+      --gold3:     #f5e0a0;
+      --gold-dim:  rgba(201,168,76,0.12);
+      --gold-bdr:  rgba(201,168,76,0.25);
+      --white:     #f0ead8;
+      --muted:     rgba(240,234,216,0.55);
+      --dim:       rgba(240,234,216,0.35);
+      --blue:      #409cff;
+      --green:     #30d158;
+      --coral:     #ff6b6b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: dark; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      min-height: 100vh;
+      padding: 0 0 80px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--gold-bdr);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,15,32,0.92); backdrop-filter: blur(12px);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.32em;
+      color: var(--gold); text-transform: uppercase; text-decoration: none;
+    }
+    .nav-back {
+      font-size: 11px; color: var(--muted); letter-spacing: 0.08em;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* ===== HEADER ===== */
+    .page-header {
+      text-align: center;
+      padding: 48px 20px 36px;
+      border-bottom: 1px solid var(--gold-bdr);
+    }
+    .page-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.4em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 6vw, 40px); font-weight: 700;
+      color: var(--white); letter-spacing: 0.05em; line-height: 1.15;
+    }
+    .page-title span { color: var(--gold); }
+    .updated-badge {
+      display: inline-block; margin-top: 14px;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
+      background: var(--gold-dim); border: 1px solid var(--gold-bdr);
+      padding: 4px 14px; border-radius: 20px;
+    }
+    .divider {
+      width: 48px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 18px auto 0;
+    }
+
+    /* ===== WRAPPER ===== */
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 36px 20px 0; }
+
+    /* ===== SECTION ===== */
+    .section { margin-bottom: 44px; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 600; letter-spacing: 0.12em;
+      color: var(--gold); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--gold-bdr), transparent);
+    }
+    .period-note {
+      font-size: 11px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 14px;
+    }
+
+    /* ===== STAT CARDS ===== */
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 520px) { .stat-grid { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-bdr);
+      border-radius: 4px; padding: 20px 18px;
+      position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .stat-label {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 38px); font-weight: 700;
+      color: var(--gold2); line-height: 1;
+    }
+    .stat-sub {
+      font-size: 10px; color: var(--dim); margin-top: 4px; letter-spacing: 0.05em;
+    }
+
+    /* ===== TWO-COL ===== */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ===== CHART CARD ===== */
+    .chart-card {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-bdr);
+      border-radius: 4px; padding: 20px;
+    }
+    .chart-card canvas { width: 100% !important; }
+
+    /* ===== COUNTRY LIST ===== */
+    .country-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .country-row {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .country-name { font-size: 12px; color: var(--white); min-width: 120px; flex-shrink: 0; }
+    .country-bar-wrap { flex: 1; background: rgba(201,168,76,0.08); border-radius: 2px; height: 6px; overflow: hidden; }
+    .country-bar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 2px; transition: width 0.8s ease; }
+    .country-val { font-size: 11px; color: var(--muted); min-width: 36px; text-align: right; }
+
+    /* ===== PAGES LIST ===== */
+    .pages-list { display: flex; flex-direction: column; gap: 6px; }
+    .page-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px;
+      background: rgba(240,234,216,0.03);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 3px;
+      transition: border-color 0.2s;
+    }
+    .page-row:hover { border-color: var(--gold-bdr); }
+    .page-rank {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 700; color: var(--gold);
+      min-width: 24px; text-align: center;
+    }
+    .page-info { flex: 1; min-width: 0; }
+    .page-name { font-size: 12px; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-path { font-size: 10px; color: var(--dim); letter-spacing: 0.03em; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-pv {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 700; color: var(--gold2);
+      flex-shrink: 0;
+    }
+    .page-pv-label { font-size: 9px; color: var(--dim); letter-spacing: 0.1em; text-align: right; }
+
+    /* ===== NO DATA ===== */
+    .no-data {
+      text-align: center; padding: 40px;
+      color: var(--muted); font-size: 13px; letter-spacing: 0.05em;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center; margin-top: 60px;
+      font-size: 10px; color: var(--dim); letter-spacing: 0.12em;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">JAYBIRDS</a>
+  <a href="index.html" class="nav-back">← Home</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">JAYBIRDS Fan Support</div>
+  <h1 class="page-title">Site <span>Analytics</span></h1>
+  <div class="updated-badge" id="updatedBadge">データ読み込み中…</div>
+  <div class="divider"></div>
+</div>
+
+<div class="wrapper">
+
+  <!-- 週次サマリー -->
+  <div class="section">
+    <h2 class="section-title">直近7日間</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Sessions</div>
+        <div class="stat-value" id="w-sessions">—</div>
+        <div class="stat-sub">セッション数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Users</div>
+        <div class="stat-value" id="w-users">—</div>
+        <div class="stat-sub">ユニークユーザー</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Page Views</div>
+        <div class="stat-value" id="w-pageviews">—</div>
+        <div class="stat-sub">ページビュー</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 月次サマリー -->
+  <div class="section">
+    <h2 class="section-title">直近30日間</h2>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Sessions</div>
+        <div class="stat-value" id="m-sessions">—</div>
+        <div class="stat-sub">セッション数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Users</div>
+        <div class="stat-value" id="m-users">—</div>
+        <div class="stat-sub">ユニークユーザー</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Page Views</div>
+        <div class="stat-value" id="m-pageviews">—</div>
+        <div class="stat-sub">ページビュー</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 日別トレンド -->
+  <div class="section">
+    <h2 class="section-title">日別アクセス推移</h2>
+    <p class="period-note">過去30日間 · セッション / ユーザー</p>
+    <div class="chart-card">
+      <canvas id="dailyChart" height="180"></canvas>
+    </div>
+  </div>
+
+  <!-- 国別 + 新規/リピーター -->
+  <div class="two-col section">
+    <div>
+      <h2 class="section-title">国・地域</h2>
+      <p class="period-note">過去30日間 · TOP 10</p>
+      <div class="chart-card">
+        <div class="country-list" id="countryList">
+          <div class="no-data">データなし</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="section-title">新規 / リピーター</h2>
+      <p class="period-note">過去30日間 · セッション比率</p>
+      <div class="chart-card">
+        <canvas id="userTypeChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 人気ページ -->
+  <div class="section">
+    <h2 class="section-title">人気ページ</h2>
+    <p class="period-note">過去30日間 · ページビュー TOP 10</p>
+    <div class="pages-list" id="pagesList">
+      <div class="no-data">データなし</div>
+    </div>
+  </div>
+
+  <footer>JAYBIRDS — Analytics powered by Google Analytics 4</footer>
+
+</div>
+
+<script>
+(async function () {
+  // ===== Chart.js グローバル設定 =====
+  Chart.defaults.color = 'rgba(240,234,216,0.5)';
+  Chart.defaults.borderColor = 'rgba(201,168,76,0.1)';
+  Chart.defaults.font.family = "'Noto Sans JP', sans-serif";
+
+  const GOLD   = '#c9a84c';
+  const GOLD2  = '#e2c06a';
+  const BLUE   = '#409cff';
+  const CORAL  = '#ff6b6b';
+  const MUTED  = 'rgba(240,234,216,0.35)';
+
+  // ===== データ読み込み =====
+  let data;
+  try {
+    const res = await fetch('analytics_data.json?t=' + Date.now());
+    data = await res.json();
+  } catch (e) {
+    document.getElementById('updatedBadge').textContent = 'データ取得エラー';
+    return;
+  }
+
+  // 更新日時
+  if (data.updated) {
+    const d = new Date(data.updated);
+    const fmt = d.toLocaleString('ja-JP', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Tokyo'
+    });
+    document.getElementById('updatedBadge').textContent = `最終更新：${fmt} JST`;
+  } else {
+    document.getElementById('updatedBadge').textContent = 'データ未取得（初回実行をお待ちください）';
+  }
+
+  // ===== ユーティリティ =====
+  function fmt(n) {
+    if (!n && n !== 0) return '—';
+    return Number(n).toLocaleString('ja-JP');
+  }
+
+  // ===== サマリーカード =====
+  document.getElementById('w-sessions').textContent  = fmt(data.weekly?.sessions);
+  document.getElementById('w-users').textContent     = fmt(data.weekly?.users);
+  document.getElementById('w-pageviews').textContent = fmt(data.weekly?.pageviews);
+  document.getElementById('m-sessions').textContent  = fmt(data.monthly?.sessions);
+  document.getElementById('m-users').textContent     = fmt(data.monthly?.users);
+  document.getElementById('m-pageviews').textContent = fmt(data.monthly?.pageviews);
+
+  // ===== 日別トレンド =====
+  if (data.daily && data.daily.length > 0) {
+    const labels   = data.daily.map(r => {
+      const s = r.d[0]; // "YYYYMMDD"
+      return `${s.slice(4,6)}/${s.slice(6,8)}`;
+    });
+    const sessions = data.daily.map(r => r.m[0]);
+    const users    = data.daily.map(r => r.m[1]);
+
+    new Chart(document.getElementById('dailyChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Sessions',
+            data: sessions,
+            borderColor: GOLD,
+            backgroundColor: 'rgba(201,168,76,0.08)',
+            borderWidth: 2,
+            pointRadius: 2,
+            tension: 0.3,
+            fill: true,
+          },
+          {
+            label: 'Users',
+            data: users,
+            borderColor: BLUE,
+            backgroundColor: 'rgba(64,156,255,0.06)',
+            borderWidth: 1.5,
+            pointRadius: 2,
+            tension: 0.3,
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: MUTED, font: { size: 11 }, boxWidth: 12 } },
+          tooltip: { mode: 'index', intersect: false },
+        },
+        scales: {
+          x: { ticks: { color: MUTED, font: { size: 10 }, maxTicksLimit: 10 } },
+          y: { ticks: { color: MUTED, font: { size: 10 } }, beginAtZero: true },
+        },
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      },
+    });
+  }
+
+  // ===== 国別リスト =====
+  if (data.countries && data.countries.length > 0) {
+    const max = data.countries[0].m[0];
+    const html = data.countries.map(r => {
+      const pct = max > 0 ? (r.m[0] / max * 100).toFixed(1) : 0;
+      return `
+        <div class="country-row">
+          <span class="country-name">${r.d[0] || '不明'}</span>
+          <div class="country-bar-wrap">
+            <div class="country-bar" style="width:${pct}%"></div>
+          </div>
+          <span class="country-val">${fmt(r.m[0])}</span>
+        </div>`;
+    }).join('');
+    document.getElementById('countryList').innerHTML = html;
+  }
+
+  // ===== 新規/リピーター =====
+  if (data.userType && data.userType.length > 0) {
+    const labels = data.userType.map(r => r.d[0] === 'new' ? '新規' : 'リピーター');
+    const values = data.userType.map(r => r.m[0]);
+
+    new Chart(document.getElementById('userTypeChart'), {
+      type: 'doughnut',
+      data: {
+        labels,
+        datasets: [{
+          data: values,
+          backgroundColor: [GOLD, BLUE],
+          borderColor: '#101d3a',
+          borderWidth: 3,
+          hoverOffset: 6,
+        }],
+      },
+      options: {
+        responsive: true,
+        cutout: '62%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: MUTED, font: { size: 11 }, padding: 16, boxWidth: 12 },
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                const pct = total > 0 ? (ctx.parsed / total * 100).toFixed(1) : 0;
+                return ` ${fmt(ctx.parsed)} (${pct}%)`;
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  // ===== 人気ページ =====
+  if (data.pages && data.pages.length > 0) {
+    const html = data.pages.map((r, i) => {
+      const title = r.d[0] || 'Untitled';
+      const path  = r.d[1] || '';
+      const pv    = r.m[0];
+      return `
+        <div class="page-row">
+          <div class="page-rank">${i + 1}</div>
+          <div class="page-info">
+            <div class="page-name">${title}</div>
+            <div class="page-path">${path}</div>
+          </div>
+          <div>
+            <div class="page-pv">${fmt(pv)}</div>
+            <div class="page-pv-label">PV</div>
+          </div>
+        </div>`;
+    }).join('');
+    document.getElementById('pagesList').innerHTML = html;
+  }
+
+})();
+</script>
+
+</body>
+</html>
