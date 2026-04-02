@@ -181,7 +181,7 @@ body {
 .thumb-img.loaded { opacity: 1; }
 .thumb-placeholder {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; color: var(--muted); background: var(--card2);
+  font-size: 1.2rem; color: var(--muted); background: var(--card2);
   transition: opacity 0.3s;
 }
 .thumb-placeholder.hidden { opacity: 0; pointer-events: none; }
@@ -191,7 +191,7 @@ body {
 @media (max-width: 480px) { .x-post-grid { grid-template-columns: 1fr; } }
 
 .x-post-card {
-  display: block;
+  display: flex; align-items: stretch;
   text-decoration: none; background: var(--card); border: 1px solid var(--border);
   border-radius: 12px;
   transition: border-color 0.25s, transform 0.2s;
@@ -204,62 +204,100 @@ body {
 .x-post-card:hover { border-color: rgba(29,155,240,0.4); transform: translateY(-2px); }
 
 .x-thumb-wrap {
-  width: 100%; aspect-ratio: 16/9; background: var(--card2);
+  width: 64px; flex-shrink: 0;
+  aspect-ratio: 5/7; background: var(--card2);
   position: relative; overflow: hidden;
 }
 
 .x-post-body {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 14px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 12px 12px 12px; flex: 1; min-width: 0;
 }
 .x-post-icon {
-  width: 36px; height: 36px; border-radius: 8px;
+  width: 30px; height: 30px; border-radius: 7px;
   background: rgba(29,155,240,0.15);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0; color: var(--x);
+  font-size: 0.85rem; flex-shrink: 0; color: var(--x);
   font-weight: 900;
 }
-.x-post-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(29,155,240,0.7); margin-bottom: 2px; }
-.x-post-name  { font-size: 12px; font-weight: 700; color: var(--label); line-height: 1.4; }
+.x-post-label { font-size: 8px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(29,155,240,0.7); margin-bottom: 2px; }
+.x-post-name  { font-size: 11px; font-weight: 700; color: var(--label); line-height: 1.4; }
 .x-post-arrow {
-  margin-left: auto; color: var(--x); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
+  margin-left: auto; color: var(--x); opacity: 0.4; font-size: 0.85rem; flex-shrink: 0;
   transition: opacity 0.2s, transform 0.2s;
 }
 .x-post-card:hover .x-post-arrow { opacity: 1; transform: translateX(3px); }
 
 /* ===== Instagram ===== */
 .insta-card {
+  display: flex; align-items: stretch; text-decoration: none;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color 0.25s, transform 0.2s;
+  position: relative;
+}
+.insta-card:hover { border-color: rgba(225,48,108,0.5); transform: translateY(-2px); }
+.insta-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  z-index: 1;
+}
+.insta-thumb {
+  width: 64px; flex-shrink: 0;
+  aspect-ratio: 1/1; background: var(--card2);
+  position: relative; overflow: hidden;
+}
+.insta-info {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; flex: 1; min-width: 0;
+}
+.insta-icon {
+  width: 26px; height: 26px; border-radius: 6px;
+  background: rgba(225,48,108,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; flex-shrink: 0;
+}
+.insta-label { font-size: 8px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(225,48,108,0.8); margin-bottom: 1px; }
+.insta-name  { font-size: 11px; font-weight: 700; color: var(--label); }
+.insta-arrow {
+  margin-left: auto; color: var(--insta); opacity: 0.4; font-size: 0.85rem; flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.insta-card:hover .insta-arrow { opacity: 1; transform: translateX(3px); }
+
+/* ===== TikTok ===== */
+.tiktok-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 480px) { .tiktok-grid { grid-template-columns: 1fr 1fr; } }
+
+.tiktok-card {
   display: block; text-decoration: none;
   background: var(--card); border: 1px solid var(--border);
   border-radius: 12px; overflow: hidden;
   transition: border-color 0.25s, transform 0.2s;
 }
-.insta-card:hover { border-color: rgba(225,48,108,0.5); transform: translateY(-2px); }
-.insta-card::before {
+.tiktok-card:hover { border-color: rgba(105,201,208,0.5); transform: translateY(-2px); }
+.tiktok-card::before {
   content: ''; display: block; height: 2px;
-  background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background: linear-gradient(90deg, #69c9d0, #ee1d52, #69c9d0);
 }
-.insta-thumb {
-  width: 100%; aspect-ratio: 1/1; background: var(--card2);
-  position: relative; overflow: hidden;
+.tiktok-thumb {
+  width: 100%; aspect-ratio: 9/16; background: var(--card2);
+  position: relative; overflow: hidden; max-height: 220px;
 }
-.insta-info {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 12px;
+.tiktok-info {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 10px;
 }
-.insta-icon {
-  width: 28px; height: 28px; border-radius: 7px;
-  background: rgba(225,48,108,0.15);
+.tiktok-icon-sm {
+  width: 22px; height: 22px; border-radius: 5px;
+  background: rgba(105,201,208,0.15);
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem; flex-shrink: 0;
+  font-size: 0.65rem; flex-shrink: 0;
 }
-.insta-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(225,48,108,0.8); margin-bottom: 1px; }
-.insta-name  { font-size: 12px; font-weight: 700; color: var(--label); }
-.insta-arrow {
-  margin-left: auto; color: var(--insta); opacity: 0.4; font-size: 0.9rem; flex-shrink: 0;
-  transition: opacity 0.2s, transform 0.2s;
-}
-.insta-card:hover .insta-arrow { opacity: 1; transform: translateX(3px); }
+.tiktok-label { font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(105,201,208,0.8); margin-bottom: 1px; }
+.tiktok-name  { font-size: 11px; font-weight: 700; color: var(--label); }
+.tiktok-arrow { margin-left: auto; color: var(--tiktok); opacity: 0.4; font-size: 0.8rem; flex-shrink: 0; transition: opacity 0.2s, transform 0.2s; }
+.tiktok-card:hover .tiktok-arrow { opacity: 1; transform: translateX(2px); }
 
 .footer-note { text-align: center; font-size: 11px; color: var(--gold); opacity: 0.5; margin-top: 28px; line-height: 1.8; }
 </style>
@@ -437,21 +475,39 @@ body {
   <!-- TikTok -->
   <div class="section">
     <p class="section-label">TikTok</p>
-    <div class="platform-grid">
-      <a href="https://vt.tiktok.com/ZSugJndLu/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-tiktok">🎵</div>
-        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #1</p></div>
-        <span class="platform-arrow">→</span>
+    <div class="tiktok-grid">
+      <a href="https://vt.tiktok.com/ZSugJndLu/" target="_blank" rel="noopener" class="tiktok-card" data-thumb="https://vt.tiktok.com/ZSugJndLu/">
+        <div class="tiktok-thumb">
+          <div class="thumb-placeholder">🎵</div>
+          <img class="thumb-img" src="" alt="TikTok動画 #1" loading="lazy">
+        </div>
+        <div class="tiktok-info">
+          <div class="tiktok-icon-sm">🎵</div>
+          <div><p class="tiktok-label">TikTok</p><p class="tiktok-name">動画 #1</p></div>
+          <span class="tiktok-arrow">→</span>
+        </div>
       </a>
-      <a href="https://vt.tiktok.com/ZSugJpcF5/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-tiktok">🎵</div>
-        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #2</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://vt.tiktok.com/ZSugJpcF5/" target="_blank" rel="noopener" class="tiktok-card" data-thumb="https://vt.tiktok.com/ZSugJpcF5/">
+        <div class="tiktok-thumb">
+          <div class="thumb-placeholder">🎵</div>
+          <img class="thumb-img" src="" alt="TikTok動画 #2" loading="lazy">
+        </div>
+        <div class="tiktok-info">
+          <div class="tiktok-icon-sm">🎵</div>
+          <div><p class="tiktok-label">TikTok</p><p class="tiktok-name">動画 #2</p></div>
+          <span class="tiktok-arrow">→</span>
+        </div>
       </a>
-      <a href="https://vt.tiktok.com/ZSugJgr2p/" target="_blank" rel="noopener" class="platform-card">
-        <div class="platform-icon icon-tiktok">🎵</div>
-        <div><p class="platform-label">TikTok</p><p class="platform-name">動画 #3</p></div>
-        <span class="platform-arrow">→</span>
+      <a href="https://vt.tiktok.com/ZSugJgr2p/" target="_blank" rel="noopener" class="tiktok-card" data-thumb="https://vt.tiktok.com/ZSugJgr2p/">
+        <div class="tiktok-thumb">
+          <div class="thumb-placeholder">🎵</div>
+          <img class="thumb-img" src="" alt="TikTok動画 #3" loading="lazy">
+        </div>
+        <div class="tiktok-info">
+          <div class="tiktok-icon-sm">🎵</div>
+          <div><p class="tiktok-label">TikTok</p><p class="tiktok-name">動画 #3</p></div>
+          <span class="tiktok-arrow">→</span>
+        </div>
       </a>
     </div>
     <div class="howto">
