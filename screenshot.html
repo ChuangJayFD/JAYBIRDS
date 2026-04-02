@@ -550,13 +550,15 @@
 
 <script>
   // ===== 設定 =====
-  const TOTAL = 30;
   const BASE_URL = 'https://chuangjayfd.github.io/JAYBIRDS';
   const IMG_PATH = `${BASE_URL}/images/screenshots/`;
   const OGP_PATH = `${BASE_URL}/screenshot/`;
 
-  // 画像ファイル名（実際のファイル名に合わせて変更してください）
-  const images = Array.from({ length: TOTAL }, (_, i) => `sshot_${String(i + 1).padStart(2, '0')}.png`);
+  // ===== State =====
+  let currentIndex = null;
+  let currentLang = 'ja';
+  let TOTAL = 30;
+  let cacheVer = '';
 
   // ===== ツイート文面 =====
   const tweetTexts = {
@@ -566,12 +568,15 @@
     ko: (n) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
   };
 
-  // ===== State =====
-  let currentIndex = null;
-  let currentLang = 'ja';
-
-  // ===== 初期化 =====
-  rollImage();
+  // ===== 初期化：cache-version.json を取得してからスタート =====
+  fetch(`${BASE_URL}/cache-version.json?t=${Date.now()}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.total) TOTAL = data.total;
+      if (data.version) cacheVer = data.version;
+    })
+    .catch(() => {})
+    .finally(() => rollImage());
 
   function rollImage() {
     let next;
@@ -593,7 +598,8 @@
       // 画像がまだない場合はプレースホルダー表示
       placeholder.style.display = 'flex';
     };
-    img.src = `${IMG_PATH}${images[currentIndex - 1]}`;
+    const filename = `sshot_${String(currentIndex).padStart(2, '0')}.png`;
+    img.src = `${IMG_PATH}${filename}${cacheVer ? '?v=' + cacheVer : ''}`;
     badge.textContent = `No.${String(currentIndex).padStart(2, '0')}`;
 
     updateTweetBtn();
