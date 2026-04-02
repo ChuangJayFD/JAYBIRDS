@@ -1,9 +1,295 @@
 {
-  "updated": null,
-  "weekly":  { "sessions": 0, "users": 0, "pageviews": 0 },
-  "monthly": { "sessions": 0, "users": 0, "pageviews": 0 },
-  "daily":     [],
-  "countries": [],
-  "pages":     [],
-  "userType":  []
+  "updated": "2026-04-02T12:10:22.266Z",
+  "weekly": {
+    "sessions": 250,
+    "users": 127,
+    "pageviews": 726
+  },
+  "monthly": {
+    "sessions": 250,
+    "users": 127,
+    "pageviews": 726
+  },
+  "daily": [
+    {
+      "d": [
+        "20260326"
+      ],
+      "m": [
+        44,
+        34
+      ]
+    },
+    {
+      "d": [
+        "20260327"
+      ],
+      "m": [
+        55,
+        35
+      ]
+    },
+    {
+      "d": [
+        "20260328"
+      ],
+      "m": [
+        14,
+        11
+      ]
+    },
+    {
+      "d": [
+        "20260329"
+      ],
+      "m": [
+        17,
+        11
+      ]
+    },
+    {
+      "d": [
+        "20260330"
+      ],
+      "m": [
+        26,
+        18
+      ]
+    },
+    {
+      "d": [
+        "20260331"
+      ],
+      "m": [
+        43,
+        29
+      ]
+    },
+    {
+      "d": [
+        "20260401"
+      ],
+      "m": [
+        34,
+        27
+      ]
+    },
+    {
+      "d": [
+        "20260402"
+      ],
+      "m": [
+        17,
+        16
+      ]
+    }
+  ],
+  "countries": [
+    {
+      "d": [
+        "Japan"
+      ],
+      "m": [
+        230
+      ]
+    },
+    {
+      "d": [
+        "Australia"
+      ],
+      "m": [
+        8
+      ]
+    },
+    {
+      "d": [
+        "China"
+      ],
+      "m": [
+        2
+      ]
+    },
+    {
+      "d": [
+        "South Korea"
+      ],
+      "m": [
+        2
+      ]
+    },
+    {
+      "d": [
+        "Sweden"
+      ],
+      "m": [
+        2
+      ]
+    },
+    {
+      "d": [
+        "Taiwan"
+      ],
+      "m": [
+        2
+      ]
+    },
+    {
+      "d": [
+        "Canada"
+      ],
+      "m": [
+        1
+      ]
+    },
+    {
+      "d": [
+        "Philippines"
+      ],
+      "m": [
+        1
+      ]
+    },
+    {
+      "d": [
+        "Russia"
+      ],
+      "m": [
+        1
+      ]
+    },
+    {
+      "d": [
+        "United Kingdom"
+      ],
+      "m": [
+        1
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "d": [
+        "投票シミュレーター | 101SHINSEKAI HOW TO VOTE — JAYBIRDS (Chuang Jay)",
+        "/JAYBIRDS/simulator.html"
+      ],
+      "m": [
+        125
+      ]
+    },
+    {
+      "d": [
+        "Gallery — 布教画像・配布素材 | JAYBIRDS (Chuang Jay)",
+        "/JAYBIRDS/gallery.html"
+      ],
+      "m": [
+        86
+      ]
+    },
+    {
+      "d": [
+        "スクショシェア | ジュアンジェイ — JAYBIRDS (Chuang Jay)",
+        "/JAYBIRDS/screenshot.html"
+      ],
+      "m": [
+        81
+      ]
+    },
+    {
+      "d": [
+        "JAYBIRDS — Chuang Jay Fan Support",
+        "/JAYBIRDS/index.html"
+      ],
+      "m": [
+        62
+      ]
+    },
+    {
+      "d": [
+        "投票ガイド — JAYBIRDS",
+        "/JAYBIRDS/vote.html"
+      ],
+      "m": [
+        62
+      ]
+    },
+    {
+      "d": [
+        "Vote Simulator — JAYBIRDS",
+        "/JAYBIRDS/simulator.html"
+      ],
+      "m": [
+        37
+      ]
+    },
+    {
+      "d": [
+        "番組スケジュール — JAYBIRDS",
+        "/JAYBIRDS/schedule.html"
+      ],
+      "m": [
+        30
+      ]
+    },
+    {
+      "d": [
+        "投票ガイド — JAYBIRDS",
+        "/JAYBIRDS/nyao.html"
+      ],
+      "m": [
+        23
+      ]
+    },
+    {
+      "d": [
+        "番組スケジュール ロードマップ — JAYBIRDS (Chuang Jay)",
+        "/JAYBIRDS/nyao.html"
+      ],
+      "m": [
+        23
+      ]
+    },
+    {
+      "d": [
+        "JAYBIRDS | Screenshot Share",
+        "/JAYBIRDS/screenshot.html"
+      ],
+      "m": [
+        18
+      ]
+    }
+  ],
+  "userType": [
+    {
+      "d": [
+        "new"
+      ],
+      "m": [
+        128
+      ]
+    },
+    {
+      "d": [
+        "returning"
+      ],
+      "m": [
+        106
+      ]
+    },
+    {
+      "d": [
+        "(not set)"
+      ],
+      "m": [
+        16
+      ]
+    },
+    {
+      "d": [
+        ""
+      ],
+      "m": [
+        4
+      ]
+    }
+  ]
 }
