@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja" style="color-scheme: only dark;">
 <head>
   <meta charset="UTF-8" />
@@ -9,23 +8,14 @@
   <meta name="application-name" content="CHUANG JAY FD | JAYBIRDS" />
   <link rel="icon" type="image/png" href="/JAYBIRDS/favicon.png" />
   <link rel="apple-touch-icon" href="/JAYBIRDS/favicon.png" />
-
-  <!-- SEO -->
-
   <meta name="description" content="ジュアンジェイ(Chuang Jay)のスクショをランダムで引いてXでシェアしよう！PRODUCE 101 JAPAN 新世界（日プ新世界）応援ファンサイト JAYBIRDS。#ジュアンジェイ #JAYどこ #FINDJAY" />
   <meta name="keywords" content="ジュアンジェイ,ChuangJay,莊傑,日プ新世界,PRODUCE101JAPAN新世界,101SHINSEKAI,スクショ,ファンサイト,JAYBIRDS,JAYどこ,FINDJAY,推し活,サバイバルオーディション" />
   <link rel="canonical" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
-
-  <!-- hreflang -->
-
   <link rel="alternate" hreflang="ja" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
   <link rel="alternate" hreflang="en" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
   <link rel="alternate" hreflang="zh-TW" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
   <link rel="alternate" hreflang="ko" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
   <link rel="alternate" hreflang="x-default" href="https://chuangjayfd.github.io/JAYBIRDS/screenshot.html" />
-
-  <!-- OGP -->
-
   <meta property="og:title" content="スクショシェア | ジュアンジェイ — JAYBIRDS" />
   <meta property="og:description" content="ジュアンジェイのスクショをランダムで引いてシェアしよう！#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界" />
   <meta property="og:image" content="https://chuangjayfd.github.io/JAYBIRDS/screenshot.png" />
@@ -37,18 +27,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="JAYBIRDS — Chuang Jay Fan Support" />
   <meta property="og:locale" content="ja_JP" />
-
-  <!-- Twitter Card -->
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@CHUANGJAY_FD" />
   <meta name="twitter:title" content="スクショシェア | ジュアンジェイ — JAYBIRDS" />
   <meta name="twitter:description" content="ジュアンジェイのスクショをランダムで引いてシェアしよう！#ジュアンジェイ #JAYどこ #FINDJAY" />
   <meta name="twitter:image" content="https://chuangjayfd.github.io/JAYBIRDS/screenshot.png" />
   <meta name="twitter:image:alt" content="ジュアンジェイ Chuang Jay スクショシェア — JAYBIRDS" />
-
-  <!-- JSON-LD -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -65,22 +49,16 @@
     }
   }
   </script>
-
-  <!-- GA4 -->
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXHV880LX0"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-EXHV880LX0');
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
-
   <style>
     :root {
       --black-card: #0d1b3e;
@@ -92,14 +70,11 @@
       --white: #f0ead8;
       --white-dim: rgba(240,234,216,0.6);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { color-scheme: dark; }
-
     body {
-      background-color: var(--navy);
-      color: var(--white);
+      background-color: #0a1628;
+      color: #f0ead8;
       font-family: 'Noto Sans JP', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -109,8 +84,6 @@
       position: relative;
       overflow-x: hidden;
     }
-
-    /* 背景の星っぽいテクスチャ */
     body::before {
       content: '';
       position: fixed;
@@ -121,8 +94,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ヘッダー */
     header {
       width: 100%;
       max-width: 640px;
@@ -131,58 +102,81 @@
       position: relative;
       z-index: 1;
     }
-
     .site-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.3em;
-      color: var(--gold);
+      color: #c9a84c;
       text-transform: uppercase;
       margin-bottom: 8px;
     }
-
     .page-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 7vw, 42px);
       font-weight: 700;
-      color: var(--white);
+      color: #f0ead8;
       line-height: 1.1;
       letter-spacing: 0.05em;
     }
-
-    .page-title span {
-      color: var(--gold);
-    }
-
+    .page-title span { color: #c9a84c; }
     .page-desc {
       font-size: 13px;
-      color: var(--white-dim);
+      color: rgba(240,234,216,0.6);
       margin-top: 12px;
       line-height: 1.7;
       letter-spacing: 0.05em;
     }
-
     .divider {
       width: 60px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
       margin: 20px auto 0;
     }
-
-    /* メインカード */
     main {
       width: 100%;
       max-width: 640px;
       position: relative;
       z-index: 1;
     }
-
-    /* 画像エリア */
+    .ep-section { margin-bottom: 20px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: rgba(240,234,216,0.6);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ep-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ep-tab {
+      padding: 8px 16px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      background: transparent;
+      color: rgba(240,234,216,0.6);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.05em;
+    }
+    .ep-tab.active {
+      background: rgba(201,168,76,0.15);
+      border-color: #c9a84c;
+      color: #c9a84c;
+    }
+    .ep-tab:hover:not(.active) {
+      border-color: rgba(201,168,76,0.5);
+      color: #f0ead8;
+    }
     .screenshot-frame {
       width: 100%;
       aspect-ratio: 16/9;
-      background: var(--black-card);
+      background: #0d1b3e;
       border: 1px solid rgba(201,168,76,0.3);
       border-radius: 4px;
       overflow: hidden;
@@ -190,7 +184,6 @@
       margin-bottom: 24px;
       box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.1);
     }
-
     .screenshot-frame img {
       width: 100%;
       height: 100%;
@@ -198,11 +191,7 @@
       display: block;
       transition: opacity 0.4s ease;
     }
-
-    .screenshot-frame img.loading {
-      opacity: 0;
-    }
-
+    .screenshot-frame img.loading { opacity: 0; }
     .screenshot-frame .placeholder {
       position: absolute;
       inset: 0;
@@ -211,10 +200,9 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      color: var(--gold-dim);
-      background: var(--black-card);
+      color: rgba(201,168,76,0.15);
+      background: #0d1b3e;
     }
-
     .placeholder-icon {
       width: 48px;
       height: 48px;
@@ -224,23 +212,20 @@
       align-items: center;
       justify-content: center;
     }
-
     .placeholder-icon svg {
       width: 22px;
       height: 22px;
-      stroke: var(--gold);
+      stroke: #c9a84c;
       fill: none;
       stroke-width: 1.5;
     }
-
-    /* 画像番号バッジ */
     .img-badge {
       position: absolute;
       bottom: 12px;
       right: 12px;
       background: rgba(13,27,62,0.85);
       border: 1px solid rgba(201,168,76,0.4);
-      color: var(--gold);
+      color: #c9a84c;
       font-family: 'Cormorant Garamond', serif;
       font-size: 12px;
       letter-spacing: 0.1em;
@@ -248,15 +233,13 @@
       border-radius: 2px;
       backdrop-filter: blur(4px);
     }
-
-    /* リロールボタン */
     .reroll-btn {
       width: 100%;
       padding: 14px;
       background: transparent;
       border: 1px solid rgba(201,168,76,0.4);
       border-radius: 3px;
-      color: var(--gold);
+      color: #c9a84c;
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 13px;
       letter-spacing: 0.15em;
@@ -268,95 +251,53 @@
       gap: 10px;
       margin-bottom: 28px;
     }
-
-    .reroll-btn:hover {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-    }
-
-    .reroll-btn:active {
-      transform: scale(0.98);
-    }
-
+    .reroll-btn:hover { background: rgba(201,168,76,0.15); border-color: #c9a84c; }
+    .reroll-btn:active { transform: scale(0.98); }
     .reroll-icon {
       width: 16px;
       height: 16px;
-      stroke: var(--gold);
+      stroke: #c9a84c;
       fill: none;
       stroke-width: 2;
       transition: transform 0.4s ease;
     }
-
-    .reroll-btn:hover .reroll-icon {
-      transform: rotate(180deg);
-    }
-
-    /* 言語選択 */
-    .lang-section {
-      margin-bottom: 20px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--white-dim);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .lang-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
+    .reroll-btn:hover .reroll-icon { transform: rotate(180deg); }
+    .lang-section { margin-bottom: 20px; }
+    .lang-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
     .lang-tab {
       padding: 8px 16px;
       border: 1px solid rgba(201,168,76,0.3);
       border-radius: 2px;
       background: transparent;
-      color: var(--white-dim);
+      color: rgba(240,234,216,0.6);
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 13px;
       cursor: pointer;
       transition: all 0.2s ease;
       letter-spacing: 0.05em;
     }
-
-    .lang-tab.active {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .lang-tab:hover:not(.active) {
-      border-color: rgba(201,168,76,0.5);
-      color: var(--white);
-    }
-
-    /* ツイートプレビュー */
+    .lang-tab.active { background: rgba(201,168,76,0.15); border-color: #c9a84c; color: #c9a84c; }
+    .lang-tab:hover:not(.active) { border-color: rgba(201,168,76,0.5); color: #f0ead8; }
     .tweet-preview {
-      background: var(--black-card);
+      background: #0d1b3e;
       border: 1px solid rgba(201,168,76,0.2);
       border-radius: 3px;
       padding: 16px;
       margin-bottom: 20px;
       font-size: 14px;
       line-height: 1.7;
-      color: var(--white-dim);
+      color: rgba(240,234,216,0.6);
       min-height: 80px;
       white-space: pre-wrap;
       word-break: break-word;
     }
-
-    /* ツイートボタン */
     .tweet-btn {
       width: 100%;
       padding: 16px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      background: linear-gradient(135deg, #c9a84c 0%, #e2c06a 100%);
       border: none;
       border-radius: 3px;
-      color: var(--navy);
+      color: #0a1628;
       font-family: 'Noto Sans JP', sans-serif;
       font-weight: 500;
       font-size: 14px;
@@ -369,24 +310,9 @@
       gap: 10px;
       text-decoration: none;
     }
-
-    .tweet-btn:hover {
-      filter: brightness(1.1);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
-    }
-
-    .tweet-btn:active {
-      transform: translateY(0);
-    }
-
-    .x-icon {
-      width: 16px;
-      height: 16px;
-      fill: var(--navy);
-    }
-
-    /* フッター */
+    .tweet-btn:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
+    .tweet-btn:active { transform: translateY(0); }
+    .x-icon { width: 16px; height: 16px; fill: #0a1628; }
     footer {
       margin-top: 48px;
       text-align: center;
@@ -396,22 +322,12 @@
       position: relative;
       z-index: 1;
     }
-
-    footer a {
-      color: rgba(201,168,76,0.5);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    /* アニメーション */
+    footer a { color: rgba(201,168,76,0.5); text-decoration: none; }
+    footer a:hover { color: #c9a84c; }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     header { animation: fadeInUp 0.5s ease both; }
     .screenshot-frame { animation: fadeInUp 0.5s ease 0.1s both; }
     .reroll-btn { animation: fadeInUp 0.5s ease 0.2s both; }
@@ -419,27 +335,12 @@
     .tweet-preview { animation: fadeInUp 0.5s ease 0.35s both; }
     .tweet-btn { animation: fadeInUp 0.5s ease 0.4s both; }
   </style>
-
 </head>
 <body>
 
-<nav style="
-  width:100%;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 24px 14px;
-  border-bottom:1px solid rgba(201,168,76,0.2);
-  position:relative;z-index:10;
-">
-  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" style="
-    font-family:'Cormorant Garamond',serif;
-    font-size:14px;font-weight:700;letter-spacing:0.32em;
-    color:#c9a84c;text-transform:uppercase;text-decoration:none;
-  ">JAYBIRDS</a>
-  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" style="
-    font-size:11px;color:rgba(240,234,216,0.4);
-    letter-spacing:0.08em;text-decoration:none;
-    transition:color 0.2s;
-  ">← Home</a>
+<nav style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 24px 14px;border-bottom:1px solid rgba(201,168,76,0.2);position:relative;z-index:10;">
+  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:0.32em;color:#c9a84c;text-transform:uppercase;text-decoration:none;">JAYBIRDS</a>
+  <a href="https://chuangjayfd.github.io/JAYBIRDS/index.html" style="font-size:11px;color:rgba(240,234,216,0.4);letter-spacing:0.08em;text-decoration:none;transition:color 0.2s;">← Home</a>
 </nav>
 
 <header>
@@ -450,10 +351,12 @@
 </header>
 
 <main>
-  <!-- 各話選択 -->
-  <div class="ep-section" id="epSection" style="display:none;margin-bottom:20px;">
-    <div class="section-label">話数を選ぶ</div>
-    <div class="ep-tabs" id="epTabs" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+  <!-- エピソード選択 -->
+  <div class="ep-section">
+    <div class="section-label">Episode</div>
+    <div class="ep-tabs" id="epTabs">
+      <button class="ep-tab active" onclick="setEp('all', this)">🪶 全話</button>
+    </div>
   </div>
 
   <!-- 画像フレーム -->
@@ -468,30 +371,26 @@
   </div>
 
   <!-- 別の画像を引くボタン -->
-
   <button class="reroll-btn" id="rerollBtn" onclick="rollImage()">
     <svg class="reroll-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
     別の画像を引く
   </button>
 
   <!-- 言語選択 -->
-
   <div class="lang-section">
     <div class="section-label">Tweet Language</div>
     <div class="lang-tabs" id="langTabs">
-      <button class="lang-tab active" onclick="setLang('ja')">🇯🇵 日本語</button>
-      <button class="lang-tab" onclick="setLang('en')">🌏 English</button>
-      <button class="lang-tab" onclick="setLang('zh')">🇹🇼 繁體中文</button>
-      <button class="lang-tab" onclick="setLang('ko')">🇰🇷 한국어</button>
+      <button class="lang-tab active" onclick="setLang('ja', this)">🇯🇵 日本語</button>
+      <button class="lang-tab" onclick="setLang('en', this)">🌏 English</button>
+      <button class="lang-tab" onclick="setLang('zh', this)">🇹🇼 繁體中文</button>
+      <button class="lang-tab" onclick="setLang('ko', this)">🇰🇷 한국어</button>
     </div>
   </div>
 
   <!-- ツイート文面プレビュー -->
-
   <div class="tweet-preview" id="tweetPreview"></div>
 
   <!-- ツイートボタン -->
-
   <a class="tweet-btn" id="tweetBtn" href="#" target="_blank" rel="noopener">
     <svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.213 5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -500,41 +399,19 @@
   </a>
 
   <!-- Googleドライブ仕切り -->
-
-  <div style="
-    display:flex;align-items:center;gap:12px;
-    margin:28px 0 16px;
-  ">
+  <div style="display:flex;align-items:center;gap:12px;margin:28px 0 16px;">
     <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3));"></div>
     <span style="font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:0.28em;color:rgba(201,168,76,0.5);text-transform:uppercase;">More from JAYBIRDS</span>
     <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(201,168,76,0.3),transparent);"></div>
   </div>
 
-  <!-- ドライブボタン -->
-
   <p style="font-size:13px;color:rgba(240,234,216,0.6);text-align:center;letter-spacing:0.06em;line-height:1.7;margin-bottom:10px;">
     🙇 スクショ提供してください 🙇‍♀️
   </p>
-  <a
-    id="driveBtn"
-    href="https://drive.google.com/drive/folders/1ryEpTwNb9z5ir-6vRXaJ7ScXNyWuWFQE"
-    target="_blank" rel="noopener"
-    style="
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;padding:14px;
-      background:transparent;
-      border:1px solid rgba(201,168,76,0.35);
-      border-radius:3px;
-      color:rgba(240,234,216,0.7);
-      font-family:'Noto Sans JP',sans-serif;
-      font-size:13px;letter-spacing:0.08em;
-      text-decoration:none;
-      transition:all 0.2s;
-      margin-bottom:8px;
-    "
+  <a id="driveBtn" href="https://drive.google.com/drive/folders/1ryEpTwNb9z5ir-6vRXaJ7ScXNyWuWFQE" target="_blank" rel="noopener"
+    style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:transparent;border:1px solid rgba(201,168,76,0.35);border-radius:3px;color:rgba(240,234,216,0.7);font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:0.08em;text-decoration:none;transition:all 0.2s;margin-bottom:8px;"
     onmouseover="this.style.background='rgba(201,168,76,0.1)';this.style.borderColor='rgba(201,168,76,0.6)';this.style.color='#e2c06a';"
-    onmouseout="this.style.background='transparent';this.style.borderColor='rgba(201,168,76,0.35)';this.style.color='rgba(240,234,216,0.7)';"
-  >
+    onmouseout="this.style.background='transparent';this.style.borderColor='rgba(201,168,76,0.35)';this.style.color='rgba(240,234,216,0.7)';">
     <svg width="18" height="16" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
       <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
       <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
@@ -555,92 +432,109 @@
 </footer>
 
 <script>
-  // ===== 設定 =====
-  // ===== 設定 =====
-const BASE_URL = 'https://chuangjayfd.github.io/JAYBIRDS';
-const MANIFEST_URL = `${BASE_URL}/screenshots_manifest.json`;
+  const BASE_URL = 'https://chuangjayfd.github.io/JAYBIRDS';
+  const MANIFEST_URL = `${BASE_URL}/screenshots_manifest.json`;
 
-let allImages = [];
-let currentIndex = null;
-let currentLang = 'ja';
-let currentEp = 'all';
+  let allImages = [];
+  let currentImage = null;
+  let currentLang = 'ja';
+  let currentEp = 'all';
 
-// ===== マニフェスト読み込み =====
-async function loadManifest() {
-  const res = await fetch(MANIFEST_URL);
-  const manifest = await res.json();
-  allImages = [];
-  for (const ep of manifest.episodes) {
-    for (let i = 0; i < ep.images.length; i++) {
-      allImages.push({
-        ep: ep.number,
-        epLabel: ep.label,
-        idx: i + 1,
-        path: ep.images[i],
-        pageId: `ep${String(ep.number).padStart(2,'0')}_${String(i+1).padStart(3,'0')}`
-      });
+  const tweetTexts = {
+    ja: (img) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
+    en: (img) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
+    zh: (img) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
+    ko: (img) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
+  };
+
+  async function loadManifest() {
+    try {
+      const res = await fetch(MANIFEST_URL);
+      const manifest = await res.json();
+      allImages = [];
+      const epTabs = document.getElementById('epTabs');
+
+      for (const ep of manifest.episodes) {
+        // エピソードボタンを追加
+        const btn = document.createElement('button');
+        btn.className = 'ep-tab';
+        btn.textContent = ep.label;
+        btn.onclick = function() { setEp(ep.number, this); };
+        epTabs.appendChild(btn);
+
+        // 画像リストに追加
+        for (let i = 0; i < ep.images.length; i++) {
+          allImages.push({
+            ep: ep.number,
+            epLabel: ep.label,
+            idx: i + 1,
+            path: ep.images[i],
+            pageId: `ep${String(ep.number).padStart(2,'0')}_${String(i+1).padStart(3,'0')}`
+          });
+        }
+      }
+      rollImage();
+    } catch(e) {
+      console.error('Manifest load error:', e);
     }
   }
-  rollImage();
-}
 
-// ===== ツイート文面 =====
-const tweetTexts = {
-  ja: (img) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
-  en: (img) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
-  zh: (img) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
-  ko: (img) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${img.pageId}.html`,
-};
+  function getPool() {
+    if (currentEp === 'all') return allImages;
+    return allImages.filter(img => img.ep === Number(currentEp));
+  }
 
-function getPool() {
-  if (currentEp === 'all') return allImages;
-  return allImages.filter(img => img.ep === Number(currentEp));
-}
+  function rollImage() {
+    const pool = getPool();
+    if (!pool.length) return;
+    let nextIdx;
+    do {
+      nextIdx = Math.floor(Math.random() * pool.length);
+    } while (pool.length > 1 && pool[nextIdx] === currentImage);
+    currentImage = pool[nextIdx];
 
-function rollImage() {
-  const pool = getPool();
-  if (!pool.length) return;
-  let next;
-  do { next = Math.floor(Math.random() * pool.length); } while (pool.length > 1 && pool[next] === currentIndex);
-  currentIndex = pool[next];
+    const img = document.getElementById('screenshotImg');
+    const badge = document.getElementById('imgBadge');
+    const placeholder = document.getElementById('placeholder');
 
-  const img = document.getElementById('screenshotImg');
-  const badge = document.getElementById('imgBadge');
-  const placeholder = document.getElementById('placeholder');
+    img.classList.add('loading');
+    placeholder.style.display = 'flex';
+    img.onload = () => { img.classList.remove('loading'); placeholder.style.display = 'none'; };
+    img.onerror = () => { placeholder.style.display = 'flex'; };
+    img.src = `${BASE_URL}/images/screenshots/${currentImage.path}`;
+    badge.textContent = `${currentImage.epLabel} No.${String(currentImage.idx).padStart(3,'0')}`;
 
-  img.classList.add('loading');
-  placeholder.style.display = 'flex';
+    updateTweetBtn();
+    gtag('event', 'screenshot_roll', { ep: currentImage.ep, idx: currentImage.idx });
+  }
 
-  img.onload = () => { img.classList.remove('loading'); placeholder.style.display = 'none'; };
-  img.onerror = () => { placeholder.style.display = 'flex'; };
-  img.src = `${BASE_URL}/images/screenshots/${currentIndex.path}`;
-  badge.textContent = `${currentIndex.epLabel} No.${String(currentIndex.idx).padStart(3,'0')}`;
+  function setEp(ep, btn) {
+    currentEp = ep;
+    document.querySelectorAll('.ep-tab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+    rollImage();
+  }
 
-  updateTweetBtn();
-  gtag('event', 'screenshot_roll', { ep: currentIndex.ep, idx: currentIndex.idx });
-}
+  function setLang(lang, btn) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+    updateTweetBtn();
+  }
 
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
-  event.target.classList.add('active');
-  updateTweetBtn();
-}
+  function updateTweetBtn() {
+    if (!currentImage) return;
+    const text = tweetTexts[currentLang](currentImage);
+    document.getElementById('tweetPreview').textContent = text;
+    const encoded = encodeURIComponent(text);
+    document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${encoded}`;
+  }
 
-function updateTweetBtn() {
-  if (!currentIndex) return;
-  const text = tweetTexts[currentLang](currentIndex);
-  document.getElementById('tweetPreview').textContent = text;
-  const encoded = encodeURIComponent(text);
-  document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${encoded}`;
-}
+  document.getElementById('tweetBtn').addEventListener('click', () => {
+    gtag('event', 'screenshot_tweet', { ep: currentImage?.ep, lang: currentLang });
+  });
 
-document.getElementById('tweetBtn').addEventListener('click', () => {
-  gtag('event', 'screenshot_tweet', { ep: currentIndex?.ep, lang: currentLang });
-});
-
-loadManifest();
-
+  loadManifest();
 </script>
 
 </body>
