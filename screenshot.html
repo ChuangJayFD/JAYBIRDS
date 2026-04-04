@@ -450,6 +450,12 @@
 </header>
 
 <main>
+  <!-- 各話選択 -->
+  <div class="ep-section" id="epSection" style="display:none;margin-bottom:20px;">
+    <div class="section-label">話数を選ぶ</div>
+    <div class="ep-tabs" id="epTabs" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+  </div>
+
   <!-- 画像フレーム -->
   <div class="screenshot-frame" id="screenshotFrame">
     <div class="placeholder" id="placeholder">
@@ -458,7 +464,7 @@
       </div>
     </div>
     <img id="screenshotImg" class="loading" src="" alt="Chuang Jay screenshot" />
-    <div class="img-badge" id="imgBadge">— / 30</div>
+    <div class="img-badge" id="imgBadge">— / —</div>
   </div>
 
   <!-- 別の画像を引くボタン -->
@@ -472,7 +478,7 @@
 
   <div class="lang-section">
     <div class="section-label">Tweet Language</div>
-    <div class="lang-tabs">
+    <div class="lang-tabs" id="langTabs">
       <button class="lang-tab active" onclick="setLang('ja')">🇯🇵 日本語</button>
       <button class="lang-tab" onclick="setLang('en')">🌏 English</button>
       <button class="lang-tab" onclick="setLang('zh')">🇹🇼 繁體中文</button>
@@ -550,33 +556,82 @@
 
 <script>
   // ===== 設定 =====
-  const TOTAL = 30;
   const BASE_URL = 'https://chuangjayfd.github.io/JAYBIRDS';
-  const IMG_PATH = `${BASE_URL}/images/screenshots/`;
-  const OGP_PATH = `${BASE_URL}/screenshot/`;
-
-  // 画像ファイル名（実際のファイル名に合わせて変更してください）
-  const images = Array.from({ length: TOTAL }, (_, i) => `sshot_${String(i + 1).padStart(2, '0')}.png`);
+  const MANIFEST_URL = `${BASE_URL}/screenshots_manifest.json`;
 
   // ===== ツイート文面 =====
   const tweetTexts = {
-    ja: (n) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    en: (n) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    zh: (n) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
-    ko: (n) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot/${n}.html`,
+    ja: (ep, idx) => `ジュアンジェイのスクショ引いた💙🪶\n#ジュアンジェイ #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot.html`,
+    en: (ep, idx) => `Drew a Chuang Jay screenshot 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot.html`,
+    zh: (ep, idx) => `抽到莊傑的截圖 💙🪶\n#莊傑 #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot.html`,
+    ko: (ep, idx) => `Chuang Jay 스크린샷 뽑았어요 💙🪶\n#ChuangJay #JAYどこ #FINDJAY #PRODUCE101JAPAN新世界\n${BASE_URL}/screenshot.html`,
   };
 
   // ===== State =====
-  let currentIndex = null;
+  let manifest = null;         // { episodes: [...], total: N }
+  let currentEp = null;        // null = 全話、number = 話数
+  let currentImagePath = null; // 表示中の相対パス
   let currentLang = 'ja';
 
-  // ===== 初期化 =====
-  rollImage();
+  // ===== マニフェスト読み込み =====
+  async function loadManifest() {
+    try {
+      const res = await fetch(`${MANIFEST_URL}?_=${Date.now()}`);
+      manifest = await res.json();
+    } catch (e) {
+      manifest = { episodes: [], total: 0 };
+    }
+    buildEpTabs();
+    rollImage();
+  }
 
+  // ===== 各話タブを生成 =====
+  function buildEpTabs() {
+    const section = document.getElementById('epSection');
+    const container = document.getElementById('epTabs');
+    if (!manifest || manifest.episodes.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+    container.innerHTML = '';
+
+    // 「全話」ボタン
+    const allBtn = makeTabBtn('全話', null, currentEp === null);
+    container.appendChild(allBtn);
+
+    // 各話ボタン
+    manifest.episodes.forEach(ep => {
+      const btn = makeTabBtn(ep.label, ep.number, currentEp === ep.number);
+      container.appendChild(btn);
+    });
+  }
+
+  function makeTabBtn(label, epNum, isActive) {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.className = 'lang-tab' + (isActive ? ' active' : '');
+    btn.onclick = () => setEpisode(epNum, btn);
+    return btn;
+  }
+
+  function setEpisode(epNum, btnEl) {
+    currentEp = epNum;
+    document.querySelectorAll('#epTabs .lang-tab').forEach(el => el.classList.remove('active'));
+    btnEl.classList.add('active');
+    rollImage();
+  }
+
+  // ===== 画像をランダムで引く =====
   function rollImage() {
+    const pool = getPool();
+    if (pool.length === 0) return;
+
     let next;
-    do { next = Math.floor(Math.random() * TOTAL) + 1; } while (next === currentIndex && TOTAL > 1);
-    currentIndex = next;
+    do {
+      next = pool[Math.floor(Math.random() * pool.length)];
+    } while (next === currentImagePath && pool.length > 1);
+    currentImagePath = next;
 
     const img = document.getElementById('screenshotImg');
     const badge = document.getElementById('imgBadge');
@@ -590,41 +645,51 @@
       placeholder.style.display = 'none';
     };
     img.onerror = () => {
-      // 画像がまだない場合はプレースホルダー表示
       placeholder.style.display = 'flex';
     };
-    img.src = `${IMG_PATH}${images[currentIndex - 1]}`;
-    badge.textContent = `No.${String(currentIndex).padStart(2, '0')}`;
+    img.src = `${BASE_URL}/images/screenshots/${currentImagePath}`;
+
+    // バッジ: "ep01 / 001" のように表示
+    const parts = currentImagePath.split('/');
+    const epLabel = parts[0] ? `#${parseInt(parts[0].replace('ep',''))}` : '';
+    const fileLabel = parts[1] ? parts[1].replace(/\.\w+$/, '') : '';
+    badge.textContent = epLabel && fileLabel ? `${epLabel} — ${fileLabel}` : currentImagePath;
 
     updateTweetBtn();
-
-    // GA4イベント
-    gtag('event', 'screenshot_roll', { image_index: currentIndex });
+    gtag('event', 'screenshot_roll', { image_path: currentImagePath });
   }
 
+  function getPool() {
+    if (!manifest) return [];
+    if (currentEp === null) {
+      // 全話まとめて
+      return manifest.episodes.flatMap(ep => ep.images);
+    }
+    const ep = manifest.episodes.find(e => e.number === currentEp);
+    return ep ? ep.images : [];
+  }
+
+  // ===== 言語切替 =====
   function setLang(lang) {
     currentLang = lang;
-    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('#langTabs .lang-tab').forEach(el => el.classList.remove('active'));
     event.target.classList.add('active');
     updateTweetBtn();
   }
 
   function updateTweetBtn() {
-    if (!currentIndex) return;
-    const text = tweetTexts[currentLang](currentIndex);
+    const text = tweetTexts[currentLang](currentEp, currentImagePath);
     document.getElementById('tweetPreview').textContent = text;
-
-    const encoded = encodeURIComponent(text);
-    document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${encoded}`;
+    document.getElementById('tweetBtn').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
   }
 
   // ツイートクリックGA4
   document.getElementById('tweetBtn').addEventListener('click', () => {
-    gtag('event', 'screenshot_tweet', {
-      image_index: currentIndex,
-      lang: currentLang
-    });
+    gtag('event', 'screenshot_tweet', { image_path: currentImagePath, lang: currentLang });
   });
+
+  // ===== 起動 =====
+  loadManifest();
 </script>
 
 </body>
