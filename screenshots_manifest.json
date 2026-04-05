@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-04T07:10:01Z",
+  "updated": "2026-04-05T06:19:21Z",
   "episodes": [
     {
       "number": 1,
@@ -41,16 +41,16 @@
     {
       "number": 2,
       "label": "#2",
-      "count": 27,
+      "count": 29,
       "images": [
         "ep02/001.png",
         "ep02/002.png",
         "ep02/003.png",
         "ep02/004.png",
         "ep02/005.png",
-        "ep02/006.jpg",
+        "ep02/006.png",
         "ep02/007.png",
-        "ep02/008.png",
+        "ep02/008.jpg",
         "ep02/009.png",
         "ep02/010.png",
         "ep02/011.png",
@@ -69,9 +69,11 @@
         "ep02/024.png",
         "ep02/025.png",
         "ep02/026.png",
-        "ep02/027.png"
+        "ep02/027.png",
+        "ep02/028.png",
+        "ep02/029.png"
       ]
     }
   ],
-  "total": 57
+  "total": 59
 }
