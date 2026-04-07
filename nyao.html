@@ -25,6 +25,8 @@
 <link rel="canonical" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
 <link rel="alternate" hreflang="ja" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
 <link rel="alternate" hreflang="en" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
+<link rel="alternate" hreflang="zh-TW" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
+<link rel="alternate" hreflang="ko" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
 <link rel="alternate" hreflang="x-default" href="https://chuangjayfd.github.io/JAYBIRDS/index.html">
 
 <!-- OGP -->
@@ -66,29 +68,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --navy:        #080f20;
-  --navy-mid:    #0d1630;
-  --navy-card:   #101d3a;
-  --navy-hover:  #16244a;
-  --gold:        #c9a84c;
-  --gold-light:  #e2c47a;
-  --gold-pale:   #f0e4b8;
-  --gold-dim:    rgba(201,168,76,0.12);
-  --gold-border: rgba(201,168,76,0.25);
-  --gold-border2:rgba(201,168,76,0.5);
-  --blue-accent: #4a9fd4;
-  --green-live:  #30d158;
-  --text:        rgba(255,255,255,0.88);
-  --text-muted:  rgba(255,255,255,0.45);
-}
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { color-scheme: only dark; scroll-behavior: smooth; }
 
 body {
-  background: var(--navy);
-  color: var(--text);
+  background: #080f20;
+  color: rgba(255,255,255,0.88);
   font-family: 'Noto Sans JP', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
@@ -102,7 +87,7 @@ body {
 .star4 {
   display: inline-block;
   width: 12px; height: 12px;
-  background: var(--gold);
+  background: #c9a84c;
   clip-path: polygon(50% 0%,53% 47%,100% 50%,53% 53%,50% 100%,47% 53%,0% 50%,47% 47%);
   flex-shrink: 0;
 }
@@ -116,7 +101,7 @@ body {
   background: rgba(8,15,32,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gold-border);
+  border-bottom: 1px solid rgba(201,168,76,0.25);
   padding: 0 20px;
 }
 .nav-inner {
@@ -133,8 +118,8 @@ body {
   transition: color 0.2s;
   white-space: nowrap;
 }
-.nav a:hover, .nav a.active { color: var(--gold-light); }
-.nav-sep { color: var(--gold); opacity: 0.3; font-size: 0.5rem; align-self: center; padding: 0 2px; }
+.nav a:hover, .nav a.active { color: #e2c47a; }
+.nav-sep { color: #c9a84c; opacity: 0.3; font-size: 0.5rem; align-self: center; padding: 0 2px; }
 
 /* ─── HERO ─── */
 .hero {
@@ -220,7 +205,7 @@ body {
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
   font-size: 10px; letter-spacing: 0.3em;
-  color: var(--gold); text-transform: uppercase;
+  color: #c9a84c; text-transform: uppercase;
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 12px; opacity: 0.9;
 }
@@ -229,7 +214,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 11vw, 5.5rem);
   font-weight: 300; letter-spacing: 0.18em;
-  color: var(--gold); line-height: 0.95;
+  color: #c9a84c; line-height: 0.95;
   margin-bottom: 8px;
   text-shadow: 0 2px 30px rgba(0,0,0,0.8), 0 0 60px rgba(201,168,76,0.2);
 }
@@ -238,7 +223,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: clamp(0.78rem, 2vw, 1rem);
-  letter-spacing: 0.2em; color: var(--gold-pale);
+  letter-spacing: 0.2em; color: #f0e4b8;
   opacity: 0.7; margin-bottom: 18px;
 }
 
@@ -257,8 +242,8 @@ body {
 .hero-tag {
   font-size: 10px; letter-spacing: 0.06em;
   padding: 3px 10px;
-  border: 1px solid var(--gold-border);
-  color: var(--gold-light); background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  color: #e2c47a; background: rgba(201,168,76,0.08);
   border-radius: 20px;
 }
 
@@ -267,7 +252,7 @@ body {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; z-index: 4;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #c9a84c 30%, #e2c47a 50%, #c9a84c 70%, transparent 100%);
 }
 
 /* ─── ABOUT BANNER ─── */
@@ -276,7 +261,7 @@ body {
   padding: 16px 20px;
 }
 .about-inner {
-  border: 1px solid var(--gold-border);
+  border: 1px solid rgba(201,168,76,0.25);
   background: rgba(201,168,76,0.04);
   padding: 14px 20px;
   position: relative; text-align: center;
@@ -292,19 +277,19 @@ body {
   position: absolute;
   top: -1px; right: -1px;
   width: 12px; height: 12px;
-  border-top: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
+  border-top: 2px solid #c9a84c;
+  border-right: 2px solid #c9a84c;
 }
 .about-corner-bl {
   position: absolute; bottom: -1px; left: -1px;
   width: 12px; height: 12px;
-  border-bottom: 2px solid var(--gold);
-  border-left: 2px solid var(--gold);
+  border-bottom: 2px solid #c9a84c;
+  border-left: 2px solid #c9a84c;
 }
 .about-label {
   font-family: 'Cormorant Garamond', serif;
   font-size: 10px; letter-spacing: 0.3em;
-  color: var(--gold-light); text-transform: uppercase;
+  color: #e2c47a; text-transform: uppercase;
   opacity: 0.7; margin-bottom: 8px;
   display: flex; align-items: center; justify-content: center; gap: 10px;
 }
@@ -312,7 +297,7 @@ body {
   font-size: 12px; line-height: 1.85;
   color: rgba(240,228,184,0.8); letter-spacing: 0.04em;
 }
-.about-text em { font-style: normal; color: var(--gold-light); }
+.about-text em { font-style: normal; color: #e2c47a; }
 
 /* ─── CAMPAIGN BANNER ─── */
 .campaign-wrap {
@@ -323,7 +308,7 @@ body {
   display: flex; align-items: center;
   text-decoration: none;
   background: linear-gradient(135deg, #0a2a4a 0%, #0d1f3a 40%, #0a2a4a 100%);
-  border: 1.5px solid var(--gold);
+  border: 1.5px solid #c9a84c;
   padding: 16px 20px; gap: 16px;
   position: relative; overflow: hidden;
   transition: all 0.25s;
@@ -338,10 +323,10 @@ body {
 .campaign-btn::after {
   content: '✦';
   position: absolute; top: 8px; right: 48px;
-  font-size: 8px; color: var(--gold); opacity: 0.4;
+  font-size: 8px; color: #c9a84c; opacity: 0.4;
 }
 .campaign-btn:hover {
-  border-color: var(--gold-light);
+  border-color: #e2c47a;
   background: linear-gradient(135deg, #0d3360 0%, #102440 40%, #0d3360 100%);
   transform: translateY(-1px);
   box-shadow: 0 4px 24px rgba(201,168,76,0.15);
@@ -354,12 +339,12 @@ body {
 .campaign-kicker {
   font-family: 'Cormorant Garamond', serif;
   font-size: 10px; letter-spacing: 0.28em;
-  color: var(--gold); text-transform: uppercase;
+  color: #c9a84c; text-transform: uppercase;
   margin-bottom: 4px; display: flex; align-items: center; gap: 6px;
 }
 .campaign-title {
   font-size: clamp(0.9rem, 3vw, 1.05rem);
-  font-weight: 700; color: var(--gold-pale);
+  font-weight: 700; color: #f0e4b8;
   letter-spacing: 0.06em; line-height: 1.3;
 }
 .campaign-desc {
@@ -368,7 +353,7 @@ body {
 }
 .campaign-arrow {
   position: relative; z-index: 1;
-  color: var(--gold); font-size: 1.3rem; flex-shrink: 0;
+  color: #c9a84c; font-size: 1.3rem; flex-shrink: 0;
   transition: transform 0.2s;
 }
 .campaign-btn:hover .campaign-arrow { transform: translateX(4px); }
@@ -385,10 +370,10 @@ main {
   display: flex; align-items: center; gap: 10px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 10px; letter-spacing: 0.32em;
-  color: var(--gold-light); text-transform: uppercase;
+  color: #e2c47a; text-transform: uppercase;
   opacity: 0.8; margin-bottom: 10px;
 }
-.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-border); }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.25); }
 
 /* ─── 投票セクション ─── */
 .vote-section { display: flex; flex-direction: column; gap: 8px; }
@@ -400,8 +385,8 @@ main {
 .vote-card {
   display: flex; flex-direction: column; align-items: center;
   text-decoration: none;
-  background: var(--navy-card);
-  border: 1px solid var(--gold-border);
+  background: #101d3a;
+  border: 1px solid rgba(201,168,76,0.25);
   padding: 16px 12px 14px; text-align: center;
   position: relative; overflow: hidden;
   transition: all 0.2s;
@@ -411,18 +396,18 @@ main {
   background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
   opacity: 0; transition: opacity 0.2s;
 }
-.vote-card:hover { border-color: var(--gold-border2); background: var(--navy-hover); }
+.vote-card:hover { border-color: rgba(201,168,76,0.5); background: #16244a; }
 .vote-card:hover::before { opacity: 1; }
 
 .vote-card-icon { margin-bottom: 8px; }
 .vote-card-icon img {
   width: 40px; height: 40px; border-radius: 10px; object-fit: cover;
-  border: 1px solid var(--gold-border);
+  border: 1px solid rgba(201,168,76,0.25);
 }
 .vote-card-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(0.78rem, 2.5vw, 0.9rem);
-  letter-spacing: 0.14em; color: var(--gold);
+  letter-spacing: 0.14em; color: #c9a84c;
   display: block; margin-bottom: 4px;
 }
 .vote-card-desc {
@@ -444,18 +429,18 @@ main {
 .vote-guide {
   display: flex; align-items: center; gap: 14px;
   text-decoration: none;
-  background: var(--navy-card);
-  border: 1px solid var(--gold-border);
-  border-left: 2px solid var(--gold);
+  background: #101d3a;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-left: 2px solid #c9a84c;
   padding: 14px 18px;
   transition: all 0.2s;
 }
-.vote-guide:hover { border-color: var(--gold-border2); border-left-color: var(--gold-light); background: var(--navy-hover); transform: translateX(2px); }
+.vote-guide:hover { border-color: rgba(201,168,76,0.5); border-left-color: #e2c47a; background: #16244a; transform: translateX(2px); }
 .vote-guide-icon { font-size: 1.3rem; flex-shrink: 0; }
 .vote-guide-en {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(0.88rem, 2.5vw, 1rem);
-  letter-spacing: 0.2em; color: var(--gold);
+  letter-spacing: 0.2em; color: #c9a84c;
   text-transform: uppercase; display: block; margin-bottom: 2px;
 }
 .vote-guide-ja {
@@ -463,7 +448,7 @@ main {
   letter-spacing: 0.06em;
 }
 .vote-guide-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.5;
+  margin-left: auto; color: #c9a84c; opacity: 0.5;
   font-size: 1rem; flex-shrink: 0;
   transition: all 0.2s;
 }
@@ -471,25 +456,25 @@ main {
 
 /* シミュレーターボタン — ゴールドに統一 */
 .vote-guide.sim {
-  border-left-color: var(--gold);
-  background: var(--navy-card);
+  border-left-color: #c9a84c;
+  background: #101d3a;
 }
-.vote-guide.sim .vote-guide-en { color: var(--gold); }
-.vote-guide.sim:hover { border-left-color: var(--gold-light); background: var(--navy-hover); }
+.vote-guide.sim .vote-guide-en { color: #c9a84c; }
+.vote-guide.sim:hover { border-left-color: #e2c47a; background: #16244a; }
 
 /* ─── 区切り ─── */
 .divider {
   display: flex; align-items: center; gap: 12px;
   padding: 4px 0;
 }
-.divider-line { flex: 1; height: 1px; background: var(--gold-border); }
+.divider-line { flex: 1; height: 1px; background: rgba(201,168,76,0.25); }
 .divider-stars { display: flex; gap: 6px; align-items: center; }
 
 /* ─── 通常カード ─── */
 .card {
   display: block; text-decoration: none;
-  background: var(--navy-card);
-  border: 1px solid var(--gold-border);
+  background: #101d3a;
+  border: 1px solid rgba(201,168,76,0.25);
   padding: 20px 20px;
   position: relative; overflow: hidden;
   transition: all 0.2s;
@@ -499,12 +484,12 @@ main {
   content: '';
   position: absolute; top: 0; right: 0;
   width: 20px; height: 20px;
-  border-top: 1px solid var(--gold-border2);
-  border-right: 1px solid var(--gold-border2);
+  border-top: 1px solid rgba(201,168,76,0.5);
+  border-right: 1px solid rgba(201,168,76,0.5);
   transition: all 0.2s;
 }
-.card:hover { background: var(--navy-hover); border-color: var(--gold-border2); }
-.card:hover::before { width: 28px; height: 28px; border-color: var(--gold); }
+.card:hover { background: #16244a; border-color: rgba(201,168,76,0.5); }
+.card:hover::before { width: 28px; height: 28px; border-color: #c9a84c; }
 
 .card-inner { display: flex; align-items: center; gap: 16px; }
 .card-icon { font-size: 1.4rem; flex-shrink: 0; width: 40px; text-align: center; }
@@ -512,7 +497,7 @@ main {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(0.95rem, 3vw, 1.15rem);
   font-weight: 400; letter-spacing: 0.2em;
-  color: var(--gold); text-transform: uppercase;
+  color: #c9a84c; text-transform: uppercase;
   display: block; margin-bottom: 3px;
 }
 .card-ja {
@@ -520,7 +505,7 @@ main {
   letter-spacing: 0.08em;
 }
 .card-arrow {
-  margin-left: auto; color: var(--gold); opacity: 0.4;
+  margin-left: auto; color: #c9a84c; opacity: 0.4;
   font-size: 1rem; flex-shrink: 0;
   transition: all 0.2s;
 }
@@ -538,7 +523,7 @@ main {
   display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 .sns-label::before, .sns-label::after {
-  content: ''; width: 40px; height: 1px; background: var(--gold-border);
+  content: ''; width: 40px; height: 1px; background: rgba(201,168,76,0.25);
 }
 .sns-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .sns-link {
@@ -548,15 +533,15 @@ main {
   font-size: clamp(0.75rem, 2vw, 0.88rem);
   letter-spacing: 0.2em;
   padding: 8px 16px;
-  border: 1px solid var(--gold-border);
+  border: 1px solid rgba(201,168,76,0.25);
   transition: all 0.2s;
 }
-.sns-link:hover { border-color: var(--gold-border2); color: var(--gold-light); background: var(--gold-dim); }
+.sns-link:hover { border-color: rgba(201,168,76,0.5); color: #e2c47a; background: rgba(201,168,76,0.12); }
 
 /* ─── FOOTER ─── */
 footer {
   text-align: center; padding: 28px 24px 48px;
-  border-top: 1px solid var(--gold-border);
+  border-top: 1px solid rgba(201,168,76,0.25);
 }
 footer p {
   font-family: 'Cormorant Garamond', serif;
@@ -600,7 +585,7 @@ footer p {
 .star-cross::after {
   content: '';
   position: absolute;
-  background: var(--gold-light);
+  background: #e2c47a;
   border-radius: 2px;
 }
 .star-cross::before {

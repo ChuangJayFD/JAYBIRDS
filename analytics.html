@@ -13,29 +13,11 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
   <style>
-    :root {
-      --navy:      #080f20;
-      --navy-mid:  #0d1630;
-      --navy-card: #101d3a;
-      --navy-h:    #16244a;
-      --gold:      #c9a84c;
-      --gold2:     #e2c06a;
-      --gold3:     #f5e0a0;
-      --gold-dim:  rgba(201,168,76,0.12);
-      --gold-bdr:  rgba(201,168,76,0.25);
-      --white:     #f0ead8;
-      --muted:     rgba(240,234,216,0.55);
-      --dim:       rgba(240,234,216,0.35);
-      --blue:      #409cff;
-      --green:     #30d158;
-      --coral:     #ff6b6b;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { color-scheme: dark; }
     body {
-      background: var(--navy);
-      color: var(--white);
+      background: #080f20;
+      color: #f0ead8;
       font-family: 'Noto Sans JP', sans-serif;
       min-height: 100vh;
       padding: 0 0 80px;
@@ -45,47 +27,47 @@
     nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 28px;
-      border-bottom: 1px solid var(--gold-bdr);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
       position: sticky; top: 0; z-index: 100;
       background: rgba(8,15,32,0.92); backdrop-filter: blur(12px);
     }
     .nav-brand {
       font-family: 'Cormorant Garamond', serif;
       font-size: 14px; font-weight: 700; letter-spacing: 0.32em;
-      color: var(--gold); text-transform: uppercase; text-decoration: none;
+      color: #c9a84c; text-transform: uppercase; text-decoration: none;
     }
     .nav-back {
-      font-size: 11px; color: var(--muted); letter-spacing: 0.08em;
+      font-size: 11px; color: rgba(240,234,216,0.55); letter-spacing: 0.08em;
       text-decoration: none; transition: color 0.2s;
     }
-    .nav-back:hover { color: var(--gold); }
+    .nav-back:hover { color: #c9a84c; }
 
     /* ===== HEADER ===== */
     .page-header {
       text-align: center;
       padding: 48px 20px 36px;
-      border-bottom: 1px solid var(--gold-bdr);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
     }
     .page-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px; font-weight: 600; letter-spacing: 0.4em;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 10px;
+      color: #c9a84c; text-transform: uppercase; margin-bottom: 10px;
     }
     .page-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 6vw, 40px); font-weight: 700;
-      color: var(--white); letter-spacing: 0.05em; line-height: 1.15;
+      color: #f0ead8; letter-spacing: 0.05em; line-height: 1.15;
     }
-    .page-title span { color: var(--gold); }
+    .page-title span { color: #c9a84c; }
     .updated-badge {
       display: inline-block; margin-top: 14px;
-      font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
-      background: var(--gold-dim); border: 1px solid var(--gold-bdr);
+      font-size: 11px; color: rgba(240,234,216,0.55); letter-spacing: 0.06em;
+      background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25);
       padding: 4px 14px; border-radius: 20px;
     }
     .divider {
       width: 48px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
       margin: 18px auto 0;
     }
 
@@ -97,15 +79,15 @@
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px; font-weight: 600; letter-spacing: 0.12em;
-      color: var(--gold); margin-bottom: 16px;
+      color: #c9a84c; margin-bottom: 16px;
       display: flex; align-items: center; gap: 10px;
     }
     .section-title::after {
       content: ''; flex: 1; height: 1px;
-      background: linear-gradient(90deg, var(--gold-bdr), transparent);
+      background: linear-gradient(90deg, rgba(201,168,76,0.25), transparent);
     }
     .period-note {
-      font-size: 11px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 14px;
+      font-size: 11px; color: rgba(240,234,216,0.55); letter-spacing: 0.05em; margin-bottom: 14px;
     }
 
     /* ===== STAT CARDS ===== */
@@ -113,26 +95,26 @@
     @media (max-width: 520px) { .stat-grid { grid-template-columns: 1fr; } }
 
     .stat-card {
-      background: var(--navy-card);
-      border: 1px solid var(--gold-bdr);
+      background: #101d3a;
+      border: 1px solid rgba(201,168,76,0.25);
       border-radius: 4px; padding: 20px 18px;
       position: relative; overflow: hidden;
     }
     .stat-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
     }
     .stat-label {
       font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 8px;
+      color: rgba(240,234,216,0.55); margin-bottom: 8px;
     }
     .stat-value {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 5vw, 38px); font-weight: 700;
-      color: var(--gold2); line-height: 1;
+      color: #e2c06a; line-height: 1;
     }
     .stat-sub {
-      font-size: 10px; color: var(--dim); margin-top: 4px; letter-spacing: 0.05em;
+      font-size: 10px; color: rgba(240,234,216,0.35); margin-top: 4px; letter-spacing: 0.05em;
     }
 
     /* ===== TWO-COL ===== */
@@ -141,8 +123,8 @@
 
     /* ===== CHART CARD ===== */
     .chart-card {
-      background: var(--navy-card);
-      border: 1px solid var(--gold-bdr);
+      background: #101d3a;
+      border: 1px solid rgba(201,168,76,0.25);
       border-radius: 4px; padding: 20px;
     }
     .chart-card canvas { width: 100% !important; }
@@ -152,10 +134,10 @@
     .country-row {
       display: flex; align-items: center; gap: 10px;
     }
-    .country-name { font-size: 12px; color: var(--white); min-width: 120px; flex-shrink: 0; }
+    .country-name { font-size: 12px; color: #f0ead8; min-width: 120px; flex-shrink: 0; }
     .country-bar-wrap { flex: 1; background: rgba(201,168,76,0.08); border-radius: 2px; height: 6px; overflow: hidden; }
-    .country-bar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 2px; transition: width 0.8s ease; }
-    .country-val { font-size: 11px; color: var(--muted); min-width: 36px; text-align: right; }
+    .country-bar { height: 100%; background: linear-gradient(90deg, #c9a84c, #e2c06a); border-radius: 2px; transition: width 0.8s ease; }
+    .country-val { font-size: 11px; color: rgba(240,234,216,0.55); min-width: 36px; text-align: right; }
 
     /* ===== PAGES LIST ===== */
     .pages-list { display: flex; flex-direction: column; gap: 6px; }
@@ -167,32 +149,32 @@
       border-radius: 3px;
       transition: border-color 0.2s;
     }
-    .page-row:hover { border-color: var(--gold-bdr); }
+    .page-row:hover { border-color: rgba(201,168,76,0.25); }
     .page-rank {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 16px; font-weight: 700; color: var(--gold);
+      font-size: 16px; font-weight: 700; color: #c9a84c;
       min-width: 24px; text-align: center;
     }
     .page-info { flex: 1; min-width: 0; }
-    .page-name { font-size: 12px; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .page-path { font-size: 10px; color: var(--dim); letter-spacing: 0.03em; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-name { font-size: 12px; color: #f0ead8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-path { font-size: 10px; color: rgba(240,234,216,0.35); letter-spacing: 0.03em; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .page-pv {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px; font-weight: 700; color: var(--gold2);
+      font-size: 18px; font-weight: 700; color: #e2c06a;
       flex-shrink: 0;
     }
-    .page-pv-label { font-size: 9px; color: var(--dim); letter-spacing: 0.1em; text-align: right; }
+    .page-pv-label { font-size: 9px; color: rgba(240,234,216,0.35); letter-spacing: 0.1em; text-align: right; }
 
     /* ===== NO DATA ===== */
     .no-data {
       text-align: center; padding: 40px;
-      color: var(--muted); font-size: 13px; letter-spacing: 0.05em;
+      color: rgba(240,234,216,0.55); font-size: 13px; letter-spacing: 0.05em;
     }
 
     /* ===== FOOTER ===== */
     footer {
       text-align: center; margin-top: 60px;
-      font-size: 10px; color: var(--dim); letter-spacing: 0.12em;
+      font-size: 10px; color: rgba(240,234,216,0.35); letter-spacing: 0.12em;
     }
   </style>
 </head>
