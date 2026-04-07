@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(grep:*)",
+      "Bash(ls C:/Users/hanat/JAYBIRDS/*.html)",
+      "Bash(xargs -I{} basename {})",
+      "Read(//usr/**)",
+      "Bash(ls /c/Python*)",
+      "Bash(/c/Users/hanat/AppData/Local/Microsoft/WindowsApps/python3:*)",
+      "Bash(git remote:*)",
+      "Bash(where gh:*)",
+      "Bash(gh secret:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)",
+      "Bash(ls:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)"
+    ]
+  }
+}
