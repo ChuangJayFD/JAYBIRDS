@@ -504,21 +504,48 @@ body {
     <div class="contribute-btn-arrow">→</div>
   </a>
 
+  <!-- 印刷素材 見出し -->
+
+  <div class="sec-label fade d2" style="margin-top:8px;">🖨️ 印刷して使える素材</div>
+  <div class="tip-box fade d2" style="margin-bottom:24px;">
+    印刷して持ち歩いたり、手渡しで布教できる素材です。<strong>ミニペーパーはファミマ・ローソンのネットプリントに対応しています。</strong>
+  </div>
+
+  <!-- スローガン01 -->
+
+  <div class="section-wrap fade d2">
+    <div class="sec-label">スローガン</div>
+    <p class="section-note">応援スローガン入りの布教ポスターです。印刷して推し活に活用しよう💙</p>
+    <div class="minipaper-card">
+      <div class="minipaper-preview" onclick="openLightbox('slogan', 0)" style="background:#0a0f20;">
+        <img src="slogan01.png" alt="ジュアンジェイ 応援スローガン01" style="width:100%;height:100%;object-fit:contain;padding:12px;">
+        <div class="minipaper-preview-label">✦ TAP TO PREVIEW</div>
+      </div>
+      <div class="minipaper-body">
+        <p class="minipaper-title">🪶 ジュアンジェイ 応援スローガン 01</p>
+        <p class="minipaper-desc">
+          印刷してイベントや手渡し布教に活用できる応援スローガンポスターです。
+        </p>
+        <div class="minipaper-actions">
+          <a class="minipaper-btn minipaper-btn-primary" href="slogan01.png" download="slogan01.png">
+            💾 保存する
+          </a>
+          <button class="minipaper-btn minipaper-btn-secondary" onclick="openLightbox('slogan', 0)">
+            🔍 フルサイズで見る
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ミニペーパー -->
 
   <div class="section-wrap fade d2">
     <div class="sec-label">ミニペーパー</div>
     <p class="section-note">ティッシュの裏に挟んだり、お菓子と一緒に渡せる布教用ミニペーパーです。</p>
-    <div class="tip-box">
-      <strong>ファミマ・ローソンのネットプリントから印刷できます。</strong>番号入力またはQRコードで！
-    </div>
     <div class="minipaper-card">
       <div class="minipaper-preview" onclick="openMinipaperPreview()">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; color:rgba(255,255,255,0.5);">
-          <span style="font-size:3rem; line-height:1;">🪶</span>
-          <span style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; text-transform:uppercase; color:#e2c47a;">Mini Paper</span>
-          <span style="font-size:11px; letter-spacing:1px; opacity:0.6;">ジュアンジェイ 布教ミニペーパー</span>
-        </div>
+        <img src="minipaper_thumb.png" alt="ミニペーパープレビュー" style="width:100%;height:100%;object-fit:contain;padding:12px;">
         <div class="minipaper-preview-label">✦ TAP TO PREVIEW</div>
       </div>
       <div class="minipaper-body">
@@ -735,7 +762,8 @@ body {
 /* ===== Lightbox ===== */
 const galleries = {
   fukyo01: ['fukyo01_01.JPG','fukyo01_02.JPG','fukyo01_03.JPG','fukyo01_04.JPG'],
-  flyer:   ['chuangjay.png','chuangjaypromo002_eng.png','chuangjaypromo001_chinese.png','chuangjaypromo002_chinese.png']
+  flyer:   ['chuangjay.png','chuangjaypromo002_eng.png','chuangjaypromo001_chinese.png','chuangjaypromo002_chinese.png'],
+  slogan:  ['slogan01.png']
 };
 let currentGallery = null;
 let currentIndex = 0;
