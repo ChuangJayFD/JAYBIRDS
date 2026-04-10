@@ -206,6 +206,33 @@ body {
 }
 .tip-box strong { color: #e2c47a; }
 
+/* ── PRINT INFO CARD ── */
+.print-info-card {
+  background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.2);
+  border-left: 3px solid #c9a84c; border-radius: 0 8px 8px 0;
+  padding: 16px; margin-bottom: 24px;
+}
+.print-info-desc { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 14px; }
+.print-info-desc strong { color: #e2c47a; }
+.print-info-inner { display: flex; gap: 14px; align-items: flex-start; }
+.print-qr-block {
+  width: 80px; flex-shrink: 0;
+  background: #111827; border-radius: 8px; padding: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.print-qr-block img { width: 100%; display: block; border-radius: 4px; filter: invert(1); }
+.print-details { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.print-store-info { font-size: 10px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+.print-number-btn {
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px; padding: 10px 12px; cursor: pointer;
+  font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #e2c47a;
+  text-align: center; transition: background 0.2s;
+}
+.print-number-btn:hover { background: rgba(201,168,76,0.18); }
+.print-copy-hint { font-size: 10px; font-weight: 400; letter-spacing: 0.5px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+.print-copy-hint.copied { color: #e2c47a; }
+
 /* ── CONTRIBUTE BUTTON ── */
 .contribute-btn {
   display: flex; align-items: center; gap: 14px;
@@ -507,32 +534,36 @@ body {
   <!-- 印刷素材 見出し -->
 
   <div class="sec-label fade d2" style="margin-top:8px;">🖨️ 印刷して使える素材</div>
-  <div class="tip-box fade d2" style="margin-bottom:24px;">
-    印刷して持ち歩いたり、手渡しで布教できる素材です。<strong>ファミマ・ローソンのネットプリントに対応しています。</strong>
+  <div class="print-info-card fade d2">
+    <p class="print-info-desc">スローガン・ミニペーパーはどちらも同じQR・番号で<strong>ファミマ・ローソンのネットプリント</strong>から印刷できます。</p>
+    <div class="print-info-inner">
+      <div class="print-qr-block">
+        <img src="printerqr.jpg" alt="印刷用QRコード">
+      </div>
+      <div class="print-details">
+        <p class="print-store-info">📍 ファミリーマート・ローソン<br>マルチコピー機 → ネットプリント → 番号入力</p>
+        <div class="print-number-btn" onclick="copyNumber()">
+          🖨️ &nbsp;7875H74ZK2
+          <div class="print-copy-hint" id="copy-hint">タップしてコピー</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- スローガン01 -->
 
   <div class="section-wrap fade d2">
     <div class="sec-label">スローガン</div>
-    <p class="section-note">応援スローガン入りの布教ポスターです。印刷して推し活に活用しよう💙</p>
-    <div class="minipaper-card">
-      <div class="minipaper-preview" onclick="openLightbox('slogan', 0)" style="background:#0a0f20;">
-        <img src="slogan01.png" alt="ジュアンジェイ 応援スローガン01" style="width:100%;height:100%;object-fit:contain;padding:12px;">
-        <div class="minipaper-preview-label">✦ TAP TO PREVIEW</div>
+    <p class="section-note">応援スローガン入りの布教ポスターです。タップで拡大、長押しで保存💙</p>
+    <div class="flyer-card" onclick="openLightbox('slogan', 0)">
+      <div class="flyer-img-wrap" style="aspect-ratio:auto; min-height:180px;">
+        <img src="slogan01.png" alt="ジュアンジェイ 応援スローガン01" loading="lazy">
+        <div class="flyer-tap-badge">✦ TAP</div>
       </div>
-      <div class="minipaper-body">
-        <p class="minipaper-title">🪶 ジュアンジェイ 応援スローガン 01</p>
-        <p class="minipaper-desc">
-          印刷してイベントや手渡し布教に活用できる応援スローガンポスターです。
-        </p>
-        <div class="minipaper-actions">
-          <a class="minipaper-btn minipaper-btn-primary" href="slogan01.png" download="slogan01.png">
-            💾 保存する
-          </a>
-          <button class="minipaper-btn minipaper-btn-secondary" onclick="openLightbox('slogan', 0)">
-            🔍 フルサイズで見る
-          </button>
+      <div class="flyer-info">
+        <div>
+          <p class="flyer-name">応援スローガン 01</p>
+          <p class="flyer-credit">✦ by JAYBIRDS</p>
         </div>
       </div>
     </div>
@@ -552,15 +583,11 @@ body {
         <p class="minipaper-title">🪶 ジュアンジェイ 布教ミニペーパー</p>
         <p class="minipaper-desc">
           切り取って持ち歩ける名刺サイズの布教ペーパー。ティッシュ配りやお菓子のおまけにどうぞ。
-          ファミリーマート・ローソン店頭のマルチコピー機でプリントアウトできます。
         </p>
-        <div class="minipaper-actions">
-          <button class="minipaper-btn minipaper-btn-primary" onclick="openQR()">
-            📲 QRコードで印刷
-          </button>
-          <button class="minipaper-btn minipaper-btn-secondary" onclick="copyNumber()">
-            🖨️ 番号をコピー
-          </button>
+        <div class="minipaper-actions" style="grid-template-columns:1fr;">
+          <a class="minipaper-btn minipaper-btn-primary" href="minipaper.pdf" download="minipaper_jay.pdf">
+            📄 PDFをダウンロード
+          </a>
         </div>
       </div>
     </div>
@@ -824,18 +851,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); }
 
 /* ===== Copy Number ===== */
 let copyTimer = null;
-function copyNumber(fromModal = false) {
+function copyNumber() {
   navigator.clipboard.writeText('7875H74ZK2').then(() => {
     const hint = document.getElementById('copy-hint');
-    hint.textContent = 'コピーしました！✦';
-    hint.classList.add('copied');
-    if (!fromModal) openQR();
+    if (hint) { hint.textContent = 'コピーしました！✦'; hint.classList.add('copied'); }
     clearTimeout(copyTimer);
     copyTimer = setTimeout(() => {
-      hint.textContent = 'タップしてコピー';
-      hint.classList.remove('copied');
+      if (hint) { hint.textContent = 'タップしてコピー'; hint.classList.remove('copied'); }
     }, 2500);
-  }).catch(() => { if (!fromModal) openQR(); });
+  });
 }
 </script>
 
