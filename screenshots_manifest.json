@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-09T07:04:10Z",
+  "updated": "2026-04-10T01:10:37Z",
   "episodes": [
     {
       "number": 1,
@@ -73,7 +73,61 @@
         "ep02/028.png",
         "ep02/029.png"
       ]
+    },
+    {
+      "number": 3,
+      "label": "#3",
+      "count": 47,
+      "images": [
+        "ep03/001.png",
+        "ep03/002.png",
+        "ep03/003.png",
+        "ep03/004.png",
+        "ep03/005.png",
+        "ep03/006.png",
+        "ep03/007.png",
+        "ep03/008.png",
+        "ep03/009.png",
+        "ep03/010.png",
+        "ep03/011.png",
+        "ep03/012.png",
+        "ep03/013.png",
+        "ep03/014.png",
+        "ep03/015.png",
+        "ep03/016.png",
+        "ep03/017.png",
+        "ep03/018.png",
+        "ep03/019.png",
+        "ep03/020.png",
+        "ep03/021.png",
+        "ep03/022.png",
+        "ep03/023.png",
+        "ep03/024.png",
+        "ep03/025.png",
+        "ep03/026.png",
+        "ep03/027.png",
+        "ep03/028.png",
+        "ep03/029.png",
+        "ep03/030.png",
+        "ep03/031.png",
+        "ep03/032.png",
+        "ep03/033.png",
+        "ep03/034.png",
+        "ep03/035.png",
+        "ep03/036.png",
+        "ep03/037.png",
+        "ep03/038.png",
+        "ep03/039.png",
+        "ep03/040.png",
+        "ep03/041.png",
+        "ep03/042.png",
+        "ep03/043.png",
+        "ep03/044.png",
+        "ep03/045.png",
+        "ep03/046.png",
+        "ep03/047.png"
+      ]
     }
   ],
-  "total": 59
+  "total": 106
 }
