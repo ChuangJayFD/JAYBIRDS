@@ -537,14 +537,14 @@ body {
   <div class="print-info-card fade d2">
     <p class="print-info-desc">スローガン・ミニペーパーはどちらも同じQR・番号で<strong>ファミマ・ローソンのネットプリント</strong>から印刷できます。</p>
     <div class="print-info-inner">
-      <div class="print-qr-block">
+      <div class="print-qr-block" onclick="openQR()" style="cursor:pointer;">
         <img src="printerqr.jpg" alt="印刷用QRコード">
+        <div style="text-align:center; font-size:9px; color:rgba(255,255,255,0.4); margin-top:5px; letter-spacing:0.5px;">📲 タップで拡大</div>
       </div>
       <div class="print-details">
         <p class="print-store-info">📍 ファミリーマート・ローソン<br>マルチコピー機 → ネットプリント → 番号入力</p>
-        <div class="print-number-btn" onclick="copyNumber()">
+        <div class="print-number-btn">
           🖨️ &nbsp;7875H74ZK2
-          <div class="print-copy-hint" id="copy-hint">タップしてコピー</div>
         </div>
       </div>
     </div>
@@ -772,15 +772,14 @@ body {
   <div class="qr-modal-inner">
     <button class="qr-modal-close" onclick="closeQR()">✕</button>
     <p class="qr-modal-tag">Net Print — ファミマ・ローソン</p>
-    <p class="qr-modal-title">ミニペーパー 印刷用QR</p>
-    <p class="qr-modal-subtitle">マルチコピー機でQRをスキャン、<br>または番号を直接入力してください。</p>
+    <p class="qr-modal-title">📲 印刷機にかざしてください</p>
+    <p class="qr-modal-subtitle">マルチコピー機のQRリーダーにかざすか、<br>番号を直接入力してください。</p>
     <div class="qr-modal-img-wrap">
       <img src="printerqr.jpg" alt="印刷用QRコード">
     </div>
-    <div class="qr-modal-number" onclick="copyNumber(true)">
+    <div class="qr-modal-number" style="cursor:default; user-select:text; letter-spacing:4px;">
       🖨️ &nbsp;7875H74ZK2
     </div>
-    <p class="qr-modal-copy-hint" id="copy-hint">タップしてコピー</p>
     <p class="qr-modal-store">📍 ファミリーマート・ローソン<br>マルチコピー機 → ネットプリント → 番号入力</p>
   </div>
 </div>
@@ -849,18 +848,6 @@ function closeQROutside(e) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); });
 
-/* ===== Copy Number ===== */
-let copyTimer = null;
-function copyNumber() {
-  navigator.clipboard.writeText('7875H74ZK2').then(() => {
-    const hint = document.getElementById('copy-hint');
-    if (hint) { hint.textContent = 'コピーしました！✦'; hint.classList.add('copied'); }
-    clearTimeout(copyTimer);
-    copyTimer = setTimeout(() => {
-      if (hint) { hint.textContent = 'タップしてコピー'; hint.classList.remove('copied'); }
-    }, 2500);
-  });
-}
 </script>
 
 </body>
