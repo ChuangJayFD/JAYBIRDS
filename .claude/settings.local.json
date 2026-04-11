@@ -18,7 +18,14 @@
       "Bash(git commit:*)",
       "Bash(ls:*)",
       "Bash(pip install:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git config:*)",
+      "Bash(where gswin64c:*)",
+      "Bash(where gswin32c:*)",
+      "Bash(where gs:*)",
+      "Bash(where magick:*)",
+      "Bash(where convert:*)",
+      "Bash(git stash:*)"
     ]
   }
 }
