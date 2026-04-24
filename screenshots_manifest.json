@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23T16:47:36Z",
+  "updated": "2026-04-24T05:36:21Z",
   "episodes": [
     {
       "number": 1,
@@ -127,6 +127,12 @@
         "ep03/046.png",
         "ep03/047.png"
       ]
+    },
+    {
+      "number": 4,
+      "label": "#4",
+      "count": 0,
+      "images": []
     }
   ],
   "total": 106
