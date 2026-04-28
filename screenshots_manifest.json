@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-27T16:47:48Z",
+  "updated": "2026-04-28T04:15:34Z",
   "episodes": [
     {
       "number": 1,
@@ -131,9 +131,78 @@
     {
       "number": 4,
       "label": "#4",
-      "count": 0,
-      "images": []
+      "count": 17,
+      "images": [
+        "ep04/001.png",
+        "ep04/002.png",
+        "ep04/003.png",
+        "ep04/004.png",
+        "ep04/005.png",
+        "ep04/006.png",
+        "ep04/007.png",
+        "ep04/008.png",
+        "ep04/009.png",
+        "ep04/010.png",
+        "ep04/011.png",
+        "ep04/012.png",
+        "ep04/013.png",
+        "ep04/014.png",
+        "ep04/015.png",
+        "ep04/016.png",
+        "ep04/017.png"
+      ]
+    },
+    {
+      "number": 5,
+      "label": "#5",
+      "count": 44,
+      "images": [
+        "ep05/001.jpg",
+        "ep05/002.jpg",
+        "ep05/003.jpg",
+        "ep05/004.jpg",
+        "ep05/005.jpg",
+        "ep05/006.jpg",
+        "ep05/007.jpg",
+        "ep05/008.jpg",
+        "ep05/009.jpg",
+        "ep05/010.jpg",
+        "ep05/011.jpg",
+        "ep05/012.jpg",
+        "ep05/013.jpg",
+        "ep05/014.jpg",
+        "ep05/015.jpg",
+        "ep05/016.jpg",
+        "ep05/017.jpg",
+        "ep05/018.jpg",
+        "ep05/019.png",
+        "ep05/020.png",
+        "ep05/021.png",
+        "ep05/022.png",
+        "ep05/023.png",
+        "ep05/024.png",
+        "ep05/025.png",
+        "ep05/026.png",
+        "ep05/027.png",
+        "ep05/028.png",
+        "ep05/029.png",
+        "ep05/030.png",
+        "ep05/031.png",
+        "ep05/032.png",
+        "ep05/033.png",
+        "ep05/034.png",
+        "ep05/035.png",
+        "ep05/036.png",
+        "ep05/037.png",
+        "ep05/038.png",
+        "ep05/039.png",
+        "ep05/040.png",
+        "ep05/041.png",
+        "ep05/042.png",
+        "ep05/043.png",
+        "ep05/044.png"
+      ]
     }
   ],
-  "total": 106
+  "total": 167
 }
