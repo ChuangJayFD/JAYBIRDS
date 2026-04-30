@@ -1,0 +1,95 @@
+﻿name: JAYBIRDS Daily Vote Reminder
+
+on:
+  schedule:
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'カスタムメッセージ（省略可）'
+        required: false
+        default: ''
+
+jobs:
+  send-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send FCM Push Notification
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          INPUT_MESSAGE: ${{ github.event.inputs.message }}
+        run: |
+          pip install google-auth requests --quiet
+          python3 << 'EOF'
+          import json, os, requests, random
+          from google.oauth2 import service_account
+
+          sa_info = json.loads(os.environ['FIREBASE_SERVICE_ACCOUNT_KEY'])
+          project_id = os.environ['FIREBASE_PROJECT_ID']
+
+          credentials = service_account.Credentials.from_service_account_info(
+              sa_info,
+              scopes=['https://www.googleapis.com/auth/firebase.messaging']
+          )
+          credentials.refresh(requests.Request())
+          access_token = credentials.token
+
+          custom = os.environ.get('INPUT_MESSAGE', '').strip()
+          messages_ja = [
+              'today JAYへの投票は済みましたか？\n毎日の1票がJAYを守ります 👑',
+              '🔥 投票継続中！今日もJAYに1票を。\nあなたの応援が順位を動かします',
+              '📣 VOTE FOR JAY\n今すぐChuangAsiaで投票しよう！',
+              'JAYが待ってます🕊️\n今日の投票、忘れずに！',
+              'あなたの1票 × ファン全員 = JAYのデビュー✨\n今日も投票しよう！',
+          ]
+          body_ja = custom if custom else random.choice(messages_ja)
+
+          fs_url = f'https://firestore.googleapis.com/v1/projects/{project_id}/databases/(default)/documents/subscribers'
+          headers = {'Authorization': f'Bearer {access_token}'}
+          resp = requests.get(fs_url, headers=headers)
+          docs = resp.json().get('documents', [])
+          tokens = [
+              doc['fields']['token']['stringValue']
+              for doc in docs
+              if doc.get('fields', {}).get('active', {}).get('booleanValue', True)
+          ]
+          print(f'✅ 送信対象: {len(tokens)} 件')
+
+          fcm_url = f'https://fcm.googleapis.com/v1/projects/{project_id}/messages:send'
+          success = 0
+          fail = 0
+          for token in tokens:
+              payload = {
+                  'message': {
+                      'token': token,
+                      'notification': {'title': 'JAYBIRDS VOTE 🗳️', 'body': body_ja},
+                      'data': {'url': 'https://www.google.com/search?q=chuang+asia+vote'},
+                      'webpush': {
+                          'headers': {'TTL': '86400'},
+                          'notification': {
+                              'title': 'JAYBIRDS VOTE 🗳️',
+                              'body': body_ja,
+                              'icon': 'https://chuangjayfd.github.io/JAYBIRDS/リマインドアイコン.png',
+                              'badge': 'https://chuangjayfd.github.io/JAYBIRDS/リマインドアイコン.png',
+                              'requireInteraction': True,
+                              'actions': [
+                                  {'action': 'vote', 'title': '今すぐ投票 🗳️'},
+                                  {'action': 'close', 'title': 'あとで'}
+                              ]
+                          },
+                          'fcm_options': {'link': 'https://www.google.com/search?q=chuang+asia+vote'}
+                      }
+                  }
+              }
+              r = requests.post(fcm_url, headers={**headers, 'Content-Type': 'application/json'}, json=payload)
+              if r.status_code == 200:
+                  success += 1
+              else:
+                  fail += 1
+                  print(f'⚠ 送信失敗 ({r.status_code}): {r.text[:100]}')
+          print(f'📊 結果: 成功 {success} / 失敗 {fail}')
+          EOF
+
+      - name: Done
+        run: echo 'Vote reminder sent!'

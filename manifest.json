@@ -1,0 +1,15 @@
+﻿{
+  "name": "JAYBIRDS VOTE REMINDER",
+  "short_name": "JAYBIRDS",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0d1b3e",
+  "theme_color": "#c9a84c",
+  "icons": [
+    {
+      "src": "リマインドアイコン.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

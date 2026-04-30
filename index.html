@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="ja">
 <head>
@@ -982,5 +982,55 @@ footer p {
 })();
 </script>
 
+<!-- ── JAYBIRDS VOTE REMINDER WIDGET ── -->
+<link rel="manifest" href="manifest.json">
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-messaging-compat.js"></script>
+<style>
+#jay-notify-banner{position:fixed;bottom:-120px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:480px;background:linear-gradient(135deg,#0d1120,#141c30);border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,0.5);z-index:99999;transition:bottom 0.5s cubic-bezier(0.175,0.885,0.32,1.275);font-family:'Noto Sans JP',sans-serif}
+#jay-notify-banner.show{bottom:12px}
+#jay-notify-banner .nb-icon{font-size:28px;flex-shrink:0;animation:bellShake 2s ease-in-out infinite}
+@keyframes bellShake{0%,100%{transform:rotate(0)}10%,30%{transform:rotate(-12deg)}20%,40%{transform:rotate(12deg)}50%{transform:rotate(0)}}
+#jay-notify-banner .nb-title{font-size:13px;font-weight:700;color:#f0d080;margin:0 0 2px}
+#jay-notify-banner .nb-sub{font-size:11px;color:#7a6a48;margin:0}
+.nb-btn{padding:9px 16px;border-radius:20px;border:none;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.nb-yes{background:linear-gradient(135deg,#c9a84c,#f0d080);color:#0a0e1a}
+.nb-no{background:transparent;color:#5a4e38;border:1px solid rgba(255,255,255,0.1);margin-left:4px}
+</style>
+<div id="jay-notify-banner">
+  <div class="nb-icon">🔔</div>
+  <div style="flex:1">
+    <p class="nb-title">毎日の投票リマインドを受け取る</p>
+    <p class="nb-sub">JAYへの投票時間にお知らせします</p>
+  </div>
+  <button class="nb-btn nb-yes" onclick="enableNotify()">受け取る</button>
+  <button class="nb-btn nb-no" onclick="dismissBanner()">×</button>
+</div>
+<script>
+const _FB_CONFIG={apiKey:"AIzaSyDam2mLWL2T2y1dx1fLXQdGA0KnKdi6jEU",authDomain:"jaybirds-37083.firebaseapp.com",projectId:"jaybirds-37083",storageBucket:"jaybirds-37083.appspot.com",messagingSenderId:"1006771346653",appId:"1:1006771346653:web:1d49c7041413b51e190f34"};
+const _VAPID="BLfWAMp-CugtSrfLax6AqAxjZxwmSGLSvnsNWFsStjhiA6m_ATxcxXumaUL_9Tls8m03_wFhzIuBxNROg4pZiXM";
+firebase.initializeApp(_FB_CONFIG);
+const _msg=firebase.messaging();
+window.addEventListener('load',()=>{
+  if(localStorage.getItem('jay_notify_dismissed'))return;
+  if(Notification.permission==='granted')return;
+  setTimeout(()=>document.getElementById('jay-notify-banner').classList.add('show'),4000);
+});
+function dismissBanner(){document.getElementById('jay-notify-banner').classList.remove('show');localStorage.setItem('jay_notify_dismissed','1');}
+async function enableNotify(){
+  await Notification.requestPermission();
+  if(Notification.permission!=='granted'){alert('ブラウザの設定から通知を許可してください');return;}
+  const reg=await navigator.serviceWorker.register('/sw.js');
+  const token=await _msg.getToken({vapidKey:_VAPID,serviceWorkerRegistration:reg});
+  await fetch('https://firestore.googleapis.com/v1/projects/jaybirds-37083/databases/(default)/documents/subscribers/'+encodeURIComponent(token),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true}}})});
+  dismissBanner();
+  const t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(109,219,122,0.15);border:1px solid rgba(109,219,122,0.4);border-radius:12px;padding:12px 20px;color:#6ddb7a;font-family:sans-serif;font-size:13px;font-weight:700;z-index:99999;white-space:nowrap';
+  t.textContent='✓ 毎日JAYの投票時間にお知らせします！';
+  document.body.appendChild(t);setTimeout(()=>t.remove(),4000);
+}
+</script>
+<!-- ── /JAYBIRDS VOTE REMINDER WIDGET ── -->
 </body>
 </html>
+
