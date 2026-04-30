@@ -1028,7 +1028,7 @@ const _msg=firebase.messaging();
 function showBar(){document.getElementById('jay-remind-bar').classList.add('show');document.getElementById('jay-remind-mini').style.display='none';}
 function dismissBar(){document.getElementById('jay-remind-bar').classList.remove('show');document.getElementById('jay-remind-mini').style.display='flex';localStorage.setItem('jay_remind_dismissed','1');}
 window.addEventListener('load',()=>{
-  if(Notification.permission==='granted')return;
+  // notification check removed for iOS
   if(localStorage.getItem('jay_remind_dismissed')){document.getElementById('jay-remind-mini').style.display='flex';return;}
   setTimeout(showBar,2000);
 });
@@ -1049,5 +1049,6 @@ async function enableNotify(){
 <!-- ── /JAYBIRDS VOTE REMINDER WIDGET ── -->
 </body>
 </html>
+
 
 
