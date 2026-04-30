@@ -24,6 +24,7 @@ jobs:
           python3 << 'EOF'
           import json, os, requests, random
           from google.oauth2 import service_account
+          import google.auth.transport.requests as tr
 
           sa_info = json.loads(os.environ['FIREBASE_SERVICE_ACCOUNT_KEY'])
           project_id = os.environ['FIREBASE_PROJECT_ID']
@@ -32,12 +33,12 @@ jobs:
               sa_info,
               scopes=['https://www.googleapis.com/auth/firebase.messaging']
           )
-          credentials.refresh(requests.Request())
+          credentials.refresh(tr.Request())
           access_token = credentials.token
 
           custom = os.environ.get('INPUT_MESSAGE', '').strip()
           messages_ja = [
-              'today JAYへの投票は済みましたか？\n毎日の1票がJAYを守ります 👑',
+              '今日のJAYへの投票は済みましたか？\n毎日の1票がJAYを守ります 👑',
               '🔥 投票継続中！今日もJAYに1票を。\nあなたの応援が順位を動かします',
               '📣 VOTE FOR JAY\n今すぐChuangAsiaで投票しよう！',
               'JAYが待ってます🕊️\n今日の投票、忘れずに！',
