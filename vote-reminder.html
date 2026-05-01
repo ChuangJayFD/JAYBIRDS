@@ -263,7 +263,7 @@ async function enableNotify(){
   await Notification.requestPermission();
   if(Notification.permission!=='granted'){alert('ブラウザの設定から通知を許可してください');return;}
   dbg.push('SW開始');
-  const reg=await navigator.serviceWorker.register('/sw.js');
+  const reg=await navigator.serviceWorker.register('./sw.js');
   dbg.push('SW完了');
   const token=await _msg.getToken({vapidKey:_VAPID,serviceWorkerRegistration:reg});
   dbg.push('token取得:'+token.slice(0,20));
@@ -364,6 +364,7 @@ renderStreak();
 </script>
 </body>
 </html>
+
 
 
 
