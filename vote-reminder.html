@@ -253,6 +253,8 @@ function updateStatus(){
 }
 
 async function enableNotify(){
+  const dbg=[];
+  try{
   if(isIOS()&&!isPWA()){
     document.getElementById('ios-guide').style.display='block';
     document.getElementById('ios-guide').scrollIntoView({behavior:'smooth'});
@@ -260,13 +262,18 @@ async function enableNotify(){
   }
   await Notification.requestPermission();
   if(Notification.permission!=='granted'){alert('ブラウザの設定から通知を許可してください');return;}
+  dbg.push('SW開始');
   const reg=await navigator.serviceWorker.register('/sw.js');
+  dbg.push('SW完了');
   const token=await _msg.getToken({vapidKey:_VAPID,serviceWorkerRegistration:reg});
+  dbg.push('token取得:'+token.slice(0,20));
   await fetch('https://firestore.googleapis.com/v1/projects/jaybirds-37083/databases/(default)/documents/subscribers/'+encodeURIComponent(token),{
     method:'PATCH',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true}}})
   });
   localStorage.setItem('jay_notify_registered','1');
+  }catch(e){alert('エラー: '+e.message);}
+  alert('ログ: '+dbg.join(' | '));
   updateStatus();
   const st=document.getElementById('save-status');
   st.textContent='✓ 通知を登録しました！';st.className='status-line success';
@@ -357,6 +364,7 @@ renderStreak();
 </script>
 </body>
 </html>
+
 
 
 
