@@ -16,8 +16,8 @@ messaging.onBackgroundMessage(function(payload) {
   const { title, body, icon, url } = payload.data || payload.notification || {};
   self.registration.showNotification(title || 'JAYBIRDS VOTE', {
     body:  body  || 'JAYへの今日の投票は済みましたか？',
-    icon:  icon  || '/リマインドアイコン.png',
-    badge: '/リマインドアイコン.png',
+    icon:  icon  || '/remindicon.png',
+    badge: '/remindicon.png',
     data:  { url: url || 'https://www.google.com/search?q=chuang+asia+vote' },
     actions: [
       { action: 'vote', title: '今すぐ投票 🗳️' },
@@ -33,3 +33,4 @@ self.addEventListener('notificationclick', function(event) {
     || 'https://www.google.com/search?q=chuang+asia+vote';
   event.waitUntil(clients.openWindow(url));
 });
+

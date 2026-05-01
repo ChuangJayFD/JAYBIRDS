@@ -7,7 +7,7 @@
   "theme_color": "#c9a84c",
   "icons": [
     {
-      "src": "リマインドアイコン.PNG",
+      "src": "remindicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
