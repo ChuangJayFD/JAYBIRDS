@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T16:58:42Z",
+  "updated": "2026-05-07T18:04:21Z",
   "episodes": [
     {
       "number": 1,
@@ -300,9 +300,43 @@
     {
       "number": 7,
       "label": "#7",
-      "count": 0,
-      "images": []
+      "count": 33,
+      "images": [
+        "ep07/001.png",
+        "ep07/002.png",
+        "ep07/003.png",
+        "ep07/004.png",
+        "ep07/005.png",
+        "ep07/006.png",
+        "ep07/007.png",
+        "ep07/008.png",
+        "ep07/009.png",
+        "ep07/010.png",
+        "ep07/011.png",
+        "ep07/012.png",
+        "ep07/013.png",
+        "ep07/014.png",
+        "ep07/015.png",
+        "ep07/016.png",
+        "ep07/017.png",
+        "ep07/018.png",
+        "ep07/019.png",
+        "ep07/020.png",
+        "ep07/021.png",
+        "ep07/022.png",
+        "ep07/023.png",
+        "ep07/024.png",
+        "ep07/025.png",
+        "ep07/026.png",
+        "ep07/027.png",
+        "ep07/028.png",
+        "ep07/029.png",
+        "ep07/030.png",
+        "ep07/031.png",
+        "ep07/032.png",
+        "ep07/033.png"
+      ]
     }
   ],
-  "total": 254
+  "total": 287
 }
