@@ -1,0 +1,38 @@
+﻿name: JAYBIRDS Debug Firestore
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Firestore
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          pip install google-auth requests --quiet
+          python3 << 'EOF'
+          import json, os, requests
+          from google.oauth2 import service_account
+          import google.auth.transport.requests as tr
+
+          sa_info = json.loads(os.environ['FIREBASE_SERVICE_ACCOUNT_KEY'])
+          project_id = os.environ['FIREBASE_PROJECT_ID']
+          print(f'project_id: {project_id}')
+
+          credentials = service_account.Credentials.from_service_account_info(
+              sa_info,
+              scopes=['https://www.googleapis.com/auth/cloud-platform']
+          )
+          credentials.refresh(tr.Request())
+          access_token = credentials.token
+          print(f'token取得OK')
+
+          fs_url = f'https://firestore.googleapis.com/v1/projects/{project_id}/databases/(default)/documents/subscribers'
+          headers = {'Authorization': f'Bearer {access_token}'}
+          resp = requests.get(fs_url, headers=headers)
+          print(f'status: {resp.status_code}')
+          print(f'response: {resp.text[:500]}')
+          EOF
