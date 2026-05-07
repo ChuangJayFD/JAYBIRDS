@@ -31,7 +31,7 @@ jobs:
 
           credentials = service_account.Credentials.from_service_account_info(
               sa_info,
-              scopes=['https://www.googleapis.com/auth/firebase.messaging']
+              scopes=['https://www.googleapis.com/auth/cloud-platform']
           )
           credentials.refresh(tr.Request())
           access_token = credentials.token
@@ -94,3 +94,4 @@ jobs:
 
       - name: Done
         run: echo 'Vote reminder sent!'
+
