@@ -113,6 +113,32 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
 </style>
 </head>
 <body>
+<!-- ホーム画面追加モーダル -->
+<div id="pwa-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;">
+  <div style="background:#0d1120;border:1px solid rgba(201,168,76,0.4);border-radius:20px;padding:28px 24px;width:calc(100% - 48px);max-width:400px;font-family:'Noto Sans JP',sans-serif;position:relative;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:40px;margin-bottom:8px;">📲</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#c9a84c;letter-spacing:2px;margin-bottom:6px;">ホーム画面に追加</div>
+      <div style="font-size:11px;color:#7a6a48;line-height:1.7;">iOSでプッシュ通知を受け取るには<br>ホーム画面への追加が必要です</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <div style="font-size:12px;color:#c8b888;line-height:1.7;">Safariの下の<strong style="color:#f0d080;">「共有」ボタン</strong>（四角に↑のアイコン）をタップ</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <div style="font-size:12px;color:#c8b888;line-height:1.7;"><strong style="color:#f0d080;">「ホーム画面に追加」</strong>を選んで「追加」をタップ</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+        <div style="font-size:12px;color:#c8b888;line-height:1.7;">ホーム画面の<strong style="color:#f0d080;">JAYBIRDSアイコン</strong>からサイトを開いて「通知を受け取る」をタップ</div>
+      </div>
+    </div>
+    <button onclick="closePwaModal()" style="width:100%;padding:13px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">わかった！</button>
+    <button onclick="closePwaModal()" style="width:100%;padding:10px;background:transparent;border:none;color:#5a4e38;font-family:'Noto Sans JP',sans-serif;font-size:11px;cursor:pointer;margin-top:6px;">すでにホーム画面に追加済み</button>
+  </div>
+</div>
 
 <!-- HEADER -->
 <div class="header">
@@ -414,8 +440,22 @@ updatePreview();
 updateStatus();
 renderStreak();
 </script>
+<script>
+function closePwaModal(){
+  document.getElementById('pwa-modal').style.display='none';
+}
+// PWA未インストールかつiOSの場合、自動でモーダル表示
+window.addEventListener('load', function(){
+  function isIOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent);}
+  function isPWA(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;}
+  if(isIOS() && !isPWA() && !localStorage.getItem('jay_pwa_dismissed')){
+    document.getElementById('pwa-modal').style.display='flex';
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 
