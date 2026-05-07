@@ -209,26 +209,7 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
 <div class="section">
   <p class="section-label">リマインド設定</p>
   <div class="card">
-    <div class="setting-row">
-      <div class="setting-label">通知時刻<small>毎日この時刻に通知</small></div>
-      <input type="time" id="remind-time" class="time-input" value="20:00">
-    </div>
-    <div class="setting-row">
-      <div class="setting-label">スヌーズ上限<small>1日に延期できる回数</small></div>
-      <div class="stepper">
-        <button class="stepper-btn" onclick="step('snooze-max',-1)">−</button>
-        <span class="stepper-val" id="snooze-max">3</span>
-        <button class="stepper-btn" onclick="step('snooze-max',1)">+</button>
-      </div>
-    </div>
-    <div class="setting-row">
-      <div class="setting-label">スヌーズ間隔<small>延期後〇分後に再通知</small></div>
-      <div class="stepper">
-        <button class="stepper-btn" onclick="step('snooze-min',-5)">−</button>
-        <span class="stepper-val" id="snooze-min">30</span>
-        <button class="stepper-btn" onclick="step('snooze-min',5)">+</button>
-      </div>
-    </div>
+    
   </div>
 
   <p class="section-label">通知言語</p>
@@ -369,7 +350,7 @@ function updatePreview(){
 }
 
 function saveSettings(){
-  settings.time=document.getElementById('remind-time').value;
+  settings.time=document.getElementById('remind-time').value+':00';
   settings.snoozeMax=parseInt(document.getElementById('snooze-max').textContent);
   settings.snoozeMin=parseInt(document.getElementById('snooze-min').textContent);
   settings.langs=[...document.querySelectorAll('.lang-chip.on')].map(c=>c.dataset.lang);
@@ -455,6 +436,7 @@ window.addEventListener('load', function(){
 </script>
 </body>
 </html>
+
 
 
 
