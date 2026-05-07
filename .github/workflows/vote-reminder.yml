@@ -65,7 +65,7 @@ jobs:
                   'message': {
                       'token': token,
                       'notification': {'title': 'JAYBIRDS VOTE 🗳️', 'body': body_ja},
-                      'data': {'url': 'https://www.google.com/search?q=chuang+asia+vote'},
+                      'data': {'url': 'https://vote.produce101.jp/'},
                       'webpush': {
                           'headers': {'TTL': '86400'},
                           'notification': {
@@ -79,7 +79,7 @@ jobs:
                                   {'action': 'close', 'title': 'あとで'}
                               ]
                           },
-                          'fcm_options': {'link': 'https://www.google.com/search?q=chuang+asia+vote'}
+                          'fcm_options': {'link': 'https://vote.produce101.jp/'}
                       }
                   }
               }
@@ -94,4 +94,5 @@ jobs:
 
       - name: Done
         run: echo 'Vote reminder sent!'
+
 

@@ -18,7 +18,7 @@ messaging.onBackgroundMessage(function(payload) {
     body:  body  || 'JAYへの今日の投票は済みましたか？',
     icon:  icon  || '/remindicon.png',
     badge: '/remindicon.png',
-    data:  { url: url || 'https://www.google.com/search?q=chuang+asia+vote' },
+    data:  { url: url || 'https://vote.produce101.jp/' },
     actions: [
       { action: 'vote', title: '今すぐ投票 🗳️' },
       { action: 'close', title: 'あとで' }
@@ -30,7 +30,8 @@ self.addEventListener('notificationclick', function(event) {
   event.notification.close();
   if (event.action === 'close') return;
   const url = (event.notification.data && event.notification.data.url)
-    || 'https://www.google.com/search?q=chuang+asia+vote';
+    || 'https://vote.produce101.jp/';
   event.waitUntil(clients.openWindow(url));
 });
+
 
