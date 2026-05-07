@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
-<link rel="apple-touch-icon" href="remindicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="remindicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOTE REMINDER — JAYBIRDS</title>
 <link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="remindicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -14,90 +13,21 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-height:100vh;padding:0 0 60px;}
-
-/* HEADER */
-.header{background:linear-gradient(135deg,#0d1120,#111830);border-bottom:2px solid #c9a84c;padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;}
-.header-icon{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #c9a84c;flex-shrink:0;}
-.header-icon img{width:100%;height:100%;object-fit:cover;}
-.header-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#c9a84c;letter-spacing:2px;}
-.header-sub{font-size:10px;color:#5a4e38;letter-spacing:1px;}
-.back-btn{margin-left:auto;padding:6px 14px;background:transparent;border:1px solid rgba(201,168,76,0.3);border-radius:20px;color:#7a6a48;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-decoration:none;display:flex;align-items:center;}
-
-/* SECTIONS */
+.header{background:linear-gradient(135deg,#0d1120,#111830);border-bottom:2px solid #c9a84c;padding:16px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100;}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#c9a84c;letter-spacing:2px;flex:1;text-align:center;}
+.header-sub{font-size:10px;color:#5a4e38;letter-spacing:1px;text-align:center;}
+.back-btn{padding:6px 14px;background:transparent;border:1px solid rgba(201,168,76,0.3);border-radius:20px;color:#7a6a48;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-decoration:none;}
 .section{padding:20px;}
 .section-label{font-size:10px;letter-spacing:2px;color:#7a6a48;text-transform:uppercase;margin-bottom:12px;}
 .card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:16px;margin-bottom:12px;}
 .divider{height:1px;background:rgba(201,168,76,0.1);margin:4px 0 20px;}
-
-/* NOTIFY STATUS */
 .status-card{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:14px;padding:20px;text-align:center;margin-bottom:20px;}
 .status-icon{font-size:36px;margin-bottom:8px;}
 .status-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:#f0d080;letter-spacing:1px;margin-bottom:4px;}
 .status-desc{font-size:11px;color:#7a6a48;line-height:1.7;}
-
-/* ENABLE BTN */
-.enable-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 15px rgba(201,168,76,0.3);transition:transform 0.15s,box-shadow 0.2s;margin-bottom:8px;}
-.enable-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,168,76,0.5);}
+.enable-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 15px rgba(201,168,76,0.3);transition:transform 0.15s;margin-bottom:8px;}
+.enable-btn:hover{transform:translateY(-1px);}
 .enable-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none;}
-
-/* SETTINGS */
-.setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
-.setting-label{font-size:12px;color:#c8b888;flex:1;}
-.setting-label small{display:block;font-size:10px;color:#6a5a3a;margin-top:2px;}
-.time-input{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:8px;color:#f0d080;font-family:'Noto Sans JP',sans-serif;font-size:14px;padding:7px 10px;width:110px;text-align:center;outline:none;}
-.time-input:focus{border-color:#c9a84c;}
-
-/* STEPPER */
-.stepper{display:flex;align-items:center;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:8px;overflow:hidden;}
-.stepper-btn{width:32px;height:34px;background:none;border:none;color:#c9a84c;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.stepper-btn:hover{background:rgba(201,168,76,0.15);}
-.stepper-val{width:32px;text-align:center;font-size:14px;color:#f0d080;}
-
-/* LANG CHIPS */
-.lang-chips{display:flex;gap:6px;flex-wrap:wrap;}
-.lang-chip{padding:5px 12px;border-radius:20px;font-size:11px;border:1px solid rgba(201,168,76,0.3);background:transparent;color:#6a5a3a;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;}
-.lang-chip.on{background:rgba(201,168,76,0.2);border-color:#c9a84c;color:#f0d080;}
-
-/* TOGGLE */
-.toggle{width:42px;height:24px;background:rgba(255,255,255,0.1);border-radius:12px;position:relative;cursor:pointer;transition:background 0.3s;border:none;flex-shrink:0;}
-.toggle.on{background:#c9a84c;}
-.toggle::after{content:'';position:absolute;width:18px;height:18px;background:white;border-radius:50%;top:3px;left:3px;transition:left 0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.3);}
-.toggle.on::after{left:21px;}
-
-/* NOTIF PREVIEW */
-.notif-preview{background:rgba(255,255,255,0.04);border-left:3px solid #c9a84c;border-radius:0 8px 8px 0;padding:10px 12px;font-size:11px;color:#9a8a6a;line-height:1.7;white-space:pre-line;margin:12px 0;}
-
-/* SAVE BTN */
-.save-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(201,168,76,0.3);transition:transform 0.15s;}
-.save-btn:hover{transform:translateY(-1px);}
-.status-line{text-align:center;font-size:11px;color:#5a4e38;margin-top:8px;min-height:16px;}
-.status-line.success{color:#6ddb7a;}
-.status-line.error{color:#ff6b6b;}
-
-/* PWA GUIDE */
-.pwa-steps{margin:12px 0;}
-.pwa-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
-.pwa-num{width:22px;height:22px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.pwa-text{font-size:12px;color:#c8b888;line-height:1.7;}
-.pwa-text strong{color:#f0d080;}
-
-/* STREAK */
-.streak-bar{display:flex;gap:4px;justify-content:center;margin-bottom:8px;}
-.streak-day{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;font-size:9px;color:#5a4e38;}
-.streak-day.voted{background:rgba(201,168,76,0.2);border-color:#c9a84c;color:#f0d080;}
-.streak-day .dot{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,0.2);}
-.streak-day.voted .dot{background:#c9a84c;}
-.streak-caption{text-align:center;font-size:10px;color:#5a4e38;margin-bottom:16px;}
-
-/* STATS */
-.stats-row{display:flex;gap:8px;margin-bottom:16px;}
-.stat-box{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:12px 8px;text-align:center;}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9a84c;}
-.stat-label{font-size:9px;color:#5a4e38;letter-spacing:1px;margin-top:2px;}
-
-/* VOTE BTN */
-.vote-now-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 4px 15px rgba(201,168,76,0.3);letter-spacing:1px;margin-bottom:10px;}
-.reset-btn{width:100%;padding:10px;background:transparent;border:1px solid rgba(255,100,100,0.2);border-radius:10px;color:#ff6b6b;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
 .action-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;text-decoration:none;margin-bottom:10px;transition:transform 0.15s;}
 .action-btn:hover{transform:translateY(-1px);}
 .action-btn.vote{background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.4);}
@@ -110,37 +40,64 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
 .action-sub{font-size:10px;color:#7a6a48;}
 .action-arrow{color:#c9a84c;font-size:16px;flex-shrink:0;}
 .action-btn.collab2 .action-arrow{color:#7ab0ff;}
+.setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+.setting-label{font-size:12px;color:#c8b888;flex:1;}
+.setting-label small{display:block;font-size:10px;color:#6a5a3a;margin-top:2px;}
+.time-select{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:8px;color:#f0d080;font-family:'Noto Sans JP',sans-serif;font-size:14px;padding:7px 10px;width:110px;text-align:center;outline:none;}
+.stepper{display:flex;align-items:center;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:8px;overflow:hidden;}
+.stepper-btn{width:32px;height:34px;background:none;border:none;color:#c9a84c;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.stepper-btn:hover{background:rgba(201,168,76,0.15);}
+.stepper-val{width:32px;text-align:center;font-size:14px;color:#f0d080;}
+.lang-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.lang-chip{padding:5px 12px;border-radius:20px;font-size:11px;border:1px solid rgba(201,168,76,0.3);background:transparent;color:#6a5a3a;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;}
+.lang-chip.on{background:rgba(201,168,76,0.2);border-color:#c9a84c;color:#f0d080;}
+.toggle{width:42px;height:24px;background:rgba(255,255,255,0.1);border-radius:12px;position:relative;cursor:pointer;transition:background 0.3s;border:none;flex-shrink:0;}
+.toggle.on{background:#c9a84c;}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:white;border-radius:50%;top:3px;left:3px;transition:left 0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.3);}
+.toggle.on::after{left:21px;}
+.notif-preview{background:rgba(255,255,255,0.04);border-left:3px solid #c9a84c;border-radius:0 8px 8px 0;padding:10px 12px;font-size:11px;color:#9a8a6a;line-height:1.7;white-space:pre-line;margin:12px 0;}
+.save-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(201,168,76,0.3);transition:transform 0.15s;}
+.save-btn:hover{transform:translateY(-1px);}
+.status-line{text-align:center;font-size:11px;color:#5a4e38;margin-top:8px;min-height:16px;}
+.status-line.success{color:#6ddb7a;}
+.status-line.error{color:#ff6b6b;}
+.streak-bar{display:flex;gap:4px;justify-content:center;margin-bottom:8px;}
+.streak-day{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;font-size:9px;color:#5a4e38;}
+.streak-day.voted{background:rgba(201,168,76,0.2);border-color:#c9a84c;color:#f0d080;}
+.streak-day .dot{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,0.2);}
+.streak-day.voted .dot{background:#c9a84c;}
+.streak-caption{text-align:center;font-size:10px;color:#5a4e38;margin-bottom:16px;}
+.stats-row{display:flex;gap:8px;margin-bottom:16px;}
+.stat-box{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:12px 8px;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;color:#c9a84c;}
+.stat-label{font-size:9px;color:#5a4e38;letter-spacing:1px;margin-top:2px;}
+.vote-now-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 4px 15px rgba(201,168,76,0.3);letter-spacing:1px;margin-bottom:10px;}
+.reset-btn{width:100%;padding:10px;background:transparent;border:1px solid rgba(255,100,100,0.2);border-radius:10px;color:#ff6b6b;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.pwa-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.pwa-num{width:22px;height:22px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.pwa-text{font-size:12px;color:#c8b888;line-height:1.7;}
+.pwa-text strong{color:#f0d080;}
 </style>
 </head>
 <body>
-<!-- ホーム画面追加モーダル -->
+<!-- PWAモーダル -->
 <div id="pwa-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;">
-  <div style="background:#0d1120;border:1px solid rgba(201,168,76,0.4);border-radius:20px;padding:28px 24px;width:calc(100% - 48px);max-width:400px;font-family:'Noto Sans JP',sans-serif;position:relative;">
+  <div style="background:#0d1120;border:1px solid rgba(201,168,76,0.4);border-radius:20px;padding:28px 24px;width:calc(100% - 48px);max-width:400px;font-family:'Noto Sans JP',sans-serif;">
     <div style="text-align:center;margin-bottom:20px;">
       <div style="font-size:40px;margin-bottom:8px;">📲</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:#c9a84c;letter-spacing:2px;margin-bottom:6px;">ホーム画面に追加</div>
       <div style="font-size:11px;color:#7a6a48;line-height:1.7;">iOSでプッシュ通知を受け取るには<br>ホーム画面への追加が必要です</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
-        <div style="font-size:12px;color:#c8b888;line-height:1.7;">Safariの下の<strong style="color:#f0d080;">「共有」ボタン</strong>（四角に↑のアイコン）をタップ</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
-        <div style="font-size:12px;color:#c8b888;line-height:1.7;"><strong style="color:#f0d080;">「ホーム画面に追加」</strong>を選んで「追加」をタップ</div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;">
-        <div style="width:24px;height:24px;border-radius:50%;background:#c9a84c;color:#0a0e1a;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-        <div style="font-size:12px;color:#c8b888;line-height:1.7;">ホーム画面の<strong style="color:#f0d080;">JAYBIRDSアイコン</strong>からサイトを開いて「通知を受け取る」をタップ</div>
-      </div>
+      <div class="pwa-step"><div class="pwa-num">1</div><div class="pwa-text">Safariの下の<strong>「共有」ボタン</strong>（四角に↑のアイコン）をタップ</div></div>
+      <div class="pwa-step"><div class="pwa-num">2</div><div class="pwa-text"><strong>「ホーム画面に追加」</strong>を選んで「追加」をタップ</div></div>
+      <div class="pwa-step"><div class="pwa-num">3</div><div class="pwa-text">ホーム画面の<strong>JAYBIRDSアイコン</strong>からサイトを開いて「通知を受け取る」をタップ</div></div>
     </div>
-    <button onclick="closePwaModal()" style="width:100%;padding:13px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">わかった！</button>
-    <button onclick="closePwaModal()" style="width:100%;padding:10px;background:transparent;border:none;color:#5a4e38;font-family:'Noto Sans JP',sans-serif;font-size:11px;cursor:pointer;margin-top:6px;">すでにホーム画面に追加済み</button>
+    <button onclick="document.getElementById('pwa-modal').style.display='none';" style="width:100%;padding:13px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">わかった！</button>
+    <button onclick="document.getElementById('pwa-modal').style.display='none';" style="width:100%;padding:10px;background:transparent;border:none;color:#5a4e38;font-family:'Noto Sans JP',sans-serif;font-size:11px;cursor:pointer;margin-top:6px;">すでにホーム画面に追加済み</button>
   </div>
 </div>
 
-<!-- HEADER -->
 <div class="header">
   <a href="index.html" class="back-btn">← 戻る</a>
   <div style="flex:1;text-align:center;">
@@ -153,7 +110,7 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
 <!-- 今日のアクション -->
 <div class="section" style="padding-bottom:0;">
   <p class="section-label">✦ 今日のアクション</p>
-  <a href="https://vote.produce101.jp/" target="_blank" class="action-btn vote">
+  <a href="https://vote.produce101.jp/" target="_blank" class="action-btn vote" onclick="markVoted()">
     <span class="action-icon">🗳️</span>
     <div class="action-text">
       <div class="action-title">今すぐ投票する</div>
@@ -179,37 +136,60 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
   </a>
 </div>
 <div class="divider"></div>
-<!-- NOTIFY STATUS -->
+
+<!-- 通知設定 -->
 <div class="section">
   <div class="status-card" id="status-card">
     <div class="status-icon" id="status-icon">🔔</div>
     <div class="status-title" id="status-title">通知を設定しよう</div>
     <div class="status-desc" id="status-desc">毎日JAYへの投票時間にお知らせします</div>
   </div>
-
-  <!-- iOSガイド -->
-  <div id="ios-guide" style="display:none;">
-    <div class="card">
-      <p class="section-label">📲 iOSの場合</p>
-      <div class="pwa-steps">
-        <div class="pwa-step"><div class="pwa-num">1</div><div class="pwa-text">Safariの下の<strong>「共有」ボタン</strong>をタップ</div></div>
-        <div class="pwa-step"><div class="pwa-num">2</div><div class="pwa-text"><strong>「ホーム画面に追加」</strong>→「追加」をタップ</div></div>
-        <div class="pwa-step"><div class="pwa-num">3</div><div class="pwa-text">ホーム画面の<strong>JAYBIRDSアイコン</strong>からサイトを開く</div></div>
-        <div class="pwa-step"><div class="pwa-num">4</div><div class="pwa-text">このページで<strong>「通知を受け取る」</strong>をタップ</div></div>
-      </div>
-    </div>
-  </div>
-
   <button class="enable-btn" id="enable-btn" onclick="enableNotify()">🔔 通知を受け取る</button>
 </div>
-
 <div class="divider"></div>
 
-<!-- SETTINGS -->
+<!-- リマインド設定 -->
 <div class="section">
   <p class="section-label">リマインド設定</p>
   <div class="card">
-    
+    <div class="setting-row">
+      <div class="setting-label">通知時刻<small>毎日この時刻に通知</small></div>
+      <select id="remind-time" class="time-select">
+                <option value='00'>00 時</option>
+        <option value='01'>01 時</option>
+        <option value='02'>02 時</option>
+        <option value='03'>03 時</option>
+        <option value='04'>04 時</option>
+        <option value='05'>05 時</option>
+        <option value='06'>06 時</option>
+        <option value='07'>07 時</option>
+        <option value='08'>08 時</option>
+        <option value='09'>09 時</option>
+        <option value='10'>10 時</option>
+        <option value='11'>11 時</option>
+        <option value='12'>12 時</option>
+        <option value='13'>13 時</option>
+        <option value='14'>14 時</option>
+        <option value='15'>15 時</option>
+        <option value='16'>16 時</option>
+        <option value='17'>17 時</option>
+        <option value='18'>18 時</option>
+        <option value='19'>19 時</option>
+        <option value='20' selected>20 時</option>
+        <option value='21'>21 時</option>
+        <option value='22'>22 時</option>
+        <option value='23'>23 時</option>
+
+      </select>
+    </div>
+    <div class="setting-row">
+      <div class="setting-label">スヌーズ上限<small>1日に延期できる回数</small></div>
+      <div class="stepper">
+        <button class="stepper-btn" onclick="step('snooze-max',-1)">−</button>
+        <span class="stepper-val" id="snooze-max">3</span>
+        <button class="stepper-btn" onclick="step('snooze-max',1)">+</button>
+      </div>
+    </div>
   </div>
 
   <p class="section-label">通知言語</p>
@@ -238,10 +218,9 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
   <button class="save-btn" onclick="saveSettings()">✦ 設定を保存する</button>
   <div class="status-line" id="save-status"></div>
 </div>
-
 <div class="divider"></div>
 
-<!-- STREAK -->
+<!-- 投票記録 -->
 <div class="section">
   <p class="section-label">今週の投票記録</p>
   <div class="streak-bar" id="streak-bar"></div>
@@ -250,7 +229,6 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
     <div class="stat-box"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">連続投票日</div></div>
     <div class="stat-box"><div class="stat-num" id="stat-total">0</div><div class="stat-label">累計投票日</div></div>
   </div>
-  <a href="https://vote.produce101.jp/" target="_blank" class="vote-now-btn" onclick="markVoted()">🗳️ 今日の投票をする</a>
   <button class="reset-btn" onclick="resetStats()">🗑 記録をリセット</button>
 </div>
 
@@ -270,16 +248,14 @@ const MSGS={
 
 let settings=JSON.parse(localStorage.getItem('jay_settings')||'{}');
 let voteLog=JSON.parse(localStorage.getItem('jay_vote_log')||'[]');
-settings.time=settings.time||'20:00';
+settings.time=settings.time||'20';
 settings.snoozeMax=settings.snoozeMax||3;
-settings.snoozeMin=settings.snoozeMin||30;
 settings.langs=settings.langs||['ja'];
 
 function today(){return new Date().toISOString().slice(0,10);}
 function isIOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent);}
 function isPWA(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;}
 
-// 通知ステータス表示
 function updateStatus(){
   const p=Notification.permission;
   const icon=document.getElementById('status-icon');
@@ -289,40 +265,32 @@ function updateStatus(){
   if(p==='granted'){
     icon.textContent='✅';
     title.textContent='通知設定済み';
-    desc.textContent='毎日'+settings.time+'にJAYの投票リマインドが届きます';
+    desc.textContent='毎日'+settings.time+'時にJAYの投票リマインドが届きます';
     btn.textContent='✓ 設定済み';
     btn.disabled=true;
   } else if(isIOS()&&!isPWA()){
     icon.textContent='📲';
     title.textContent='ホーム画面への追加が必要です';
-    desc.textContent='iOSでプッシュ通知を受け取るには下の手順が必要です';
-    document.getElementById('ios-guide').style.display='block';
+    desc.textContent='下の手順でホーム画面に追加してください';
   }
 }
 
 async function enableNotify(){
-  const dbg=[];
-  try{
   if(isIOS()&&!isPWA()){
-    document.getElementById('ios-guide').style.display='block';
-    document.getElementById('ios-guide').scrollIntoView({behavior:'smooth'});
+    document.getElementById('pwa-modal').style.display='flex';
     return;
   }
   await Notification.requestPermission();
   if(Notification.permission!=='granted'){alert('ブラウザの設定から通知を許可してください');return;}
-  dbg.push('SW開始');
   const reg=await navigator.serviceWorker.register('./sw.js');
-  dbg.push('SW完了');
   const token=await _msg.getToken({vapidKey:_VAPID,serviceWorkerRegistration:reg});
-  dbg.push('token取得:'+token.slice(0,20));
+  const hour=parseInt(settings.time)||20;
   await fetch('https://firestore.googleapis.com/v1/projects/jaybirds-37083/databases/(default)/documents/subscribers/'+encodeURIComponent(token),{
     method:'PATCH',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true}}})
+    body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true},notifyHour:{integerValue:hour}}})
   });
   localStorage.setItem('jay_notify_registered','1');
-  localStorage.setItem('jay_fcm_token', token);
-  }catch(e){alert('エラー: '+e.message);}
-  alert('ログ: '+dbg.join(' | '));
+  localStorage.setItem('jay_fcm_token',token);
   updateStatus();
   const st=document.getElementById('save-status');
   st.textContent='✓ 通知を登録しました！';st.className='status-line success';
@@ -333,15 +301,10 @@ function step(id,delta){
   const el=document.getElementById(id);
   let v=parseInt(el.textContent)+delta;
   if(id==='snooze-max')v=Math.max(1,Math.min(10,v));
-  if(id==='snooze-min')v=Math.max(5,Math.min(120,v));
   el.textContent=v;
-  updatePreview();
 }
 
-function toggleLang(el){
-  el.classList.toggle('on');
-  updatePreview();
-}
+function toggleLang(el){el.classList.toggle('on');updatePreview();}
 
 function updatePreview(){
   const langs=[...document.querySelectorAll('.lang-chip.on')].map(c=>c.dataset.lang);
@@ -350,20 +313,17 @@ function updatePreview(){
 }
 
 function saveSettings(){
-  settings.time=document.getElementById('remind-time').value+':00';
+  settings.time=document.getElementById('remind-time').value;
   settings.snoozeMax=parseInt(document.getElementById('snooze-max').textContent);
-  settings.snoozeMin=parseInt(document.getElementById('snooze-min').textContent);
   settings.langs=[...document.querySelectorAll('.lang-chip.on')].map(c=>c.dataset.lang);
   settings.autoOff=document.getElementById('toggle-auto-off').classList.contains('on');
   settings.formNotif=document.getElementById('toggle-form').classList.contains('on');
   localStorage.setItem('jay_settings',JSON.stringify(settings));
-  // Firestoreにnotifyhourを保存
-  const token = localStorage.getItem('jay_fcm_token');
-  if(token) {
-    const hour = parseInt(settings.time.split(':')[0]);
+  const token=localStorage.getItem('jay_fcm_token');
+  if(token){
+    const hour=parseInt(settings.time)||20;
     fetch('https://firestore.googleapis.com/v1/projects/jaybirds-37083/databases/(default)/documents/subscribers/'+encodeURIComponent(token),{
-      method:'PATCH',
-      headers:{'Content-Type':'application/json'},
+      method:'PATCH',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true},notifyHour:{integerValue:hour}}})
     });
   }
@@ -413,37 +373,19 @@ function resetStats(){
 // 初期化
 document.getElementById('remind-time').value=settings.time;
 document.getElementById('snooze-max').textContent=settings.snoozeMax;
-document.getElementById('snooze-min').textContent=settings.snoozeMin;
 settings.langs.forEach(l=>{const c=document.querySelector('[data-lang="'+l+'"]');if(c)c.classList.add('on');});
 if(settings.autoOff===false)document.getElementById('toggle-auto-off').classList.remove('on');
 if(settings.formNotif===false)document.getElementById('toggle-form').classList.remove('on');
 updatePreview();
 updateStatus();
 renderStreak();
-</script>
-<script>
-function closePwaModal(){
-  document.getElementById('pwa-modal').style.display='none';
-}
-// PWA未インストールかつiOSの場合、自動でモーダル表示
-window.addEventListener('load', function(){
-  function isIOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent);}
-  function isPWA(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;}
-  if(isIOS() && !isPWA() && !localStorage.getItem('jay_pwa_dismissed')){
-    document.getElementById('pwa-modal').style.display='flex';
+
+// iOS PWA未インストールの場合モーダル表示
+window.addEventListener('load',function(){
+  if(isIOS()&&!isPWA()&&!localStorage.getItem('jay_pwa_dismissed')){
+    setTimeout(()=>{document.getElementById('pwa-modal').style.display='flex';},1000);
   }
 });
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
