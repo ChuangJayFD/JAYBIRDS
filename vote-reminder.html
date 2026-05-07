@@ -272,6 +272,7 @@ async function enableNotify(){
     body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true}}})
   });
   localStorage.setItem('jay_notify_registered','1');
+  localStorage.setItem('jay_fcm_token', token);
   }catch(e){alert('エラー: '+e.message);}
   alert('ログ: '+dbg.join(' | '));
   updateStatus();
@@ -308,6 +309,16 @@ function saveSettings(){
   settings.autoOff=document.getElementById('toggle-auto-off').classList.contains('on');
   settings.formNotif=document.getElementById('toggle-form').classList.contains('on');
   localStorage.setItem('jay_settings',JSON.stringify(settings));
+  // Firestoreにnotifyhourを保存
+  const token = localStorage.getItem('jay_fcm_token');
+  if(token) {
+    const hour = parseInt(settings.time.split(':')[0]);
+    fetch('https://firestore.googleapis.com/v1/projects/jaybirds-37083/databases/(default)/documents/subscribers/'+encodeURIComponent(token),{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:{token:{stringValue:token},active:{booleanValue:true},notifyHour:{integerValue:hour}}})
+    });
+  }
   const st=document.getElementById('save-status');
   st.textContent='✓ 設定を保存しました';st.className='status-line success';
   setTimeout(()=>{st.textContent='';st.className='status-line';},3000);
@@ -364,6 +375,7 @@ renderStreak();
 </script>
 </body>
 </html>
+
 
 
 

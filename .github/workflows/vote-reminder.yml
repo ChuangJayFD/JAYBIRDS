@@ -2,7 +2,7 @@
 
 on:
   schedule:
-    - cron: '0 11 * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
     inputs:
       message:
@@ -23,6 +23,7 @@ jobs:
           pip install google-auth requests --quiet
           python3 << 'EOF'
           import json, os, requests, random
+          from datetime import datetime, timezone, timedelta
           from google.oauth2 import service_account
           import google.auth.transport.requests as tr
 
@@ -36,11 +37,16 @@ jobs:
           credentials.refresh(tr.Request())
           access_token = credentials.token
 
+          # 現在のJST時刻
+          jst = timezone(timedelta(hours=9))
+          current_hour = datetime.now(jst).hour
+          print(f'現在のJST時刻: {current_hour}時')
+
           custom = os.environ.get('INPUT_MESSAGE', '').strip()
           messages_ja = [
               '今日のJAYへの投票は済みましたか？\n毎日の1票がJAYを守ります 👑',
               '🔥 投票継続中！今日もJAYに1票を。\nあなたの応援が順位を動かします',
-              '📣 VOTE FOR JAY\n今すぐChuangAsiaで投票しよう！',
+              '📣 VOTE FOR JAY\n今すぐ投票しよう！',
               'JAYが待ってます🕊️\n今日の投票、忘れずに！',
               'あなたの1票 × ファン全員 = JAYのデビュー✨\n今日も投票しよう！',
           ]
@@ -50,11 +56,22 @@ jobs:
           headers = {'Authorization': f'Bearer {access_token}'}
           resp = requests.get(fs_url, headers=headers)
           docs = resp.json().get('documents', [])
-          tokens = [
-              doc['fields']['token']['stringValue']
-              for doc in docs
-              if doc.get('fields', {}).get('active', {}).get('booleanValue', True)
-          ]
+
+          # notifyHourが現在時刻と一致するユーザーだけ対象
+          tokens = []
+          for doc in docs:
+              fields = doc.get('fields', {})
+              if not fields.get('active', {}).get('booleanValue', True):
+                  continue
+              notify_hour = fields.get('notifyHour', {}).get('integerValue')
+              # notifyHourが未設定の場合は20時をデフォルトとする
+              if notify_hour is None:
+                  notify_hour = 20
+              if int(notify_hour) == current_hour:
+                  token = fields.get('token', {}).get('stringValue')
+                  if token:
+                      tokens.append(token)
+
           print(f'✅ 送信対象: {len(tokens)} 件')
 
           fcm_url = f'https://fcm.googleapis.com/v1/projects/{project_id}/messages:send'
@@ -71,8 +88,8 @@ jobs:
                           'notification': {
                               'title': 'JAYBIRDS VOTE 🗳️',
                               'body': body_ja,
-                              'icon': 'https://chuangjayfd.github.io/JAYBIRDS/リマインドアイコン.png',
-                              'badge': 'https://chuangjayfd.github.io/JAYBIRDS/リマインドアイコン.png',
+                              'icon': 'https://chuangjayfd.github.io/JAYBIRDS/remindicon.png',
+                              'badge': 'https://chuangjayfd.github.io/JAYBIRDS/remindicon.png',
                               'requireInteraction': True,
                               'actions': [
                                   {'action': 'vote', 'title': '今すぐ投票 🗳️'},
@@ -94,5 +111,3 @@ jobs:
 
       - name: Done
         run: echo 'Vote reminder sent!'
-
-
