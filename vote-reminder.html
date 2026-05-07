@@ -98,6 +98,18 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
 /* VOTE BTN */
 .vote-now-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,#c9a84c,#f0d080);border:none;border-radius:12px;color:#0a0e1a;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 4px 15px rgba(201,168,76,0.3);letter-spacing:1px;margin-bottom:10px;}
 .reset-btn{width:100%;padding:10px;background:transparent;border:1px solid rgba(255,100,100,0.2);border-radius:10px;color:#ff6b6b;font-size:11px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;}
+.action-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;text-decoration:none;margin-bottom:10px;transition:transform 0.15s;}
+.action-btn:hover{transform:translateY(-1px);}
+.action-btn.vote{background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.4);}
+.action-btn.collab{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.25);}
+.action-btn.collab2{background:linear-gradient(135deg,rgba(100,150,255,0.1),rgba(100,150,255,0.04));border:1px solid rgba(100,150,255,0.25);}
+.action-icon{font-size:24px;flex-shrink:0;}
+.action-text{flex:1;}
+.action-title{font-size:13px;font-weight:700;color:#f0d080;margin-bottom:2px;}
+.action-btn.collab2 .action-title{color:#c8d8ff;}
+.action-sub{font-size:10px;color:#7a6a48;}
+.action-arrow{color:#c9a84c;font-size:16px;flex-shrink:0;}
+.action-btn.collab2 .action-arrow{color:#7ab0ff;}
 </style>
 </head>
 <body>
@@ -112,6 +124,35 @@ body{background:#0a0e1a;color:#e8dfc8;font-family:'Noto Sans JP',sans-serif;min-
   <div style="width:60px;"></div>
 </div>
 
+<!-- 今日のアクション -->
+<div class="section" style="padding-bottom:0;">
+  <p class="section-label">✦ 今日のアクション</p>
+  <a href="https://vote.produce101.jp/" target="_blank" class="action-btn vote">
+    <span class="action-icon">🗳️</span>
+    <div class="action-text">
+      <div class="action-title">今すぐ投票する</div>
+      <div class="action-sub">produce101.jp → JAYに投票</div>
+    </div>
+    <span class="action-arrow">→</span>
+  </a>
+  <a href="https://x.gd/GCaup" target="_blank" class="action-btn collab">
+    <span class="action-icon">🔑💗</span>
+    <div class="action-text">
+      <div class="action-title">りきちぇんず様 コラボフォーム</div>
+      <div class="action-sub">チェンリッキー × ジュアンジェイ 〜5/8</div>
+    </div>
+    <span class="action-arrow">→</span>
+  </a>
+  <a href="https://x.gd/AdDvu" target="_blank" class="action-btn collab2">
+    <span class="action-icon">👊🐉</span>
+    <div class="action-text">
+      <div class="action-title">竜星群様 コラボフォーム</div>
+      <div class="action-sub">杉山竜司 × ジュアンジェイ 〜5/8</div>
+    </div>
+    <span class="action-arrow">→</span>
+  </a>
+</div>
+<div class="divider"></div>
 <!-- NOTIFY STATUS -->
 <div class="section">
   <div class="status-card" id="status-card">
@@ -375,6 +416,7 @@ renderStreak();
 </script>
 </body>
 </html>
+
 
 
 
